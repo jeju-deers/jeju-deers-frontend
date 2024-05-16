@@ -14,26 +14,3 @@ export const SidebarContainer = styled.div`
     bg-no-repeat
   `}
 `;
-
-export const Logo = styled.img`
-  ${tw`
-    w-24
-    mt-2
-  `}
-`;
-
-export const SocialIcons = styled.div`
-  ${tw`
-    flex 
-    flex-col
-    justify-between
-    space-y-10
-    mb-20
-  `}
-`;
-
-export const SocialIcon = styled.img`
-  ${tw`
-    w-7 h-7
-  `}
-`;
