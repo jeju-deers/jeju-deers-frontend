@@ -2,7 +2,7 @@ import Sidebar from "../components/organism/main/SideBar";
 import Main from "../components/organism/main/Main";
 import { MainPageBox } from "./MainPageStyles";
 
-const MainPage = () => {
+const MainPageLayout = () => {
   return (
     <MainPageBox>
       <Sidebar />
@@ -11,4 +11,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default MainPageLayout;
