@@ -1,11 +1,11 @@
 import { SidebarContainer } from "./SideBarStyles";
-import SidebarLogo from "../../atom/main/sidebar/Logo";
-import Social from "../../molecules/main/sidebar/SocialIcons";
+import MainLogo from "../../atom/main/sidebar/MainLogo";
+import SocialIcons from "../../molecules/main/sidebar/SocialIcons";
 
 const Sidebar = () => (
   <SidebarContainer>
-    <SidebarLogo />
-    <Social />
+    <MainLogo />
+    <SocialIcons />
   </SidebarContainer>
 );
 

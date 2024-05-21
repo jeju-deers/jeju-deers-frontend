@@ -1,7 +1,7 @@
 import tw from "twin.macro";
 import styled from "styled-components";
 
-export const SocialIcons = styled.div`
+export const SocialIconsBox = styled.div`
   ${tw`
     flex 
     flex-col

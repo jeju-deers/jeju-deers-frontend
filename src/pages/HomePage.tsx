@@ -1,14 +1,14 @@
 import Sidebar from "../components/organism/main/SideBar";
 import Main from "../components/organism/main/Main";
-import { HomePageContainer } from "./HomePageStyles";
+import { MainPageBox } from "./HomePageStyles";
 
-const HomePage = () => {
+const MainPage = () => {
   return (
-    <HomePageContainer>
+    <MainPageBox>
       <Sidebar />
       <Main />
-    </HomePageContainer>
+    </MainPageBox>
   );
 };
 
-export default HomePage;
+export default MainPage;
