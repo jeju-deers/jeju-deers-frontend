@@ -1,5 +1,5 @@
 import React from "react";
-import { SocialIconImg } from "./SocialIconStyles";
+import { SocialIconImage } from "./SocialIconStyles";
 
 interface SocialIconProps {
   src: string;
@@ -7,7 +7,7 @@ interface SocialIconProps {
 }
 
 const SocialIcon: React.FunctionComponent<SocialIconProps> = ({ src, alt }) => {
-  return <SocialIconImg src={src} alt={alt} />;
+  return <SocialIconImage src={src} alt={alt} />;
 };
 
 export default SocialIcon;

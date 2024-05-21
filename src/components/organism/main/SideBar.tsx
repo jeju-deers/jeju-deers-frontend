@@ -1,12 +1,12 @@
-import { SidebarContainer } from "./SideBarStyles";
+import { SidebarBox } from "./SideBarStyles";
 import MainLogo from "../../atom/main/sidebar/MainLogo";
 import SocialIcons from "../../molecules/main/sidebar/SocialIcons";
 
 const Sidebar = () => (
-  <SidebarContainer>
+  <SidebarBox>
     <MainLogo />
     <SocialIcons />
-  </SidebarContainer>
+  </SidebarBox>
 );
 
 export default Sidebar;

@@ -1,5 +1,5 @@
-import { MainPageContainer } from "./MainStyles";
+import { MainPageBox } from "./MainStyles";
 
-const Main = () => <MainPageContainer></MainPageContainer>;
+const Main = () => <MainPageBox></MainPageBox>;
 
 export default Main;

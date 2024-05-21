@@ -1,7 +1,7 @@
 import youtube from "../../../../assets/images/youtube_logo.svg";
 import instagram from "../../../../assets/images/instagram_logo.svg";
 import { SocialIconsBox } from "./SocialIconsStyles";
-import { SocialIconImg } from "../../../atom/main/sidebar/SocialIconStyles";
+import { SocialIconImage } from "../../../atom/main/sidebar/SocialIconStyles";
 
 const SocialIcons: React.FunctionComponent = () => {
   const SocialItems = [
@@ -17,7 +17,7 @@ const SocialIcons: React.FunctionComponent = () => {
     <SocialIconsBox>
       {SocialItems.map((item, index) => (
         <a key={index} href={item.href} target="_blank" rel="noopener noreferrer">
-          <SocialIconImg src={item.src} alt={item.alt} />
+          <SocialIconImage src={item.src} alt={item.alt} />
         </a>
       ))}
     </SocialIconsBox>
