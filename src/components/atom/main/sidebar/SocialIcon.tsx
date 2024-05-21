@@ -1,13 +1,17 @@
-import React from "react";
 import { SocialIconImage } from "./SocialIconStyles";
 
 interface Props {
   src: string;
   alt: string;
+  href: string;
 }
 
-const SocialIcon: React.FunctionComponent<Props> = ({ src, alt }) => {
-  return <SocialIconImage src={src} alt={alt} />;
+const SocialIcon = ({ src, alt, href }: Props) => {
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      <SocialIconImage src={src} alt={alt} />
+    </a>
+  );
 };
 
 export default SocialIcon;

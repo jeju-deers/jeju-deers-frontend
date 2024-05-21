@@ -1,25 +1,17 @@
 import youtube from "../../../../assets/images/youtube_logo.svg";
 import instagram from "../../../../assets/images/instagram_logo.svg";
 import { SocialIconsBox } from "./SocialIconsStyles";
-import { SocialIconImage } from "../../../atom/main/sidebar/SocialIconStyles";
+import SocialIcon from "../../../atom/main/sidebar/SocialIcon";
 
-const SocialIcons: React.FunctionComponent = () => {
-  const SocialItems = [
-    { src: `${youtube}`, alt: "Youtube", href: "https://www.youtube.com/@jeju_deers_official" },
-    {
-      src: `${instagram}`,
-      alt: "Instagram",
-      href: "https://www.instagram.com/jeju_deers_football/",
-    },
-  ];
-
+const SocialIcons = () => {
   return (
     <SocialIconsBox>
-      {SocialItems.map((item, index) => (
-        <a key={index} href={item.href} target="_blank" rel="noopener noreferrer">
-          <SocialIconImage src={item.src} alt={item.alt} />
-        </a>
-      ))}
+      <SocialIcon src={youtube} alt="Youtube" href="https://www.youtube.com/@jeju_deers_official" />
+      <SocialIcon
+        src={instagram}
+        alt="Instagram"
+        href="https://www.instagram.com/jeju_deers_football/"
+      />
     </SocialIconsBox>
   );
 };
