@@ -1,12 +1,12 @@
 import React from "react";
 import { SocialIconImage } from "./SocialIconStyles";
 
-interface SocialIconProps {
+interface Props {
   src: string;
   alt: string;
 }
 
-const SocialIcon: React.FunctionComponent<SocialIconProps> = ({ src, alt }) => {
+const SocialIcon: React.FunctionComponent<Props> = ({ src, alt }) => {
   return <SocialIconImage src={src} alt={alt} />;
 };
 
