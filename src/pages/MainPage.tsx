@@ -1,6 +1,6 @@
 import Sidebar from "../components/organism/main/SideBar";
 import Main from "../components/organism/main/Main";
-import { MainPageBox } from "./HomePageStyles";
+import { MainPageBox } from "./MainPageStyles";
 
 const MainPage = () => {
   return (
