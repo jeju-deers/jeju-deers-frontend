@@ -1,7 +1,7 @@
-import youtube from "../../../../assets/images/youtube_logo.svg";
-import instagram from "../../../../assets/images/instagram_logo.svg";
+import youtube from "~/assets/images/youtube_logo.svg";
+import instagram from "~/assets/images/instagram_logo.svg";
 import { SocialIconsBox } from "./SocialIconsStyles";
-import SocialIcon from "../../../atom/main/sidebar/SocialIcon";
+import SocialIcon from "~/components/atom/main/sidebar/SocialIcon";
 
 const SocialIcons = () => {
   return (
