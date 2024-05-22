@@ -1,5 +1,5 @@
-import MainBody from "../components/organism/main/MainBody";
-import Sidebar from "../components/organism/main/SideBar";
+import MainBody from "~/components/organism/main/body/MainBody";
+import Sidebar from "~/components/organism/main/sidebar/SideBar";
 import { MainPageLayout } from "./MainPageStyles";
 
 const MainPage = () => {
