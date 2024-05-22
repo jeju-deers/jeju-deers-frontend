@@ -1,6 +1,6 @@
 import tw from "twin.macro";
 import styled from "styled-components";
-import mainBodyBackgroundImage from "~/assets/images/background_image_dark.svg";
+import mainBodyBackgroundImage from "~/assets/images/main_background_dark.svg";
 
 export const MainBodyBox = styled.div`
   background-image: url(${mainBodyBackgroundImage});

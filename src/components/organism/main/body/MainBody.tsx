@@ -1,11 +1,9 @@
 import { MainBodyBox } from "./MainBodyStyles";
-import Title from "~/components/atom/main/body/Title";
-import Description from "~/components/atom/main/body/Description";
+import MainBodyContent from "~/components/molecules/main/body/MainBodyContent";
 
 const MainBody = () => (
   <MainBodyBox>
-    <Title />
-    <Description />
+    <MainBodyContent />
   </MainBodyBox>
 );
 

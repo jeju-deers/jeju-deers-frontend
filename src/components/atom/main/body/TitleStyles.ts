@@ -3,14 +3,9 @@ import styled from "styled-components";
 
 export const TitleBox = styled.div`
   ${tw`
-    absolute
-    bottom-52
-    left-24
     font-bold
     italic
     text-6xl
-    overflow-hidden
-    whitespace-nowrap
   `}
 
   p:first-child {
