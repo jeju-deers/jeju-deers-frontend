@@ -1,12 +1,12 @@
-import MainBody from "~/components/organism/main/body/MainBody";
-import Sidebar from "~/components/organism/main/sidebar/SideBar";
+import Footer from "~/components/organism/main/footer/Footer";
+import MainContent from "../components/organism/main/MainContent";
 import { MainPageLayout } from "./MainPageStyles";
 
 const MainPage = () => {
   return (
     <MainPageLayout>
-      <Sidebar />
-      <MainBody />
+      <MainContent />
+      <Footer />
     </MainPageLayout>
   );
 };

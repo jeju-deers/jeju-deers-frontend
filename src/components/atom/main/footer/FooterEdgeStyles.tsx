@@ -1,10 +1,10 @@
 import tw from "twin.macro";
 import styled from "styled-components";
 
-export const MainPageLayout = styled.div`
+export const FooterEdgeImage = styled.img`
   ${tw`
-    flex 
-    flex-col
-    h-screen
+    h-12
+    absolute
+    right-0
   `}
 `;

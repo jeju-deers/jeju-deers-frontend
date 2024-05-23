@@ -1,10 +1,10 @@
 import tw from "twin.macro";
 import styled from "styled-components";
 
-export const MainPageLayout = styled.div`
+export const FooterBox = styled.footer`
   ${tw`
-    flex 
-    flex-col
-    h-screen
+	  h-12
+    bg-[#0A281E]
+    w-screen
   `}
 `;
