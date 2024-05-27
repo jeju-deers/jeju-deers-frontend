@@ -1,6 +1,6 @@
 import { FooterEdgeImage } from "./FooterEdgeStyles";
-import EdgeImage from "~/assets/images/Triangle.svg";
+import Triangle from "~/assets/images/triangle.svg";
 
-const FooterEdge = () => <FooterEdgeImage src={EdgeImage} alt="FooterEdge" />;
+const FooterEdge = () => <FooterEdgeImage src={Triangle} alt="FooterEdge" />;
 
 export default FooterEdge;
