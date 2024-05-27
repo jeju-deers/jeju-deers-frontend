@@ -1,7 +1,7 @@
 import tw from "twin.macro";
 import styled from "styled-components";
 
-export const HeaderContainer = styled.div`
+export const HeaderBox = styled.div`
   ${tw`
     flex
     w-full

@@ -1,12 +1,12 @@
 import Accounts from "~/components/molecules/main/header/Accounts";
 import Menus from "~/components/molecules/main/header/Menus";
-import { HeaderContainer } from "./HeaderStyles";
+import { HeaderBox } from "./HeaderStyles";
 
 const Header = () => (
-  <HeaderContainer>
+  <HeaderBox>
     <Menus />
     <Accounts />
-  </HeaderContainer>
+  </HeaderBox>
 );
 
 export default Header;

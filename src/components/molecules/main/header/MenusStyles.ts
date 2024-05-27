@@ -8,8 +8,4 @@ export const MenusBox = styled.div`
     items-center
     px-2
   `}
-
-  :hover {
-    ${tw`bg-[#69A6FF]`}
-  }
 `;
