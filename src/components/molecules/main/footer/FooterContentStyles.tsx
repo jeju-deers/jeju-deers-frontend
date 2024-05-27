@@ -9,6 +9,8 @@ export const FooterContentBox = styled.div`
   `}
 
   p {
-    ${tw`mx-4`}
+    ${tw`
+      mx-4
+    `}
   }
 `;
