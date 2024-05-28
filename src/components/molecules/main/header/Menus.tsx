@@ -5,10 +5,10 @@ import { MenusBox } from "./MenusStyles";
 const Menus = () => {
   return (
     <MenusBox>
-      <Menu to="/club" text="CLUB" tabMenuItems={tabMenuItems.club} />
-      <Menu to="/news" text="NEWS" tabMenuItems={tabMenuItems.news} />
-      <Menu to="/teamroom" text="TEAM ROOM" tabMenuItems={tabMenuItems.teamroom} />
-      <Menu to="/community" text="COMMUNITY" tabMenuItems={tabMenuItems.community} />
+      <Menu to="/" text="CLUB" tabMenuItems={tabMenuItems.club} />
+      <Menu to="/" text="NEWS" tabMenuItems={tabMenuItems.news} />
+      <Menu to="/" text="TEAM ROOM" tabMenuItems={tabMenuItems.teamroom} />
+      <Menu to="/" text="COMMUNITY" tabMenuItems={tabMenuItems.community} />
     </MenusBox>
   );
 };

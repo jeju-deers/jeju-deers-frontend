@@ -1,27 +1,27 @@
 const tabMenuItems = {
   club: [
-    { to: "/history", text: "History" },
-    { to: "/organization", text: "Organization" },
-    { to: "/roaster", text: "Roaster" },
-    { to: "/coachstaff", text: "Coach & Staff" },
-    { to: "/sponsor", text: "Sponsor" },
+    { to: "/club/history", text: "History" },
+    { to: "/club/organization", text: "Organization" },
+    { to: "/club/roaster", text: "Roaster" },
+    { to: "/club/coachstaff", text: "Coach & Staff" },
+    { to: "/club/sponsor", text: "Sponsor" },
   ],
   news: [
-    { to: "/schedule", text: "Schedule" },
-    { to: "/news", text: "News" },
+    { to: "/news/schedule", text: "Schedule" },
+    { to: "/news/news", text: "News" },
   ],
   teamroom: [
-    { to: "/practiceschedule", text: "Practice Schedule" },
-    { to: "/teamboard", text: "Team Board" },
-    { to: "/coachboard", text: "Coach Board" },
-    { to: "/staffboard", text: "Staff Board" },
-    { to: "/playbook", text: "Playbook" },
-    { to: "/membershipfee", text: "Membership Fee" },
+    { to: "/teamroom/practiceschedule", text: "Practice Schedule" },
+    { to: "/teamroom/teamboard", text: "Team Board" },
+    { to: "/teamroom/coachboard", text: "Coach Board" },
+    { to: "/teamroom/staffboard", text: "Staff Board" },
+    { to: "/teamroom/playbook", text: "Playbook" },
+    { to: "/teamroom/membershipfee", text: "Membership Fee" },
   ],
   community: [
-    { to: "/fanboard", text: "Fan Board" },
-    { to: "/media", text: "Media" },
-    { to: "/support", text: "Support" },
+    { to: "/community/fanboard", text: "Fan Board" },
+    { to: "/community/media", text: "Media" },
+    { to: "/community/support", text: "Support" },
   ],
 };
 
