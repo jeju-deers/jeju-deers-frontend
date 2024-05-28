@@ -11,6 +11,7 @@ export const TabMenuBox = styled.div`
     top-1
     left-1/2
     pt-4
+    text-base
   `}
   :hover {
     ${tw`
