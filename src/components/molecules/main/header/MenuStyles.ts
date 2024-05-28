@@ -9,6 +9,7 @@ export const MenuBox = styled.div`
     text-white
     px-8
     py-2
+    text-xl
   `}
 
   &:hover {
