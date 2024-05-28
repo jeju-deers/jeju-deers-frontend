@@ -6,11 +6,6 @@ export const FooterContentBox = styled.div`
     flex
     items-center
     justify-center
+    gap-4
   `}
-
-  p {
-    ${tw`
-      mx-4
-    `}
-  }
 `;
