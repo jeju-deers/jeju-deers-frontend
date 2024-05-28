@@ -1,11 +1,11 @@
-import { FooterBox } from "./FooterStyles";
+import FooterDecoration from "~/components/molecules/main/footer/FooterDecoration";
 import FooterContent from "~/components/molecules/main/footer/FooterContent";
-import FooterDesign from "~/components/molecules/main/footer/FooterDesign";
+import { FooterBox } from "./FooterStyles";
 
 const Footer = () => {
   return (
     <FooterBox>
-      <FooterDesign />
+      <FooterDecoration />
       <FooterContent />
     </FooterBox>
   );
