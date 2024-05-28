@@ -1,14 +1,14 @@
 import FooterBottom from "~/components/atom/main/footer/FooterBottom";
 import FooterEdge from "~/components/atom/main/footer/FooterEdge";
-import { FooterDesignBox } from "./FooterDesignStyles";
+import { FooterDecorationBox } from "./FooterDecorationStyles";
 
-const FooterDesign = () => {
+const FooterDecoration = () => {
   return (
-    <FooterDesignBox>
+    <FooterDecorationBox>
       <FooterBottom />
       <FooterEdge />
-    </FooterDesignBox>
+    </FooterDecorationBox>
   );
 };
 
-export default FooterDesign;
+export default FooterDecoration;
