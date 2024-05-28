@@ -6,6 +6,6 @@ export const MenusBox = styled.div`
     flex
     justify-center
     items-center
-    px-2
+    px-8
   `}
 `;

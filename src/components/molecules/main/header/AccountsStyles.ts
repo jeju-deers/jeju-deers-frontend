@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const AccountsBox = styled.div`
   ${tw`
     flex
-    px-3
+    px-8
     border-l
     border-white
   `}
