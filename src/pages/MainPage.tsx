@@ -1,5 +1,5 @@
-import Footer from "~/components/organism/main/footer/Footer";
-import MainContent from "../components/organism/main/MainContent";
+import Footer from "~/components/organisms/main/footer/Footer";
+import MainContent from "~/components/organisms/main/MainContent";
 import { MainPageLayout } from "./MainPageStyles";
 
 const MainPage = () => {

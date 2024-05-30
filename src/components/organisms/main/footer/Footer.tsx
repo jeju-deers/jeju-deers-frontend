@@ -1,12 +1,14 @@
-import FooterDecoration from "~/components/molecules/main/footer/FooterDecoration";
 import FooterContent from "~/components/molecules/main/footer/FooterContent";
-import { FooterBox } from "./FooterStyles";
+import FooterEdge from "~/components/atoms/main/footer/FooterEdge";
+import { FooterBox, FooterEdgeWrap } from "./FooterStyles";
 
 const Footer = () => {
   return (
     <FooterBox>
-      <FooterDecoration />
       <FooterContent />
+      <FooterEdgeWrap>
+        <FooterEdge />
+      </FooterEdgeWrap>
     </FooterBox>
   );
 };
