@@ -6,7 +6,7 @@ export const FooterBottomBox = styled.div`
     absolute
     h-0.5
     bg-[#69A6FF]
-    w-screen
+    w-full
     bottom-0
   `}
 `;

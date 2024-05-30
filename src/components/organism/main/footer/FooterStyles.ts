@@ -6,5 +6,6 @@ export const FooterBox = styled.footer`
 	  h-12
     bg-[#0A281E]
     w-screen
+    relative
   `}
 `;

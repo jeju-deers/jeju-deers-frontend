@@ -5,5 +5,6 @@ export const MainContentBox = styled.div`
   ${tw`
     flex
     h-screen
+    overflow-x-hidden
   `}
 `;

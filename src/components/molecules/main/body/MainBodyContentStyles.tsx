@@ -6,7 +6,7 @@ export const MainBodyContentBox = styled.div`
     absolute
     bottom-52
     left-24
-    overflow-hidden
     whitespace-nowrap
+    overflow-hidden
   `}
 `;
