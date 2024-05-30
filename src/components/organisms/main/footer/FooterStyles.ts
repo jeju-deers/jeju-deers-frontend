@@ -24,5 +24,6 @@ export const FooterContentWrap = styled.div`
     flex
     justify-center
     w-full
+    mx-5
   `}
 `;

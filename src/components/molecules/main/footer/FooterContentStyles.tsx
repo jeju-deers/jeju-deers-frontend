@@ -6,5 +6,7 @@ export const FooterContentBox = styled.div`
     flex
     items-center
     gap-4
+    overflow-hidden
+    whitespace-nowrap
   `}
 `;
