@@ -1,5 +1,5 @@
-import FooterBottom from "~/components/atom/main/footer/FooterBottom";
-import FooterEdge from "~/components/atom/main/footer/FooterEdge";
+import FooterBottom from "~/components/atoms/main/footer/FooterBottom";
+import FooterEdge from "~/components/atoms/main/footer/FooterEdge";
 import { FooterDecorationBox } from "./FooterDecorationStyles";
 
 const FooterDecoration = () => {

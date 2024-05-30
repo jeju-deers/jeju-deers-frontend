@@ -1,6 +1,6 @@
-import FooterLogo from "~/components/atom/main/footer/FooterLogo";
+import FooterLogo from "~/components/atoms/main/footer/FooterLogo";
 import { FooterContentBox } from "./FooterContentStyles";
-import FooterText from "~/components/atom/main/footer/FooterText";
+import FooterText from "~/components/atoms/main/footer/FooterText";
 
 const FooterContent = () => {
   return (
