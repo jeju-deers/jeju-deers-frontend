@@ -12,9 +12,17 @@ export const FooterBox = styled.footer`
   `}
 `;
 
-export const FooterEdgeWrap = styled.footer`
+export const FooterEdgeWrap = styled.div`
   ${tw`
     absolute
     right-0
+  `}
+`;
+
+export const FooterContentWrap = styled.div`
+  ${tw`
+    flex
+    justify-center
+    w-full
   `}
 `;

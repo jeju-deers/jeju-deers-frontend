@@ -5,8 +5,6 @@ export const FooterContentBox = styled.div`
   ${tw`
     flex
     items-center
-    justify-center
-    w-full
     gap-4
   `}
 `;
