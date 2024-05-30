@@ -5,7 +5,7 @@ export const TitleBox = styled.div`
   ${tw`
     flex
     flex-col
-    gap-1
+    gap-3
     font-bold
     italic
     text-6xl
@@ -15,11 +15,12 @@ export const TitleBox = styled.div`
   p:first-child {
     ${tw`
       text-white
-      pb-2
     `}
   }
 
   p:nth-child(2) {
-    ${tw`text-[#69A6FF]`}
+    ${tw`
+      text-[#69A6FF]
+    `}
   }
 `;
