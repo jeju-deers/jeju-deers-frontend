@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const FooterBox = styled.footer`
   ${tw`
     flex
-	  h-12
+    h-12
     bg-[#0A281E]
     relative
     border-b-[#69A6FF]
