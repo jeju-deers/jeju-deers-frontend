@@ -8,3 +8,11 @@ export const MainLayout = styled.div`
     h-screen
   `}
 `;
+
+export const MainContentWrap = styled.div`
+  ${tw`
+    flex
+    h-screen
+    overflow-x-hidden
+  `}
+`;
