@@ -3,10 +3,13 @@ import styled from "styled-components";
 
 export const MainBodyContentBox = styled.div`
   ${tw`
+    flex
+    flex-col
     absolute
-    bottom-52
+    bottom-40
     left-24
-    overflow-hidden
     whitespace-nowrap
+    overflow-hidden
+    gap-6
   `}
 `;

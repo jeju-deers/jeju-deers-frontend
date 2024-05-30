@@ -6,6 +6,5 @@ export const DescriptionParagraph = styled.p`
     font-light 
     text-3xl
     text-white
-    mt-4
   `}
 `;
