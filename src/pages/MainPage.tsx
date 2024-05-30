@@ -1,14 +1,7 @@
-import Footer from "~/components/organisms/main/footer/Footer";
-import MainContent from "~/components/organisms/main/MainContent";
-import { MainPageLayout } from "./MainPageStyles";
+import Main from "~/components/templates/main/MainPage";
 
 const MainPage = () => {
-  return (
-    <MainPageLayout>
-      <MainContent />
-      <Footer />
-    </MainPageLayout>
-  );
+  return <Main />;
 };
 
 export default MainPage;
