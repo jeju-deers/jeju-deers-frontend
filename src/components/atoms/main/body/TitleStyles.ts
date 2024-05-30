@@ -9,7 +9,7 @@ export const TitleBox = styled.div`
     font-bold
     italic
     text-6xl
-    m-2
+    mr-2
   `}
 
   p:first-child {
