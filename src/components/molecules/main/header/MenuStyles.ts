@@ -8,14 +8,13 @@ export const MenuBox = styled.div`
     font-['Inter']
     text-white
     px-8
-    py-2
+    py-3
     text-xl
   `}
 
   &:hover {
     ${tw`
-    bg-[#69A6FF]
-    block
+      bg-[#69A6FF]
     `}
   }
 
@@ -24,4 +23,16 @@ export const MenuBox = styled.div`
       block
     `}
   }
+`;
+
+export const TabMenuWrap = styled.div`
+  ${tw`
+    hidden
+    absolute
+    -translate-x-1/2
+    translate-y-8
+    top-1
+    left-1/2
+    pt-6
+  `}
 `;

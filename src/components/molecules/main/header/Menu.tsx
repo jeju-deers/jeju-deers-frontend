@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { MenuBox } from "./MenuStyles";
+import { MenuBox, TabMenuWrap } from "./MenuStyles";
 import TabMenu from "./TabMenu";
 
 interface Props {
@@ -12,7 +12,9 @@ const Menu = ({ to, text, tabMenuItems }: Props) => {
   return (
     <MenuBox>
       <NavLink to={to}>{text}</NavLink>
-      <TabMenu tabMenuItems={tabMenuItems} />
+      <TabMenuWrap>
+        <TabMenu tabMenuItems={tabMenuItems} />
+      </TabMenuWrap>
     </MenuBox>
   );
 };

@@ -6,6 +6,13 @@ export const AccountBox = styled.div`
     flex
     items-center
     justify-center
-    px-3
+    p-4
+  `}
+`;
+
+export const AccountWrap = styled.div`
+  ${tw`
+    flex
+    gap-4
   `}
 `;

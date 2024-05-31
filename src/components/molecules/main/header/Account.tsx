@@ -1,4 +1,4 @@
-import { AccountBox } from "./AccountStyles";
+import { AccountBox, AccountWrap } from "./AccountStyles";
 import AccountText from "../../../atom/main/header/AccountText";
 import AccountLogo from "~/components/atom/main/header/AccountLogo";
 
@@ -11,8 +11,10 @@ interface Props {
 const Account = ({ src, alt, text }: Props) => {
   return (
     <AccountBox>
-      <AccountLogo src={src} alt={alt} />
-      <AccountText text={text} />
+      <AccountWrap>
+        <AccountLogo src={src} alt={alt} />
+        <AccountText text={text} />
+      </AccountWrap>
     </AccountBox>
   );
 };
