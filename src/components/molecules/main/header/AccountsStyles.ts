@@ -7,6 +7,11 @@ export const AccountsBox = styled.div`
     border-l
     border-white
   `}
+  :hover > * {
+    ${tw`
+      text-[#69a6ff]
+    `}
+  }
 `;
 
 export const AccountsWrap = styled.div`

@@ -7,18 +7,20 @@ export const AccountBox = styled.div`
     items-center
     justify-center
     p-4
+    gap-4
   `}
-
-  :hover > * {
-    ${tw`
-      text-[#69a6ff]
-    `}
-  }
 `;
 
-export const AccountWrap = styled.div`
+export const AccountTextSpan = styled.span`
   ${tw`
-    flex
-    gap-4
+    font-bold
+    font-['Inter']
+    text-white
+  `}
+`;
+
+export const AccountLogoImage = styled.img`
+  ${tw`
+    w-4
   `}
 `;

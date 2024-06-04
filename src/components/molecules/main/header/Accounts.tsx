@@ -1,4 +1,4 @@
-import Account from "./Account";
+import Account from "~/components/atoms/main/header/Account";
 import logInOut from "~/assets/images/loginout.svg";
 import signUp from "~/assets/images/singup.svg";
 import { AccountsBox, AccountsWrap } from "./AccountsStyles";
