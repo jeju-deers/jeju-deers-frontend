@@ -1,4 +1,4 @@
-import TabMenuItem from "~/components/atom/main/header/TabMenuItem";
+import TabMenuItem from "~/components/atoms/main/header/TabMenuItem";
 import { TabMenuBox } from "./TabMenuStyles";
 
 interface TabMenuItemType {

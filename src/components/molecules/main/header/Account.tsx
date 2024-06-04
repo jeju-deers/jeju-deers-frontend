@@ -1,6 +1,6 @@
 import { AccountBox, AccountWrap } from "./AccountStyles";
-import AccountText from "../../../atom/main/header/AccountText";
-import AccountLogo from "~/components/atom/main/header/AccountLogo";
+import AccountText from "../../../atoms/main/header/AccountText";
+import AccountLogo from "~/components/atoms/main/header/AccountLogo";
 
 interface Props {
   src: string;
