@@ -12,5 +12,6 @@ export const MainBodyBox = styled.div`
     w-screen
     relative
     overflow-hidden
+    whitespace-nowrap
   `}
 `;
