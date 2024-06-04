@@ -1,10 +1,9 @@
 import tw from "twin.macro";
 import styled from "styled-components";
 
-export const DescriptionParagraph = styled.p`
+export const FooterTextSpan = styled.span`
   ${tw`
-    font-light 
-    text-3xl
+    text-xs
     text-white
   `}
 `;

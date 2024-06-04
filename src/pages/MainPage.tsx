@@ -1,14 +1,7 @@
-import MainBody from "~/components/organism/main/body/MainBody";
-import Sidebar from "~/components/organism/main/sidebar/SideBar";
-import { MainPageLayout } from "./MainPageStyles";
+import Main from "~/components/templates/main/Main";
 
 const MainPage = () => {
-  return (
-    <MainPageLayout>
-      <Sidebar />
-      <MainBody />
-    </MainPageLayout>
-  );
+  return <Main />;
 };
 
 export default MainPage;
