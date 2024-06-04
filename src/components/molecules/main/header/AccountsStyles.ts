@@ -14,7 +14,4 @@ export const AccountsWrap = styled.div`
     flex
     gap-2
   `}
-  :hover {
-    ${tw`bg-[#69A6FF]`}
-  }
 `;

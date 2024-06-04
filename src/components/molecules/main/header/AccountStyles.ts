@@ -8,6 +8,12 @@ export const AccountBox = styled.div`
     justify-center
     p-4
   `}
+
+  :hover > * {
+    ${tw`
+      text-[#69a6ff]
+    `}
+  }
 `;
 
 export const AccountWrap = styled.div`
