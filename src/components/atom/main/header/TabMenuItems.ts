@@ -1,6 +1,6 @@
 const tabMenuItems = {
   club: [
-    { to: "/club/history", text: "History" },
+    { to: "/club/about", text: "About" },
     { to: "/club/organization", text: "Organization" },
     { to: "/club/roaster", text: "Roaster" },
     { to: "/club/coachstaff", text: "Coach & Staff" },
