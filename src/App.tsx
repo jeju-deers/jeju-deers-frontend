@@ -3,7 +3,7 @@ import AboutPage from "./pages/AboutPage";
 import MainPage from "./pages/MainPage";
 import NotFound from "./pages/NotFound";
 import OrganizationPage from "./pages/OrganizationPage";
-import RoasterPage from "./pages/RoasterPage";
+import RosterPage from "./pages/RosterPage";
 import CoachesStaffPage from "./pages/CoachesStaffPage";
 import SponsorPage from "./pages/SponsorPage";
 import PracticeSchedulePage from "./pages/PracticeSchedulePage";
@@ -26,7 +26,7 @@ function App() {
 
         <Route path="/club/about" element={<AboutPage />}></Route>
         <Route path="/club/organization" element={<OrganizationPage />}></Route>
-        <Route path="/club/roaster" element={<RoasterPage />}></Route>
+        <Route path="/club/roster" element={<RosterPage />}></Route>
         <Route path="/club/member" element={<CoachesStaffPage />}></Route>
         <Route path="/club/sponsor" element={<SponsorPage />}></Route>
 
