@@ -44,6 +44,7 @@ export const Tab = styled.div`
 
 export const TabMenuBox = styled.div`
   ${tw`
+    font-['Inter']
     text-base
     w-40
   `}
