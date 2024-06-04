@@ -51,31 +51,3 @@ function App() {
 }
 
 export default App;
-
-<BrowserRouter>
-  <Routes>
-    <Route path="/" element={<MainPage />}></Route>
-
-    <Route path="/club/history" element={<HistoryPage />}></Route>
-    <Route path="/club/organization" element={<OrganizationPage />}></Route>
-    <Route path="/club/roaster" element={<RoasterPage />}></Route>
-    <Route path="/club/coachstaff" element={<CoachStaffPage />}></Route>
-    <Route path="/club/sponsor" element={<SponsorPage />}></Route>
-
-    <Route path="/news/schedule" element={<SchedulePage />}></Route>
-    <Route path="/news/news" element={<NewsPage />}></Route>
-
-    <Route path="/teamroom/practiceschedule" element={<PracticeSchedulePage />}></Route>
-    <Route path="/teamroom/teamboard" element={<TeamBoardPage />}></Route>
-    <Route path="/teamroom/coachboard" element={<CoachBoardPage />}></Route>
-    <Route path="/teamroom/staffboard" element={<StaffBoardPage />}></Route>
-    <Route path="/teamroom/playbook" element={<PlayBookPage />}></Route>
-    <Route path="/teamroom/membershipfee" element={<MembershipFeePage />}></Route>
-
-    <Route path="/community/fanboard" element={<FanBoardPage />}></Route>
-    <Route path="/community/media" element={<MediaPage />}></Route>
-    <Route path="/community/support" element={<SupportPage />}></Route>
-
-    <Route path="*" element={<NotFound />}></Route>
-  </Routes>
-</BrowserRouter>;
