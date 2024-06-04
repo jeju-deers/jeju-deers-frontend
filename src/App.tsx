@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HistoryPage from "./pages/HistoryPage";
+import AboutPage from "./pages/AboutPage";
 import MainPage from "./pages/MainPage";
 import NotFound from "./pages/NotFound";
 import OrganizationPage from "./pages/OrganizationPage";
@@ -24,7 +24,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />}></Route>
 
-        <Route path="/club/history" element={<HistoryPage />}></Route>
+        <Route path="/club/about" element={<AboutPage />}></Route>
         <Route path="/club/organization" element={<OrganizationPage />}></Route>
         <Route path="/club/roaster" element={<RoasterPage />}></Route>
         <Route path="/club/coachstaff" element={<CoachStaffPage />}></Route>
