@@ -1,22 +1,22 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import AboutPage from "./pages/AboutPage";
 import MainPage from "./pages/MainPage";
 import NotFound from "./pages/NotFound";
-import OrganizationPage from "./pages/OrganizationPage";
-import RosterPage from "./pages/RosterPage";
-import CoachesStaffPage from "./pages/CoachesStaffPage";
-import SponsorPage from "./pages/SponsorPage";
-import PracticeSchedulePage from "./pages/PracticeSchedulePage";
-import TeamBoardPage from "./pages/TeamBoardPage";
-import CoachBoardPage from "./pages/CoachBoardPage";
-import StaffBoardPage from "./pages/StaffBoardPage";
-import PlayBookPage from "./pages/PlayBookPage";
-import MembershipFeePage from "./pages/MembershipFeePage";
-import FanBoardPage from "./pages/FanBoardPage";
-import MediaPage from "./pages/MediaPage";
-import SupportPage from "./pages/SupportPage";
-import SchedulePage from "./pages/SchedulePage";
-import NewsPage from "./pages/NewsPage";
+import AboutPage from "./pages/club/AboutPage";
+import OrganizationPage from "./pages/club/OrganizationPage";
+import RosterPage from "./pages/club/RosterPage";
+import CoachesStaffPage from "./pages/club/CoachesStaffPage";
+import SponsorPage from "./pages/club/SponsorPage";
+import PracticeSchedulePage from "./pages/teamroom/PracticeSchedulePage";
+import TeamBoardPage from "./pages/teamroom/TeamBoardPage";
+import CoachBoardPage from "./pages/teamroom/CoachBoardPage";
+import StaffBoardPage from "./pages/teamroom/StaffBoardPage";
+import PlayBookPage from "./pages/teamroom/PlayBookPage";
+import MembershipFeePage from "./pages/teamroom/MembershipFeePage";
+import FanBoardPage from "./pages/community/FanBoardPage";
+import MediaPage from "./pages/community/MediaPage";
+import SupportPage from "./pages/community/SupportPage";
+import SchedulePage from "./pages/news/SchedulePage";
+import NewsPage from "./pages/news/NewsPage";
 
 function App() {
   return (
