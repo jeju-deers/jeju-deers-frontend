@@ -1,7 +1,7 @@
 import tw from "twin.macro";
 import styled from "styled-components";
 
-export const CoachStaffPageLayout = styled.div`
+export const CoachesStaffPageLayout = styled.div`
   ${tw`
     font-bold
   `}

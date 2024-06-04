@@ -3,7 +3,7 @@ const tabMenuItems = {
     { to: "/club/about", text: "About" },
     { to: "/club/organization", text: "Organization" },
     { to: "/club/roaster", text: "Roaster" },
-    { to: "/club/member", text: "Coach & Staff" },
+    { to: "/club/member", text: "Coaches & Staff" },
     { to: "/club/sponsor", text: "Sponsor" },
   ],
   news: [
