@@ -3,6 +3,5 @@ import tw from "twin.macro";
 
 export const MainLogoImage = styled.img`
   ${tw`
-    w-[175px]
   `}
 `;
