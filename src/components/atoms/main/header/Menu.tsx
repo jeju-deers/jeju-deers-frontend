@@ -12,10 +12,10 @@ const Menu = ({ text, tabMenuItems }: Props) => {
       <Tab>{text}</Tab>
       <TabMenuWrap>
         <TabMenuBox>
-          {tabMenuItems.map((tabMenuItem, index) => (
+          {tabMenuItems.map(({ to, text }, index) => (
             <TabMenuItemBox>
-              <Link key={index} to={tabMenuItem.to}>
-                {tabMenuItem.text}
+              <Link key={index} to={to}>
+                {text}
               </Link>
             </TabMenuItemBox>
           ))}
