@@ -1,15 +1,15 @@
 import ItemLabel from "~/components/atoms/signUp/body/ItemLabel";
 import {
-  SignUpPurposeBox,
+  SignUpPurposeFieldBox,
   SignUpPurposeLabelBox,
   SignUpPurposeRadioBox,
-} from "./SignUpPurposeStyles";
+} from "./SignUpPurposeFieldStyles";
 import EssentialMark from "~/components/atoms/signUp/body/EssentialMark";
 import ItemRadio from "~/components/atoms/signUp/body/ItemRadio";
 
-const SignUpPurpose = () => {
+const SignUpPurposeField = () => {
   return (
-    <SignUpPurposeBox>
+    <SignUpPurposeFieldBox>
       <SignUpPurposeLabelBox>
         <EssentialMark />
         <ItemLabel id="signUpPurpose" text="가입 목적" />
@@ -19,8 +19,8 @@ const SignUpPurpose = () => {
         <ItemRadio radioTitle="signUpPurpose" id="coachesStaff" text="코치 및 스탭" />
         <ItemRadio radioTitle="signUpPurpose" id="outsider" text="외부인" />
       </SignUpPurposeRadioBox>
-    </SignUpPurposeBox>
+    </SignUpPurposeFieldBox>
   );
 };
 
-export default SignUpPurpose;
+export default SignUpPurposeField;

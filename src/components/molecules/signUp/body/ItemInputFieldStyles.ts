@@ -13,6 +13,5 @@ export const ItemInputFieldLabelBox = styled.div`
   ${tw`
     flex
     gap-[9px]
-    items-center
   `}
 `;
