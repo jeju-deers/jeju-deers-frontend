@@ -1,17 +1,16 @@
 import { ItemInputInput } from "./ItemInputStyles";
 
 interface Props {
-  type: string;
   id: string;
   required: boolean;
   minLength?: number;
   maxLength?: number;
 }
 
-const ItemInput = ({ type, id, required, minLength, maxLength }: Props) => {
+const ItemInput = ({ id, required, minLength, maxLength }: Props) => {
   return (
     <ItemInputInput
-      type={type}
+      type="text"
       id={id}
       name={id}
       required={required}
