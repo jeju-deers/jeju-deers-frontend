@@ -13,5 +13,7 @@ export const ItemInputFieldLabelBox = styled.div`
   ${tw`
     flex
     gap-[9px]
+    w-[150px]
+    justify-end
   `}
 `;
