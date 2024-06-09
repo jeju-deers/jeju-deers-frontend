@@ -12,6 +12,8 @@ export const PrivacyPolicyFieldLabelBox = styled.div`
   ${tw`
     flex
     gap-[9px]
+    w-[150px]
+    justify-end
   `}
 `;
 

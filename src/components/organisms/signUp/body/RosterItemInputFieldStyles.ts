@@ -3,6 +3,9 @@ import tw from "twin.macro";
 
 export const RosterItemInputFieldBox = styled.div`
   ${tw`
-    w-[930px]
+    flex
+    flex-col
+    gap-7
+    w-[930px]  
   `}
 `;
