@@ -5,12 +5,20 @@ interface Props {
   id: string;
   text: string;
   checked?: boolean;
+  onClick?: (element: any) => void;
 }
 
-const ItemRadio = ({ radioTitle, id, text, checked }: Props) => {
+const ItemRadio = ({ radioTitle, id, text, checked, onClick }: Props) => {
   return (
     <ItemRadioBox>
-      <ItemRadioInput type="radio" id={id} name={radioTitle} value={id} checked={checked} />
+      <ItemRadioInput
+        type="radio"
+        id={id}
+        name={radioTitle}
+        value={id}
+        checked={checked}
+        onClick={onClick}
+      />
       <ItemRadioLabel htmlFor={id}>{text}</ItemRadioLabel>
     </ItemRadioBox>
   );

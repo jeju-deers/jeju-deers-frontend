@@ -7,7 +7,11 @@ import {
 import EssentialMark from "~/components/atoms/signUp/body/EssentialMark";
 import ItemRadio from "~/components/atoms/signUp/body/ItemRadio";
 
-const SignUpPurposeField = () => {
+interface Props {
+  onClick?: (element: any) => void;
+}
+
+const SignUpPurposeField = ({ onClick }: Props) => {
   return (
     <SignUpPurposeFieldBox>
       <SignUpPurposeLabelBox>
@@ -15,9 +19,14 @@ const SignUpPurposeField = () => {
         <ItemLabel id="signUpPurpose" text="가입 목적" />
       </SignUpPurposeLabelBox>
       <SignUpPurposeRadioBox>
-        <ItemRadio radioTitle="signUpPurpose" id="roaster" text="YB / OB 선수" checked />
-        <ItemRadio radioTitle="signUpPurpose" id="coachesStaff" text="코치 및 스탭" />
-        <ItemRadio radioTitle="signUpPurpose" id="outsider" text="외부인" />
+        <ItemRadio radioTitle="signUpPurpose" id="roaster" text="YB / OB 선수" onClick={onClick} />
+        <ItemRadio
+          radioTitle="signUpPurpose"
+          id="coachesStaff"
+          text="코치 및 스탭"
+          onClick={onClick}
+        />
+        <ItemRadio radioTitle="signUpPurpose" id="outsider" text="외부인" onClick={onClick} />
       </SignUpPurposeRadioBox>
     </SignUpPurposeFieldBox>
   );

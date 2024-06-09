@@ -1,3 +1,4 @@
+import { useState } from "react";
 import SubmitButton from "~/components/atoms/signUp/body/SubmitButton";
 import PrivacyPolicyField from "~/components/molecules/signUp/body/PrivacyPolicyField";
 import SignUpPurposeField from "~/components/molecules/signUp/body/SignUpPurposeField";
@@ -16,19 +17,27 @@ import {
 } from "~/components/templates/signUp/SignUpStyles";
 
 const SignUp = () => {
+  const [optionInputField, setOptionInputField] = useState(<RosterItemInputField />);
+  const handleChange = (element: any) => {
+    if (element.target.id === "roster") {
+      setOptionInputField(<RosterItemInputField />);
+    } else if (element.target.id === "coachesStaff") {
+      setOptionInputField(<CoachesStaffItemInputField />);
+    } else if (element.target.id === "outsider") {
+      setOptionInputField(<></>);
+    }
+  };
   return (
     <SignUpLayout>
       <Header />
       <SignUpForm id="signUpSubmit">
         <SignUpPurposeFieldWrap>
-          <SignUpPurposeField />
+          <SignUpPurposeField onClick={handleChange} />
         </SignUpPurposeFieldWrap>
         <BasicItemInputFieldWrap>
           <BasicItemInputField />
         </BasicItemInputFieldWrap>
-        <OptionItemInputFieldWrap>
-          <RosterItemInputField />
-        </OptionItemInputFieldWrap>
+        <OptionItemInputFieldWrap>{optionInputField}</OptionItemInputFieldWrap>
         <PrivacyPolicyFieldWrap>
           <PrivacyPolicyField />
         </PrivacyPolicyFieldWrap>
