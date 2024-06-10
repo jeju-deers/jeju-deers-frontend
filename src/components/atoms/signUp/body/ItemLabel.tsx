@@ -1,7 +1,7 @@
 import { ItemLabelLabel } from "./ItemLabelStyles";
 
 interface Props {
-  id: string;
+  id?: string;
   text: string;
 }
 

@@ -5,10 +5,10 @@ interface Props {
   id: string;
   text: string;
   checked?: boolean;
-  onClick?: (element: any) => void;
+  onChange?: (element: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const ItemRadio = ({ radioTitle, id, text, checked, onClick }: Props) => {
+const ItemRadio = ({ radioTitle, id, text, checked, onChange }: Props) => {
   return (
     <ItemRadioBox>
       <ItemRadioInput
@@ -17,7 +17,7 @@ const ItemRadio = ({ radioTitle, id, text, checked, onClick }: Props) => {
         name={radioTitle}
         value={id}
         checked={checked}
-        onClick={onClick}
+        onChange={onChange}
       />
       <ItemRadioLabel htmlFor={id}>{text}</ItemRadioLabel>
     </ItemRadioBox>

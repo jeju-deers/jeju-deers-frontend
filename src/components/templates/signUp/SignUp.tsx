@@ -16,7 +16,7 @@ import {
 const SignUp = () => {
   const [selectedOption, setSelectedOption] = useState("roster");
 
-  const handleClick = (event: any) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedId = event.target.id;
     setSelectedOption(selectedId);
   };
@@ -38,7 +38,7 @@ const SignUp = () => {
       <Header />
       <SignUpForm id="signUpSubmit">
         <SignUpPurposeFieldWrap>
-          <SignUpPurposeField selectedOption={selectedOption} onClick={handleClick} />
+          <SignUpPurposeField selectedOption={selectedOption} onChange={handleChange} />
         </SignUpPurposeFieldWrap>
         <BasicItemsInputField />
         <>{getOptionInputField()}</>
