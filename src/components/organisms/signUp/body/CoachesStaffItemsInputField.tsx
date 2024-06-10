@@ -1,12 +1,12 @@
 import ItemInputField from "~/components/molecules/signUp/body/ItemInputField";
 import { ItemsInputFieldBox, SeparateLineWrap } from "./ItemsInputFieldStyles";
-import { SeparateLineBox } from "~/components/atoms/signUp/body/SeparateLineStyles";
+import { SeparateItemLineBox } from "~/components/atoms/signUp/body/SeparateItemLineStyles";
 
 const CoachesStaffItemsInputField = () => {
   return (
     <>
       <SeparateLineWrap>
-        <SeparateLineBox />
+        <SeparateItemLineBox />
       </SeparateLineWrap>
       <ItemsInputFieldBox>
         <ItemInputField id="coachesStaffSchoolFrom" text="출신학교" required />

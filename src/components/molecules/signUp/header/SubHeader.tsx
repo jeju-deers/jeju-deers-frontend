@@ -1,7 +1,7 @@
 import SubTitle from "~/components/atoms/signUp/header/SubTitle";
 import MainLogo from "~/components/atoms/signUp/header/MainLogo";
 import { SubHeaderBox, SubHeaderWrap } from "./SubHeaderStyles";
-import SeparatePartLine from "~/components/atoms/signUp/body/SeparatePartLine";
+import SeparateContentLine from "~/components/atoms/signUp/body/SeparateContentLine";
 
 const SubHeader = () => {
   return (
@@ -10,7 +10,7 @@ const SubHeader = () => {
         <MainLogo />
         <SubTitle />
       </SubHeaderWrap>
-      <SeparatePartLine />
+      <SeparateContentLine />
     </SubHeaderBox>
   );
 };
