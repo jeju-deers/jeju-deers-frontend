@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import tw from "twin.macro";
 
-export const BasicItemInputFieldBox = styled.div`
+export const ItemsInputFieldBox = styled.div`
   ${tw`
     flex
     flex-col

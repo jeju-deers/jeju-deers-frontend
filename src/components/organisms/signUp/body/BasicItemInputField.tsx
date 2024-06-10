@@ -1,9 +1,9 @@
 import ItemInputField from "~/components/molecules/signUp/body/ItemInputField";
-import { BasicItemInputFieldBox } from "./BasicItemInputFieldStyles";
+import { ItemsInputFieldBox } from "./ItemsInputFieldStyles";
 
 const BasicItemInputField = () => {
   return (
-    <BasicItemInputFieldBox>
+    <ItemsInputFieldBox>
       <ItemInputField id="id" text="아이디" required />
       <ItemInputField
         id="password"
@@ -15,7 +15,7 @@ const BasicItemInputField = () => {
       <ItemInputField id="userName" text="이름" required />
       <ItemInputField id="userNickName" text="닉네임" required={false} />
       <ItemInputField id="userEMail" text="이메일" required />
-    </BasicItemInputFieldBox>
+    </ItemsInputFieldBox>
   );
 };
 
