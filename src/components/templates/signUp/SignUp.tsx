@@ -7,13 +7,10 @@ import CoachesStaffItemInputField from "~/components/organisms/signUp/body/Coach
 import RosterItemInputField from "~/components/organisms/signUp/body/RosterItemInputField";
 import Header from "~/components/organisms/signUp/header/Header";
 import {
-  BasicItemInputFieldWrap,
-  OptionItemInputFieldWrap,
   PrivacyPolicyFieldWrap,
   SignUpForm,
   SignUpLayout,
   SignUpPurposeFieldWrap,
-  SubmitButtonWrap,
 } from "~/components/templates/signUp/SignUpStyles";
 
 const SignUp = () => {
@@ -34,16 +31,12 @@ const SignUp = () => {
         <SignUpPurposeFieldWrap>
           <SignUpPurposeField onClick={handleChange} />
         </SignUpPurposeFieldWrap>
-        <BasicItemInputFieldWrap>
-          <BasicItemInputField />
-        </BasicItemInputFieldWrap>
-        <OptionItemInputFieldWrap>{optionInputField}</OptionItemInputFieldWrap>
+        <BasicItemInputField />
+        <>{optionInputField}</>
         <PrivacyPolicyFieldWrap>
           <PrivacyPolicyField />
         </PrivacyPolicyFieldWrap>
-        <SubmitButtonWrap>
-          <SubmitButton text="회원가입" formId="signUpSubmit" />
-        </SubmitButtonWrap>
+        <SubmitButton text="회원가입" formId="signUpSubmit" />
       </SignUpForm>
     </SignUpLayout>
   );

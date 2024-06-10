@@ -9,3 +9,9 @@ export const ItemsInputFieldBox = styled.div`
     w-[930px]
   `}
 `;
+
+export const SeparateLineWrap = styled.div`
+  ${tw`
+    py-[50px]
+  `}
+`;
