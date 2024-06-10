@@ -24,6 +24,7 @@ export const SignUpPurposeFieldWrap = styled.div`
 
 export const PrivacyPolicyFieldWrap = styled.div`
   ${tw`
+    w-[930px]
     pt-[28px]
     pb-[99px]
   `}
