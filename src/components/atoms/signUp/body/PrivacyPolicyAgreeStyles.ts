@@ -11,7 +11,6 @@ export const PrivacyPolicyAgreeBox = styled.div`
 
 export const PrivacyPolicyAgreeInput = styled.input`
   ${tw`
-    appearance-none
     font-medium
     w-[20px]
     h-[20px]
