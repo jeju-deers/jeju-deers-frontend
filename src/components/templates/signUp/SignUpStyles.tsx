@@ -3,7 +3,7 @@ import tw from "twin.macro";
 
 export const SignUpLayout = styled.div`
   ${tw`
-
+    overflow-hidden
   `}
 `;
 
