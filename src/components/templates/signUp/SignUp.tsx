@@ -2,9 +2,9 @@ import { useState } from "react";
 import SubmitButton from "~/components/atoms/signUp/body/SubmitButton";
 import PrivacyPolicyField from "~/components/molecules/signUp/body/PrivacyPolicyField";
 import SignUpPurposeField from "~/components/molecules/signUp/body/SignUpPurposeField";
-import BasicItemInputField from "~/components/organisms/signUp/body/BasicItemInputField";
-import CoachesStaffItemInputField from "~/components/organisms/signUp/body/CoachesStaffItemInputField";
-import RosterItemInputField from "~/components/organisms/signUp/body/RosterItemInputField";
+import BasicItemsInputField from "~/components/organisms/signUp/body/BasicItemsInputField";
+import CoachesStaffItemsInputField from "~/components/organisms/signUp/body/CoachesStaffItemsInputField";
+import RosterItemsInputField from "~/components/organisms/signUp/body/RosterItemsInputField";
 import Header from "~/components/organisms/signUp/header/Header";
 import {
   PrivacyPolicyFieldWrap,
@@ -14,12 +14,12 @@ import {
 } from "~/components/templates/signUp/SignUpStyles";
 
 const SignUp = () => {
-  const [optionInputField, setOptionInputField] = useState(<RosterItemInputField />);
+  const [optionInputField, setOptionInputField] = useState(<RosterItemsInputField />);
   const handleChange = (element: any) => {
     if (element.target.id === "roster") {
-      setOptionInputField(<RosterItemInputField />);
+      setOptionInputField(<RosterItemsInputField />);
     } else if (element.target.id === "coachesStaff") {
-      setOptionInputField(<CoachesStaffItemInputField />);
+      setOptionInputField(<CoachesStaffItemsInputField />);
     } else if (element.target.id === "outsider") {
       setOptionInputField(<></>);
     }
@@ -31,7 +31,7 @@ const SignUp = () => {
         <SignUpPurposeFieldWrap>
           <SignUpPurposeField onClick={handleChange} />
         </SignUpPurposeFieldWrap>
-        <BasicItemInputField />
+        <BasicItemsInputField />
         <>{optionInputField}</>
         <PrivacyPolicyFieldWrap>
           <PrivacyPolicyField />

@@ -2,7 +2,7 @@ import ItemInputField from "~/components/molecules/signUp/body/ItemInputField";
 import { ItemsInputFieldBox, SeparateLineWrap } from "./ItemsInputFieldStyles";
 import { SeparateLineBox } from "~/components/atoms/signUp/body/SeparateLineStyles";
 
-const CoachesStaffItemInputField = () => {
+const CoachesStaffItemsInputField = () => {
   return (
     <>
       <SeparateLineWrap>
@@ -22,4 +22,4 @@ const CoachesStaffItemInputField = () => {
   );
 };
 
-export default CoachesStaffItemInputField;
+export default CoachesStaffItemsInputField;

@@ -2,7 +2,7 @@ import ItemInputField from "~/components/molecules/signUp/body/ItemInputField";
 import { ItemsInputFieldBox, SeparateLineWrap } from "./ItemsInputFieldStyles";
 import { SeparateLineBox } from "~/components/atoms/signUp/body/SeparateLineStyles";
 
-const RosterItemInputField = () => {
+const RosterItemsInputField = () => {
   return (
     <>
       <SeparateLineWrap>
@@ -18,4 +18,4 @@ const RosterItemInputField = () => {
   );
 };
 
-export default RosterItemInputField;
+export default RosterItemsInputField;
