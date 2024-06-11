@@ -10,7 +10,7 @@ import PracticeSchedulePage from "./pages/teamroom/PracticeSchedulePage";
 import TeamBoardPage from "./pages/teamroom/TeamBoardPage";
 import CoachBoardPage from "./pages/teamroom/CoachBoardPage";
 import StaffBoardPage from "./pages/teamroom/StaffBoardPage";
-import PlayBookPage from "./pages/teamroom/PlayBookPage";
+import PlaybookPage from "./pages/teamroom/PlaybookPage";
 import MembershipFeePage from "./pages/teamroom/MembershipFeePage";
 import FanBoardPage from "./pages/community/FanBoardPage";
 import MediaPage from "./pages/community/MediaPage";
@@ -37,7 +37,7 @@ function App() {
         <Route path="/teamroom/team_board" element={<TeamBoardPage />}></Route>
         <Route path="/teamroom/coach_board" element={<CoachBoardPage />}></Route>
         <Route path="/teamroom/staff_board" element={<StaffBoardPage />}></Route>
-        <Route path="/teamroom/playbook" element={<PlayBookPage />}></Route>
+        <Route path="/teamroom/playbook" element={<PlaybookPage />}></Route>
         <Route path="/teamroom/membership_fee" element={<MembershipFeePage />}></Route>
 
         <Route path="/community/fan_board" element={<FanBoardPage />}></Route>
