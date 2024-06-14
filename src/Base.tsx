@@ -4,7 +4,7 @@ import Header from "./components/organisms/main/header/Header";
 import Footer from "./components/organisms/main/footer/Footer";
 import { OutletBox, ContentBox, HeaderBox, BaseLayout } from "./BaseStyles";
 import Title from "./components/organisms/main/title/Title";
-import TITLES from "./components/organisms/main/title/TitleList";
+import TITLES from "./constants/TitleList";
 
 const Base = () => {
   const location = useLocation();
