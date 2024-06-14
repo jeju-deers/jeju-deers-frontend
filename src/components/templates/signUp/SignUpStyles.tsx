@@ -1,9 +1,27 @@
 import styled from "styled-components";
 import tw from "twin.macro";
 
-export const SignUpLayout = styled.div`
+export const WholeSignUpLayout = styled.div`
   ${tw`
     overflow-hidden
+  `}
+`;
+
+export const SignUpLayout = styled.div`
+  ${tw`
+    mt-24
+    mb-40
+    max-w-[1200px]
+    min-w-[910px]
+    mx-64
+  `}
+`;
+
+export const SubHeaderWrap = styled.div`
+  ${tw`
+    pb-12
+    border-b-8
+    border-[#0C2F23]
   `}
 `;
 
@@ -12,7 +30,6 @@ export const SignUpForm = styled.form`
     flex
     flex-col
     items-center
-    pb-[180px]
   `}
 `;
 
