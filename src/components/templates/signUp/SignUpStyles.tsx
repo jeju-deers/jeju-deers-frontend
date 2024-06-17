@@ -7,6 +7,13 @@ export const WholeSignUpLayout = styled.div`
   `}
 `;
 
+export const PrimaryHeaderContentWrap = styled.div`
+  ${tw`
+    max-w-[1712px]
+    min-w-[1452px]
+  `}
+`;
+
 export const SignUpLayout = styled.div`
   ${tw`
     mt-24

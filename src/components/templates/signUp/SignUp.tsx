@@ -10,6 +10,7 @@ import PrimaryHeaderContent from "~/components/organisms/signUp/primaryHeader/Pr
 import {
   BasicItemsInputFieldWrap,
   OptionItemsInputFieldWrap,
+  PrimaryHeaderContentWrap,
   PrivacyPolicyFieldWrap,
   SignUpForm,
   SignUpLayout,
@@ -40,7 +41,9 @@ const SignUp = () => {
 
   return (
     <WholeSignUpLayout>
-      <PrimaryHeaderContent />
+      <PrimaryHeaderContentWrap>
+        <PrimaryHeaderContent />
+      </PrimaryHeaderContentWrap>
       <SignUpLayout>
         <SubHeaderWrap>
           <SubHeader />
