@@ -7,7 +7,7 @@ export const WholeSignUpLayout = styled.div`
   `}
 `;
 
-export const PrimaryHeaderContentWrap = styled.div`
+export const PrimaryHeaderWrap = styled.div`
   ${tw`
     max-w-[1712px]
     min-w-[1452px]

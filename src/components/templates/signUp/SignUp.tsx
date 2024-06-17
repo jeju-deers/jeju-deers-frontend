@@ -6,11 +6,11 @@ import SubHeader from "~/components/molecules/signUp/subHeader/SubHeader";
 import BasicItemsInputField from "~/components/organisms/signUp/body/BasicItemsInputField";
 import CoachesStaffItemsInputField from "~/components/organisms/signUp/body/CoachesStaffItemsInputField";
 import RosterItemsInputField from "~/components/organisms/signUp/body/RosterItemsInputField";
-import PrimaryHeaderContent from "~/components/organisms/signUp/primaryHeader/PrimaryHeaderContent";
+import PrimaryHeader from "~/components/organisms/signUp/primaryHeader/PrimaryHeader";
 import {
   BasicItemsInputFieldWrap,
   OptionItemsInputFieldWrap,
-  PrimaryHeaderContentWrap,
+  PrimaryHeaderWrap,
   PrivacyPolicyFieldWrap,
   SignUpForm,
   SignUpLayout,
@@ -41,9 +41,9 @@ const SignUp = () => {
 
   return (
     <WholeSignUpLayout>
-      <PrimaryHeaderContentWrap>
-        <PrimaryHeaderContent />
-      </PrimaryHeaderContentWrap>
+      <PrimaryHeaderWrap>
+        <PrimaryHeader />
+      </PrimaryHeaderWrap>
       <SignUpLayout>
         <SubHeaderWrap>
           <SubHeader />

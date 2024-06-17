@@ -2,7 +2,7 @@ import styled from "styled-components";
 import tw from "twin.macro";
 import mainBackgroundImage from "~/assets/images/main_background_dark.svg";
 
-export const PrimaryHeaderContentBox = styled.div`
+export const PrimaryHeaderBox = styled.div`
   background-image: url(${mainBackgroundImage});
   ${tw`
     h-[60vh]

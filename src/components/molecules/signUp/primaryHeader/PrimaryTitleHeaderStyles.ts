@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import tw from "twin.macro";
 
-export const PrimaryHeaderBox = styled.div`
+export const PrimaryTitleHeaderBox = styled.div`
   ${tw`
     flex
     flex-col
