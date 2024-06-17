@@ -2,12 +2,14 @@ import { useState } from "react";
 import SubmitButton from "~/components/atoms/signUp/body/SubmitButton";
 import PrivacyPolicyField from "~/components/molecules/signUp/body/PrivacyPolicyField";
 import SignUpPurposeField from "~/components/molecules/signUp/body/SignUpPurposeField";
-import SubHeader from "~/components/molecules/signUp/header/SubHeader";
+import SubHeader from "~/components/molecules/signUp/subHeader/SubHeader";
 import BasicItemsInputField from "~/components/organisms/signUp/body/BasicItemsInputField";
 import CoachesStaffItemsInputField from "~/components/organisms/signUp/body/CoachesStaffItemsInputField";
 import RosterItemsInputField from "~/components/organisms/signUp/body/RosterItemsInputField";
-import PrimaryHeaderContent from "~/components/organisms/signUp/header/PrimaryHeaderContent";
+import PrimaryHeaderContent from "~/components/organisms/signUp/primaryHeader/PrimaryHeaderContent";
 import {
+  BasicItemsInputFieldWrap,
+  OptionItemsInputFieldWrap,
   PrivacyPolicyFieldWrap,
   SignUpForm,
   SignUpLayout,
@@ -47,8 +49,10 @@ const SignUp = () => {
           <SignUpPurposeFieldWrap>
             <SignUpPurposeField selectedOption={selectedOption} onChange={handleChange} />
           </SignUpPurposeFieldWrap>
-          <BasicItemsInputField />
-          <>{getOptionInputField()}</>
+          <BasicItemsInputFieldWrap>
+            <BasicItemsInputField />
+          </BasicItemsInputFieldWrap>
+          <OptionItemsInputFieldWrap>{getOptionInputField()}</OptionItemsInputFieldWrap>
           <PrivacyPolicyFieldWrap>
             <PrivacyPolicyField />
           </PrivacyPolicyFieldWrap>

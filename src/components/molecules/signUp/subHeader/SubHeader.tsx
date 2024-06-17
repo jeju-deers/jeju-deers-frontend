@@ -1,5 +1,5 @@
-import SubTitle from "~/components/atoms/signUp/header/SubTitle";
-import MainLogo from "~/components/atoms/signUp/header/MainLogo";
+import SubTitle from "~/components/atoms/signUp/subHeader/SubTitle";
+import MainLogo from "~/components/atoms/signUp/subHeader/MainLogo";
 import { SubHeaderBox } from "./SubHeaderStyles";
 
 const SubHeader = () => {

@@ -1,11 +1,6 @@
-import ItemLabel from "~/components/atoms/signUp/body/ItemLabel";
-import {
-  SignUpPurposeFieldBox,
-  SignUpPurposeLabelBox,
-  SignUpPurposeRadioBox,
-} from "./SignUpPurposeFieldStyles";
-import EssentialMark from "~/components/atoms/signUp/body/EssentialMark";
+import { SignUpPurposeFieldBox, SignUpPurposeRadioBox } from "./SignUpPurposeFieldStyles";
 import ItemRadio from "~/components/atoms/signUp/body/ItemRadio";
+import ItemTitle from "~/components/atoms/signUp/body/ItemTitle";
 
 interface Props {
   selectedOption: string;
@@ -15,10 +10,7 @@ interface Props {
 const SignUpPurposeField = ({ selectedOption, onChange }: Props) => {
   return (
     <SignUpPurposeFieldBox>
-      <SignUpPurposeLabelBox>
-        <EssentialMark />
-        <ItemLabel text="가입 목적" />
-      </SignUpPurposeLabelBox>
+      <ItemTitle text="가입 목적" required />
       <SignUpPurposeRadioBox>
         <ItemRadio
           radioTitle="signUpPurpose"

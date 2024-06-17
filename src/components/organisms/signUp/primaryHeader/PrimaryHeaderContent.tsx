@@ -1,4 +1,4 @@
-import PrimaryHeader from "~/components/molecules/signUp/header/PrimaryHeader";
+import PrimaryHeader from "~/components/molecules/signUp/primaryHeader/PrimaryHeader";
 import { PrimaryHeaderContentBox } from "./PrimaryHeaderContentStyles";
 
 const PrimaryHeaderContent = () => {

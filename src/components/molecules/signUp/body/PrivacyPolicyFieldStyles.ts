@@ -4,16 +4,7 @@ import tw from "twin.macro";
 export const PrivacyPolicyFieldBox = styled.div`
   ${tw`
     flex
-    gap-[29px]
-  `}
-`;
-
-export const PrivacyPolicyFieldLabelBox = styled.div`
-  ${tw`
-    flex
-    gap-[9px]
-    w-[150px]
-    justify-end
+    gap-7
   `}
 `;
 

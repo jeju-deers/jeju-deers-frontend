@@ -1,6 +1,6 @@
-import PrimaryTitle from "~/components/atoms/signUp/header/PrimaryTitle";
+import PrimaryTitle from "~/components/atoms/signUp/primaryHeader/PrimaryTitle";
+import PrimaryTitleEnglish from "~/components/atoms/signUp/primaryHeader/PrimaryTitleEnglish";
 import { PrimaryHeaderBox } from "./PrimaryHeaderStyles";
-import PrimaryTitleEnglish from "~/components/atoms/signUp/header/PrimaryTitleEnglish";
 
 const PrimaryHeader = () => {
   return (

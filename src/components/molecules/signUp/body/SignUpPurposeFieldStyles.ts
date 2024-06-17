@@ -4,16 +4,7 @@ import tw from "twin.macro";
 export const SignUpPurposeFieldBox = styled.div`
   ${tw`
     flex
-    gap-[29px]
-  `}
-`;
-
-export const SignUpPurposeLabelBox = styled.div`
-  ${tw`
-    flex
-    gap-[9px]
-    w-[150px]
-    justify-end
+    gap-7
   `}
 `;
 
@@ -21,5 +12,6 @@ export const SignUpPurposeRadioBox = styled.div`
   ${tw`
     flex
     flex-col
+    gap-1.5
   `}
 `;

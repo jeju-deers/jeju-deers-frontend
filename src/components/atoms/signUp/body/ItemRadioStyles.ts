@@ -4,7 +4,7 @@ import tw from "twin.macro";
 export const ItemRadioBox = styled.div`
   ${tw`
     flex
-    gap-[21px]
+    gap-5
   `}
 `;
 
