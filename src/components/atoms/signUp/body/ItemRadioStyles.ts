@@ -18,7 +18,6 @@ export const ItemRadioLabel = styled.label`
   ${tw`
     text-xl
     text-[#6B6B6B]
-    font-['Inter']
     font-medium
   `}
 `;

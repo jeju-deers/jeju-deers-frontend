@@ -5,7 +5,6 @@ export const PrimaryTitleSpan = styled.span`
   ${tw`
     text-5xl
     text-[#FFFFFF]
-    font-['Inter']
     font-bold
   `}
 `;

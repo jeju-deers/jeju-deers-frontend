@@ -22,7 +22,6 @@ export const PrivacyPolicyAgreeLabel = styled.label`
   ${tw`
     text-xl
     text-[#FF0000]
-    font-['Inter']
     font-medium
   `}
 `;

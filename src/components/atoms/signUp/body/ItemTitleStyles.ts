@@ -14,7 +14,6 @@ export const ItemTitleLabel = styled.label`
   ${tw`
     text-xl
     text-[#6B6B6B]
-    font-["Inter"]
     font-medium
   `}
 `;
@@ -23,7 +22,6 @@ export const EssentialMarkSpan = styled.span`
   ${tw`
     text-2xl
     text-[#FF0000]
-    font-["Inter"]
     font-medium
   `}
 `;
