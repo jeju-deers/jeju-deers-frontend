@@ -9,15 +9,15 @@ import TITLES from "./constants/TitleList";
 const Base = () => {
   const location = useLocation();
   const pathParts = location.pathname.split("/").filter(Boolean);
-  const titleEn = pathParts.length > 1 ? TITLES[pathParts[1]][0] : "";
-  const titleKo = pathParts.length > 1 ? TITLES[pathParts[1]][1] : "";
+  const titleEnglish = pathParts.length > 1 ? TITLES[pathParts[1]][0] : "";
+  const titleKorean = pathParts.length > 1 ? TITLES[pathParts[1]][1] : "";
   return (
     <BaseLayout>
       <Sidebar />
       <ContentBox>
         <HeaderBox>
           <Header />
-          <Title entitle={titleEn} kotitle={titleKo} />
+          <Title titleEnglish={titleEnglish} titleKorean={titleKorean} />
         </HeaderBox>
         <OutletBox>
           <Outlet />

@@ -1,15 +1,15 @@
 import { TitleEnSpan, TitleKoSpan, TitleLayout } from "./TitleStyles";
 
 interface Props {
-  entitle: string;
-  kotitle: string;
+  titleEnglish: string;
+  titleKorean: string;
 }
 
-const Title = ({ entitle, kotitle }: Props) => {
+const Title = ({ titleEnglish, titleKorean }: Props) => {
   return (
     <TitleLayout>
-      <TitleEnSpan>{entitle}</TitleEnSpan>
-      <TitleKoSpan>{kotitle}</TitleKoSpan>
+      <TitleEnSpan>{titleEnglish}</TitleEnSpan>
+      <TitleKoSpan>{titleKorean}</TitleKoSpan>
     </TitleLayout>
   );
 };
