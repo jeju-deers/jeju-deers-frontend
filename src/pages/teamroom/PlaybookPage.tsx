@@ -1,4 +1,4 @@
-import { PlaybookPageLayout } from "./PlayStyles";
+import { PlaybookPageLayout } from "./PlaybookPageStyles";
 
 const PlaybookPage = () => {
   return <PlaybookPageLayout>PlayBook 페이지입니다.</PlaybookPageLayout>;
