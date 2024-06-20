@@ -9,9 +9,9 @@ export const HeaderBox = styled.div<props>`
   ${tw`
     flex
     w-full
-    justify-end
+    justify-start
     fixed
-    right-0
+    left-0
     top-0
     pr-12
     py-5
