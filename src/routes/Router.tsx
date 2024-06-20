@@ -1,23 +1,23 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import MainPage from "./pages/MainPage";
-import NotFound from "./pages/NotFound";
-import AboutPage from "./pages/club/AboutPage";
-import OrganizationPage from "./pages/club/OrganizationPage";
-import RosterPage from "./pages/club/RosterPage";
-import CoachesStaffPage from "./pages/club/CoachesStaffPage";
-import SponsorPage from "./pages/club/SponsorPage";
-import PracticeSchedulePage from "./pages/teamroom/PracticeSchedulePage";
-import TeamBoardPage from "./pages/teamroom/TeamBoardPage";
-import CoachBoardPage from "./pages/teamroom/CoachBoardPage";
-import StaffBoardPage from "./pages/teamroom/StaffBoardPage";
-import PlaybookPage from "./pages/teamroom/PlaybookPage";
-import MembershipFeePage from "./pages/teamroom/MembershipFeePage";
-import FanBoardPage from "./pages/community/FanBoardPage";
-import MediaPage from "./pages/community/MediaPage";
-import SupportPage from "./pages/community/SupportPage";
-import SchedulePage from "./pages/news/SchedulePage";
-import NewsPage from "./pages/news/NewsPage";
-import Base from "./Base";
+import MainPage from "../pages/MainPage";
+import NotFound from "../pages/NotFound";
+import AboutPage from "../pages/club/AboutPage";
+import OrganizationPage from "../pages/club/OrganizationPage";
+import RosterPage from "../pages/club/RosterPage";
+import CoachesStaffPage from "../pages/club/CoachesStaffPage";
+import SponsorPage from "../pages/club/SponsorPage";
+import PracticeSchedulePage from "../pages/teamroom/PracticeSchedulePage";
+import TeamBoardPage from "../pages/teamroom/TeamBoardPage";
+import CoachBoardPage from "../pages/teamroom/CoachBoardPage";
+import StaffBoardPage from "../pages/teamroom/StaffBoardPage";
+import PlaybookPage from "../pages/teamroom/PlaybookPage";
+import MembershipFeePage from "../pages/teamroom/MembershipFeePage";
+import FanBoardPage from "../pages/community/FanBoardPage";
+import MediaPage from "../pages/community/MediaPage";
+import SupportPage from "../pages/community/SupportPage";
+import SchedulePage from "../pages/news/SchedulePage";
+import NewsPage from "../pages/news/NewsPage";
+import Base from "../Base";
 
 const Router = () => {
   return (
