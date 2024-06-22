@@ -7,11 +7,16 @@ export const SidebarBox = styled.div`
   ${tw`
     w-1/12
     min-w-36
+    max-h-screen
     flex
     flex-col
+    sticky
+    top-0
     items-center
     justify-between
+    bg-white
     bg-center
     bg-no-repeat
+    z-20
   `}
 `;
