@@ -1,8 +1,8 @@
 import tw from "twin.macro";
 import styled from "styled-components";
 
-export const OrganizationPageLayout = styled.div`
+export const OrganizationChartImage = styled.img`
   ${tw`
-    font-bold
+    w-full
   `}
 `;
