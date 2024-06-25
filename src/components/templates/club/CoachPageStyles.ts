@@ -10,3 +10,9 @@ export const CoachPageLayout = styled.div`
     py-20
   `}
 `;
+
+export const CoachListWrap = styled.div`
+  ${tw`
+    py-20
+  `}
+`;
