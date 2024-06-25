@@ -10,3 +10,9 @@ export const RosterPageLayout = styled.div`
     py-20
   `}
 `;
+
+export const RosterListWrap = styled.div`
+  ${tw`
+    py-20
+  `}
+`;
