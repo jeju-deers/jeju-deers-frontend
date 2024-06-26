@@ -1,3 +1,5 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "./pages/MainPage";
 import NotFound from "./pages/NotFound";
@@ -19,34 +21,39 @@ import SchedulePage from "./pages/news/SchedulePage";
 import NewsPage from "./pages/news/NewsPage";
 
 function App() {
+  const queryClient = new QueryClient();
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<MainPage />}></Route>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<MainPage />}></Route>
 
-        <Route path="/club/about" element={<AboutPage />}></Route>
-        <Route path="/club/organization" element={<OrganizationPage />}></Route>
-        <Route path="/club/roster" element={<RosterPage />}></Route>
-        <Route path="/club/member" element={<CoachesStaffPage />}></Route>
-        <Route path="/club/sponsor" element={<SponsorPage />}></Route>
+          <Route path="/club/about" element={<AboutPage />}></Route>
+          <Route path="/club/organization" element={<OrganizationPage />}></Route>
+          <Route path="/club/roster" element={<RosterPage />}></Route>
+          <Route path="/club/member" element={<CoachesStaffPage />}></Route>
+          <Route path="/club/sponsor" element={<SponsorPage />}></Route>
 
-        <Route path="/news/schedule" element={<SchedulePage />}></Route>
-        <Route path="/news/news" element={<NewsPage />}></Route>
+          <Route path="/news/schedule" element={<SchedulePage />}></Route>
+          <Route path="/news/news" element={<NewsPage />}></Route>
 
-        <Route path="/teamroom/practice_schedule" element={<PracticeSchedulePage />}></Route>
-        <Route path="/teamroom/team_board" element={<TeamBoardPage />}></Route>
-        <Route path="/teamroom/coach_board" element={<CoachBoardPage />}></Route>
-        <Route path="/teamroom/staff_board" element={<StaffBoardPage />}></Route>
-        <Route path="/teamroom/playbook" element={<PlaybookPage />}></Route>
-        <Route path="/teamroom/membership_fee" element={<MembershipFeePage />}></Route>
+          <Route path="/teamroom/practice_schedule" element={<PracticeSchedulePage />}></Route>
+          <Route path="/teamroom/team_board" element={<TeamBoardPage />}></Route>
+          <Route path="/teamroom/coach_board" element={<CoachBoardPage />}></Route>
+          <Route path="/teamroom/staff_board" element={<StaffBoardPage />}></Route>
+          <Route path="/teamroom/playbook" element={<PlaybookPage />}></Route>
+          <Route path="/teamroom/membership_fee" element={<MembershipFeePage />}></Route>
 
-        <Route path="/community/fan_board" element={<FanBoardPage />}></Route>
-        <Route path="/community/media" element={<MediaPage />}></Route>
-        <Route path="/community/support" element={<SupportPage />}></Route>
+          <Route path="/community/fan_board" element={<FanBoardPage />}></Route>
+          <Route path="/community/media" element={<MediaPage />}></Route>
+          <Route path="/community/support" element={<SupportPage />}></Route>
 
-        <Route path="*" element={<NotFound />}></Route>
-      </Routes>
-    </BrowserRouter>
+          <Route path="*" element={<NotFound />}></Route>
+        </Routes>
+      </BrowserRouter>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   );
 }
 
