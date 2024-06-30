@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import SubmitButton from "~/components/atoms/signUp/body/SubmitButton";
 import PrivacyPolicyField from "~/components/molecules/signUp/body/PrivacyPolicyField";
 import SignUpPurposeField from "~/components/molecules/signUp/body/SignUpPurposeField";
@@ -18,9 +18,10 @@ import {
   SubHeaderWrap,
   WholeSignUpLayout,
 } from "~/components/templates/signUp/SignUpStyles";
+import usePostExternalSignUp from "~/hooks/signUp/usePostExternalSignUp";
 
 const SignUp = () => {
-  const [selectedOption, setSelectedOption] = useState("roster");
+  const [selectedOption, setSelectedOption] = useState("player");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedId = event.target.id;
@@ -28,15 +29,64 @@ const SignUp = () => {
   };
 
   const getOptionInputField = () => {
-    if (selectedOption === "roster") {
+    if (selectedOption === "player") {
       return <RosterItemsInputField />;
     }
-    if (selectedOption === "coachesStaff") {
+    if (selectedOption === "coach") {
       return <CoachesStaffItemsInputField />;
     }
-    if (selectedOption === "outsider") {
+    if (selectedOption === "external") {
       return <></>;
     }
+  };
+
+  const [inputIdValue, setInputIdValue] = useState("");
+  const [inputPasswordValue, setInputPasswordValue] = useState("");
+  const [inputPasswordConfirmValue, setInputPasswordConfirmValue] = useState("");
+  const [inputNameValue, setInputNameValue] = useState("");
+  const [inputNickNameValue, setInputNickNameValue] = useState("");
+  const [inputEmailValue, setInputEmailValue] = useState("");
+
+  const onChangeInputId = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputIdValue(event.target.value);
+    console.log(event.target.value);
+  };
+
+  const onChangeInputPassword = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputPasswordValue(event.target.value);
+    console.log(event.target.value);
+  };
+
+  const onChangeInputPasswordConfirm = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputPasswordConfirmValue(event.target.value);
+  };
+
+  const onChangeInputName = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputNameValue(event.target.value);
+  };
+
+  const onChangeInputNickName = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputNickNameValue(event.target.value);
+  };
+
+  const onChangeInputEmail = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputEmailValue(event.target.value);
+  };
+
+  const postExternalSignUp = usePostExternalSignUp();
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    postExternalSignUp.mutate({
+      userType: selectedOption,
+      userId: inputIdValue,
+      password: inputPasswordValue,
+      passwordConfirm: inputPasswordConfirmValue,
+      name: inputNameValue,
+      nickname: inputNickNameValue,
+      email: inputEmailValue,
+    });
   };
 
   return (
@@ -48,12 +98,19 @@ const SignUp = () => {
         <SubHeaderWrap>
           <SubHeader />
         </SubHeaderWrap>
-        <SignUpForm id="signUpSubmit">
+        <SignUpForm id="signUpSubmit" onSubmit={(event) => handleSubmit(event)}>
           <SignUpPurposeFieldWrap>
             <SignUpPurposeField selectedOption={selectedOption} onChange={handleChange} />
           </SignUpPurposeFieldWrap>
           <BasicItemsInputFieldWrap>
-            <BasicItemsInputField />
+            <BasicItemsInputField
+              onChangeInputId={onChangeInputId}
+              onChangeInputPassword={onChangeInputPassword}
+              onChangeInputPasswordConfirm={onChangeInputPasswordConfirm}
+              onChangeInputName={onChangeInputName}
+              onChangeInputNickName={onChangeInputNickName}
+              onChangeInputEmail={onChangeInputEmail}
+            />
           </BasicItemsInputFieldWrap>
           <OptionItemsInputFieldWrap>{getOptionInputField()}</OptionItemsInputFieldWrap>
           <PrivacyPolicyFieldWrap>
