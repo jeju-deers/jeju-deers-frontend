@@ -14,23 +14,23 @@ const SignUpPurposeField = ({ selectedOption, onChange }: Props) => {
       <SignUpPurposeRadioBox>
         <ItemRadio
           radioTitle="signUpPurpose"
-          id="roster"
+          id="player"
           text="YB / OB 선수"
-          checked={selectedOption === "roster"}
+          checked={selectedOption === "player"}
           onChange={onChange}
         />
         <ItemRadio
           radioTitle="signUpPurpose"
-          id="coachesStaff"
+          id="coach"
           text="코치 및 스탭"
-          checked={selectedOption === "coachesStaff"}
+          checked={selectedOption === "coach"}
           onChange={onChange}
         />
         <ItemRadio
           radioTitle="signUpPurpose"
-          id="outsider"
+          id="external"
           text="외부인"
-          checked={selectedOption === "outsider"}
+          checked={selectedOption === "external"}
           onChange={onChange}
         />
       </SignUpPurposeRadioBox>
