@@ -19,6 +19,7 @@ import MediaPage from "./pages/community/MediaPage";
 import SupportPage from "./pages/community/SupportPage";
 import SchedulePage from "./pages/news/SchedulePage";
 import NewsPage from "./pages/news/NewsPage";
+import SignUpPage from "./pages/SignUpPage";
 
 function App() {
   const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MainPage />}></Route>
+          <Route path="/signup" element={<SignUpPage />}></Route>
 
           <Route path="/club/about" element={<AboutPage />}></Route>
           <Route path="/club/organization" element={<OrganizationPage />}></Route>
