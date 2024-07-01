@@ -6,7 +6,7 @@ export const RosterListBox = styled.div`
     flex
     flex-col
     border-y-2
-    min-w-[950px]
+    min-w-[1050px]
   `}
   & > *:nth-child(odd) {
     & > *:nth-child(-n + 4) {
