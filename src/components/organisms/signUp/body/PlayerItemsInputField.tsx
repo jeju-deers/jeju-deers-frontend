@@ -1,5 +1,5 @@
 import ItemInputField from "~/components/molecules/signUp/body/ItemInputField";
-import { RosterItemsInputFieldBox } from "./RosterItemsInputFieldStyles";
+import { PlayerItemsInputFieldBox } from "./PlayerItemsInputFieldStyles";
 import { ChangeEvent } from "react";
 
 interface Props {
@@ -15,28 +15,23 @@ const RosterItemsInputField = ({
   onChangeInputBackNumber,
 }: Props) => {
   return (
-    <RosterItemsInputFieldBox>
+    <PlayerItemsInputFieldBox>
+      <ItemInputField id="playerSchool" text="출신학교" required onChange={onChangeInputSchool} />
+      <ItemInputField id="playerStudentId" text="학번" required onChange={onChangeInputStudentId} />
       <ItemInputField
-        id="rosterSchoolFrom"
-        text="출신학교"
-        required
-        onChange={onChangeInputSchool}
-      />
-      <ItemInputField id="rosterStudentId" text="학번" required onChange={onChangeInputStudentId} />
-      <ItemInputField
-        id="rosterPosition"
+        id="playerPositions"
         text="포지션"
         required
         condition="(여러개 입력 가능)"
         onChange={onChangeInputPositions}
       />
       <ItemInputField
-        id="rosterBackNumber"
+        id="playerBackNumber"
         text="백넘버"
         required
         onChange={onChangeInputBackNumber}
       />
-    </RosterItemsInputFieldBox>
+    </PlayerItemsInputFieldBox>
   );
 };
 

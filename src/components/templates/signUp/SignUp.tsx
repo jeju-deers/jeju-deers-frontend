@@ -5,7 +5,7 @@ import SignUpPurposeField from "~/components/molecules/signUp/body/SignUpPurpose
 import SubHeader from "~/components/molecules/signUp/subHeader/SubHeader";
 import BasicItemsInputField from "~/components/organisms/signUp/body/BasicItemsInputField";
 import CoachItemsInputField from "~/components/organisms/signUp/body/CoachItemsInputField";
-import RosterItemsInputField from "~/components/organisms/signUp/body/RosterItemsInputField";
+import PlayerItemsInputField from "~/components/organisms/signUp/body/PlayerItemsInputField";
 import PrimaryHeader from "~/components/organisms/signUp/primaryHeader/PrimaryHeader";
 import {
   BasicItemsInputFieldWrap,
@@ -33,7 +33,7 @@ const SignUp = () => {
   const getOptionInputField = () => {
     if (selectedOption === "player") {
       return (
-        <RosterItemsInputField
+        <PlayerItemsInputField
           onChangeInputSchool={handleChangeInputSchool}
           onChangeInputStudentId={handleChangeInputStudentId}
           onChangeInputPositions={handleChangeInputPositions}

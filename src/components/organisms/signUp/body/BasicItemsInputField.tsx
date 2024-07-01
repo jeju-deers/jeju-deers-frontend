@@ -21,7 +21,7 @@ const BasicItemsInputField = ({
 }: Props) => {
   return (
     <BasicItemsInputFieldBox>
-      <ItemInputField id="id" text="아이디" required onChange={onChangeInputId} />
+      <ItemInputField id="userId" text="아이디" required onChange={onChangeInputId} />
       <ItemInputField
         id="password"
         text="비밀번호"
@@ -35,14 +35,14 @@ const BasicItemsInputField = ({
         required
         onChange={onChangeInputPasswordConfirm}
       />
-      <ItemInputField id="userName" text="이름" required onChange={onChangeInputName} />
+      <ItemInputField id="name" text="이름" required onChange={onChangeInputName} />
       <ItemInputField
-        id="userNickName"
+        id="nickname"
         text="닉네임"
         required={false}
         onChange={onChangeInputNickName}
       />
-      <ItemInputField id="userEMail" text="이메일" required onChange={onChangeInputEmail} />
+      <ItemInputField id="email" text="이메일" required onChange={onChangeInputEmail} />
     </BasicItemsInputFieldBox>
   );
 };

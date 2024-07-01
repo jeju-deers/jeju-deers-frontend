@@ -15,15 +15,10 @@ const CoachItemsInputField = ({
 }: Props) => {
   return (
     <CoachItemsInputFieldBox>
-      <ItemInputField
-        id="coachSchoolFrom"
-        text="출신학교"
-        required
-        onChange={onChangeInputSchool}
-      />
+      <ItemInputField id="coachSchool" text="출신학교" required onChange={onChangeInputSchool} />
       <ItemInputField id="coachStudentId" text="학번" required onChange={onChangeInputStudentId} />
       <ItemInputField
-        id="coachResponsibility"
+        id="coachPositions"
         text="담당"
         required
         condition="(여러개 입력 가능)"
