@@ -1,5 +1,5 @@
 import Heading from "~/components/atoms/club/Heading";
-import { CoachListWrap, CoachPageLayout } from "./CoachPageStyles";
+import { CoachListWrap, CoachPageLayout, StaffListWrap } from "./CoachPageStyles";
 import helmet from "~/assets/images/helmet.svg";
 import COACH from "~/constants/coachData";
 import STAFF from "~/constants/staffData";
@@ -14,9 +14,9 @@ const Coach = () => {
         <CoachList coachlist={COACH} />
       </CoachListWrap>
       <Heading src={helmet} alt="helmet" text="스태프" />
-      <CoachListWrap>
+      <StaffListWrap>
         <StaffList stafflist={STAFF} />
-      </CoachListWrap>
+      </StaffListWrap>
     </CoachPageLayout>
   );
 };
