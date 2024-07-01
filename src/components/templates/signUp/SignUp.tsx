@@ -25,7 +25,7 @@ import usePostCoachSignUp from "~/hooks/signUp/usePostSigCoachnUp";
 const SignUp = () => {
   const [selectedOption, setSelectedOption] = useState("player");
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const selectedId = event.target.id;
     setSelectedOption(selectedId);
   };
@@ -34,19 +34,19 @@ const SignUp = () => {
     if (selectedOption === "player") {
       return (
         <RosterItemsInputField
-          onChangeInputSchool={onChangeInputSchool}
-          onChangeInputStudentId={onChangeInputStudentId}
-          onChangeInputPositions={onChangeInputPositions}
-          onChangeInputBackNumber={onChangeInputBackNumber}
+          onChangeInputSchool={handleChangeInputSchool}
+          onChangeInputStudentId={handleChangeInputStudentId}
+          onChangeInputPositions={handleChangeInputPositions}
+          onChangeInputBackNumber={handleChangeInputBackNumber}
         />
       );
     }
     if (selectedOption === "coach") {
       return (
         <CoachesStaffItemsInputField
-          onChangeInputSchool={onChangeInputSchool}
-          onChangeInputStudentId={onChangeInputStudentId}
-          onChangeInputPositions={onChangeInputPositions}
+          onChangeInputSchool={handleChangeInputSchool}
+          onChangeInputStudentId={handleChangeInputStudentId}
+          onChangeInputPositions={handleChangeInputPositions}
         />
       );
     }
@@ -60,19 +60,19 @@ const SignUp = () => {
   const [inputPositionsValue, setInputPositionsValue] = useState("");
   const [inputBackNumberValue, setInputBackNumberValue] = useState("");
 
-  const onChangeInputSchool = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeInputSchool = (event: ChangeEvent<HTMLInputElement>) => {
     setInputSchoolValue(event.target.value);
   };
 
-  const onChangeInputStudentId = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeInputStudentId = (event: ChangeEvent<HTMLInputElement>) => {
     setInputStudentIdValue(event.target.value);
   };
 
-  const onChangeInputPositions = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeInputPositions = (event: ChangeEvent<HTMLInputElement>) => {
     setInputPositionsValue(event.target.value);
   };
 
-  const onChangeInputBackNumber = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeInputBackNumber = (event: ChangeEvent<HTMLInputElement>) => {
     setInputBackNumberValue(event.target.value);
   };
 
@@ -83,29 +83,27 @@ const SignUp = () => {
   const [inputNickNameValue, setInputNickNameValue] = useState("");
   const [inputEmailValue, setInputEmailValue] = useState("");
 
-  const onChangeInputId = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeInputId = (event: ChangeEvent<HTMLInputElement>) => {
     setInputIdValue(event.target.value);
-    console.log(event.target.value);
   };
 
-  const onChangeInputPassword = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeInputPassword = (event: ChangeEvent<HTMLInputElement>) => {
     setInputPasswordValue(event.target.value);
-    console.log(event.target.value);
   };
 
-  const onChangeInputPasswordConfirm = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeInputPasswordConfirm = (event: ChangeEvent<HTMLInputElement>) => {
     setInputPasswordConfirmValue(event.target.value);
   };
 
-  const onChangeInputName = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeInputName = (event: ChangeEvent<HTMLInputElement>) => {
     setInputNameValue(event.target.value);
   };
 
-  const onChangeInputNickName = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeInputNickName = (event: ChangeEvent<HTMLInputElement>) => {
     setInputNickNameValue(event.target.value);
   };
 
-  const onChangeInputEmail = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeInputEmail = (event: ChangeEvent<HTMLInputElement>) => {
     setInputEmailValue(event.target.value);
   };
 
@@ -175,12 +173,12 @@ const SignUp = () => {
           </SignUpPurposeFieldWrap>
           <BasicItemsInputFieldWrap>
             <BasicItemsInputField
-              onChangeInputId={onChangeInputId}
-              onChangeInputPassword={onChangeInputPassword}
-              onChangeInputPasswordConfirm={onChangeInputPasswordConfirm}
-              onChangeInputName={onChangeInputName}
-              onChangeInputNickName={onChangeInputNickName}
-              onChangeInputEmail={onChangeInputEmail}
+              onChangeInputId={handleChangeInputId}
+              onChangeInputPassword={handleChangeInputPassword}
+              onChangeInputPasswordConfirm={handleChangeInputPasswordConfirm}
+              onChangeInputName={handleChangeInputName}
+              onChangeInputNickName={handleChangeInputNickName}
+              onChangeInputEmail={handleChangeInputEmail}
             />
           </BasicItemsInputFieldWrap>
           <OptionItemsInputFieldWrap>{getOptionInputField()}</OptionItemsInputFieldWrap>
