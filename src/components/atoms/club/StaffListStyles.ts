@@ -61,15 +61,21 @@ export const StaffListHeader = styled.div`
     ${tw`
         justify-start
         pl-2
+        basis-[12%]
+    `}
+  }
+
+  *:nth-child(2) {
+    ${tw`
+        basis-[18%]
     `}
   }
 
   *:nth-child(3) {
-    ${tw`border-x-2`}
-  }
-
-  & > *:nth-child(-n + 3) {
-    ${tw`basis-[16.666%]`}
+    ${tw`
+      border-x-2
+      basis-[20%]
+      `}
   }
 
   & > *:nth-last-child(-n + 2) {
@@ -94,18 +100,24 @@ export const StafflistRow = styled.div`
     border-y
   `}
 
+  & > *:nth-child(1) {
+    ${tw`
+        basis-[12%]
+    `}
+  }
+
   *:nth-child(2) {
     ${tw`
+        basis-[18%]
         justify-start
     `}
   }
 
   *:nth-child(3) {
-    ${tw`border-x-2`}
-  }
-
-  & > *:nth-child(-n + 3) {
-    ${tw`basis-[16.666%]`}
+    ${tw`
+      basis-[20%]
+      border-x-2
+    `}
   }
 
   & > *:nth-last-child(-n + 2) {

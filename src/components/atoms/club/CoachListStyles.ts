@@ -57,19 +57,23 @@ export const CoachListHeader = styled.div`
     border-b
   `}
 
-  *:nth-child(1) {
+  & > *:nth-child(1) {
     ${tw`
         justify-start
         pl-2
+        basis-[12%]
     `}
   }
 
-  *:nth-child(3) {
-    ${tw`border-x-2`}
+  & > *:nth-child(2) {
+    ${tw`basis-[18%]`}
   }
 
-  & > *:nth-child(-n + 3) {
-    ${tw`basis-[16.666%]`}
+  & > *:nth-child(3) {
+    ${tw`
+      border-x-2
+      basis-[20%]
+      `}
   }
 
   & > *:nth-last-child(-n + 3) {
@@ -94,18 +98,24 @@ export const CoachlistRow = styled.div`
     border-y
   `}
 
-  *:nth-child(2) {
+  & > *:nth-child(1) {
     ${tw`
-        justify-start
+      basis-[12%]
     `}
   }
 
-  *:nth-child(3) {
-    ${tw`border-x-2`}
+  & > *:nth-child(2) {
+    ${tw`
+      justify-start
+      basis-[18%]
+    `}
   }
 
-  & > *:nth-child(-n + 3) {
-    ${tw`basis-[16.666%]`}
+  & > *:nth-child(3) {
+    ${tw`
+      border-x-2
+      basis-[20%]  
+    `}
   }
 
   & > *:nth-last-child(-n + 3) {
