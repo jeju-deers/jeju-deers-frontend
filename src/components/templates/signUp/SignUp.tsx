@@ -80,7 +80,7 @@ const SignUp = () => {
   const [inputPasswordValue, setInputPasswordValue] = useState("");
   const [inputPasswordConfirmValue, setInputPasswordConfirmValue] = useState("");
   const [inputNameValue, setInputNameValue] = useState("");
-  const [inputNickNameValue, setInputNickNameValue] = useState("");
+  const [inputNicknameValue, setInputNicknameValue] = useState("");
   const [inputEmailValue, setInputEmailValue] = useState("");
 
   const handleChangeInputId = (event: ChangeEvent<HTMLInputElement>) => {
@@ -99,8 +99,8 @@ const SignUp = () => {
     setInputNameValue(event.target.value);
   };
 
-  const handleChangeInputNickName = (event: ChangeEvent<HTMLInputElement>) => {
-    setInputNickNameValue(event.target.value);
+  const handleChangeInputNickname = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputNicknameValue(event.target.value);
   };
 
   const handleChangeInputEmail = (event: ChangeEvent<HTMLInputElement>) => {
@@ -121,7 +121,7 @@ const SignUp = () => {
         password: inputPasswordValue,
         passwordConfirm: inputPasswordConfirmValue,
         name: inputNameValue,
-        nickname: inputNickNameValue,
+        nickname: inputNicknameValue,
         email: inputEmailValue,
         school: inputSchoolValue,
         studentId: inputStudentIdValue,
@@ -137,7 +137,7 @@ const SignUp = () => {
         password: inputPasswordValue,
         passwordConfirm: inputPasswordConfirmValue,
         name: inputNameValue,
-        nickname: inputNickNameValue,
+        nickname: inputNicknameValue,
         email: inputEmailValue,
         school: inputSchoolValue,
         studentId: inputStudentIdValue,
@@ -152,7 +152,7 @@ const SignUp = () => {
         password: inputPasswordValue,
         passwordConfirm: inputPasswordConfirmValue,
         name: inputNameValue,
-        nickname: inputNickNameValue,
+        nickname: inputNicknameValue,
         email: inputEmailValue,
       });
     }
@@ -177,7 +177,7 @@ const SignUp = () => {
               onChangeInputPassword={handleChangeInputPassword}
               onChangeInputPasswordConfirm={handleChangeInputPasswordConfirm}
               onChangeInputName={handleChangeInputName}
-              onChangeInputNickName={handleChangeInputNickName}
+              onChangeInputNickname={handleChangeInputNickname}
               onChangeInputEmail={handleChangeInputEmail}
             />
           </BasicItemsInputFieldWrap>

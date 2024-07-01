@@ -7,7 +7,7 @@ interface Props {
   onChangeInputPassword: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeInputPasswordConfirm: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeInputName: (event: ChangeEvent<HTMLInputElement>) => void;
-  onChangeInputNickName: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChangeInputNickname: (event: ChangeEvent<HTMLInputElement>) => void;
   onChangeInputEmail: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -16,7 +16,7 @@ const BasicItemsInputField = ({
   onChangeInputPassword,
   onChangeInputPasswordConfirm,
   onChangeInputName,
-  onChangeInputNickName,
+  onChangeInputNickname,
   onChangeInputEmail,
 }: Props) => {
   return (
@@ -40,7 +40,7 @@ const BasicItemsInputField = ({
         id="nickname"
         text="닉네임"
         required={false}
-        onChange={onChangeInputNickName}
+        onChange={onChangeInputNickname}
       />
       <ItemInputField id="email" text="이메일" required onChange={onChangeInputEmail} />
     </BasicItemsInputFieldBox>
