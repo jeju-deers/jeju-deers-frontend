@@ -4,6 +4,7 @@ import styled from "styled-components";
 export const HistoryBox = styled.div`
   ${tw`
     mt-20
+    min-w-max
   `}
 `;
 
@@ -19,6 +20,7 @@ export const HistoryListBox = styled.div`
 export const Content = styled.div`
   ${tw`
     w-3/5
+    ml-20
   `}
 `;
 
