@@ -4,7 +4,7 @@ import PrivacyPolicyField from "~/components/molecules/signUp/body/PrivacyPolicy
 import SignUpPurposeField from "~/components/molecules/signUp/body/SignUpPurposeField";
 import SubHeader from "~/components/molecules/signUp/subHeader/SubHeader";
 import BasicItemsInputField from "~/components/organisms/signUp/body/BasicItemsInputField";
-import CoachesStaffItemsInputField from "~/components/organisms/signUp/body/CoachesStaffItemsInputField";
+import CoachItemsInputField from "~/components/organisms/signUp/body/CoachItemsInputField";
 import RosterItemsInputField from "~/components/organisms/signUp/body/RosterItemsInputField";
 import PrimaryHeader from "~/components/organisms/signUp/primaryHeader/PrimaryHeader";
 import {
@@ -43,7 +43,7 @@ const SignUp = () => {
     }
     if (selectedOption === "coach") {
       return (
-        <CoachesStaffItemsInputField
+        <CoachItemsInputField
           onChangeInputSchool={handleChangeInputSchool}
           onChangeInputStudentId={handleChangeInputStudentId}
           onChangeInputPositions={handleChangeInputPositions}

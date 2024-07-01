@@ -1,5 +1,5 @@
 import ItemInputField from "~/components/molecules/signUp/body/ItemInputField";
-import { CoachesStaffItemsInputFieldBox } from "./CoachesStaffItemsInputFieldStyles";
+import { CoachItemsInputFieldBox } from "./CoachItemsInputFieldStyles";
 import { ChangeEvent } from "react";
 
 interface Props {
@@ -8,34 +8,29 @@ interface Props {
   onChangeInputPositions: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const CoachesStaffItemsInputField = ({
+const CoachItemsInputField = ({
   onChangeInputSchool,
   onChangeInputStudentId,
   onChangeInputPositions,
 }: Props) => {
   return (
-    <CoachesStaffItemsInputFieldBox>
+    <CoachItemsInputFieldBox>
       <ItemInputField
-        id="coachesStaffSchoolFrom"
+        id="coachSchoolFrom"
         text="출신학교"
         required
         onChange={onChangeInputSchool}
       />
+      <ItemInputField id="coachStudentId" text="학번" required onChange={onChangeInputStudentId} />
       <ItemInputField
-        id="coachesStaffStudentId"
-        text="학번"
-        required
-        onChange={onChangeInputStudentId}
-      />
-      <ItemInputField
-        id="coachesStaffResponsibility"
+        id="coachResponsibility"
         text="담당"
         required
         condition="(여러개 입력 가능)"
         onChange={onChangeInputPositions}
       />
-    </CoachesStaffItemsInputFieldBox>
+    </CoachItemsInputFieldBox>
   );
 };
 
-export default CoachesStaffItemsInputField;
+export default CoachItemsInputField;
