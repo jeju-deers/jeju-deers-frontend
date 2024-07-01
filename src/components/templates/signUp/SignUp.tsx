@@ -80,7 +80,7 @@ const SignUp = () => {
   const [inputPasswordValue, setInputPasswordValue] = useState("");
   const [inputPasswordConfirmValue, setInputPasswordConfirmValue] = useState("");
   const [inputNameValue, setInputNameValue] = useState("");
-  const [inputNicknameValue, setInputNicknameValue] = useState("");
+  const [inputNicknameValue, setInputNicknameValue] = useState<string | undefined>(undefined);
   const [inputEmailValue, setInputEmailValue] = useState("");
 
   const handleChangeInputId = (event: ChangeEvent<HTMLInputElement>) => {
@@ -100,7 +100,7 @@ const SignUp = () => {
   };
 
   const handleChangeInputNickname = (event: ChangeEvent<HTMLInputElement>) => {
-    setInputNicknameValue(event.target.value);
+    setInputNicknameValue(event.target.value === "" ? undefined : event.target.value);
   };
 
   const handleChangeInputEmail = (event: ChangeEvent<HTMLInputElement>) => {
@@ -114,15 +114,19 @@ const SignUp = () => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    const basicInputValues = {
+      userType: selectedOption,
+      userId: inputIdValue,
+      password: inputPasswordValue,
+      passwordConfirm: inputPasswordConfirmValue,
+      name: inputNameValue,
+      email: inputEmailValue,
+      ...(inputNicknameValue !== undefined && { nickname: inputNicknameValue }),
+    };
+
     if (selectedOption === "player") {
       postPlayerSignUp.mutate({
-        userType: selectedOption,
-        userId: inputIdValue,
-        password: inputPasswordValue,
-        passwordConfirm: inputPasswordConfirmValue,
-        name: inputNameValue,
-        nickname: inputNicknameValue,
-        email: inputEmailValue,
+        ...basicInputValues,
         school: inputSchoolValue,
         studentId: inputStudentIdValue,
         positions: inputPositionsValue,
@@ -132,13 +136,7 @@ const SignUp = () => {
 
     if (selectedOption === "coach") {
       postCoachSignUp.mutate({
-        userType: selectedOption,
-        userId: inputIdValue,
-        password: inputPasswordValue,
-        passwordConfirm: inputPasswordConfirmValue,
-        name: inputNameValue,
-        nickname: inputNicknameValue,
-        email: inputEmailValue,
+        ...basicInputValues,
         school: inputSchoolValue,
         studentId: inputStudentIdValue,
         positions: inputPositionsValue,
@@ -146,15 +144,7 @@ const SignUp = () => {
     }
 
     if (selectedOption === "external") {
-      postExternalSignUp.mutate({
-        userType: selectedOption,
-        userId: inputIdValue,
-        password: inputPasswordValue,
-        passwordConfirm: inputPasswordConfirmValue,
-        name: inputNameValue,
-        nickname: inputNicknameValue,
-        email: inputEmailValue,
-      });
+      postExternalSignUp.mutate(basicInputValues);
     }
   };
 
