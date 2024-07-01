@@ -1,5 +1,10 @@
-import { StaffItem, StaffListBox, StaffListHeader, StafflistRow } from "./StaffListStyles";
-import StaffImage from "./RosterImage";
+import {
+  StaffImage,
+  StaffItem,
+  StaffListBox,
+  StaffListHeader,
+  StafflistRow,
+} from "./StaffListStyles";
 
 interface Props {
   stafflist: {

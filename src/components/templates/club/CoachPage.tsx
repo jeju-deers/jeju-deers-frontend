@@ -3,8 +3,8 @@ import { CoachListWrap, CoachPageLayout, StaffListWrap } from "./CoachPageStyles
 import helmet from "~/assets/images/helmet.svg";
 import COACH from "~/constants/coachData";
 import STAFF from "~/constants/staffData";
-import CoachList from "~/components/atoms/club/CoachList";
-import StaffList from "~/components/atoms/club/StaffList";
+import CoachList from "~/components/atoms/club/coach/CoachList";
+import StaffList from "~/components/atoms/club/coach/StaffList";
 
 const Coach = () => {
   return (

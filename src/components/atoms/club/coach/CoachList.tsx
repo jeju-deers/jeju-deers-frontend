@@ -1,5 +1,10 @@
-import { CoachItem, CoachListBox, CoachListHeader, CoachlistRow } from "./CoachListStyles";
-import CoachImage from "./RosterImage";
+import {
+  CoachImage,
+  CoachItem,
+  CoachListBox,
+  CoachListHeader,
+  CoachlistRow,
+} from "./CoachListStyles";
 
 interface Props {
   coachlist: {

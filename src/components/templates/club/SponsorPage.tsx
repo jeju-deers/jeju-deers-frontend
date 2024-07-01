@@ -1,5 +1,5 @@
 import { SponsorPageLayout, SponsorList } from "./SponsorPageStyles";
-import Company from "~/components/atoms/club/Company";
+import Company from "~/components/atoms/club/sponsor/Company";
 import LasanLogo from "~/assets/images/lasangroup.svg";
 import IlogisticLogo from "~/assets/images/ilogistic.svg";
 

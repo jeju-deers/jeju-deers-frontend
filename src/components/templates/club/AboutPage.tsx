@@ -1,8 +1,8 @@
 import Heading from "~/components/atoms/club/Heading";
 import { AboutPageLayout } from "./AboutPageStyles";
 import helmet from "~/assets/images/helmet.svg";
-import AboutTeam from "~/components/atoms/club/AboutTeam";
-import History from "~/components/atoms/club/History";
+import AboutTeam from "~/components/atoms/club/about/AboutTeam";
+import History from "~/components/atoms/club/about/History";
 import HISTORY_DATA from "../../../constants/historyData";
 
 const About = () => (

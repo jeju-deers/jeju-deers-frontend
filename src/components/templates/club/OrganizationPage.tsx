@@ -1,7 +1,7 @@
 import Heading from "~/components/atoms/club/Heading";
 import { OrganizationChartWrap, OrganizationPageLayout } from "./OrganizationPageStyles";
 import helmet from "~/assets/images/helmet.svg";
-import OrganizationChart from "../../atoms/club/OrganizationChart";
+import OrganizationChart from "../../atoms/club/organization/OrganizationChart";
 import organization from "~/assets/images/organization.svg";
 
 const Organization = () => {
