@@ -19,6 +19,8 @@ import {
   WholeSignUpLayout,
 } from "~/components/templates/signUp/SignUpStyles";
 import usePostExternalSignUp from "~/hooks/signUp/usePostExternalSignUp";
+import usePostPlayerSignUp from "~/hooks/signUp/usePostPlayerSignUp";
+import usePostCoachSignUp from "~/hooks/signUp/usePostSigCoachnUp";
 
 const SignUp = () => {
   const [selectedOption, setSelectedOption] = useState("player");
@@ -30,14 +32,48 @@ const SignUp = () => {
 
   const getOptionInputField = () => {
     if (selectedOption === "player") {
-      return <RosterItemsInputField />;
+      return (
+        <RosterItemsInputField
+          onChangeInputSchool={onChangeInputSchool}
+          onChangeInputStudentId={onChangeInputStudentId}
+          onChangeInputPositions={onChangeInputPositions}
+          onChangeInputBackNumber={onChangeInputBackNumber}
+        />
+      );
     }
     if (selectedOption === "coach") {
-      return <CoachesStaffItemsInputField />;
+      return (
+        <CoachesStaffItemsInputField
+          onChangeInputSchool={onChangeInputSchool}
+          onChangeInputStudentId={onChangeInputStudentId}
+          onChangeInputPositions={onChangeInputPositions}
+        />
+      );
     }
     if (selectedOption === "external") {
       return <></>;
     }
+  };
+
+  const [inputSchoolValue, setInputSchoolValue] = useState("");
+  const [inputStudentIdValue, setInputStudentIdValue] = useState("");
+  const [inputPositionsValue, setInputPositionsValue] = useState("");
+  const [inputBackNumberValue, setInputBackNumberValue] = useState("");
+
+  const onChangeInputSchool = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputSchoolValue(event.target.value);
+  };
+
+  const onChangeInputStudentId = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputStudentIdValue(event.target.value);
+  };
+
+  const onChangeInputPositions = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputPositionsValue(event.target.value);
+  };
+
+  const onChangeInputBackNumber = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputBackNumberValue(event.target.value);
   };
 
   const [inputIdValue, setInputIdValue] = useState("");
@@ -73,20 +109,55 @@ const SignUp = () => {
     setInputEmailValue(event.target.value);
   };
 
+  const postPlayerSignUp = usePostPlayerSignUp();
+  const postCoachSignUp = usePostCoachSignUp();
   const postExternalSignUp = usePostExternalSignUp();
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    postExternalSignUp.mutate({
-      userType: selectedOption,
-      userId: inputIdValue,
-      password: inputPasswordValue,
-      passwordConfirm: inputPasswordConfirmValue,
-      name: inputNameValue,
-      nickname: inputNickNameValue,
-      email: inputEmailValue,
-    });
+    if (selectedOption === "player") {
+      postPlayerSignUp.mutate({
+        userType: selectedOption,
+        userId: inputIdValue,
+        password: inputPasswordValue,
+        passwordConfirm: inputPasswordConfirmValue,
+        name: inputNameValue,
+        nickname: inputNickNameValue,
+        email: inputEmailValue,
+        school: inputSchoolValue,
+        studentId: inputStudentIdValue,
+        positions: inputPositionsValue,
+        backNumber: inputBackNumberValue,
+      });
+    }
+
+    if (selectedOption === "coach") {
+      postCoachSignUp.mutate({
+        userType: selectedOption,
+        userId: inputIdValue,
+        password: inputPasswordValue,
+        passwordConfirm: inputPasswordConfirmValue,
+        name: inputNameValue,
+        nickname: inputNickNameValue,
+        email: inputEmailValue,
+        school: inputSchoolValue,
+        studentId: inputStudentIdValue,
+        positions: inputPositionsValue,
+      });
+    }
+
+    if (selectedOption === "external") {
+      postExternalSignUp.mutate({
+        userType: selectedOption,
+        userId: inputIdValue,
+        password: inputPasswordValue,
+        passwordConfirm: inputPasswordConfirmValue,
+        name: inputNameValue,
+        nickname: inputNickNameValue,
+        email: inputEmailValue,
+      });
+    }
   };
 
   return (
