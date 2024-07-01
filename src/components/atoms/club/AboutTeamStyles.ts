@@ -12,6 +12,7 @@ export const AboutTeamBox = styled.div`
     mt-5
     mb-24
     rounded-lg
+    min-w-max
   `}
 `;
 
