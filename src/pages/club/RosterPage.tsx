@@ -1,7 +1,7 @@
-import { RosterPageLayout } from "./RosterPageStyles";
+import Roster from "~/components/templates/club/RosterPage";
 
 const RosterPage = () => {
-  return <RosterPageLayout>Roster 페이지입니다.</RosterPageLayout>;
+  return <Roster />;
 };
 
 export default RosterPage;

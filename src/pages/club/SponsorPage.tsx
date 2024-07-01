@@ -1,7 +1,7 @@
-import { SponsorPageLayout } from "./SponsorPageStyles";
+import Sponsor from "~/components/templates/club/SponsorPage";
 
 const SponsorPage = () => {
-  return <SponsorPageLayout>Sponsor 페이지입니다.</SponsorPageLayout>;
+  return <Sponsor />;
 };
 
 export default SponsorPage;
