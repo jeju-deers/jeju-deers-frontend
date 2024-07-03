@@ -51,7 +51,7 @@ export const StaffListBox = styled.div`
 export const StaffListHeader = styled.div`
   ${tw`
     flex
-    text-3xl
+    text-xl
     font-semibold
     h-16
     border-b
@@ -94,7 +94,7 @@ export const StaffItem = styled.div`
 export const StafflistRow = styled.div`
   ${tw`
     flex
-    text-3xl
+    text-xl
     font-normal
     h-56
     border-y

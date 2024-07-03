@@ -51,7 +51,6 @@ export const RosterListBox = styled.div`
 export const RosterListHeader = styled.div`
   ${tw`
     flex
-    text-3xl
     font-semibold
     h-16
     border-b
@@ -95,13 +94,13 @@ export const RosterItem = styled.div`
     flex
     justify-center
     items-center
+    text-xl
   `}
 `;
 
 export const RosterlistRow = styled.div`
   ${tw`
     flex
-    text-3xl
     font-normal
     h-56
     border-y

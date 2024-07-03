@@ -51,7 +51,7 @@ export const CoachListBox = styled.div`
 export const CoachListHeader = styled.div`
   ${tw`
     flex
-    text-3xl
+    text-xl
     font-semibold
     h-16
     border-b
@@ -92,7 +92,7 @@ export const CoachItem = styled.div`
 export const CoachlistRow = styled.div`
   ${tw`
     flex
-    text-3xl
+    text-xl
     font-normal
     h-56
     border-y
