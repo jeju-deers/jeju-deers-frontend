@@ -20,14 +20,68 @@ import {
 } from "~/components/templates/signUp/SignUpStyles";
 import usePostExternalSignUp from "~/hooks/signUp/usePostExternalSignUp";
 import usePostPlayerSignUp from "~/hooks/signUp/usePostPlayerSignUp";
-import usePostCoachSignUp from "~/hooks/signUp/usePostSigCoachnUp";
+import usePostCoachSignUp from "~/hooks/signUp/usePostCoachSignUp";
 
 const SignUp = () => {
+  const postPlayerSignUp = usePostPlayerSignUp();
+  const postCoachSignUp = usePostCoachSignUp();
+  const postExternalSignUp = usePostExternalSignUp();
+
   const [selectedOption, setSelectedOption] = useState("player");
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const [inputSchool, setInputSchool] = useState("");
+  const [inputStudentId, setInputStudentId] = useState("");
+  const [inputPositions, setInputPositions] = useState("");
+  const [inputBackNumber, setInputBackNumber] = useState("");
+
+  const [inputId, setInputId] = useState("");
+  const [inputPassword, setInputPassword] = useState("");
+  const [inputPasswordConfirm, setInputPasswordConfirm] = useState("");
+  const [inputName, setInputName] = useState("");
+  const [inputNickname, setInputNickname] = useState<string | undefined>(undefined);
+  const [inputEmail, setInputEmail] = useState("");
+
+  const handleChangeSelected = (event: ChangeEvent<HTMLInputElement>) => {
     const selectedId = event.target.id;
     setSelectedOption(selectedId);
+  };
+
+  const handleChangeInputSchool = (event: ChangeEvent<HTMLInputElement>) => {
+    const inputSchoolValue = event.target.value;
+    setInputSchool(inputSchoolValue);
+  };
+  const handleChangeInputStudentId = (event: ChangeEvent<HTMLInputElement>) => {
+    const inputStudentId = event.target.value;
+    setInputStudentId(inputStudentId);
+  };
+  const handleChangeInputPositions = (event: ChangeEvent<HTMLInputElement>) => {
+    const inputPositionsValue = event.target.value;
+    setInputPositions(inputPositionsValue);
+  };
+  const handleChangeInputBackNumber = (event: ChangeEvent<HTMLInputElement>) => {
+    const inputBackNumberValue = event.target.value;
+    setInputBackNumber(inputBackNumberValue);
+  };
+
+  const handleChangeInputId = (event: ChangeEvent<HTMLInputElement>) => {
+    const inputIdValue = event.target.value;
+    setInputId(inputIdValue);
+  };
+  const handleChangeInputPassword = (event: ChangeEvent<HTMLInputElement>) => {
+    const inputPassword = event.target.value;
+    setInputPassword(inputPassword);
+  };
+  const handleChangeInputPasswordConfirm = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputPasswordConfirm(event.target.value);
+  };
+  const handleChangeInputName = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputName(event.target.value);
+  };
+  const handleChangeInputNickname = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputNickname(event.target.value === "" ? undefined : event.target.value);
+  };
+  const handleChangeInputEmail = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputEmail(event.target.value);
   };
 
   const getOptionInputField = () => {
@@ -55,91 +109,35 @@ const SignUp = () => {
     }
   };
 
-  const [inputSchoolValue, setInputSchoolValue] = useState("");
-  const [inputStudentIdValue, setInputStudentIdValue] = useState("");
-  const [inputPositionsValue, setInputPositionsValue] = useState("");
-  const [inputBackNumberValue, setInputBackNumberValue] = useState("");
-
-  const handleChangeInputSchool = (event: ChangeEvent<HTMLInputElement>) => {
-    setInputSchoolValue(event.target.value);
-  };
-
-  const handleChangeInputStudentId = (event: ChangeEvent<HTMLInputElement>) => {
-    setInputStudentIdValue(event.target.value);
-  };
-
-  const handleChangeInputPositions = (event: ChangeEvent<HTMLInputElement>) => {
-    setInputPositionsValue(event.target.value);
-  };
-
-  const handleChangeInputBackNumber = (event: ChangeEvent<HTMLInputElement>) => {
-    setInputBackNumberValue(event.target.value);
-  };
-
-  const [inputIdValue, setInputIdValue] = useState("");
-  const [inputPasswordValue, setInputPasswordValue] = useState("");
-  const [inputPasswordConfirmValue, setInputPasswordConfirmValue] = useState("");
-  const [inputNameValue, setInputNameValue] = useState("");
-  const [inputNicknameValue, setInputNicknameValue] = useState<string | undefined>(undefined);
-  const [inputEmailValue, setInputEmailValue] = useState("");
-
-  const handleChangeInputId = (event: ChangeEvent<HTMLInputElement>) => {
-    setInputIdValue(event.target.value);
-  };
-
-  const handleChangeInputPassword = (event: ChangeEvent<HTMLInputElement>) => {
-    setInputPasswordValue(event.target.value);
-  };
-
-  const handleChangeInputPasswordConfirm = (event: ChangeEvent<HTMLInputElement>) => {
-    setInputPasswordConfirmValue(event.target.value);
-  };
-
-  const handleChangeInputName = (event: ChangeEvent<HTMLInputElement>) => {
-    setInputNameValue(event.target.value);
-  };
-
-  const handleChangeInputNickname = (event: ChangeEvent<HTMLInputElement>) => {
-    setInputNicknameValue(event.target.value === "" ? undefined : event.target.value);
-  };
-
-  const handleChangeInputEmail = (event: ChangeEvent<HTMLInputElement>) => {
-    setInputEmailValue(event.target.value);
-  };
-
-  const postPlayerSignUp = usePostPlayerSignUp();
-  const postCoachSignUp = usePostCoachSignUp();
-  const postExternalSignUp = usePostExternalSignUp();
-
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const basicInputValues = {
       userType: selectedOption,
-      userId: inputIdValue,
-      password: inputPasswordValue,
-      passwordConfirm: inputPasswordConfirmValue,
-      name: inputNameValue,
-      email: inputEmailValue,
-      ...(inputNicknameValue !== undefined && { nickname: inputNicknameValue }),
+      userId: inputId,
+      password: inputPassword,
+      passwordConfirm: inputPasswordConfirm,
+      name: inputName,
+      email: inputEmail,
+      ...(inputNickname !== undefined && { nickname: inputNickname }),
     };
 
     if (selectedOption === "player") {
       postPlayerSignUp.mutate({
         ...basicInputValues,
-        school: inputSchoolValue,
-        studentId: inputStudentIdValue,
-        positions: inputPositionsValue,
-        backNumber: inputBackNumberValue,
+        school: inputSchool,
+        studentId: inputStudentId,
+        positions: inputPositions,
+        backNumber: inputBackNumber,
       });
     }
 
     if (selectedOption === "coach") {
       postCoachSignUp.mutate({
         ...basicInputValues,
-        school: inputSchoolValue,
-        studentId: inputStudentIdValue,
-        positions: inputPositionsValue,
+        school: inputSchool,
+        studentId: inputStudentId,
+        positions: inputPositions,
       });
     }
 
@@ -159,7 +157,7 @@ const SignUp = () => {
         </SubHeaderWrap>
         <SignUpForm id="signUpSubmit" onSubmit={(event) => handleSubmit(event)}>
           <SignUpPurposeFieldWrap>
-            <SignUpPurposeField selectedOption={selectedOption} onChange={handleChange} />
+            <SignUpPurposeField selectedOption={selectedOption} onChange={handleChangeSelected} />
           </SignUpPurposeFieldWrap>
           <BasicItemsInputFieldWrap>
             <BasicItemsInputField
