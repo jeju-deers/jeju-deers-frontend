@@ -34,7 +34,7 @@ export const TabMenuWrap = styled.div`
 export const Tab = styled.div`
   ${tw`
     font-bold
-    font-["Inter"]
+    font-inter
     text-white
     px-8
     py-3
@@ -44,7 +44,7 @@ export const Tab = styled.div`
 
 export const TabMenuBox = styled.div`
   ${tw`
-    font-["Inter"]
+    font-inter
     text-base
     w-40
   `}
