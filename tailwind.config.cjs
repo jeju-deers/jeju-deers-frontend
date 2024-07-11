@@ -29,13 +29,32 @@ module.exports = {
         300: "1200px",
         428: "1712px",
       },
-
       height: {
         17.5: "70ox",
         75: "300px",
         "6/10-screen": "60vh",
       },
+      fontSize: {
+        1.75: "28px",
+        2.5: "40px",
+      },
     },
   },
   plugins: [],
 };
+// module.exports = {
+//   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
+//   theme: {
+//     extend: {
+//       colors: {
+
+//         "gray": "#FAFAFA",
+//         "gray-100": "#F5F5F5",
+//         "gray-200": "#F0F0F0",
+
+//       },
+
+//     },
+//   },
+//   plugins: [],
+// };
