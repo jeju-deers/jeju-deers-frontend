@@ -42,19 +42,3 @@ module.exports = {
   },
   plugins: [],
 };
-// module.exports = {
-//   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
-//   theme: {
-//     extend: {
-//       colors: {
-
-//         "gray": "#FAFAFA",
-//         "gray-100": "#F5F5F5",
-//         "gray-200": "#F0F0F0",
-
-//       },
-
-//     },
-//   },
-//   plugins: [],
-// };
