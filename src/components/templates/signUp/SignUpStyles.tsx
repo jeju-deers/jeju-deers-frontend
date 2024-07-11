@@ -32,7 +32,7 @@ export const SubHeaderWrap = styled.div`
     w-full
     pb-12
     border-b-8
-    border-[#0C2F23]
+    border-green-dark
   `}
 `;
 
@@ -50,7 +50,7 @@ export const SignUpPurposeFieldWrap = styled.div`
     w-full
     py-12
     border-b-[1px]
-    border-[#C8C8C8]
+    border-gray-500
   `}
 `;
 

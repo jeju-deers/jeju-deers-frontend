@@ -13,7 +13,7 @@ export const ItemTitleBox = styled.div`
 export const ItemTitleLabel = styled.label`
   ${tw`
     text-xl
-    text-[#6B6B6B]
+    text-gray-1000
     font-medium
   `}
 `;
@@ -21,7 +21,7 @@ export const ItemTitleLabel = styled.label`
 export const EssentialMarkSpan = styled.span`
   ${tw`
     text-2xl
-    text-[#FF0000]
+    text-red
     font-medium
   `}
 `;

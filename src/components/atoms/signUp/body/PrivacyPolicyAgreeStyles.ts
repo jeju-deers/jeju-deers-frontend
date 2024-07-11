@@ -14,14 +14,14 @@ export const PrivacyPolicyAgreeInput = styled.input`
     w-[20px]
     h-[20px]
     border-[1px]
-    border-[#6B6B6B]
+    border-gray-1000
   `}
 `;
 
 export const PrivacyPolicyAgreeLabel = styled.label`
   ${tw`
     text-xl
-    text-[#FF0000]
+    text-red
     font-medium
   `}
 `;

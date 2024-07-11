@@ -3,12 +3,12 @@ import tw from "twin.macro";
 
 export const ItemInputInput = styled.input`
   ${tw`
-    text-[#6B6B6B]
+    text-gray-1000
     w-[500px]
     h-[40px]
     p-2
     border-[1px]
-    border-[#DFDFDF]
+    border-gray-400
     rounded-lg
   `}
 `;

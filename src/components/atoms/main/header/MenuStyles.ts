@@ -8,7 +8,7 @@ export const MenuBox = styled.div`
 
   &:hover {
     ${tw`
-      bg-[#69A6FF]
+      bg-blue
     `}
   }
 
@@ -34,7 +34,7 @@ export const TabMenuWrap = styled.div`
 export const Tab = styled.div`
   ${tw`
     font-bold
-    font-['Inter']
+    font-["Inter"]
     text-white
     px-8
     py-3
@@ -44,19 +44,19 @@ export const Tab = styled.div`
 
 export const TabMenuBox = styled.div`
   ${tw`
-    font-['Inter']
+    font-["Inter"]
     text-base
     w-40
   `}
   :hover {
     ${tw`
-      bg-[#ECECEC]
-      text-[#69a6ff]
+      bg-gray-300
+      text-blue
     `}
   }
   > :first-child {
     ${tw`
-      border-[#69A6FF]
+      border-blue
       border-t-4
     `}
   }
@@ -66,9 +66,9 @@ export const TabMenuItemBox = styled.div`
   ${tw`
     font-extrabold
     italic
-    text-[#6b6b6b]
+    text-gray-1000
     bg-white
-    border-[#C8C8C8]
+    border-gray-500
     border-t
     flex
     justify-center

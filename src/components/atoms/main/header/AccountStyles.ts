@@ -14,7 +14,7 @@ export const AccountBox = styled.div`
 export const AccountTextSpan = styled.span`
   ${tw`
     font-bold
-    font-['Inter']
+    font-inter
     text-white
   `}
 `;

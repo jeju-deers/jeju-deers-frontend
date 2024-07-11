@@ -1,7 +1,7 @@
-import Router from "./routes/Router";
+import SignUp from "./components/templates/signUp/SignUp";
 
 function App() {
-  return <Router />;
+  return <SignUp />;
 }
 
 export default App;
