@@ -9,8 +9,8 @@ export const WholeSignUpLayout = styled.div`
 
 export const PrimaryHeaderWrap = styled.div`
   ${tw`
-    max-w-[1712px]
-    min-w-[1452px]
+    max-w-428
+    min-w-363
   `}
 `;
 
@@ -18,8 +18,8 @@ export const SignUpLayout = styled.div`
   ${tw`
     mt-24
     mb-40
-    max-w-[1200px]
-    min-w-[940px]
+    max-w-300
+    min-w-235
     mx-64
     items-center
     flex
@@ -38,7 +38,7 @@ export const SubHeaderWrap = styled.div`
 
 export const SignUpForm = styled.form`
   ${tw`
-    w-[940px]
+    w-235
     flex
     flex-col
     items-center
@@ -49,7 +49,7 @@ export const SignUpPurposeFieldWrap = styled.div`
   ${tw`
     w-full
     py-12
-    border-b-[1px]
+    border-b
     border-gray-500
   `}
 `;

@@ -5,8 +5,8 @@ export const SubmitButtonButton = styled.button`
   ${tw`
     text-[28px]
     text-white
-    w-[580px]
-    h-[70px]
+    w-145
+    h-17.5
     bg-green-dark
     rounded-lg
   `}
