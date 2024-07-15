@@ -19,6 +19,7 @@ import SchedulePage from "../pages/news/SchedulePage";
 import NewsPage from "../pages/news/NewsPage";
 import Base from "../Base";
 import SignUpPage from "~/pages/SignUpPage";
+import LoginPage from "~/pages/LoginPage";
 
 const Router = () => {
   return (
@@ -28,6 +29,7 @@ const Router = () => {
           <Route path="/" element={<MainPage />} />
 
           <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/login" element={<LoginPage />} />
 
           <Route path="/club/about" element={<AboutPage />} />
           <Route path="/club/organization" element={<OrganizationPage />} />

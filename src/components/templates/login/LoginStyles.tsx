@@ -3,6 +3,12 @@ import styled from "styled-components";
 
 export const LoginLayout = styled.div`
   ${tw`
+    
+  `}
+`;
+
+export const LoginForm = styled.form`
+  ${tw`
     flex
     flex-col
     gap-2
