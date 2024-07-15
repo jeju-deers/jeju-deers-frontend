@@ -1,14 +1,14 @@
-import tabMenuItems from "~/components/atoms/main/header/tabMenuItems";
 import Menu from "~/components/atoms/main/header/Menu";
 import { MenusBox } from "./MenusStyles";
+import TAB_MENU_ITEMS from "~/constants/tabMenuItems";
 
 const Menus = () => {
   return (
     <MenusBox>
-      <Menu text="CLUB" tabMenuItems={tabMenuItems.club} />
-      <Menu text="NEWS" tabMenuItems={tabMenuItems.news} />
-      <Menu text="TEAM ROOM" tabMenuItems={tabMenuItems.teamroom} />
-      <Menu text="COMMUNITY" tabMenuItems={tabMenuItems.community} />
+      <Menu text="CLUB" tabMenuItems={TAB_MENU_ITEMS.club} />
+      <Menu text="NEWS" tabMenuItems={TAB_MENU_ITEMS.news} />
+      <Menu text="TEAM ROOM" tabMenuItems={TAB_MENU_ITEMS.teamroom} />
+      <Menu text="COMMUNITY" tabMenuItems={TAB_MENU_ITEMS.community} />
     </MenusBox>
   );
 };

@@ -1,4 +1,4 @@
-const tabMenuItems = {
+const TAB_MENU_ITEMS = {
   club: [
     { to: "/club/about", text: "About" },
     { to: "/club/organization", text: "Organization" },
@@ -25,4 +25,4 @@ const tabMenuItems = {
   ],
 };
 
-export default tabMenuItems;
+export default TAB_MENU_ITEMS;
