@@ -1,4 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
+import axios, { AxiosError } from "axios";
 import { postLogin } from "~/api/user";
 
 interface Params {
@@ -16,7 +17,25 @@ const usePostLogin = () => {
     onSuccess: (data) => {
       console.log(`로그인 성공, data: ${data}`);
     },
-    onError: (error) => console.log(`로그인 실패, error: ${error}`),
+    onError: (error: Error | AxiosError) => {
+      console.log(`로그인 실패, error: ${error}`);
+
+      // TODO: [2024-07-16] 백엔드 서버를 킨 후 아래 코드들이 정상적으로 동작하는지 확인이 필요합니다.
+      if (!axios.isAxiosError(error)) {
+        return;
+      }
+
+      const { statusCode } = error.response?.data;
+
+      if (statusCode === 401) {
+        alert("아이디 혹은 비밀번호가 유효하지 않습니다.");
+        console.log("아이디 혹은 비밀번호가 유효하지 않습니다.");
+      }
+      if (statusCode === 500) {
+        alert("Login failed");
+        console.log("Login failed");
+      }
+    },
   });
   return mutation;
 };
