@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import axios, { AxiosError } from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 import { postLogin } from "~/api/user";
 
 interface Params {
@@ -14,8 +14,10 @@ const usePostLogin = () => {
         userId,
         password,
       }),
-    onSuccess: (data) => {
-      console.log(`로그인 성공, data: ${data}`);
+    onSuccess: (loginResponse: AxiosResponse) => {
+      console.log(`로그인 성공, data: ${loginResponse}, token: ${loginResponse.data.token}`);
+      // TODO: [2024-07-16] 백엔드 서버를 킨 후 loginResponse.data.token이 정상적으로 응답 토큰 값을 가지는지 확인이 필요합니다.
+      localStorage.setItem("token", loginResponse.data.token);
     },
     onError: (error: Error | AxiosError) => {
       console.log(`로그인 실패, error: ${error}`);
