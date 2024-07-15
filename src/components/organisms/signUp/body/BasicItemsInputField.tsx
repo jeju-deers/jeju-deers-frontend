@@ -3,46 +3,29 @@ import { BasicItemsInputFieldBox } from "./BasicItemsInputFieldStyles";
 import { ChangeEvent } from "react";
 
 interface Props {
-  onChangeInputId: (event: ChangeEvent<HTMLInputElement>) => void;
-  onChangeInputPassword: (event: ChangeEvent<HTMLInputElement>) => void;
-  onChangeInputPasswordConfirm: (event: ChangeEvent<HTMLInputElement>) => void;
-  onChangeInputName: (event: ChangeEvent<HTMLInputElement>) => void;
-  onChangeInputNickname: (event: ChangeEvent<HTMLInputElement>) => void;
-  onChangeInputEmail: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChangeInput: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const BasicItemsInputField = ({
-  onChangeInputId,
-  onChangeInputPassword,
-  onChangeInputPasswordConfirm,
-  onChangeInputName,
-  onChangeInputNickname,
-  onChangeInputEmail,
-}: Props) => {
+const BasicItemsInputField = ({ onChangeInput }: Props) => {
   return (
     <BasicItemsInputFieldBox>
-      <ItemInputField id="userId" text="아이디" required onChange={onChangeInputId} />
+      <ItemInputField id="inputId" text="아이디" required onChange={onChangeInput} />
       <ItemInputField
-        id="password"
+        id="inputPassword"
         text="비밀번호"
         required
         condition="(6자리 이상, 영문과 숫자 포함)"
-        onChange={onChangeInputPassword}
+        onChange={onChangeInput}
       />
       <ItemInputField
-        id="passwordConfirm"
+        id="inputPasswordConfirm"
         text="비밀번호 확인"
         required
-        onChange={onChangeInputPasswordConfirm}
+        onChange={onChangeInput}
       />
-      <ItemInputField id="name" text="이름" required onChange={onChangeInputName} />
-      <ItemInputField
-        id="nickname"
-        text="닉네임"
-        required={false}
-        onChange={onChangeInputNickname}
-      />
-      <ItemInputField id="email" text="이메일" required onChange={onChangeInputEmail} />
+      <ItemInputField id="inputName" text="이름" required onChange={onChangeInput} />
+      <ItemInputField id="inputNickname" text="닉네임" required={false} onChange={onChangeInput} />
+      <ItemInputField id="inputEmail" text="이메일" required onChange={onChangeInput} />
     </BasicItemsInputFieldBox>
   );
 };
