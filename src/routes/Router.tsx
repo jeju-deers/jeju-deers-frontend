@@ -18,6 +18,7 @@ import SupportPage from "../pages/community/SupportPage";
 import SchedulePage from "../pages/news/SchedulePage";
 import NewsPage from "../pages/news/NewsPage";
 import Base from "../Base";
+import MyPagePage from "~/pages/MyPagePage";
 
 const Router = () => {
   return (
@@ -25,6 +26,7 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<Base />}>
           <Route path="/" element={<MainPage />} />
+          <Route path="/my_page" element={<MyPagePage />} />
 
           <Route path="/club/about" element={<AboutPage />} />
           <Route path="/club/organization" element={<OrganizationPage />} />
