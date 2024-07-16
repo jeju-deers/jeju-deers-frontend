@@ -15,6 +15,7 @@ const TITLES: { [key: string]: string[] } = {
   fan_board: ["FAN BOARD", "팬 게시판"],
   media: ["MEDIA", "미디어"],
   support: ["SUPPORT", "지원"],
+  my_page: ["MY PAGE", "마이 페이지"],
 };
 
 export default TITLES;
