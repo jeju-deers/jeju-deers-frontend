@@ -5,7 +5,7 @@ export const NewsLayout = styled.div`
   ${tw`
     h-full
     w-full
-    py-20
+    pt-20
   `}
 `;
 
