@@ -10,9 +10,10 @@ import Search from "~/components/molecules/news/Search";
 interface Props {
   name: string;
   title: string;
+  body: string;
 }
 
-function News() {
+const News = () => {
   const [boardlist, setBoardlist] = useState([]);
   const [filteredBoardlist, setFilteredBoardlist] = useState([]);
   const [page, setPage] = useState(1);
@@ -22,10 +23,26 @@ function News() {
   const offset = (page - 1) * limit;
 
   const handleSearch = () => {
-    const filtered = boardlist.filter((item: Props) =>
-      item.title.toLowerCase().includes(searchQuery.toLowerCase()),
-    );
-    setFilteredBoardlist(filtered);
+    if (searchQuery.trim() === "") {
+      setFilteredBoardlist(boardlist);
+    } else {
+      const filtered = boardlist.filter((item: Props) => {
+        const query = searchQuery.toLowerCase();
+        switch (searchFilterOption) {
+          case "title":
+            return item.title.toLowerCase().includes(query);
+          case "name":
+            return item.name.toLowerCase().includes(query);
+          case "titleAndBody":
+            return (
+              item.title.toLowerCase().includes(query) || item.body.toLowerCase().includes(query)
+            );
+          default:
+            return false;
+        }
+      });
+      setFilteredBoardlist(filtered);
+    }
     setPage(1);
   };
 
@@ -62,6 +79,6 @@ function News() {
       />
     </NewsLayout>
   );
-}
+};
 
 export default News;
