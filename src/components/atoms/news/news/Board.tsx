@@ -12,7 +12,7 @@ interface Props {
 }
 
 // TODO: [2024-07-03] 명단 데이터 불러오기 api 연결 후, 실제 데이터를 가지고 와야합니다
-const RosterList = ({ boardlist }: Props) => {
+const Board = ({ boardlist }: Props) => {
   const totalRows = 15;
   const emptyRows = totalRows - boardlist.length;
   return (
@@ -48,4 +48,4 @@ const RosterList = ({ boardlist }: Props) => {
   );
 };
 
-export default RosterList;
+export default Board;
