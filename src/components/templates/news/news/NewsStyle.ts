@@ -5,7 +5,6 @@ export const NewsLayout = styled.div`
   ${tw`
     h-full
     w-full
-    px-32
     py-20
   `}
 `;
@@ -20,6 +19,7 @@ export const BoardTitleWrap = styled.div`
 export const NewsBoardWrap = styled.div`
   ${tw`
     py-16
+    px-32
     min-w-[1050px]
   `}
 `;

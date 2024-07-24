@@ -2,6 +2,7 @@ const NEWS = [
   {
     id: 1,
     title: "테스트1",
+    body: "",
     position: "RB",
     name: "고겨레",
     date: "2024-07-11",
@@ -10,6 +11,7 @@ const NEWS = [
   {
     id: 2,
     title: "테스트2",
+    body: "",
     position: "RB",
     name: "고겨레",
     date: "2024-07-11",
@@ -18,6 +20,7 @@ const NEWS = [
   {
     id: 3,
     title: "테스트3",
+    body: "",
     position: "RB",
     name: "고겨레",
     date: "2024-07-11",
@@ -26,6 +29,7 @@ const NEWS = [
   {
     id: 4,
     title: "테스트4",
+    body: "",
     position: "RB",
     name: "고겨레",
     date: "2024-07-11",
@@ -34,6 +38,7 @@ const NEWS = [
   {
     id: 5,
     title: "테스트5",
+    body: "",
     position: "RB",
     name: "고겨레",
     date: "2024-07-11",
@@ -42,6 +47,7 @@ const NEWS = [
   {
     id: 6,
     title: "테스트6",
+    body: "",
     position: "RB",
     name: "고겨레",
     date: "2024-07-11",
