@@ -28,5 +28,6 @@ export const WriteButtonWrap = styled.div`
   ${tw`
     text-end
     mt-4
+    min-w-[1050px]
   `}
 `;
