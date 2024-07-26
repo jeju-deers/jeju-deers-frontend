@@ -41,7 +41,7 @@ const News = () => {
             return false;
         }
       });
-      setFilteredBoardlist(filtered);
+      setFilteredBoardlist(filtered.length > 0 ? filtered : []);
     }
     setPage(1);
   };
