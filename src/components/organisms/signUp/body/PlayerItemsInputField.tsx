@@ -5,7 +5,7 @@ import { ChangeEvent } from "react";
 interface Props {
   onChangeInput: (event: ChangeEvent<HTMLInputElement>) => void;
 }
-const RosterItemsInputField = ({ onChangeInput }: Props) => {
+const PlayerItemsInputField = ({ onChangeInput }: Props) => {
   return (
     <PlayerItemsInputFieldBox>
       <ItemInputField id="inputSchool" text="출신학교" required onChange={onChangeInput} />
@@ -22,4 +22,4 @@ const RosterItemsInputField = ({ onChangeInput }: Props) => {
   );
 };
 
-export default RosterItemsInputField;
+export default PlayerItemsInputField;
