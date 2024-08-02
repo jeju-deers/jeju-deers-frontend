@@ -9,7 +9,7 @@ import {
 import SubHeader from "~/components/molecules/myPage/subHeader/SubHeader";
 import BasicItemsInputField from "~/components/organisms/myPage/BasicItemsInputField";
 import PlayerItemsInputField from "~/components/organisms/myPage/PlayerItemsInputField";
-import CoachItemsInputField from "~/components/organisms/myPage/CoachesStaffItemsInputField";
+import CoachItemsInputField from "~/components/organisms/myPage/CoachItemsInputField";
 import SubmitButton from "~/components/atoms/myPage/body/SubmitButton";
 import CancelButton from "~/components/atoms/myPage/body/CancelButton";
 import { useState } from "react";
