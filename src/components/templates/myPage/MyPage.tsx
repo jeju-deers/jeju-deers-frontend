@@ -1,4 +1,3 @@
-import RosterItemsInputField from "~/components/organisms/myPage/RosterItemsInputField";
 import {
   BasicItemsInputFieldWrap,
   FormActionButtonBox,
@@ -7,12 +6,13 @@ import {
   OptionItemsInputFieldWrap,
   SubHeaderWrap,
 } from "./MyPageStyles";
-import CoachesStaffItemsInputField from "~/components/organisms/myPage/CoachesStaffItemsInputField";
 import SubHeader from "~/components/molecules/myPage/subHeader/SubHeader";
 import BasicItemsInputField from "~/components/organisms/myPage/BasicItemsInputField";
-import { useState } from "react";
+import PlayerItemsInputField from "~/components/organisms/myPage/PlayerItemsInputField";
+import CoachItemsInputField from "~/components/organisms/myPage/CoachesStaffItemsInputField";
 import SubmitButton from "~/components/atoms/myPage/body/SubmitButton";
 import CancelButton from "~/components/atoms/myPage/body/CancelButton";
+import { useState } from "react";
 
 const MyPage = () => {
   const [selectedOption, setSelectedOption] = useState("roster");
@@ -25,10 +25,10 @@ const MyPage = () => {
 
   const getOptionInputField = () => {
     if (selectedOption === "roster") {
-      return <RosterItemsInputField />;
+      return <PlayerItemsInputField />;
     }
     if (selectedOption === "coachesStaff") {
-      return <CoachesStaffItemsInputField />;
+      return <CoachItemsInputField />;
     }
     if (selectedOption === "outsider") {
       return <></>;

@@ -1,19 +1,19 @@
 import ItemInputField from "~/components/molecules/myPage/body/ItemInputField";
-import { CoachesStaffItemsInputFieldBox } from "./CoachesStaffItemsInputFieldStyles";
+import { CoachItemsInputFieldBox } from "./CoachesStaffItemsInputFieldStyles";
 
-const CoachesStaffItemsInputField = () => {
+const CoachItemsInputField = () => {
   return (
-    <CoachesStaffItemsInputFieldBox>
-      <ItemInputField id="coachesStaffSchoolFrom" text="출신학교" required={false} />
-      <ItemInputField id="coachesStaffStudentId" text="학번" required={false} />
+    <CoachItemsInputFieldBox>
+      <ItemInputField id="coachSchoolFrom" text="출신학교" required={false} />
+      <ItemInputField id="coachStudentId" text="학번" required={false} />
       <ItemInputField
-        id="coachesStaffResponsibility"
+        id="coachResponsibility"
         text="담당"
         required={false}
         condition="(여러개 입력 가능)"
       />
-    </CoachesStaffItemsInputFieldBox>
+    </CoachItemsInputFieldBox>
   );
 };
 
-export default CoachesStaffItemsInputField;
+export default CoachItemsInputField;
