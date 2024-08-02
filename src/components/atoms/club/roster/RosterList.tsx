@@ -1,6 +1,7 @@
 import RosterImage from "./RosterImage";
 import { RosterItem, RosterListBox, RosterListHeader, RosterlistRow } from "./RosterListStyles";
 import axios, { AxiosResponse, AxiosError } from "axios";
+import rosterImage from "~/assets/images/Roster.svg";
 
 interface Props {
   rosterdataset: {
@@ -57,10 +58,10 @@ const RosterList = ({ rosterdataset }: Props) => {
         <RosterItem>소속</RosterItem>
         <RosterItem>입단년도</RosterItem>
       </RosterListHeader>
-      {rosterlist.map(({ userId, image, name, backNumber, positions, birth, belong, join }) => (
+      {rosterlist.map(({ userId, name, backNumber, positions, birth, belong, join }) => (
         <RosterlistRow key={userId}>
           <RosterItem>
-            <RosterImage src={image} />
+            <RosterImage src={rosterImage} />
           </RosterItem>
           <RosterItem>{name}</RosterItem>
           <RosterItem>{backNumber}</RosterItem>
