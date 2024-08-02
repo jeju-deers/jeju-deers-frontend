@@ -2,29 +2,32 @@ import tw from "twin.macro";
 import styled from "styled-components";
 
 export const ModalContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  left: 0px;
+  ${tw`
+    w-full
+    h-full
+    flex
+    items-center
+    justify-center
+    fixed
+    left-0
+  `}
 `;
 
 export const LoginModalBox = styled.div`
-  width: 600px;
-  height: 550px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: none;
-  border-radius: 10px;
-  box-shadow: 0 0 30px rgba(30, 30, 30, 0.185);
-  box-sizing: border-box;
-  background-color: white;
-  padding: 40px 10px;
-  position: relative;
-  z-index: 10000;
+  ${tw`
+    w-150
+    h-137.5
+    flex
+    flex-col
+    items-center
+    border-none
+    rounded-lg
+    bg-white
+    py-10
+    px-4
+    relative
+    z-50
+  `}
 `;
 export const LoginTitleBox = styled.div`
   ${tw`
@@ -39,7 +42,9 @@ export const LoginTitleBox = styled.div`
 `;
 
 export const LoginModalLogoImage = styled.img`
-  width: 120px;
+  ${tw`
+    w-32
+  `}
 `;
 
 export const LoginTitleSpan = styled.p`
@@ -97,11 +102,14 @@ export const CloseButton = styled.button`
 `;
 
 export const Backdrop = styled.div`
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9999;
-  background-color: rgba(0, 0, 0, 0.2);
+  ${tw`
+    w-screen
+    h-screen
+    fixed
+    top-0
+    left-0
+    z-40
+    bg-black
+    bg-opacity-40
+  `}
 `;

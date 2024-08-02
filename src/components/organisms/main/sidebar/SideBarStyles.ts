@@ -17,6 +17,6 @@ export const SidebarBox = styled.div`
     bg-white
     bg-center
     bg-no-repeat
-    z-20
+    z-10
   `}
 `;

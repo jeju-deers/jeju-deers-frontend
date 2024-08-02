@@ -15,7 +15,9 @@ module.exports = {
       width: {
         125: "500px",
         145: "580px",
+        150: "600px",
         184: "735px",
+
         235: "940px",
       },
       minWidth: {
@@ -29,6 +31,7 @@ module.exports = {
       height: {
         17.5: "70px",
         75: "300px",
+        137.5: "550px",
         "6/10-screen": "60vh",
       },
       fontSize: {
