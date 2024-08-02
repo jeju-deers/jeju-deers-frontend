@@ -14,7 +14,7 @@ const BasicItemsInputField = () => {
       <ItemInputField id="passwordConfirm" text="비밀번호 확인" required={false} />
       <ItemInputField id="userName" text="이름" required={false} />
       <ItemInputField id="userNickName" text="닉네임" required={false} />
-      <ItemInputField id="userEMail" text="이메일" required={false} />
+      <ItemInputField id="userEmail" text="이메일" required={false} />
     </BasicItemsInputFieldBox>
   );
 };
