@@ -16,6 +16,8 @@ const TITLES: { [key: string]: string[] } = {
   media: ["MEDIA", "미디어"],
   support: ["SUPPORT", "지원"],
   my_page: ["MY PAGE", "마이 페이지"],
+  signup: ["JOIN JEJU DEERS", "제주디어스 회원가입"],
+  login: ["LOGIN", "로그인"],
 };
 
 export default TITLES;
