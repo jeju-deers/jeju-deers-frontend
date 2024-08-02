@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import tw from "twin.macro";
 
-export const RosterItemsInputFieldBox = styled.div`
+export const PlayerItemsInputFieldBox = styled.div`
   ${tw`
     flex
     flex-col
