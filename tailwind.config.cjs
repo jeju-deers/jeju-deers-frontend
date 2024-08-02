@@ -30,7 +30,7 @@ module.exports = {
         428: "1712px",
       },
       height: {
-        17.5: "70ox",
+        17.5: "70px",
         75: "300px",
         "6/10-screen": "60vh",
       },
