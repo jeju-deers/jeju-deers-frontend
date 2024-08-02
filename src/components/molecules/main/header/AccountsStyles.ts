@@ -9,7 +9,7 @@ export const AccountsBox = styled.div`
   `}
   :hover > * {
     ${tw`
-      text-[#69a6ff]
+      text-blue
     `}
   }
 `;

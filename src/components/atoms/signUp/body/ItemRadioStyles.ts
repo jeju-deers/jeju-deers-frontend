@@ -17,7 +17,7 @@ export const ItemRadioInput = styled.input`
 export const ItemRadioLabel = styled.label`
   ${tw`
     text-xl
-    text-[#6B6B6B]
+    text-gray-1000
     font-medium
   `}
 `;

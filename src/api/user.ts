@@ -1,6 +1,6 @@
 import { instance } from ".";
 
-interface PostSignUpParams {
+interface PostSignUpProps {
   //   userType: "external" | "player" | "coach";
   userType: string;
   userId: string;
@@ -27,7 +27,7 @@ export const postSignUp = ({
   studentId,
   positions,
   backNumber,
-}: PostSignUpParams) => {
+}: PostSignUpProps) => {
   return instance.post("/signup", {
     userType,
     userId,
@@ -43,12 +43,12 @@ export const postSignUp = ({
   });
 };
 
-interface PostLoginParams {
+interface PostLoginProps {
   userId: string;
   password: string;
 }
 
-export const postLogin = ({ userId, password }: PostLoginParams) => {
+export const postLogin = ({ userId, password }: PostLoginProps) => {
   return instance.post("/login", {
     userId,
     password,

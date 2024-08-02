@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { postSignUp } from "~/api/user";
 
-interface Params {
+interface Props {
   // userType: "external" | "player" | "coach";
   userType: string;
   userId: string;
@@ -14,7 +14,7 @@ interface Params {
 
 const usePostExternalSignUp = () => {
   const mutation = useMutation({
-    mutationFn: ({ userType, userId, password, passwordConfirm, name, nickname, email }: Params) =>
+    mutationFn: ({ userType, userId, password, passwordConfirm, name, nickname, email }: Props) =>
       postSignUp({ userType, userId, password, passwordConfirm, name, nickname, email }),
     onSuccess: (data) => {
       console.log(`external 회원가입 성공, data: ${data}`);

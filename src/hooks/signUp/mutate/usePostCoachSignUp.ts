@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { postSignUp } from "~/api/user";
 
-interface Params {
+interface Props {
   // userType: "external" | "player" | "coach";
   userType: string;
   userId: string;
@@ -28,7 +28,7 @@ const usePostCoachSignUp = () => {
       school,
       studentId,
       positions,
-    }: Params) =>
+    }: Props) =>
       postSignUp({
         userType,
         userId,
