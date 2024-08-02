@@ -3,13 +3,13 @@ import tw from "twin.macro";
 
 export const CancelButtonButton = styled.button`
   ${tw`
-    text-[28px]
-    text-[#0C2F23]
-    w-[304px]
-    h-[70px]
-    bg-[#FFFFFF]
-    border-[1px]
-    border-[#0C2F23]
+    text-1.75
+    text-green-dark
+    w-75
+    h-17.5
+    bg-white
+    border
+    border-green-dark
     rounded-lg
   `}
 `;
