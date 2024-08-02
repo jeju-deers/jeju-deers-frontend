@@ -34,7 +34,6 @@ export const TabMenuWrap = styled.div`
 export const Tab = styled.div`
   ${tw`
     font-bold
-    font-inter
     text-white
     px-8
     py-3
@@ -44,7 +43,6 @@ export const Tab = styled.div`
 
 export const TabMenuBox = styled.div`
   ${tw`
-    font-inter
     text-base
     w-40
   `}
@@ -66,6 +64,7 @@ export const TabMenuItemBox = styled.div`
   ${tw`
     font-extrabold
     italic
+    
     text-gray-1000
     bg-white
     border-gray-500

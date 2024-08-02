@@ -12,9 +12,6 @@ module.exports = {
         "gray-500": "#C8C8C8",
         "gray-1000": "#6B6B6B",
       },
-      fontFamily: {
-        inter: ["Inter", "sans-serif"],
-      },
       width: {
         125: "500px",
         145: "580px",
