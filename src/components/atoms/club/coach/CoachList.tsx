@@ -1,9 +1,9 @@
 import {
   CoachImage,
-  CoachItem,
+  CoachItemBox,
   CoachListBox,
-  CoachListHeader,
-  CoachlistRow,
+  CoachListHeaderBox,
+  CoachListRowBox,
 } from "./CoachListStyles";
 
 interface Props {
@@ -22,25 +22,25 @@ interface Props {
 const CoachList = ({ coachlist }: Props) => {
   return (
     <CoachListBox>
-      <CoachListHeader>
-        <CoachItem>코치</CoachItem>
-        <CoachItem></CoachItem>
-        <CoachItem>담당</CoachItem>
-        <CoachItem>생년월일</CoachItem>
-        <CoachItem>학번</CoachItem>
-        <CoachItem>출신학교</CoachItem>
-      </CoachListHeader>
+      <CoachListHeaderBox>
+        <CoachItemBox>코치</CoachItemBox>
+        <CoachItemBox></CoachItemBox>
+        <CoachItemBox>담당</CoachItemBox>
+        <CoachItemBox>생년월일</CoachItemBox>
+        <CoachItemBox>학번</CoachItemBox>
+        <CoachItemBox>출신학교</CoachItemBox>
+      </CoachListHeaderBox>
       {coachlist.map(({ id, image, name, position, birth, studentId, schoolOfOrigin }) => (
-        <CoachlistRow key={id}>
-          <CoachItem>
+        <CoachListRowBox key={id}>
+          <CoachItemBox>
             <CoachImage src={image} />
-          </CoachItem>
-          <CoachItem>{name}</CoachItem>
-          <CoachItem>{position}</CoachItem>
-          <CoachItem>{birth}</CoachItem>
-          <CoachItem>{studentId}</CoachItem>
-          <CoachItem>{schoolOfOrigin}</CoachItem>
-        </CoachlistRow>
+          </CoachItemBox>
+          <CoachItemBox>{name}</CoachItemBox>
+          <CoachItemBox>{position}</CoachItemBox>
+          <CoachItemBox>{birth}</CoachItemBox>
+          <CoachItemBox>{studentId}</CoachItemBox>
+          <CoachItemBox>{schoolOfOrigin}</CoachItemBox>
+        </CoachListRowBox>
       ))}
     </CoachListBox>
   );

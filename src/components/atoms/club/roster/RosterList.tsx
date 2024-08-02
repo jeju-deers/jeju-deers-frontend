@@ -3,23 +3,9 @@ import { RosterItem, RosterListBox, RosterListHeader, RosterlistRow } from "./Ro
 import axios, { AxiosResponse, AxiosError } from "axios";
 import rosterImage from "~/assets/images/Roster.svg";
 
-interface Props {
-  rosterdataset: {
-    userType: string;
-    userId: number;
-    image: string;
-    name: string;
-    backNumber: string;
-    positions: string;
-    birth: string;
-    belong: string;
-    join: string;
-  }[];
-}
-
 // TODO: [2024-07-03] 명단 데이터 불러오기 api 연결 후, 실제 데이터를 가지고 와야합니다
-const RosterList = ({ rosterdataset }: Props) => {
-  const [rosterlist, setRosterlist] = useState(rosterdataset);
+const RosterList = () => {
+  const [rosterlist, setRosterlist] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 

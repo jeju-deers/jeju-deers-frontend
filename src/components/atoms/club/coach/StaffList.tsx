@@ -1,9 +1,9 @@
 import {
   StaffImage,
-  StaffItem,
+  StaffItemBox,
   StaffListBox,
-  StaffListHeader,
-  StafflistRow,
+  StaffListHeaderBox,
+  StaffListRowBox,
 } from "./StaffListStyles";
 
 interface Props {
@@ -21,23 +21,23 @@ interface Props {
 const StaffList = ({ stafflist }: Props) => {
   return (
     <StaffListBox>
-      <StaffListHeader>
-        <StaffItem>스태프</StaffItem>
-        <StaffItem></StaffItem>
-        <StaffItem>담당</StaffItem>
-        <StaffItem>생년월일</StaffItem>
-        <StaffItem>입단년도</StaffItem>
-      </StaffListHeader>
+      <StaffListHeaderBox>
+        <StaffItemBox>스태프</StaffItemBox>
+        <StaffItemBox></StaffItemBox>
+        <StaffItemBox>담당</StaffItemBox>
+        <StaffItemBox>생년월일</StaffItemBox>
+        <StaffItemBox>입단년도</StaffItemBox>
+      </StaffListHeaderBox>
       {stafflist.map(({ id, image, name, position, birth, join }) => (
-        <StafflistRow key={id}>
-          <StaffItem>
+        <StaffListRowBox key={id}>
+          <StaffItemBox>
             <StaffImage src={image} />
-          </StaffItem>
-          <StaffItem>{name}</StaffItem>
-          <StaffItem>{position}</StaffItem>
-          <StaffItem>{birth}</StaffItem>
-          <StaffItem>{join}</StaffItem>
-        </StafflistRow>
+          </StaffItemBox>
+          <StaffItemBox>{name}</StaffItemBox>
+          <StaffItemBox>{position}</StaffItemBox>
+          <StaffItemBox>{birth}</StaffItemBox>
+          <StaffItemBox>{join}</StaffItemBox>
+        </StaffListRowBox>
       ))}
     </StaffListBox>
   );

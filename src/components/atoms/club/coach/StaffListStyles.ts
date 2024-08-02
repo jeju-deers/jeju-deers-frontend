@@ -48,7 +48,7 @@ export const StaffListBox = styled.div`
   }
 `;
 
-export const StaffListHeader = styled.div`
+export const StaffListHeaderBox = styled.div`
   ${tw`
     flex
     text-xl
@@ -83,7 +83,7 @@ export const StaffListHeader = styled.div`
   }
 `;
 
-export const StaffItem = styled.div`
+export const StaffItemBox = styled.div`
   ${tw`
     flex
     justify-center
@@ -91,7 +91,7 @@ export const StaffItem = styled.div`
   `}
 `;
 
-export const StafflistRow = styled.div`
+export const StaffListRowBox = styled.div`
   ${tw`
     flex
     text-xl

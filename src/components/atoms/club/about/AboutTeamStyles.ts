@@ -22,7 +22,7 @@ export const TeamLogoImage = styled.img`
   `}
 `;
 
-export const TeamNameBox = styled.span`
+export const TeamNameBox = styled.div`
   ${tw`
     flex
     flex-col

@@ -48,7 +48,7 @@ export const CoachListBox = styled.div`
   }
 `;
 
-export const CoachListHeader = styled.div`
+export const CoachListHeaderBox = styled.div`
   ${tw`
     flex
     text-xl
@@ -81,7 +81,7 @@ export const CoachListHeader = styled.div`
   }
 `;
 
-export const CoachItem = styled.div`
+export const CoachItemBox = styled.div`
   ${tw`
     flex
     justify-center
@@ -89,7 +89,7 @@ export const CoachItem = styled.div`
   `}
 `;
 
-export const CoachlistRow = styled.div`
+export const CoachListRowBox = styled.div`
   ${tw`
     flex
     text-xl

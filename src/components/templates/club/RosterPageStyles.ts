@@ -13,6 +13,6 @@ export const RosterPageLayout = styled.div`
 
 export const RosterListWrap = styled.div`
   ${tw`
-    py-20
+    py-10
   `}
 `;
