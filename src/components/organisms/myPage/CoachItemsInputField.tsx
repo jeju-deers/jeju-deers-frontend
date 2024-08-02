@@ -1,5 +1,5 @@
 import ItemInputField from "~/components/molecules/myPage/body/ItemInputField";
-import { CoachItemsInputFieldBox } from "./CoachesStaffItemsInputFieldStyles";
+import { CoachItemsInputFieldBox } from "./CoachItemsInputFieldStyles";
 
 const CoachItemsInputField = () => {
   return (
