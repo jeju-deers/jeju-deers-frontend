@@ -6,8 +6,8 @@ export const CoachesStaffItemsInputFieldBox = styled.div`
     flex
     flex-col
     gap-7
-    border-t-[1px]
-    border-[#C8C8C8]
+    border-t
+    border-gray-500
     pt-12
     mt-12
   `}

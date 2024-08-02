@@ -5,8 +5,8 @@ export const MyPageLayout = styled.div`
   ${tw`
     mt-24
     mb-40
-    max-w-[1200px]
-    min-w-[940px]
+    max-w-300
+    min-w-235
     mx-64
     items-center
     flex
@@ -19,13 +19,13 @@ export const SubHeaderWrap = styled.div`
     w-full
     pb-12
     border-b-8
-    border-[#0C2F23]
+    border-gray-dark
   `}
 `;
 
 export const MyPageForm = styled.form`
   ${tw`
-    w-[940px]
+    w-235
     flex
     flex-col
     items-center
@@ -36,8 +36,8 @@ export const SignUpPurposeFieldWrap = styled.div`
   ${tw`
     w-full
     py-12
-    border-b-[1px]
-    border-[#C8C8C8]
+    border-b
+    border-gray-500
   `}
 `;
 

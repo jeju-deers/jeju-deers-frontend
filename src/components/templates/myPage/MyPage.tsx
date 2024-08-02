@@ -17,6 +17,7 @@ import CancelButton from "~/components/atoms/myPage/body/CancelButton";
 const MyPage = () => {
   const [selectedOption, setSelectedOption] = useState("roster");
 
+  // TODO: [2024-08-02] userType에 따라 다른 마이페이지 양식을 띄워주는 코드를 작성해야합니다.
   //   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
   //     const selectedId = event.target.id;
   //     setSelectedOption(selectedId);
