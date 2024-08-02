@@ -1,6 +1,6 @@
 import { instance } from ".";
 
-interface PostSignUpParams {
+interface PostSignUpProps {
   //   userType: "external" | "player" | "coach";
   userType: string;
   userId: string;
@@ -27,7 +27,7 @@ export const postSignUp = ({
   studentId,
   positions,
   backNumber,
-}: PostSignUpParams) => {
+}: PostSignUpProps) => {
   return instance.post("/signup", {
     userType,
     userId,
