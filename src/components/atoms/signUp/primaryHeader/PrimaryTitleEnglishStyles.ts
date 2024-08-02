@@ -4,7 +4,7 @@ import tw from "twin.macro";
 export const PrimaryTitleEnglishSpan = styled.span`
   ${tw`
     text-2xl
-    text-[#FFFFFF]
+    text-white
     font-bold
   `}
 `;

@@ -3,13 +3,13 @@ import tw from "twin.macro";
 
 export const PrivacyPolicyTextBox = styled.div`
   ${tw`
-    text-[#6B6B6B]
+    text-gray-1000
     font-medium
-    w-[735px]
-    h-[300px]
+    w-184
+    h-75
     p-2
-    border-[1px]
-    border-[#DFDFDF]
+    border
+    border-gray-400
     overflow-auto
   `}
 `;
