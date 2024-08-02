@@ -4,7 +4,7 @@ import NotFound from "../pages/NotFound";
 import AboutPage from "../pages/club/AboutPage";
 import OrganizationPage from "../pages/club/OrganizationPage";
 import RosterPage from "../pages/club/RosterPage";
-import CoachesStaffPage from "../pages/club/CoachesStaffPage";
+import CoachesStaffPage from "../pages/club/CoachPage";
 import SponsorPage from "../pages/club/SponsorPage";
 import PracticeSchedulePage from "../pages/teamroom/PracticeSchedulePage";
 import TeamBoardPage from "../pages/teamroom/TeamBoardPage";
