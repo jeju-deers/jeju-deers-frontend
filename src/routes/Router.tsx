@@ -18,7 +18,9 @@ import SupportPage from "../pages/community/SupportPage";
 import SchedulePage from "../pages/news/SchedulePage";
 import NewsPage from "../pages/news/NewsPage";
 import Base from "../Base";
+import MyPagePage from "~/pages/MyPagePage";
 import SignUpPage from "~/pages/SignUpPage";
+import LoginPage from "~/pages/LoginPage";
 
 const Router = () => {
   return (
@@ -27,7 +29,9 @@ const Router = () => {
         <Route path="/" element={<Base />}>
           <Route path="/" element={<MainPage />} />
 
+          <Route path="/my_page" element={<MyPagePage />} />
           <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/login" element={<LoginPage />} />
 
           <Route path="/club/about" element={<AboutPage />} />
           <Route path="/club/organization" element={<OrganizationPage />} />

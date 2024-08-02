@@ -42,3 +42,15 @@ export const postSignUp = ({
     backNumber,
   });
 };
+
+interface PostLoginProps {
+  userId: string;
+  password: string;
+}
+
+export const postLogin = ({ userId, password }: PostLoginProps) => {
+  return instance.post("/login", {
+    userId,
+    password,
+  });
+};

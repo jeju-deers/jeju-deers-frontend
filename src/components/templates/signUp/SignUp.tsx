@@ -40,6 +40,7 @@ const SignUp = ({ selectedOption, onChangeInput, onChangeSelected, onSubmit }: P
   };
 
   return (
+    // TODO: [2024-08-02] WholeSignUpLayout 제거 및 outlet subheader을 이용하여 병합
     <WholeSignUpLayout>
       <PrimaryHeaderWrap>
         <PrimaryHeader />
