@@ -4,7 +4,7 @@ import NotFound from "../pages/NotFound";
 import AboutPage from "../pages/club/AboutPage";
 import OrganizationPage from "../pages/club/OrganizationPage";
 import RosterPage from "../pages/club/RosterPage";
-import CoachesStaffPage from "../pages/club/CoachesStaffPage";
+import CoachesStaffPage from "../pages/club/CoachPage";
 import SponsorPage from "../pages/club/SponsorPage";
 import PracticeSchedulePage from "../pages/teamroom/PracticeSchedulePage";
 import TeamBoardPage from "../pages/teamroom/TeamBoardPage";
@@ -19,6 +19,7 @@ import SchedulePage from "../pages/news/SchedulePage";
 import NewsPage from "../pages/news/NewsPage";
 import Base from "../Base";
 import MyPagePage from "~/pages/MyPagePage";
+import SignUpPage from "~/pages/SignUpPage";
 
 const Router = () => {
   return (
@@ -27,6 +28,8 @@ const Router = () => {
         <Route path="/" element={<Base />}>
           <Route path="/" element={<MainPage />} />
           <Route path="/my_page" element={<MyPagePage />} />
+
+          <Route path="/signup" element={<SignUpPage />} />
 
           <Route path="/club/about" element={<AboutPage />} />
           <Route path="/club/organization" element={<OrganizationPage />} />

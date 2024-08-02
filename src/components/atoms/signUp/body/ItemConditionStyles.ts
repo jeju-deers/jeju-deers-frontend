@@ -4,7 +4,7 @@ import tw from "twin.macro";
 export const ItemConditionSpan = styled.span`
   ${tw`
     text-base
-    text-[#6B6B6B]    
+    text-gray-1000
     font-medium
   `}
 `;

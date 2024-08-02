@@ -1,7 +1,7 @@
-import { AboutPageLayout } from "./AboutPageStyles";
+import About from "~/components/templates/club/AboutPage";
 
 const AboutPage = () => {
-  return <AboutPageLayout>About 페이지입니다.</AboutPageLayout>;
+  return <About />;
 };
 
 export default AboutPage;
