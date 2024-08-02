@@ -19,7 +19,7 @@ export const SubHeaderWrap = styled.div`
     w-full
     pb-12
     border-b-8
-    border-gray-dark
+    border-green-dark
   `}
 `;
 
