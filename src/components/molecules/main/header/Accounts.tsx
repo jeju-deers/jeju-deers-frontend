@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useCallback, useState } from "react";
+import { ChangeEvent, FormEvent, useCallback, useEffect, useState } from "react";
 import Account from "~/components/atoms/main/header/Account";
 import logInOut from "~/assets/images/loginout.svg";
 import signUp from "~/assets/images/singup.svg";
@@ -7,6 +7,7 @@ import usePostLogin from "~/hooks/login/mutate/usePostLogin";
 import { AccountsBox, AccountsWrap } from "./AccountsStyles";
 
 const Accounts = () => {
+  const [loginText, setLoginText] = useState("LOG IN");
   const [isOpenModal, setOpenModal] = useState<boolean>(false);
   const postLogin = usePostLogin();
   const [userId, setUserId] = useState("");
@@ -35,10 +36,17 @@ const Accounts = () => {
     });
   };
 
+  useEffect(() => {
+    if (postLogin.isSuccess) {
+      setLoginText("Log out");
+      onClickToggleModal();
+    }
+  }, [postLogin.isSuccess]);
+
   return (
     <AccountsBox>
       <AccountsWrap>
-        <Account src={logInOut} alt="Log inout" text="LOG IN" onClick={onClickToggleModal} />
+        <Account src={logInOut} alt="Log inout" text={loginText} onClick={onClickToggleModal} />
         {isOpenModal && (
           <LoginModal
             onClickToggleModal={onClickToggleModal}

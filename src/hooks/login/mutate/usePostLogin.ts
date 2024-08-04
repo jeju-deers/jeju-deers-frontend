@@ -2,14 +2,14 @@ import { useMutation } from "@tanstack/react-query";
 import axios, { AxiosResponse } from "axios";
 import { postLogin } from "~/api/user";
 
-interface Params {
+interface Props {
   userId: string;
   password: string;
 }
 
 const usePostLogin = () => {
   const mutation = useMutation({
-    mutationFn: ({ userId, password }: Params) =>
+    mutationFn: ({ userId, password }: Props) =>
       postLogin({
         userId,
         password,
