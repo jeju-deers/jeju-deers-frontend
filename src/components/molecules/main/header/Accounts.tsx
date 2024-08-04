@@ -43,6 +43,14 @@ const Accounts = () => {
     }
   }, [postLogin.isSuccess]);
 
+  useEffect(() => {
+    // TODO: [2024-08-05] 추후 userType 값이 백엔드에서 반환되면, userType 값을 활용하는 코드로 수정
+    const token = localStorage.getItem("token");
+    if (token) {
+      setLoginText("Log out");
+    }
+  }, []);
+
   return (
     <AccountsBox>
       <AccountsWrap>
