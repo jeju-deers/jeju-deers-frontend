@@ -12,10 +12,22 @@ const Accounts = () => {
   const postLogin = usePostLogin();
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
+  // TODO: [2024-08-05] 추후 userType 값이 백엔드에서 반환되면, userType 값을 활용하는 코드로 수정
+  const token = localStorage.getItem("token");
 
   const onClickToggleModal = useCallback(() => {
     setOpenModal(!isOpenModal);
   }, [isOpenModal]);
+
+  const handleClickLogInOutButton = () => {
+    if (token) {
+      localStorage.removeItem("token");
+      setLoginText("Log In");
+      alert("로그아웃 되었습니다.");
+    } else {
+      onClickToggleModal();
+    }
+  };
 
   const handleEnterUserId = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -36,6 +48,7 @@ const Accounts = () => {
     });
   };
 
+  // TODO: [2024-08-05] 현재 usePostLogin훅 내에서 onSuccess를 사용하고 있고, 아래 코드에서 isSuccess를 사용하고 있어 리팩토링 필요
   useEffect(() => {
     if (postLogin.isSuccess) {
       setLoginText("Log out");
@@ -45,16 +58,18 @@ const Accounts = () => {
 
   useEffect(() => {
     // TODO: [2024-08-05] 추후 userType 값이 백엔드에서 반환되면, userType 값을 활용하는 코드로 수정
-    const token = localStorage.getItem("token");
-    if (token) {
-      setLoginText("Log out");
-    }
-  }, []);
+    token ? setLoginText("Log out") : setLoginText("Log In");
+  }, [token]);
 
   return (
     <AccountsBox>
       <AccountsWrap>
-        <Account src={logInOut} alt="Log inout" text={loginText} onClick={onClickToggleModal} />
+        <Account
+          src={logInOut}
+          alt="Log inout"
+          text={loginText}
+          onClick={handleClickLogInOutButton}
+        />
         {isOpenModal && (
           <LoginModal
             onClickToggleModal={onClickToggleModal}
