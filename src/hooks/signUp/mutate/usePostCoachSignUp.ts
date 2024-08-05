@@ -1,4 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 import { postSignUp } from "~/api/user";
 
 interface Props {
@@ -16,6 +17,8 @@ interface Props {
 }
 
 const usePostCoachSignUp = () => {
+  const navigate = useNavigate();
+
   const mutation = useMutation({
     mutationFn: ({
       userType,
@@ -43,6 +46,8 @@ const usePostCoachSignUp = () => {
       }),
     onSuccess: (data) => {
       console.log(`coach 회원가입 성공, data: ${data}`);
+      alert("회원가입 되었습니다.");
+      navigate("/");
     },
     onError: (error) => console.log(`coach 회원가입 실패, error: ${error}`),
   });
