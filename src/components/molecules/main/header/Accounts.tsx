@@ -1,4 +1,5 @@
 import { ChangeEvent, FormEvent, useCallback, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Account from "~/components/atoms/main/header/Account";
 import logInOut from "~/assets/images/loginout.svg";
 import signUp from "~/assets/images/singup.svg";
@@ -23,7 +24,7 @@ const Accounts = () => {
   const handleClickLogInOutButton = () => {
     if (token) {
       localStorage.removeItem("token");
-      setLoginText("Log In");
+      setLoginText("LOG IN");
       setSignUpText("SIGN UP");
       alert("로그아웃 되었습니다.");
     } else {
@@ -53,7 +54,7 @@ const Accounts = () => {
   // TODO: [2024-08-05] 현재 usePostLogin훅 내에서 onSuccess를 사용하고 있고, 아래 코드에서 isSuccess를 사용하고 있어 리팩토링 필요
   useEffect(() => {
     if (postLogin.isSuccess) {
-      setLoginText("Log out");
+      setLoginText("LOG OUT");
       setSignUpText("MY PAGE");
       onClickToggleModal();
     }
@@ -62,10 +63,10 @@ const Accounts = () => {
   useEffect(() => {
     // TODO: [2024-08-05] 추후 userType 값이 백엔드에서 반환되면, userType 값을 활용하는 코드로 수정
     if (token) {
-      setLoginText("Log out");
+      setLoginText("LOG OUT");
       setSignUpText("MY PAGE");
     } else {
-      setLoginText("Log In");
+      setLoginText("LOG IN");
       setSignUpText("SIGN UP");
     }
   }, [token]);
@@ -86,7 +87,9 @@ const Accounts = () => {
             handleEnterPassword={handleEnterPassword}
             handleClickLogin={handleClickLogin}></LoginModal>
         )}
-        <Account src={signUp} alt="Sign up" text={signUpText} onClick={onClickToggleModal} />
+        <Link to="/signup">
+          <Account src={signUp} alt="Sign up" text={signUpText} />
+        </Link>
       </AccountsWrap>
     </AccountsBox>
   );
