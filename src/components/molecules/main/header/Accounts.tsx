@@ -8,6 +8,7 @@ import { AccountsBox, AccountsWrap } from "./AccountsStyles";
 
 const Accounts = () => {
   const [loginText, setLoginText] = useState("LOG IN");
+  const [signUpText, setSignUpText] = useState("SIGN UP");
   const [isOpenModal, setOpenModal] = useState<boolean>(false);
   const postLogin = usePostLogin();
   const [userId, setUserId] = useState("");
@@ -23,6 +24,7 @@ const Accounts = () => {
     if (token) {
       localStorage.removeItem("token");
       setLoginText("Log In");
+      setSignUpText("SIGN UP");
       alert("로그아웃 되었습니다.");
     } else {
       onClickToggleModal();
@@ -52,13 +54,20 @@ const Accounts = () => {
   useEffect(() => {
     if (postLogin.isSuccess) {
       setLoginText("Log out");
+      setSignUpText("MY PAGE");
       onClickToggleModal();
     }
   }, [postLogin.isSuccess]);
 
   useEffect(() => {
     // TODO: [2024-08-05] 추후 userType 값이 백엔드에서 반환되면, userType 값을 활용하는 코드로 수정
-    token ? setLoginText("Log out") : setLoginText("Log In");
+    if (token) {
+      setLoginText("Log out");
+      setSignUpText("MY PAGE");
+    } else {
+      setLoginText("Log In");
+      setSignUpText("SIGN UP");
+    }
   }, [token]);
 
   return (
@@ -77,7 +86,7 @@ const Accounts = () => {
             handleEnterPassword={handleEnterPassword}
             handleClickLogin={handleClickLogin}></LoginModal>
         )}
-        <Account src={signUp} alt="Sign up" text="SIGN UP" onClick={onClickToggleModal} />
+        <Account src={signUp} alt="Sign up" text={signUpText} onClick={onClickToggleModal} />
       </AccountsWrap>
     </AccountsBox>
   );
