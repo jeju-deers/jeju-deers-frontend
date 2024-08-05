@@ -10,6 +10,7 @@ import { AccountsBox, AccountsWrap } from "./AccountsStyles";
 const Accounts = () => {
   const [loginText, setLoginText] = useState("LOG IN");
   const [signUpText, setSignUpText] = useState("SIGN UP");
+  const [signUpLink, setSignUpLink] = useState("/signup");
   const [isOpenModal, setOpenModal] = useState<boolean>(false);
   const postLogin = usePostLogin();
   const [userId, setUserId] = useState("");
@@ -26,6 +27,7 @@ const Accounts = () => {
       localStorage.removeItem("token");
       setLoginText("LOG IN");
       setSignUpText("SIGN UP");
+      setSignUpLink("/my_page");
       alert("로그아웃 되었습니다.");
     } else {
       onClickToggleModal();
@@ -56,6 +58,7 @@ const Accounts = () => {
     if (postLogin.isSuccess) {
       setLoginText("LOG OUT");
       setSignUpText("MY PAGE");
+      setSignUpLink("/my_page");
       onClickToggleModal();
     }
   }, [postLogin.isSuccess]);
@@ -65,9 +68,11 @@ const Accounts = () => {
     if (token) {
       setLoginText("LOG OUT");
       setSignUpText("MY PAGE");
+      setSignUpLink("/my_page");
     } else {
       setLoginText("LOG IN");
       setSignUpText("SIGN UP");
+      setSignUpLink("/signup");
     }
   }, [token]);
 
@@ -87,7 +92,7 @@ const Accounts = () => {
             handleEnterPassword={handleEnterPassword}
             handleClickLogin={handleClickLogin}></LoginModal>
         )}
-        <Link to="/signup">
+        <Link to={signUpLink}>
           <Account src={signUp} alt="Sign up" text={signUpText} />
         </Link>
       </AccountsWrap>
