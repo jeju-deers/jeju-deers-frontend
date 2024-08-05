@@ -1,7 +1,7 @@
 import tw from "twin.macro";
 import styled from "styled-components";
 
-export const DropdownSelect = styled.select`
+export const DropdownButtonSelect = styled.select`
   ${tw`
     border
     border-gray-300

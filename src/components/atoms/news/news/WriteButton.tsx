@@ -1,7 +1,7 @@
-import { WritButtonButton } from "./WriteButtonStyles";
+import { WriteButtonButton } from "./WriteButtonStyles";
 
 const WriteButton = () => {
-  return <WritButtonButton>글쓰기</WritButtonButton>;
+  return <WriteButtonButton>글쓰기</WriteButtonButton>;
 };
 
 export default WriteButton;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import tw from "twin.macro";
 
-export const PaginationNavigation = styled.div`
+export const PaginationBox = styled.div`
   ${tw`
     flex
     justify-center
@@ -12,7 +12,7 @@ export const PaginationNavigation = styled.div`
   `}
 `;
 
-export const Button = styled.button`
+export const PageButton = styled.button`
   ${tw`
     px-3
     py-1

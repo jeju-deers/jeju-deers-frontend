@@ -12,7 +12,7 @@ export const BoardBox = styled.div`
   `}
 `;
 
-export const BoardHeader = styled.div`
+export const BoardHeaderBox = styled.div`
   ${tw`
     flex
     font-bold
@@ -50,7 +50,7 @@ export const BoardHeader = styled.div`
   }
 `;
 
-export const BoardItem = styled.div`
+export const BoardItemBox = styled.div`
   ${tw`
     flex
     justify-center
@@ -60,7 +60,7 @@ export const BoardItem = styled.div`
   `}
 `;
 
-export const BoardRow = styled.div`
+export const BoardRowBox = styled.div`
   ${tw`
     flex
     font-normal

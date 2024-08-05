@@ -1,4 +1,4 @@
-import { BoardBox, BoardHeader, BoardItem, BoardRow } from "./BoardStyles";
+import { BoardBox, BoardHeaderBox, BoardItemBox, BoardRowBox } from "./BoardStyles";
 
 interface Props {
   boardlist: {
@@ -17,32 +17,32 @@ const Board = ({ boardlist }: Props) => {
   const emptyRows = totalRows - boardlist.length;
   return (
     <BoardBox>
-      <BoardHeader>
-        <BoardItem>번호</BoardItem>
-        <BoardItem>제목</BoardItem>
-        <BoardItem>작성자</BoardItem>
-        <BoardItem>등록일</BoardItem>
-        <BoardItem>조회</BoardItem>
-      </BoardHeader>
+      <BoardHeaderBox>
+        <BoardItemBox>번호</BoardItemBox>
+        <BoardItemBox>제목</BoardItemBox>
+        <BoardItemBox>작성자</BoardItemBox>
+        <BoardItemBox>등록일</BoardItemBox>
+        <BoardItemBox>조회</BoardItemBox>
+      </BoardHeaderBox>
       {boardlist.map(({ id, title, position, name, date, check }) => (
-        <BoardRow key={id}>
-          <BoardItem>{id}</BoardItem>
-          <BoardItem>{title}</BoardItem>
-          <BoardItem>
+        <BoardRowBox key={id}>
+          <BoardItemBox>{id}</BoardItemBox>
+          <BoardItemBox>{title}</BoardItemBox>
+          <BoardItemBox>
             {position} {name}
-          </BoardItem>
-          <BoardItem>{date}</BoardItem>
-          <BoardItem>{check}</BoardItem>
-        </BoardRow>
+          </BoardItemBox>
+          <BoardItemBox>{date}</BoardItemBox>
+          <BoardItemBox>{check}</BoardItemBox>
+        </BoardRowBox>
       ))}
       {[...Array(emptyRows)].map((_, index) => (
-        <BoardRow key={`empty-${index}`}>
-          <BoardItem>&nbsp;</BoardItem>
-          <BoardItem>&nbsp;</BoardItem>
-          <BoardItem>&nbsp;</BoardItem>
-          <BoardItem>&nbsp;</BoardItem>
-          <BoardItem>&nbsp;</BoardItem>
-        </BoardRow>
+        <BoardRowBox key={`empty-${index}`}>
+          <BoardItemBox>&nbsp;</BoardItemBox>
+          <BoardItemBox>&nbsp;</BoardItemBox>
+          <BoardItemBox>&nbsp;</BoardItemBox>
+          <BoardItemBox>&nbsp;</BoardItemBox>
+          <BoardItemBox>&nbsp;</BoardItemBox>
+        </BoardRowBox>
       ))}
     </BoardBox>
   );
