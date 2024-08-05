@@ -37,6 +37,27 @@ const PlayerItemsInputField = ({ onChangeInput }: Props) => {
         pattern="^(?=.*\d)[\d]{1,2}$"
         onChange={onChangeInput}
       />
+      <ItemInputField
+        id="inputBackNumber"
+        text="생년월일"
+        required
+        pattern="^\d{4}\.\d{2}\.\d{2}$"
+        onChange={onChangeInput}
+      />
+      <ItemInputField
+        id="inputBackNumber"
+        text="소속"
+        required
+        pattern="(?=.*[A-Za-z])[A-Za-z]{2}$"
+        onChange={onChangeInput}
+      />
+      <ItemInputField
+        id="inputBackNumber"
+        text="입단년도"
+        required
+        pattern="^(?=.*\d)[\d]{4}$"
+        onChange={onChangeInput}
+      />
     </PlayerItemsInputFieldBox>
   );
 };
