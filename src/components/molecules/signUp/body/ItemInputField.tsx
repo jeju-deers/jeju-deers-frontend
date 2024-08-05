@@ -5,18 +5,20 @@ import ItemTitle from "~/components/atoms/signUp/body/ItemTitle";
 import { ChangeEvent } from "react";
 
 interface Props {
+  type?: string;
   id: string;
   text: string;
   required: boolean;
+  pattern?: string;
   condition?: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const ItemInputField = ({ id, text, required, condition, onChange }: Props) => {
+const ItemInputField = ({ type, id, text, required, pattern, condition, onChange }: Props) => {
   return (
     <ItemInputFieldBox>
       <ItemTitle id={id} text={text} required={required} />
-      <ItemInput id={id} required={required} onChange={onChange} />
+      <ItemInput type={type} id={id} required={required} pattern={pattern} onChange={onChange} />
       {condition && <ItemCondition text={condition} />}
     </ItemInputFieldBox>
   );
