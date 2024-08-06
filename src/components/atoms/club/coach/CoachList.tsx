@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   CoachImage,
   CoachItemBox,
@@ -5,41 +6,60 @@ import {
   CoachListHeaderBox,
   CoachListRowBox,
 } from "./CoachListStyles";
+import axios, { AxiosError, AxiosResponse } from "axios";
+import profile from "~/assets/images/Profile.svg";
 
-interface Props {
-  coachlist: {
-    id: number;
-    image: string;
-    name: string;
-    position: string;
-    birth: string;
-    studentId: string;
-    schoolOfOrigin: string;
-  }[];
-}
+const CoachList = () => {
+  const [coachList, setCoachList] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-// TODO: [2024-07-03] 명단 데이터 불러오기 api 연결 후, 실제 데이터를 가지고 와야합니다
-const CoachList = ({ coachlist }: Props) => {
+  useEffect(() => {
+    const fetchCoachData = async () => {
+      try {
+        const response: AxiosResponse = await axios.get("https://jeju-deers-backend.fly.dev/users");
+        const coaches = response.data.filter((player: any) => player.userType === "coach");
+        console.log(coaches);
+        setCoachList(coaches);
+      } catch (error: AxiosError | any) {
+        setError("Error fetching the roster data.");
+        console.error("Error fetching the data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCoachData();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   return (
     <CoachListBox>
       <CoachListHeaderBox>
-        <CoachItemBox>코치</CoachItemBox>
+        <CoachItemBox>코치 및 스태프</CoachItemBox>
         <CoachItemBox></CoachItemBox>
         <CoachItemBox>담당</CoachItemBox>
         <CoachItemBox>생년월일</CoachItemBox>
         <CoachItemBox>학번</CoachItemBox>
         <CoachItemBox>출신학교</CoachItemBox>
       </CoachListHeaderBox>
-      {coachlist.map(({ id, image, name, position, birth, studentId, schoolOfOrigin }) => (
-        <CoachListRowBox key={id}>
+      {coachList.map(({ userId, name, positions, birth, studentId, school }) => (
+        <CoachListRowBox key={userId}>
           <CoachItemBox>
-            <CoachImage src={image} />
+            <CoachImage src={profile} />
           </CoachItemBox>
           <CoachItemBox>{name}</CoachItemBox>
-          <CoachItemBox>{position}</CoachItemBox>
+          <CoachItemBox>{positions}</CoachItemBox>
           <CoachItemBox>{birth}</CoachItemBox>
           <CoachItemBox>{studentId}</CoachItemBox>
-          <CoachItemBox>{schoolOfOrigin}</CoachItemBox>
+          <CoachItemBox>{school}</CoachItemBox>
         </CoachListRowBox>
       ))}
     </CoachListBox>

@@ -16,9 +16,3 @@ export const CoachListWrap = styled.div`
     py-20
   `}
 `;
-
-export const StaffListWrap = styled.div`
-  ${tw`
-    py-20
-  `}
-`;

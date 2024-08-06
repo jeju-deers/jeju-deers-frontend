@@ -1,7 +1,8 @@
+import { useState, useEffect } from "react";
 import RosterImage from "./RosterImage";
 import { RosterItem, RosterListBox, RosterListHeader, RosterlistRow } from "./RosterListStyles";
 import axios, { AxiosResponse, AxiosError } from "axios";
-import rosterImage from "~/assets/images/Roster.svg";
+import profile from "~/assets/images/Profile.svg";
 
 // TODO: [2024-07-03] 명단 데이터 불러오기 api 연결 후, 실제 데이터를 가지고 와야합니다
 const RosterList = () => {
@@ -13,8 +14,9 @@ const RosterList = () => {
     const fetchRosterData = async () => {
       try {
         const response: AxiosResponse = await axios.get("https://jeju-deers-backend.fly.dev/users");
-        console.log(response.data);
-        setRosterlist(response.data);
+        const players = response.data.filter((player: any) => player.userType === "player");
+        console.log(players);
+        setRosterlist(players);
       } catch (error: AxiosError | any) {
         setError("Error fetching the roster data.");
         console.error("Error fetching the data:", error);
@@ -47,7 +49,7 @@ const RosterList = () => {
       {rosterlist.map(({ userId, name, backNumber, positions, birth, belong, join }) => (
         <RosterlistRow key={userId}>
           <RosterItem>
-            <RosterImage src={rosterImage} />
+            <RosterImage src={profile} />
           </RosterItem>
           <RosterItem>{name}</RosterItem>
           <RosterItem>{backNumber}</RosterItem>
@@ -62,5 +64,3 @@ const RosterList = () => {
 };
 
 export default RosterList;
-
-import { useState, useEffect } from "react";
