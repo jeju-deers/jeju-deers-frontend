@@ -45,29 +45,28 @@ function Modal({ onClickToggleModal }: PropsWithChildren<ModalDefaultType>) {
 }
 
 export default Modal;
-<!-- =======
-import { ChangeEvent, FormEvent } from "react";
-import { LoginButton, LoginForm, LoginInput, LoginLayout } from "./LoginStyles";
 
-interface Props {
-  handleEnterUserId: (event: ChangeEvent<HTMLInputElement>) => void;
-  handleEnterPassword: (event: ChangeEvent<HTMLInputElement>) => void;
-  handleClickLogin: (event: FormEvent<HTMLFormElement>) => void;
-}
+// import { ChangeEvent, FormEvent } from "react";
+// import { LoginButton, LoginForm, LoginInput, LoginLayout } from "./LoginStyles";
 
-const Login = ({ handleEnterUserId, handleEnterPassword, handleClickLogin }: Props) => {
-  return (
-    <LoginLayout>
-      <LoginForm id="login" onSubmit={handleClickLogin}>
-        <LoginInput placeholder="ID" onChange={handleEnterUserId} required />
-        <LoginInput placeholder="PASSWORD" onChange={handleEnterPassword} required />
-        <LoginButton form="login" type="submit">
-          로그인
-        </LoginButton>
-      </LoginForm>
-    </LoginLayout>
-  );
-};
+// interface Props {
+//   handleEnterUserId: (event: ChangeEvent<HTMLInputElement>) => void;
+//   handleEnterPassword: (event: ChangeEvent<HTMLInputElement>) => void;
+//   handleClickLogin: (event: FormEvent<HTMLFormElement>) => void;
+// }
 
-export default Login; -->
+// const Login = ({ handleEnterUserId, handleEnterPassword, handleClickLogin }: Props) => {
+//   return (
+//     <LoginLayout>
+//       <LoginForm id="login" onSubmit={handleClickLogin}>
+//         <LoginInput placeholder="ID" onChange={handleEnterUserId} required />
+//         <LoginInput placeholder="PASSWORD" onChange={handleEnterPassword} required />
+//         <LoginButton form="login" type="submit">
+//           로그인
+//         </LoginButton>
+//       </LoginForm>
+//     </LoginLayout>
+//   );
+// };
 
+// export default Login;
