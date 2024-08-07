@@ -4,17 +4,25 @@ interface Props {
   boardlist: {
     id: number;
     title: string;
-    position: string;
-    name: string;
-    date: string;
-    check: number;
+    content: string;
+    owner: string;
+    images: [];
+    videos: [];
+    createdAt: string;
+    updatedAt: string;
+    views: number;
   }[];
 }
 
-// TODO: [2024-07-03] 명단 데이터 불러오기 api 연결 후, 실제 데이터를 가지고 와야합니다
+const formatDate = (Date: string) => {
+  return Date.split("T")[0];
+};
+
 const Board = ({ boardlist }: Props) => {
   const totalRows = 15;
   const emptyRows = totalRows - boardlist.length;
+  let currentId = 1;
+
   return (
     <BoardBox>
       <BoardHeaderBox>
@@ -24,15 +32,13 @@ const Board = ({ boardlist }: Props) => {
         <BoardItemBox>등록일</BoardItemBox>
         <BoardItemBox>조회</BoardItemBox>
       </BoardHeaderBox>
-      {boardlist.map(({ id, title, position, name, date, check }) => (
+      {boardlist.map(({ id, title, owner, createdAt, views }) => (
         <BoardRowBox key={id}>
-          <BoardItemBox>{id}</BoardItemBox>
+          <BoardItemBox>{currentId++}</BoardItemBox>
           <BoardItemBox>{title}</BoardItemBox>
-          <BoardItemBox>
-            {position} {name}
-          </BoardItemBox>
-          <BoardItemBox>{date}</BoardItemBox>
-          <BoardItemBox>{check}</BoardItemBox>
+          <BoardItemBox>{owner}</BoardItemBox>
+          <BoardItemBox>{formatDate(createdAt)}</BoardItemBox>
+          <BoardItemBox>{views}</BoardItemBox>
         </BoardRowBox>
       ))}
       {[...Array(emptyRows)].map((_, index) => (
