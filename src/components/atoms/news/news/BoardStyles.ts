@@ -32,8 +32,8 @@ export const BoardHeaderBox = styled.div`
   }
   & > *:nth-child(3) {
     ${tw`
-      basis-[8.33%]
-      min-w-[10%]
+      basis-[15%]
+      min-w-[12%]
     `}
   }
   & > *:nth-child(4) {
@@ -82,8 +82,8 @@ export const BoardRowBox = styled.div`
   }
   & > *:nth-child(3) {
     ${tw`
-      basis-[8.33%]
-      min-w-[10%]
+      basis-[15%]
+      min-w-[12%]
     `}
   }
   & > *:nth-child(4) {
