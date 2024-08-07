@@ -13,6 +13,6 @@ export const CoachPageLayout = styled.div`
 
 export const CoachListWrap = styled.div`
   ${tw`
-    py-20
+    py-10
   `}
 `;
