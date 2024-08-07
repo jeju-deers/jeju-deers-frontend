@@ -1,40 +1,23 @@
-import { useState, useEffect } from "react";
 import RosterImage from "./RosterImage";
 import { RosterItem, RosterListBox, RosterListHeader, RosterlistRow } from "./RosterListStyles";
-import axios, { AxiosResponse, AxiosError } from "axios";
 import profile from "~/assets/images/Profile.svg";
+import { useRosterData } from "~/hooks/club/useUserData";
 
-// TODO: [2024-07-03] 명단 데이터 불러오기 api 연결 후, 실제 데이터를 가지고 와야합니다
 const RosterList = () => {
-  const [rosterlist, setRosterlist] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const { data: rosterList, isLoading, error } = useRosterData();
 
-  useEffect(() => {
-    const fetchRosterData = async () => {
-      try {
-        const response: AxiosResponse = await axios.get("https://jeju-deers-backend.fly.dev/users");
-        const players = response.data.filter((player: any) => player.userType === "player");
-        console.log(players);
-        setRosterlist(players);
-      } catch (error: AxiosError | any) {
-        setError("Error fetching the roster data.");
-        console.error("Error fetching the data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchRosterData();
-  }, []);
-
-  if (loading) {
+  if (isLoading) {
     return <div>Loading...</div>;
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return <div>Error fetching the roster data.</div>;
   }
+
+  if (!Array.isArray(rosterList) || rosterList.length === 0) {
+    return <div>선수 데이터가 없습니다</div>;
+  }
+
   return (
     <RosterListBox>
       <RosterListHeader>
@@ -46,7 +29,7 @@ const RosterList = () => {
         <RosterItem>소속</RosterItem>
         <RosterItem>입단년도</RosterItem>
       </RosterListHeader>
-      {rosterlist.map(({ userId, name, backNumber, positions, birth, belong, join }) => (
+      {rosterList.map(({ userId, name, backNumber, positions, birth, belong, join }) => (
         <RosterlistRow key={userId}>
           <RosterItem>
             <RosterImage src={profile} />

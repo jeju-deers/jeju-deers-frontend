@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import {
   CoachImage,
   CoachItemBox,
@@ -6,38 +5,22 @@ import {
   CoachListHeaderBox,
   CoachListRowBox,
 } from "./CoachListStyles";
-import axios, { AxiosError, AxiosResponse } from "axios";
 import profile from "~/assets/images/Profile.svg";
+import { useCoachData } from "~/hooks/club/useUserData";
 
 const CoachList = () => {
-  const [coachList, setCoachList] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const { data: coachList, isLoading, error } = useCoachData();
 
-  useEffect(() => {
-    const fetchCoachData = async () => {
-      try {
-        const response: AxiosResponse = await axios.get("https://jeju-deers-backend.fly.dev/users");
-        const coaches = response.data.filter((player: any) => player.userType === "coach");
-        console.log(coaches);
-        setCoachList(coaches);
-      } catch (error: AxiosError | any) {
-        setError("Error fetching the roster data.");
-        console.error("Error fetching the data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchCoachData();
-  }, []);
-
-  if (loading) {
+  if (isLoading) {
     return <div>Loading...</div>;
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return <div>Error fetching the coach data.</div>;
+  }
+
+  if (!Array.isArray(coachList) || coachList.length === 0) {
+    return <div>코치 데이터가 없습니다</div>;
   }
 
   return (
