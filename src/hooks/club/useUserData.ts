@@ -28,5 +28,5 @@ const fetchCoachData = async () => {
 };
 
 export const useCoachData = () => {
-  return useQuery({ queryKey: ["rosterData"], queryFn: fetchCoachData });
+  return useQuery({ queryKey: ["coachData"], queryFn: fetchCoachData });
 };
