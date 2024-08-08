@@ -1,8 +1,7 @@
 import { instance } from ".";
 
 interface PostSignUpProps {
-  //   userType: "external" | "player" | "coach";
-  userType: string;
+  userType: "external" | "player" | "coach";
   userId: string;
   password: string;
   passwordConfirm: string;
