@@ -1,10 +1,10 @@
+import { useUserData } from "~/hooks/club/useUserData";
 import RosterImage from "./RosterImage";
 import { RosterItem, RosterListBox, RosterListHeader, RosterlistRow } from "./RosterListStyles";
 import profile from "~/assets/images/Profile.svg";
-import { useRosterData } from "~/hooks/club/useUserData";
 
 const RosterList = () => {
-  const { data: rosterList, isLoading, error } = useRosterData();
+  const { data: rosterList, isLoading, error } = useUserData("player");
 
   if (isLoading) {
     return <div>Loading...</div>;

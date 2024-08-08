@@ -13,20 +13,11 @@ interface User {
   studentId: number;
 }
 
-const fetchRosterData = async () => {
+const fetchUserData = async (usertype: string) => {
   const response = await axios.get("https://jeju-deers-backend.fly.dev/users");
-  return response.data.filter((player: User) => player.userType === "player");
+  return response.data.filter((player: User) => player.userType === usertype);
 };
 
-export const useRosterData = () => {
-  return useQuery({ queryKey: ["rosterData"], queryFn: fetchRosterData });
-};
-
-const fetchCoachData = async () => {
-  const response = await axios.get("https://jeju-deers-backend.fly.dev/users");
-  return response.data.filter((player: User) => player.userType === "coach");
-};
-
-export const useCoachData = () => {
-  return useQuery({ queryKey: ["coachData"], queryFn: fetchCoachData });
+export const useUserData = (usertype: string) => {
+  return useQuery({ queryKey: ["rosterData", usertype], queryFn: () => fetchUserData(usertype) });
 };

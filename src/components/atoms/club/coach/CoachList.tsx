@@ -1,3 +1,4 @@
+import { useUserData } from "~/hooks/club/useUserData";
 import {
   CoachImage,
   CoachItemBox,
@@ -6,10 +7,9 @@ import {
   CoachListRowBox,
 } from "./CoachListStyles";
 import profile from "~/assets/images/Profile.svg";
-import { useCoachData } from "~/hooks/club/useUserData";
 
 const CoachList = () => {
-  const { data: coachList, isLoading, error } = useCoachData();
+  const { data: coachList, isLoading, error } = useUserData("coach");
 
   if (isLoading) {
     return <div>Loading...</div>;
