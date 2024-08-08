@@ -1,4 +1,4 @@
-import { useGetUsers } from "~/hooks/club/useGetUsers";
+import { useGetUsers } from "~/hooks/club/query/useGetUsers";
 import PlayerImage from "./PlayerImage";
 import { PlayerItem, PlayerListBox, PlayerListHeader, PlayerlistRow } from "./PlayerListStyles";
 import profile from "~/assets/images/profile.svg";

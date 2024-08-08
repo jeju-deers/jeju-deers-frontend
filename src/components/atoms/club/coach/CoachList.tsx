@@ -1,4 +1,4 @@
-import { useGetUsers } from "~/hooks/club/useGetUsers";
+import { useGetUsers } from "~/hooks/club/query/useGetUsers";
 import {
   CoachImage,
   CoachItemBox,
