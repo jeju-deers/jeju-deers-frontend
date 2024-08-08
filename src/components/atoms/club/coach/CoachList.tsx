@@ -7,21 +7,23 @@ import {
   CoachListRowBox,
 } from "./CoachListStyles";
 import profile from "~/assets/images/profile.svg";
+import PendingMessage from "~/common/components/atom/PendingMessage";
+import ErrorMessage from "~/common/components/atom/ErrorMessage";
 
 const CoachList = () => {
   const { data: coachListData, isLoading, error } = useGetUsers("coach");
   console.log(coachListData);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <PendingMessage />;
   }
 
   if (error) {
-    return <div>Error fetching the coach data.</div>;
+    return <ErrorMessage text="에러" />;
   }
 
   if (!Array.isArray(coachListData) || coachListData.length === 0) {
-    return <div>코치 데이터가 없습니다</div>;
+    return <ErrorMessage text="코치 데이터가 없습니다." />;
   }
 
   return (
