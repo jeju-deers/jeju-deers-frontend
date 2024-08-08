@@ -1,4 +1,4 @@
-import { useUserData } from "~/hooks/club/useUserData";
+import { useGetUsers } from "~/hooks/club/useGetUsers";
 import {
   CoachImage,
   CoachItemBox,
@@ -9,7 +9,7 @@ import {
 import profile from "~/assets/images/Profile.svg";
 
 const CoachList = () => {
-  const { data: coachList, isLoading, error } = useUserData("coach");
+  const { data: coachListData, isLoading, error } = useGetUsers("coach");
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -19,7 +19,7 @@ const CoachList = () => {
     return <div>Error fetching the coach data.</div>;
   }
 
-  if (!Array.isArray(coachList) || coachList.length === 0) {
+  if (!Array.isArray(coachListData) || coachListData.length === 0) {
     return <div>코치 데이터가 없습니다</div>;
   }
 
@@ -33,7 +33,7 @@ const CoachList = () => {
         <CoachItemBox>학번</CoachItemBox>
         <CoachItemBox>출신학교</CoachItemBox>
       </CoachListHeaderBox>
-      {coachList.map(({ userId, name, positions, birth, studentId, school }) => (
+      {coachListData.map(({ userId, name, positions, birth, studentId, school }) => (
         <CoachListRowBox key={userId}>
           <CoachItemBox>
             <CoachImage src={profile} />

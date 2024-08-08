@@ -1,10 +1,10 @@
-import { useUserData } from "~/hooks/club/useUserData";
+import { useGetUsers } from "~/hooks/club/useGetUsers";
 import RosterImage from "./RosterImage";
 import { RosterItem, RosterListBox, RosterListHeader, RosterlistRow } from "./RosterListStyles";
 import profile from "~/assets/images/Profile.svg";
 
 const RosterList = () => {
-  const { data: rosterList, isLoading, error } = useUserData("player");
+  const { data: playerListData, isLoading, error } = useGetUsers("player");
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -14,7 +14,7 @@ const RosterList = () => {
     return <div>Error fetching the roster data.</div>;
   }
 
-  if (!Array.isArray(rosterList) || rosterList.length === 0) {
+  if (!Array.isArray(playerListData) || playerListData.length === 0) {
     return <div>선수 데이터가 없습니다</div>;
   }
 
@@ -29,7 +29,7 @@ const RosterList = () => {
         <RosterItem>소속</RosterItem>
         <RosterItem>입단년도</RosterItem>
       </RosterListHeader>
-      {rosterList.map(({ userId, name, backNumber, positions, birth, belong, join }) => (
+      {playerListData.map(({ userId, name, backNumber, positions, birth, belong, join }) => (
         <RosterlistRow key={userId}>
           <RosterItem>
             <RosterImage src={profile} />
