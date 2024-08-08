@@ -1,7 +1,7 @@
-import Roster from "~/components/templates/club/RosterPage";
+import Player from "~/components/templates/club/PlayerPage";
 
-const RosterPage = () => {
-  return <Roster />;
+const PlayerPage = () => {
+  return <Player />;
 };
 
-export default RosterPage;
+export default PlayerPage;

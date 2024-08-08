@@ -6,10 +6,11 @@ import {
   CoachListHeaderBox,
   CoachListRowBox,
 } from "./CoachListStyles";
-import profile from "~/assets/images/Profile.svg";
+import profile from "~/assets/images/profile.svg";
 
 const CoachList = () => {
   const { data: coachListData, isLoading, error } = useGetUsers("coach");
+  console.log(coachListData);
 
   if (isLoading) {
     return <div>Loading...</div>;
