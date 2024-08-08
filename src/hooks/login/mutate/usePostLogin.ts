@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import axios, { AxiosResponse } from "axios";
-import { postLogin } from "~/api/user";
+import { postLogin } from "~/api/account";
 
 interface Props {
   userId: string;
