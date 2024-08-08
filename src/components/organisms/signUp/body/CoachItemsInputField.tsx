@@ -27,7 +27,7 @@ const CoachItemsInputField = ({ onChangeInput }: Props) => {
         id="inputPositions"
         text="담당"
         required
-        pattern="^(?=.*[\uAC00-\uD7A3])[\uAC00-\uD7A3]*$"
+        pattern="^(?=.*[A-Za-z])[A-Za-z]{2}$"
         condition="(여러개 입력 가능)"
         onChange={onChangeInput}
       />

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { postSignUp } from "~/api/account";
 
 interface Props {
-  userType: "external" | "player" | "coach";
+  userType: string;
   userId: string;
   password: string;
   passwordConfirm: string;

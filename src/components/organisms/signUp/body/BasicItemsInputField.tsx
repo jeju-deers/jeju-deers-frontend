@@ -21,7 +21,7 @@ const BasicItemsInputField = ({ onChangeInput }: Props) => {
         id="inputPassword"
         text="비밀번호"
         required
-        pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d\uAC00-\uD7A3]{6,}$"
+        pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&\uAC00-\uD7A3]{6,}$"
         condition="(6자리 이상, 영문과 숫자 포함)"
         onChange={onChangeInput}
       />
@@ -30,7 +30,7 @@ const BasicItemsInputField = ({ onChangeInput }: Props) => {
         id="inputPasswordConfirm"
         text="비밀번호 확인"
         required
-        pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d\uAC00-\uD7A3]{6,}$"
+        pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&\uAC00-\uD7A3]{6,}$"
         onChange={onChangeInput}
       />
       <ItemInputField

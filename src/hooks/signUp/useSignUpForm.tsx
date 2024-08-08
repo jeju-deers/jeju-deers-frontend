@@ -12,6 +12,9 @@ const useSignUpForm = () => {
     inputStudentId: "",
     inputPositions: "",
     inputBackNumber: "",
+    inputBirth: "",
+    inputBelong: "",
+    inputJoinYear: "",
   });
 
   const handleChangeInput = (event: ChangeEvent<HTMLInputElement>) => {

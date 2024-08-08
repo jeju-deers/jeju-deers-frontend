@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { postSignUp } from "~/api/account";
 
 interface Props {
-  userType: "external" | "player" | "coach";
+  userType: string;
   userId: string;
   password: string;
   passwordConfirm: string;
@@ -14,6 +14,9 @@ interface Props {
   studentId: string;
   positions: string;
   backNumber: string;
+  birth: string;
+  belong: string;
+  joinYear: string;
 }
 
 const usePostPlayerSignUp = () => {
@@ -32,6 +35,9 @@ const usePostPlayerSignUp = () => {
       studentId,
       positions,
       backNumber,
+      birth,
+      belong,
+      joinYear,
     }: Props) =>
       postSignUp({
         userType,
@@ -45,6 +51,9 @@ const usePostPlayerSignUp = () => {
         studentId,
         positions,
         backNumber,
+        birth,
+        belong,
+        joinYear,
       }),
     onSuccess: (data) => {
       console.log(`player 회원가입 성공, data: ${data}`);

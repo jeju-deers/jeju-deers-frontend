@@ -34,25 +34,25 @@ const PlayerItemsInputField = ({ onChangeInput }: Props) => {
         id="inputBackNumber"
         text="백넘버"
         required
-        pattern="^(?=.*\d)[\d]{1,2}$"
+        pattern="^(?=.*\d)[\d]{1,3}$"
         onChange={onChangeInput}
       />
       <ItemInputField
-        id="inputBackNumber"
+        id="inputBirth"
         text="생년월일"
         required
         pattern="^\d{4}\.\d{2}\.\d{2}$"
         onChange={onChangeInput}
       />
       <ItemInputField
-        id="inputBackNumber"
+        id="inputBelong"
         text="소속"
         required
         pattern="(?=.*[A-Za-z])[A-Za-z]{2}$"
         onChange={onChangeInput}
       />
       <ItemInputField
-        id="inputBackNumber"
+        id="inputJoinYear"
         text="입단년도"
         required
         pattern="^(?=.*\d)[\d]{4}$"
