@@ -1,7 +1,7 @@
 import tw from "twin.macro";
 import styled from "styled-components";
 
-export const RosterListBox = styled.div`
+export const PlayerListBox = styled.div`
   ${tw`
     flex
     flex-col
@@ -48,7 +48,7 @@ export const RosterListBox = styled.div`
   }
 `;
 
-export const RosterListHeader = styled.div`
+export const PlayerListHeader = styled.div`
   ${tw`
     flex
     font-semibold
@@ -89,7 +89,7 @@ export const RosterListHeader = styled.div`
   }
 `;
 
-export const RosterItem = styled.div`
+export const PlayerItem = styled.div`
   ${tw`
     flex
     justify-center
@@ -98,7 +98,7 @@ export const RosterItem = styled.div`
   `}
 `;
 
-export const RosterlistRow = styled.div`
+export const PlayerlistRow = styled.div`
   ${tw`
     flex
     font-normal
@@ -136,6 +136,6 @@ export const RosterlistRow = styled.div`
   }
 `;
 
-export const RosterImage = styled.img`
+export const PlayerImage = styled.img`
   ${tw`bg-white`}
 `;
