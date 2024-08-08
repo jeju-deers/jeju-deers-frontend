@@ -4,7 +4,7 @@ interface Props {
   src: string;
   alt: string;
   text: string;
-  onClick(): void;
+  onClick?: () => void;
 }
 
 const Account = ({ src, alt, text, onClick }: Props) => {

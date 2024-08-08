@@ -56,7 +56,7 @@ export const LoginTitleSpan = styled.p`
   `}
 `;
 
-export const LoginInputBox = styled.div`
+export const LoginInputForm = styled.form`
   ${tw`
     flex
     flex-col

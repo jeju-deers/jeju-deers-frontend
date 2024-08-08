@@ -1,10 +1,9 @@
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-import { postSignUp } from "~/api/user";
+import { postSignUp } from "~/api/account";
 
 interface Props {
-  // userType: "external" | "player" | "coach";
-  userType: string;
+  userType: "external" | "player" | "coach";
   userId: string;
   password: string;
   passwordConfirm: string;

@@ -1,15 +1,15 @@
 import { useMutation } from "@tanstack/react-query";
 import axios, { AxiosResponse } from "axios";
-import { postLogin } from "~/api/user";
+import { postLogin } from "~/api/account";
 
-interface Params {
+interface Props {
   userId: string;
   password: string;
 }
 
 const usePostLogin = () => {
   const mutation = useMutation({
-    mutationFn: ({ userId, password }: Params) =>
+    mutationFn: ({ userId, password }: Props) =>
       postLogin({
         userId,
         password,
@@ -28,7 +28,7 @@ const usePostLogin = () => {
       const statusCode = error.response?.status;
 
       if (statusCode === 401) {
-        alert("아이디 혹은 비밀번호가 유효하지 않습니다.");
+        alert("존재하지 않는 아이디 혹은 비밀번호 입니다.");
       }
       if (statusCode === 500) {
         alert("Login failed");
