@@ -39,6 +39,9 @@ const SignUpPage = () => {
         studentId: formData.inputStudentId,
         positions: formData.inputPositions,
         backNumber: formData.inputBackNumber,
+        birth: formData.inputBirth,
+        belong: formData.inputBelong,
+        joinYear: formData.inputJoinYear,
       });
     }
 

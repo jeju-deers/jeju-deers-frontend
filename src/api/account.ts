@@ -1,7 +1,7 @@
 import { instance } from ".";
 
 interface PostSignUpProps {
-  userType: "external" | "player" | "coach";
+  userType: string;
   userId: string;
   password: string;
   passwordConfirm: string;
@@ -12,6 +12,9 @@ interface PostSignUpProps {
   studentId?: string;
   positions?: string;
   backNumber?: string;
+  birth?: string;
+  belong?: string;
+  joinYear?: string;
 }
 
 export const postSignUp = ({
@@ -26,6 +29,9 @@ export const postSignUp = ({
   studentId,
   positions,
   backNumber,
+  birth,
+  belong,
+  joinYear,
 }: PostSignUpProps) => {
   return instance.post("/signup", {
     userType,
@@ -39,6 +45,9 @@ export const postSignUp = ({
     studentId,
     positions,
     backNumber,
+    birth,
+    belong,
+    joinYear,
   });
 };
 
