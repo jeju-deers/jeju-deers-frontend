@@ -2,7 +2,7 @@ const TAB_MENU_ITEMS = {
   club: [
     { to: "/club/about", text: "About" },
     { to: "/club/organization", text: "Organization" },
-    { to: "/club/player", text: "Player" },
+    { to: "/club/roster", text: "Roster" },
     { to: "/club/member", text: "Coaches & Staff" },
     { to: "/club/sponsor", text: "Sponsor" },
   ],
