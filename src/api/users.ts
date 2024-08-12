@@ -15,5 +15,5 @@ interface User {
 export const GetUsers = async (usertype: string) => {
   const response = await instance.get("/users");
   console.log(response.data);
-  return response.data.filter((player: User) => player.userType === usertype);
+  return response.data.filter((users: User) => users.userType === usertype);
 };
