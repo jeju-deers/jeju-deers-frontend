@@ -1,7 +1,7 @@
 import { useGetUsers } from "~/hooks/club/query/useGetUsers";
 import PlayerImage from "./PlayerImage";
 import { PlayerItem, PlayerListBox, PlayerListHeader, PlayerlistRow } from "./PlayerListStyles";
-import profile from "~/assets/images/profile.svg";
+import profile from "~/assets/images/Profile.svg";
 import PendingMessage from "~/common/components/atom/PendingMessage";
 import ErrorMessage from "~/common/components/atom/ErrorMessage";
 

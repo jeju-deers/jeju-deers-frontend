@@ -6,7 +6,7 @@ import {
   CoachListHeaderBox,
   CoachListRowBox,
 } from "./CoachListStyles";
-import profile from "~/assets/images/profile.svg";
+import profile from "~/assets/images/Profile.svg";
 import PendingMessage from "~/common/components/atom/PendingMessage";
 import ErrorMessage from "~/common/components/atom/ErrorMessage";
 
