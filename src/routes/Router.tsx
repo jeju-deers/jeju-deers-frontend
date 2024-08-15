@@ -3,7 +3,7 @@ import MainPage from "../pages/MainPage";
 import NotFound from "../pages/NotFound";
 import AboutPage from "../pages/club/AboutPage";
 import OrganizationPage from "../pages/club/OrganizationPage";
-import PlayerPage from "~/pages/club/RosterPage";
+import PlayerPage from "~/pages/club/PlayerPage";
 import CoachesStaffPage from "../pages/club/CoachPage";
 import SponsorPage from "../pages/club/SponsorPage";
 import PracticeSchedulePage from "../pages/teamroom/PracticeSchedulePage";
