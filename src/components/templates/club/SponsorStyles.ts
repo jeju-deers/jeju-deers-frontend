@@ -1,7 +1,7 @@
 import tw from "twin.macro";
 import styled from "styled-components";
 
-export const PlayerPageLayout = styled.div`
+export const SponsorLayout = styled.div`
   ${tw`
     font-bold
     h-full
@@ -11,8 +11,9 @@ export const PlayerPageLayout = styled.div`
   `}
 `;
 
-export const PlayerListWrap = styled.div`
+export const SponsorList = styled.div`
   ${tw`
-    py-10
+    grid
+    grid-cols-2
   `}
 `;

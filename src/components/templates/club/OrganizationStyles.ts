@@ -1,19 +1,17 @@
 import tw from "twin.macro";
 import styled from "styled-components";
 
-export const SponsorPageLayout = styled.div`
+export const OrganizationLayout = styled.div`
   ${tw`
-    font-bold
     h-full
     w-full
+    pt-20
     px-32
-    py-20
   `}
 `;
 
-export const SponsorList = styled.div`
+export const OrganizationChartWrap = styled.div`
   ${tw`
-    grid
-    grid-cols-2
+    my-20
   `}
 `;

@@ -1,4 +1,4 @@
-import Player from "~/components/templates/club/PlayerPage";
+import Player from "~/components/templates/club/Player";
 
 const PlayerPage = () => {
   return <Player />;

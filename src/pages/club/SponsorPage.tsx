@@ -1,4 +1,4 @@
-import Sponsor from "~/components/templates/club/SponsorPage";
+import Sponsor from "~/components/templates/club/Sponsor";
 
 const SponsorPage = () => {
   return <Sponsor />;

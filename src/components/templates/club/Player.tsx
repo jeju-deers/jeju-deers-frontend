@@ -1,17 +1,17 @@
 import Heading from "~/components/atoms/club/Heading";
 import PlayerList from "~/components/atoms/club/roster/PlayerList";
 import helmet from "~/assets/images/helmet.svg";
-import { PlayerListWrap, PlayerPageLayout } from "./PlayerPageStyles";
+import { PlayerListWrap, PlayerLayout } from "./PlayerStyles";
 
-const PlayerPage = () => {
+const Player = () => {
   return (
-    <PlayerPageLayout>
+    <PlayerLayout>
       <Heading src={helmet} alt="helmet" text="선수 명단" />
       <PlayerListWrap>
         <PlayerList />
       </PlayerListWrap>
-    </PlayerPageLayout>
+    </PlayerLayout>
   );
 };
 
-export default PlayerPage;
+export default Player;
