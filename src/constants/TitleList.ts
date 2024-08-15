@@ -1,7 +1,7 @@
 const TITLES: { [key: string]: string[] } = {
   about: ["ABOUT", "제주디어스 소개"],
   organization: ["ORGANIZATION", "제주디어스 조직도"],
-  roster: ["ROSTER", "제주디어스 선수단"],
+  roster: ["TEAM ROSTER", "제주디어스 선수단"],
   member: ["MEMBER", "코치 및 스태프"],
   sponsor: ["SPONSOR", "후원사"],
   schedule: ["SCHEDULE", "일정"],

@@ -3,7 +3,7 @@ import MainPage from "../pages/MainPage";
 import NotFound from "../pages/NotFound";
 import AboutPage from "../pages/club/AboutPage";
 import OrganizationPage from "../pages/club/OrganizationPage";
-import RosterPage from "../pages/club/RosterPage";
+import PlayerPage from "~/pages/club/PlayerPage";
 import CoachesStaffPage from "../pages/club/CoachPage";
 import SponsorPage from "../pages/club/SponsorPage";
 import PracticeSchedulePage from "../pages/teamroom/PracticeSchedulePage";
@@ -33,7 +33,7 @@ const Router = () => {
 
           <Route path="/club/about" element={<AboutPage />} />
           <Route path="/club/organization" element={<OrganizationPage />} />
-          <Route path="/club/roster" element={<RosterPage />} />
+          <Route path="/club/roster" element={<PlayerPage />} />
           <Route path="/club/member" element={<CoachesStaffPage />} />
           <Route path="/club/sponsor" element={<SponsorPage />} />
 

@@ -1,4 +1,4 @@
-import Coach from "~/components/templates/club/CoachPage";
+import Coach from "~/components/templates/club/Coach";
 
 const CoachPage = () => {
   return <Coach />;

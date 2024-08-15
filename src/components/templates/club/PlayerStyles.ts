@@ -1,17 +1,18 @@
 import tw from "twin.macro";
 import styled from "styled-components";
 
-export const OrganizationPageLayout = styled.div`
+export const PlayerLayout = styled.div`
   ${tw`
+    font-bold
     h-full
     w-full
-    pt-20
     px-32
+    py-20
   `}
 `;
 
-export const OrganizationChartWrap = styled.div`
+export const PlayerListWrap = styled.div`
   ${tw`
-    my-20
+    py-10
   `}
 `;

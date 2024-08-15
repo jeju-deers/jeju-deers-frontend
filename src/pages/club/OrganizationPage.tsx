@@ -1,4 +1,4 @@
-import Organization from "~/components/templates/club/OrganizationPage";
+import Organization from "~/components/templates/club/Organization";
 
 const OrganizationPage = () => {
   return <Organization />;
