@@ -17,12 +17,12 @@ const Search = ({
   setSearchFilterOption,
   onSearch,
 }: Props) => {
-  const handleDropdownChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSearchFilterOption(e.target.value);
+  const handleDropdownChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSearchFilterOption(event.target.value);
   };
 
-  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value);
+  const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(event.target.value);
   };
 
   return (
