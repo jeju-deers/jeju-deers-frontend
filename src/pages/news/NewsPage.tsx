@@ -1,7 +1,7 @@
 import News from "~/components/templates/news/news/News";
 
-const NewPage = () => {
+const NewsPage = () => {
   return <News />;
 };
 
-export default NewPage;
+export default NewsPage;
