@@ -42,7 +42,7 @@ const Board = ({ boardlist }: Props) => {
         </BoardRowBox>
       ))}
       {[...Array(emptyRows)].map((_, index) => (
-        <BoardRowBox key={`empty-${index}`}>
+        <BoardRowBox key={`${index}-empty`}>
           <BoardItemBox>&nbsp;</BoardItemBox>
           <BoardItemBox>&nbsp;</BoardItemBox>
           <BoardItemBox>&nbsp;</BoardItemBox>
