@@ -10,3 +10,5 @@ interface Board {
   updatedAt: string;
   views: number;
 }
+
+export default Board;
