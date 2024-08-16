@@ -6,7 +6,7 @@ import WriteButton from "~/components/atoms/news/news/WriteButton";
 import Pagination from "../../../molecules/news/Pagination";
 import Search from "~/components/molecules/news/Search";
 import { handleSearch } from "~/hooks/handleSearch";
-import { useGetBoards } from "~/hooks/board/useBoardData";
+import { useGetBoards } from "~/hooks/board/query/useGetBoards";
 
 const News = () => {
   const { data: newsData = [], isLoading, error } = useGetBoards("news");
