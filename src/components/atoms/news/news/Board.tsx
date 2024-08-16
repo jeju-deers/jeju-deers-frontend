@@ -14,14 +14,14 @@ interface Props {
   }[];
 }
 
-const formatDate = (Date: string) => {
-  return Date.split("T")[0];
-};
-
 const Board = ({ boardlist }: Props) => {
   const totalRows = 15;
   const emptyRows = totalRows - boardlist.length;
   let currentId = 1;
+
+  const formatDate = (date: string) => {
+    return date.split("T")[0];
+  };
 
   return (
     <BoardBox>
