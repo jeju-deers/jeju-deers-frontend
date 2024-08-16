@@ -22,6 +22,12 @@ const Pagination = ({ total, limit, page, setPage }: Props) => {
     setPage(page + 1);
   };
 
+  const handlePageButtonClick = (pageNumber: number) => () => setPage(pageNumber);
+
+  const handleCurrentPage = (pageNumber: number) => {
+    return page === pageNumber ? "page" : undefined;
+  };
+
   return (
     <PaginationBox>
       <PageMoveButton
@@ -31,12 +37,12 @@ const Pagination = ({ total, limit, page, setPage }: Props) => {
       />
       {Array(numPages)
         .fill(null)
-        .map((_, i) => (
+        .map((_, index) => (
           <PageButton
-            key={i + 1}
-            onClick={() => setPage(i + 1)}
-            aria-current={page === i + 1 ? "page" : undefined}>
-            {i + 1}
+            key={index + 1}
+            onClick={handlePageButtonClick(index + 1)}
+            aria-current={handleCurrentPage(index + 1)}>
+            {index + 1}
           </PageButton>
         ))}
       <PageMoveButton
