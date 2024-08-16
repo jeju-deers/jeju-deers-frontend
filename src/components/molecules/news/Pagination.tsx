@@ -27,7 +27,7 @@ const Pagination = ({ total, limit, page, setPage }: Props) => {
       <PageMoveButton
         onClick={handlePreviousEvent}
         disabled={isPreviousButtonDisabled}
-        children="< Pre"
+        buttonName="< Pre"
       />
       {Array(numPages)
         .fill(null)
@@ -39,7 +39,11 @@ const Pagination = ({ total, limit, page, setPage }: Props) => {
             {i + 1}
           </PageButton>
         ))}
-      <PageMoveButton onClick={handleNextEvent} disabled={isNextButtonDisabled} children="Next >" />
+      <PageMoveButton
+        onClick={handleNextEvent}
+        disabled={isNextButtonDisabled}
+        buttonName="Next >"
+      />
     </PaginationBox>
   );
 };

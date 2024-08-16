@@ -3,12 +3,12 @@ import { PageMoveButtonButton } from "./PageMoveButtonStyles";
 interface Props {
   onClick: () => void;
   disabled: boolean;
-  children: string;
+  buttonName: string;
 }
 
-const PageMoveButton = ({ onClick, disabled, children }: Props) => (
+const PageMoveButton = ({ onClick, disabled, buttonName }: Props) => (
   <PageMoveButtonButton onClick={onClick} disabled={disabled}>
-    {children}
+    {buttonName}
   </PageMoveButtonButton>
 );
 
