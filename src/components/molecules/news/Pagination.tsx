@@ -15,11 +15,11 @@ const Pagination = ({ total, limit, page, setPage }: Props) => {
   const isNextButtonDisabled = page === numPages;
 
   const handlePreviousEvent = () => {
-    return setPage(page - 1);
+    setPage(page - 1);
   };
 
   const handleNextEvent = () => {
-    return setPage(page + 1);
+    setPage(page + 1);
   };
 
   const handlePageButtonClick = (pageNumber: number) => {
