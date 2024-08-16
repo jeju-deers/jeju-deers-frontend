@@ -58,6 +58,13 @@ export const BoardItemBox = styled.div`
     text-xl
     h-16
   `}
+
+  &:nth-child(2) {
+    ${tw`
+      flex
+      justify-start
+    `}
+  }
 `;
 
 export const BoardRowBox = styled.div`
