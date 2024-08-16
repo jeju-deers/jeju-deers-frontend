@@ -11,9 +11,24 @@ interface Props {
 const Pagination = ({ total, limit, page, setPage }: Props) => {
   const numPages = Math.ceil(total / limit);
 
+  const isPreviousButtonDisabled = page === 1;
+  const isNextButtonDisabled = page === numPages;
+
+  const handlePreviousEvent = () => {
+    setPage(page - 1);
+  };
+
+  const handleNextEvent = () => {
+    setPage(page + 1);
+  };
+
   return (
     <PaginationBox>
-      <PageMoveButton onClick={() => setPage(page - 1)} disabled={page === 1} children={"< Pre"} />
+      <PageMoveButton
+        onClick={handlePreviousEvent}
+        disabled={isPreviousButtonDisabled}
+        children="< Pre"
+      />
       {Array(numPages)
         .fill(null)
         .map((_, i) => (
@@ -24,11 +39,7 @@ const Pagination = ({ total, limit, page, setPage }: Props) => {
             {i + 1}
           </PageButton>
         ))}
-      <PageMoveButton
-        onClick={() => setPage(page + 1)}
-        disabled={page === numPages}
-        children="Next >"
-      />
+      <PageMoveButton onClick={handleNextEvent} disabled={isNextButtonDisabled} children="Next >" />
     </PaginationBox>
   );
 };
