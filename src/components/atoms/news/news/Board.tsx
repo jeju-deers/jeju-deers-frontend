@@ -32,10 +32,9 @@ const Board = ({ boardlist }: Props) => {
         <BoardItemBox>조회</BoardItemBox>
       </BoardHeaderBox>
       {boardlist.map(({ id, title, owner, createdAt, views }, index) => {
-        let currentId = index + 1;
         return (
           <BoardRowBox key={id}>
-            <BoardItemBox>{currentId}</BoardItemBox>
+            <BoardItemBox>{index + 1}</BoardItemBox>
             <BoardItemBox>{title}</BoardItemBox>
             <BoardItemBox>{owner}</BoardItemBox>
             <BoardItemBox>{formatDate(createdAt)}</BoardItemBox>
