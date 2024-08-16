@@ -1,4 +1,4 @@
-interface Board {
+export interface Board {
   id: number;
   type: string;
   title: string;
@@ -10,5 +10,3 @@ interface Board {
   updatedAt: string;
   views: number;
 }
-
-export default Board;
