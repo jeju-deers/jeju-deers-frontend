@@ -16,3 +16,19 @@ export const GetUsers = async (usertype: string) => {
   const { data } = await instance.get("/users");
   return data.filter((users: User) => users.userType === usertype);
 };
+
+interface GetUserInformationProps {
+  userId: string;
+}
+
+export const getUserInformation = async ({ userId }: GetUserInformationProps) => {
+  const token = localStorage.getItem("token");
+
+  const { data } = await instance.get(`/users/${userId}`, {
+    headers: {
+      Authorization: token ? `Bearer ${token}` : "",
+    },
+  });
+
+  return { data };
+};
