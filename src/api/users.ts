@@ -1,4 +1,5 @@
 import { instance } from "~/api";
+import { GetUserInformationProps } from "./types/users";
 
 interface User {
   userId: number;
@@ -16,10 +17,6 @@ export const GetUsers = async (usertype: string) => {
   const { data } = await instance.get("/users");
   return data.filter((users: User) => users.userType === usertype);
 };
-
-interface GetUserInformationProps {
-  userId: string;
-}
 
 export const getUserInformation = async ({ userId }: GetUserInformationProps) => {
   const token = localStorage.getItem("token");
