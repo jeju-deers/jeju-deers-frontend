@@ -6,7 +6,7 @@ import OrganizationPage from "../pages/club/OrganizationPage";
 import RosterPage from "../pages/club/RosterPage";
 import CoachesStaffPage from "../pages/club/CoachesStaffPage";
 import SponsorPage from "../pages/club/SponsorPage";
-import PracticeSchedulePage from "../pages/teamroom/PracticeSchedulePage";
+import WorkoutSchedulesPage from "~/pages/teamroom/WorkoutSchedulesPage";
 import TeamBoardPage from "../pages/teamroom/TeamBoardPage";
 import CoachBoardPage from "../pages/teamroom/CoachBoardPage";
 import StaffBoardPage from "../pages/teamroom/StaffBoardPage";
@@ -35,7 +35,7 @@ const Router = () => {
           <Route path="/news/schedule" element={<SchedulePage />} />
           <Route path="/news/news" element={<NewsPage />} />
 
-          <Route path="/teamroom/practice_schedule" element={<PracticeSchedulePage />} />
+          <Route path="/teamroom/workout_schedules" element={<WorkoutSchedulesPage />} />
           <Route path="/teamroom/team_board" element={<TeamBoardPage />} />
           <Route path="/teamroom/coach_board" element={<CoachBoardPage />} />
           <Route path="/teamroom/staff_board" element={<StaffBoardPage />} />
