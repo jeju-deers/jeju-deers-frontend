@@ -14,7 +14,7 @@ const TITLES: { [key: string]: string[] } = {
   membership_fee: ["MEMBERSHIP FEE", "회비"],
   guest_board: ["GUEST BOARD", "외부인 게시판"],
   media: ["MEDIA", "미디어"],
-  support: ["SUPPORT", "지원"],
+  support: ["SUPPORT", "서포터즈"],
 };
 
 export default TITLES;
