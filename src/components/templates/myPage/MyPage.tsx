@@ -12,25 +12,25 @@ import PlayerItemsInputField from "~/components/organisms/myPage/PlayerItemsInpu
 import CoachItemsInputField from "~/components/organisms/myPage/CoachItemsInputField";
 import SubmitButton from "~/components/atoms/myPage/body/SubmitButton";
 import CancelButton from "~/components/atoms/myPage/body/CancelButton";
-import { useState } from "react";
+import { useGetUserInformation } from "~/hooks/myPage/query/useGetUserInformation";
 
 const MyPage = () => {
-  const [selectedOption, setSelectedOption] = useState("player");
+  // TODO: [2024-08-19] 임시로 임의의 값을 넣었습니다.
+  // 이후, userId 없이 token값을 헤더를 통해 서버 측에 전달하면, 로그인한 유저를 파악할 수 있는지 확인 후 수정이 필요합니다.
+  const userId = "player07";
+  const { userInformation } = useGetUserInformation(userId);
 
-  // TODO: [2024-08-02] userType에 따라 다른 마이페이지 양식을 띄워주는 코드를 작성해야합니다.
-  //   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //     const selectedId = event.target.id;
-  //     setSelectedOption(selectedId);
-  //   };
+  // TODO: [2024-08-19] 단일 회원 조회의 응답 데이터에 userType을 포함해 달라는 요청이 필요합니다.
+  const userType = userInformation?.userType;
 
   const getOptionInputField = () => {
-    if (selectedOption === "player") {
+    if (userType === "player") {
       return <PlayerItemsInputField />;
     }
-    if (selectedOption === "coachesStaff") {
+    if (userType === "coachesStaff") {
       return <CoachItemsInputField />;
     }
-    if (selectedOption === "outsider") {
+    if (userType === "outsider") {
       return <></>;
     }
   };
