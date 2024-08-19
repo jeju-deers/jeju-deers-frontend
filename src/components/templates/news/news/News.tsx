@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import BoardTitle from "~/components/atoms/news/news/BoardTitle";
 import { BoardTitleWrap, NewsBoardWrap, NewsLayout, WriteButtonWrap } from "./NewsStyle";
-import Board from "~/components/atoms/news/news/Board";
-import WriteButton from "~/components/atoms/news/news/WriteButton";
-import Pagination from "../../../molecules/news/Pagination";
-import Search from "~/components/molecules/news/Search";
 import { handleSearch } from "~/hooks/handleSearch";
 import { useGetBoards } from "~/hooks/board/query/useGetBoards";
+import BoardTitle from "~/common/components/atom/board/BoardTitle";
+import Board from "~/common/components/atom/board/Board";
+import WriteButton from "~/common/components/atom/board/WriteButton";
+import Pagination from "~/common/components/molecules/board/Pagination";
+import Search from "~/common/components/molecules/board/Search";
 
 const News = () => {
   const { data: newsData = [], isLoading, error } = useGetBoards("news");

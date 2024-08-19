@@ -1,5 +1,5 @@
-import SearchButton from "~/components/atoms/news/news/SearchButton";
-import DropdownButton from "~/components/atoms/news/news/DropDownButton";
+import DropdownButton from "../../atom/board/DropDownButton";
+import SearchButton from "../../atom/board/SearchButton";
 import { SearchBox, SearchInput } from "./SearchStyles";
 
 interface Props {

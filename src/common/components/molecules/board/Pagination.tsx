@@ -1,4 +1,4 @@
-import PageMoveButton from "~/components/atoms/news/news/PageMoveButton";
+import PageMoveButton from "../../atom/board/PageMoveButton";
 import { PageButton, PaginationBox } from "./PaginationStyles";
 
 interface Props {
