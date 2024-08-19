@@ -7,9 +7,9 @@ export const AccountsBox = styled.div`
     border-l
     border-white
   `}
-  :hover > * {
+  :hover > span {
     ${tw`
-      text-[#69a6ff]
+      text-blue
     `}
   }
 `;

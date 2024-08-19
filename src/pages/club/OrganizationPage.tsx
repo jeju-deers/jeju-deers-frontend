@@ -1,7 +1,7 @@
-import { OrganizationPageLayout } from "./OrganizationPageStyles";
+import Organization from "~/components/templates/club/Organization";
 
 const OrganizationPage = () => {
-  return <OrganizationPageLayout>Organization 페이지입니다.</OrganizationPageLayout>;
+  return <Organization />;
 };
 
 export default OrganizationPage;

@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { ChangeEvent, FormEvent } from "react";
 import SubmitButton from "~/components/atoms/signUp/body/SubmitButton";
 import PrivacyPolicyField from "~/components/molecules/signUp/body/PrivacyPolicyField";
 import SignUpPurposeField from "~/components/molecules/signUp/body/SignUpPurposeField";
 import SubHeader from "~/components/molecules/signUp/subHeader/SubHeader";
 import BasicItemsInputField from "~/components/organisms/signUp/body/BasicItemsInputField";
-import CoachesStaffItemsInputField from "~/components/organisms/signUp/body/CoachesStaffItemsInputField";
-import RosterItemsInputField from "~/components/organisms/signUp/body/RosterItemsInputField";
+import CoachItemsInputField from "~/components/organisms/signUp/body/CoachItemsInputField";
+import PlayerItemsInputField from "~/components/organisms/signUp/body/PlayerItemsInputField";
 import PrimaryHeader from "~/components/organisms/signUp/primaryHeader/PrimaryHeader";
 import {
   BasicItemsInputFieldWrap,
@@ -19,27 +19,28 @@ import {
   WholeSignUpLayout,
 } from "~/components/templates/signUp/SignUpStyles";
 
-const SignUp = () => {
-  const [selectedOption, setSelectedOption] = useState("roster");
+interface Props {
+  selectedOption: string;
+  onChangeInput: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChangeSelected: (event: ChangeEvent<HTMLInputElement>) => void;
+  onSubmit: (event: FormEvent<HTMLFormElement>) => void;
+}
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedId = event.target.id;
-    setSelectedOption(selectedId);
-  };
-
+const SignUp = ({ selectedOption, onChangeInput, onChangeSelected, onSubmit }: Props) => {
   const getOptionInputField = () => {
-    if (selectedOption === "roster") {
-      return <RosterItemsInputField />;
+    if (selectedOption === "player") {
+      return <PlayerItemsInputField onChangeInput={onChangeInput} />;
     }
-    if (selectedOption === "coachesStaff") {
-      return <CoachesStaffItemsInputField />;
+    if (selectedOption === "coach") {
+      return <CoachItemsInputField onChangeInput={onChangeInput} />;
     }
-    if (selectedOption === "outsider") {
+    if (selectedOption === "external") {
       return <></>;
     }
   };
 
   return (
+    // TODO: [2024-08-02] WholeSignUpLayout 제거 및 outlet subheader을 이용하여 병합
     <WholeSignUpLayout>
       <PrimaryHeaderWrap>
         <PrimaryHeader />
@@ -48,12 +49,12 @@ const SignUp = () => {
         <SubHeaderWrap>
           <SubHeader />
         </SubHeaderWrap>
-        <SignUpForm id="signUpSubmit">
+        <SignUpForm id="signUpSubmit" onSubmit={onSubmit}>
           <SignUpPurposeFieldWrap>
-            <SignUpPurposeField selectedOption={selectedOption} onChange={handleChange} />
+            <SignUpPurposeField selectedOption={selectedOption} onChange={onChangeSelected} />
           </SignUpPurposeFieldWrap>
           <BasicItemsInputFieldWrap>
-            <BasicItemsInputField />
+            <BasicItemsInputField onChangeInput={onChangeInput} />
           </BasicItemsInputFieldWrap>
           <OptionItemsInputFieldWrap>{getOptionInputField()}</OptionItemsInputFieldWrap>
           <PrivacyPolicyFieldWrap>

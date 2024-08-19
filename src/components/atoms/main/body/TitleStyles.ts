@@ -20,7 +20,7 @@ export const TitleBox = styled.div`
 
   p:nth-child(2) {
     ${tw`
-      text-[#69A6FF]
+      text-blue
     `}
   }
 `;
