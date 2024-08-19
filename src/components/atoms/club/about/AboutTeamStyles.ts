@@ -8,7 +8,7 @@ export const AboutTeamBox = styled.div`
     justify-center
     justify-around
     border-2
-    border-[#C8C8C8]
+    border-gray-500
     mt-5
     mb-24
     rounded-lg

@@ -8,9 +8,9 @@ export const SearchBox = styled.div`
     items-center
     h-36
     gap-2
-    bg-[#F9F9F9]
+    bg-gray-100
     border-t
-    border-[#E5E5E5]
+    border-gray-350
     pb-10
   `}
 `;
@@ -20,7 +20,7 @@ export const SearchInput = styled.input`
     border
     border-gray-300
     h-11
-    w-[300px]
+    w-75
     rounded-md
     p-2
   `}

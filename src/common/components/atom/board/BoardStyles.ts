@@ -5,10 +5,10 @@ export const BoardBox = styled.div`
   ${tw`
     flex
     flex-col
-    border-y-[5px]
+    border-y-5
     border-gray-200
-    min-w-[1050px]
-    border-y-[#0C2F23]
+    min-w-262.5
+    border-y-green-dark
   `}
 `;
 

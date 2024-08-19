@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const WriteButtonButton = styled.button`
   ${tw`
     border
-    border-[#C8C8C8]
+    border-gray-500
     text-2xl
     bg-white
     w-32

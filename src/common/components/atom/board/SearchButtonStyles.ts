@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const SearchButtonButton = styled.button`
   ${tw`
-    bg-[#69A6FF]
+    bg-blue
     text-white
     h-11
     w-14

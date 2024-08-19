@@ -8,7 +8,7 @@ export const PaginationBox = styled.div`
     items-center
     gap-1 
     h-24
-    bg-[#F9F9F9]
+    bg-gray-100
   `}
 `;
 
@@ -28,7 +28,7 @@ export const PageButton = styled.button`
 
   &[aria-current] {
     ${tw`
-      text-[#69A6FF]
+      text-blue
       bg-white
       border
       cursor-default

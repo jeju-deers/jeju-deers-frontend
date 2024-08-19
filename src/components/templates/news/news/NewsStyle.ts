@@ -20,7 +20,7 @@ export const NewsBoardWrap = styled.div`
   ${tw`
     py-16
     px-32
-    min-w-[1050px]
+    min-w-262.5
   `}
 `;
 
@@ -28,6 +28,6 @@ export const WriteButtonWrap = styled.div`
   ${tw`
     text-end
     mt-4
-    min-w-[1050px]
+    min-w-262.5
   `}
 `;
