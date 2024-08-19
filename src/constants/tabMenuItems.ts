@@ -19,7 +19,7 @@ const TAB_MENU_ITEMS = {
     { to: "/teamroom/membership_fee", text: "Membership Fee" },
   ],
   community: [
-    { to: "/community/fan_board", text: "Fan Board" },
+    { to: "/community/guest_board", text: "Guest Board" },
     { to: "/community/media", text: "Media" },
     { to: "/community/support", text: "Support" },
   ],

@@ -12,7 +12,7 @@ const TITLES: { [key: string]: string[] } = {
   staff_board: ["STAFF BOARD", "스탭 게시판"],
   playbook: ["PLAYBOOK", "플레이북"],
   membership_fee: ["MEMBERSHIP FEE", "회비"],
-  fan_board: ["FAN BOARD", "팬 게시판"],
+  guest_board: ["GUEST BOARD", "외부인 게시판"],
   media: ["MEDIA", "미디어"],
   support: ["SUPPORT", "지원"],
 };

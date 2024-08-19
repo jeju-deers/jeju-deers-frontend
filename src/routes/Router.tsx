@@ -12,7 +12,7 @@ import CoachBoardPage from "../pages/teamroom/CoachBoardPage";
 import StaffBoardPage from "../pages/teamroom/StaffBoardPage";
 import PlaybookPage from "../pages/teamroom/PlaybookPage";
 import MembershipFeePage from "../pages/teamroom/MembershipFeePage";
-import FanBoardPage from "../pages/community/FanBoardPage";
+import GuestBoardPage from "~/pages/community/GuestBoardPage";
 import MediaPage from "../pages/community/MediaPage";
 import SupportPage from "../pages/community/SupportPage";
 import SchedulePage from "../pages/news/SchedulePage";
@@ -42,7 +42,7 @@ const Router = () => {
           <Route path="/teamroom/playbook" element={<PlaybookPage />} />
           <Route path="/teamroom/membership_fee" element={<MembershipFeePage />} />
 
-          <Route path="/community/fan_board" element={<FanBoardPage />} />
+          <Route path="/community/guest_board" element={<GuestBoardPage />} />
           <Route path="/community/media" element={<MediaPage />} />
           <Route path="/community/support" element={<SupportPage />} />
         </Route>
