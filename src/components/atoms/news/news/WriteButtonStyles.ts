@@ -1,7 +1,7 @@
 import tw from "twin.macro";
 import styled from "styled-components";
 
-export const WritButtonButton = styled.button`
+export const WriteButtonButton = styled.button`
   ${tw`
     border
     border-[#C8C8C8]

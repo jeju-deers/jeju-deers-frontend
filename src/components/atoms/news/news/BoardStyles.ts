@@ -12,7 +12,7 @@ export const BoardBox = styled.div`
   `}
 `;
 
-export const BoardHeader = styled.div`
+export const BoardHeaderBox = styled.div`
   ${tw`
     flex
     font-bold
@@ -32,8 +32,8 @@ export const BoardHeader = styled.div`
   }
   & > *:nth-child(3) {
     ${tw`
-      basis-[8.33%]
-      min-w-[10%]
+      basis-[15%]
+      min-w-[12%]
     `}
   }
   & > *:nth-child(4) {
@@ -50,7 +50,7 @@ export const BoardHeader = styled.div`
   }
 `;
 
-export const BoardItem = styled.div`
+export const BoardItemBox = styled.div`
   ${tw`
     flex
     justify-center
@@ -58,9 +58,16 @@ export const BoardItem = styled.div`
     text-xl
     h-16
   `}
+
+  &:nth-child(2) {
+    ${tw`
+      flex
+      justify-start
+    `}
+  }
 `;
 
-export const BoardRow = styled.div`
+export const BoardRowBox = styled.div`
   ${tw`
     flex
     font-normal
@@ -82,8 +89,8 @@ export const BoardRow = styled.div`
   }
   & > *:nth-child(3) {
     ${tw`
-      basis-[8.33%]
-      min-w-[10%]
+      basis-[15%]
+      min-w-[12%]
     `}
   }
   & > *:nth-child(4) {
