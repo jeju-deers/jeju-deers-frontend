@@ -1,25 +1,24 @@
 import ItemInputField from "~/components/molecules/myPage/body/ItemInputField";
-import { BasicItemsInputFieldBox } from "./BasicItemsInputFieldStyles";
+import { ExternalItemsInputFieldBox } from "./ExternalItemsInputFieldStyles";
 
 interface Props {
   temporaryUserInformation: {
-    userId?: string;
-    name?: string;
-    nickname?: string;
-    birth?: string;
-    email?: string;
+    userId: string;
+    name: string;
+    nickname: string;
+    birth: string;
+    email: string;
   };
 }
 
-const BasicItemsInputField = ({ temporaryUserInformation }: Props) => {
+const ExternalItemsInputField = ({ temporaryUserInformation }: Props) => {
   const temporaryUserId = temporaryUserInformation.userId;
   const temporaryName = temporaryUserInformation.name;
   const temporaryNickname = temporaryUserInformation.nickname;
-  const temporaryBirth = temporaryUserInformation.birth;
   const temporaryEmail = temporaryUserInformation.email;
 
   return (
-    <BasicItemsInputFieldBox>
+    <ExternalItemsInputFieldBox>
       <ItemInputField id="id" text="아이디" value={temporaryUserId} required={false} />
       <ItemInputField
         id="password"
@@ -30,10 +29,9 @@ const BasicItemsInputField = ({ temporaryUserInformation }: Props) => {
       <ItemInputField id="passwordConfirm" text="비밀번호 확인" required={false} />
       <ItemInputField id="userName" text="이름" value={temporaryName} required={false} />
       <ItemInputField id="userNickName" text="닉네임" value={temporaryNickname} required={false} />
-      <ItemInputField id="userBirth" text="생년월일" value={temporaryBirth} required={false} />
       <ItemInputField id="userEmail" text="이메일" value={temporaryEmail} required={false} />
-    </BasicItemsInputFieldBox>
+    </ExternalItemsInputFieldBox>
   );
 };
 
-export default BasicItemsInputField;
+export default ExternalItemsInputField;
