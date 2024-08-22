@@ -5,6 +5,7 @@ import { ChangeEvent } from "react";
 interface Props {
   onChangeInput: (event: ChangeEvent<HTMLInputElement>) => void;
 }
+
 const PlayerItemsInputField = ({ onChangeInput }: Props) => {
   return (
     <PlayerItemsInputFieldBox>

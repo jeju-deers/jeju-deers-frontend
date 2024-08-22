@@ -14,6 +14,13 @@ import SubmitButton from "~/components/atoms/myPage/body/SubmitButton";
 import CancelButton from "~/components/atoms/myPage/body/CancelButton";
 import TEMPORARY_USER_DATA from "~/constants/temporaryUserData";
 import ExternalItemsInputField from "~/components/organisms/myPage/ExternalItemsInputField";
+import { FormEvent, useState } from "react";
+import useEditMyPage from "~/hooks/myPage/useEditMyPage";
+
+// interface Props {
+//   onChangeInput: (event: ChangeEvent<HTMLInputElement>) => void;
+//   onSubmit: (event: FormEvent<HTMLFormElement>) => void;
+// }
 
 const MyPage = () => {
   // TODO: [2024-08-19] 임시로 임의의 값을 넣었습니다.
@@ -26,19 +33,93 @@ const MyPage = () => {
   // const userId = userInformation?.userId;
 
   const temporaryPlayerData = TEMPORARY_USER_DATA[0];
-  const temporaryCoachData = TEMPORARY_USER_DATA[1];
-  const temporaryExternalData = TEMPORARY_USER_DATA[2];
+  // const temporaryCoachData = TEMPORARY_USER_DATA[1];
+  // const temporaryExternalData = TEMPORARY_USER_DATA[2];
+  // console.log(temporaryPlayerData);
+
+  const [temporaryData, setTemporaryData] = useState(temporaryPlayerData);
+
+  const { formData, handleChangeInput } = useEditMyPage(temporaryData);
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    let userInputValues;
+
+    const basicInputValues = {
+      userId: formData.inputId,
+      password: formData.inputPassword,
+      passwordConfirm: formData.inputPasswordConfirm,
+      name: formData.inputName,
+      nickname: formData.inputNickname,
+      birth: formData.inputBirth,
+      email: formData.inputEmail,
+    };
+
+    if (temporaryData.userType === "player") {
+      const playerInputValues = {
+        ...basicInputValues,
+        school: formData.inputSchool,
+        studentId: formData.inputStudentId,
+        positions: formData.inputPositions,
+        backNumber: formData.inputBackNumber,
+        belong: formData.inputBelong,
+        joinYear: formData.inputJoinYear,
+      };
+      userInputValues = playerInputValues;
+      console.log(userInputValues);
+    }
+
+    if (temporaryData.userType === "coach") {
+      const coachInputValues = {
+        ...basicInputValues,
+        school: formData.inputSchool,
+        studentId: formData.inputStudentId,
+        positions: formData.inputPositions,
+      };
+      userInputValues = coachInputValues;
+      console.log(userInputValues);
+    }
+
+    if (temporaryData.userType === "external") {
+      const externalInputValues = {
+        userId: formData.inputId,
+        password: formData.inputPassword,
+        passwordConfirm: formData.inputPasswordConfirm,
+        name: formData.inputName,
+        nickname: formData.inputNickname,
+        email: formData.inputEmail,
+      };
+      userInputValues = externalInputValues;
+    }
+    console.log(userInputValues);
+  };
 
   const getOptionInputField = () => {
-    if (temporaryPlayerData.userType === "player") {
-      return <PlayerItemsInputField temporaryUserInformation={temporaryPlayerData} />;
+    if (temporaryData.userType === "player") {
+      return (
+        <PlayerItemsInputField
+          temporaryUserInformation={formData}
+          onChangeInput={handleChangeInput}
+        />
+      );
     }
-    if (temporaryCoachData.userType === "coach") {
-      return <CoachItemsInputField temporaryUserInformation={temporaryCoachData} />;
+    if (temporaryData.userType === "coach") {
+      return (
+        <CoachItemsInputField
+          temporaryUserInformation={formData}
+          onChangeInput={handleChangeInput}
+        />
+      );
     }
-    if (temporaryExternalData.userType === "external") {
-      return <ExternalItemsInputField temporaryUserInformation={temporaryExternalData} />;
-    }
+    //   if (temporaryData.userType === "external") {
+    //     return (
+    //       <ExternalItemsInputField
+    //         temporaryUserInformation={formData}
+    //         onChangeInput={handleChangeInput}
+    //       />
+    //     );
+    //   }
   };
 
   return (
@@ -46,12 +127,20 @@ const MyPage = () => {
       <SubHeaderWrap>
         <SubHeader />
       </SubHeaderWrap>
-      <MyPageForm id="myPageSubmit">
-        {temporaryExternalData.userType === "external" ? (
-          <BasicItemsInputFieldWrap>
-            <BasicItemsInputField temporaryUserInformation={temporaryPlayerData} />
-          </BasicItemsInputFieldWrap>
-        ) : null}
+      <MyPageForm id="myPageSubmit" onSubmit={handleSubmit}>
+        <BasicItemsInputFieldWrap>
+          {temporaryData.userType === "external" ? (
+            <ExternalItemsInputField
+              temporaryUserInformation={formData}
+              onChangeInput={handleChangeInput}
+            />
+          ) : (
+            <BasicItemsInputField
+              temporaryUserInformation={formData}
+              onChangeInput={handleChangeInput}
+            />
+          )}
+        </BasicItemsInputFieldWrap>
         <OptionItemsInputFieldWrap>{getOptionInputField()}</OptionItemsInputFieldWrap>
         <FormActionButtonBox>
           <CancelButton text="취소" formId="myPageCancel" />

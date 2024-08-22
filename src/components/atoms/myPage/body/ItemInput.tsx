@@ -1,3 +1,4 @@
+import { ChangeEvent } from "react";
 import { ItemInputInput } from "./ItemInputStyles";
 
 interface Props {
@@ -6,9 +7,10 @@ interface Props {
   required: boolean;
   minLength?: number;
   maxLength?: number;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const ItemInput = ({ id, value, required, minLength, maxLength }: Props) => {
+const ItemInput = ({ id, value, required, minLength, maxLength, onChange }: Props) => {
   return (
     <ItemInputInput
       type="text"
@@ -18,6 +20,7 @@ const ItemInput = ({ id, value, required, minLength, maxLength }: Props) => {
       required={required}
       minLength={minLength}
       maxLength={maxLength}
+      onChange={onChange}
     />
   );
 };

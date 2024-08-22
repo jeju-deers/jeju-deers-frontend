@@ -1,35 +1,66 @@
 import ItemInputField from "~/components/molecules/myPage/body/ItemInputField";
 import { ExternalItemsInputFieldBox } from "./ExternalItemsInputFieldStyles";
+import { ChangeEvent } from "react";
 
 interface Props {
   temporaryUserInformation: {
-    userId: string;
-    name: string;
-    nickname: string;
-    birth: string;
-    email: string;
+    inputId: string;
+    inputName: string;
+    inputNickname: string;
+    inputEmail: string;
   };
+  onChangeInput: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const ExternalItemsInputField = ({ temporaryUserInformation }: Props) => {
-  const temporaryUserId = temporaryUserInformation.userId;
-  const temporaryName = temporaryUserInformation.name;
-  const temporaryNickname = temporaryUserInformation.nickname;
-  const temporaryEmail = temporaryUserInformation.email;
+const ExternalItemsInputField = ({ temporaryUserInformation, onChangeInput }: Props) => {
+  const temporaryUserId = temporaryUserInformation.inputId;
+  const temporaryName = temporaryUserInformation.inputName;
+  const temporaryNickname = temporaryUserInformation.inputNickname;
+  const temporaryEmail = temporaryUserInformation.inputEmail;
 
   return (
     <ExternalItemsInputFieldBox>
-      <ItemInputField id="id" text="아이디" value={temporaryUserId} required={false} />
+      <ItemInputField
+        id="inputId"
+        text="아이디"
+        value={temporaryUserId}
+        required={false}
+        onChange={onChangeInput}
+      />
       <ItemInputField
         id="password"
         text="비밀번호"
         required={false}
         condition="(6자리 이상, 영문과 숫자 포함)"
+        onChange={onChangeInput}
       />
-      <ItemInputField id="passwordConfirm" text="비밀번호 확인" required={false} />
-      <ItemInputField id="userName" text="이름" value={temporaryName} required={false} />
-      <ItemInputField id="userNickName" text="닉네임" value={temporaryNickname} required={false} />
-      <ItemInputField id="userEmail" text="이메일" value={temporaryEmail} required={false} />
+      <ItemInputField
+        id="passwordConfirm"
+        text="비밀번호 확인"
+        required={false}
+        onChange={onChangeInput}
+      />
+      <ItemInputField
+        id="inputName"
+        text="이름"
+        value={temporaryName}
+        required={false}
+        onChange={onChangeInput}
+      />
+      <ItemInputField
+        id="inputNickname"
+        text="닉네임"
+        value={temporaryNickname}
+        required={false}
+        onChange={onChangeInput}
+      />
+      <ItemInputField
+        id="inputEmail"
+        text="이메일"
+        value={temporaryEmail}
+        required={false}
+        onChange={onChangeInput}
+      />
     </ExternalItemsInputFieldBox>
   );
 };
