@@ -20,6 +20,7 @@ import NewsPage from "../pages/news/NewsPage";
 import Base from "../Base";
 import MyPagePage from "~/pages/MyPagePage";
 import SignUpPage from "~/pages/SignUpPage";
+import NewsWritePage from "~/pages/common/NewsWritePage";
 
 const Router = () => {
   return (
@@ -39,6 +40,7 @@ const Router = () => {
 
           <Route path="/news/schedule" element={<SchedulePage />} />
           <Route path="/news/news" element={<NewsPage />} />
+          <Route path="/news/:section/write" element={<NewsWritePage />} />
 
           <Route path="/teamroom/practice_schedule" element={<PracticeSchedulePage />} />
           <Route path="/teamroom/team_board" element={<TeamBoardPage />} />
