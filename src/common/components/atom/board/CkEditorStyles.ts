@@ -5,14 +5,12 @@ export const MainContainer = styled.div`
   ${tw`
     font-sans
   `}
-  font-family: 'Lato', sans-serif;
 `;
 
 export const EditorContainer = styled.div`
   ${tw`
     flex 
-    flex-col 
-    
+    flex-col
   `}
 `;
 
@@ -22,12 +20,14 @@ export const CKEditorWrapper = styled.div`
   `}
 
   .ck-editor__editable {
-    ${tw`min-h-96`}
+    ${tw`
+      min-h-96
+    `}
   }
 
   .media {
     ${tw`
-        w-[400px]
+        w-100
     `}
   }
 `;

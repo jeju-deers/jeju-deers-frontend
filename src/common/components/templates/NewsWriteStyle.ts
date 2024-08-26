@@ -7,18 +7,20 @@ export const NewsWriteLayout = styled.div`
     w-full
     py-20
     px-28
-    min-w-[1000px]
+    min-w-250
   `}
 `;
 
 export const Notice = styled.div`
   ${tw`
-    bg-[#F0F1F3]
+    bg-gray-200
     p-4
   `}
 
   span {
-    color: red;
+    ${tw`
+      text-red
+    `}
   }
 `;
 
@@ -71,7 +73,7 @@ export const SaveButtonWrap = styled.div`
 
 export const SaveButton = styled.button`
   ${tw`
-    bg-[#69A6FF]
+    bg-blue
     h-14
     w-28
     text-white
