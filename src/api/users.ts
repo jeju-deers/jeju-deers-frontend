@@ -1,4 +1,5 @@
 import { instance } from "~/api";
+import { GetUserInformationProps } from "./types/users";
 
 interface User {
   userId: number;
@@ -28,4 +29,22 @@ export const getUserInformation = async (objectInformation: {
   });
 
   return data;
+};
+
+export const updateUserInformation = (
+  objectInformation: {
+    userId: string;
+    token: string | null;
+  },
+  { userInformation }: GetUserInformationProps,
+) => {
+  return instance.put(
+    `/users/edit/${objectInformation.userId}`,
+    { userInformation },
+    {
+      headers: {
+        Authorization: objectInformation.token ? `Bearer ${objectInformation.token}` : "",
+      },
+    },
+  );
 };

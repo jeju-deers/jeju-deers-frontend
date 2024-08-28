@@ -13,16 +13,32 @@ import CoachItemsInputField from "~/components/organisms/myPage/CoachItemsInputF
 import SubmitButton from "~/components/atoms/myPage/body/SubmitButton";
 import CancelButton from "~/components/atoms/myPage/body/CancelButton";
 import ExternalItemsInputField from "~/components/organisms/myPage/ExternalItemsInputField";
-import { FormEvent } from "react";
+import { FormEvent, useEffect } from "react";
 import useEditMyPage from "~/hooks/myPage/useEditMyPage";
 import { GetUserInformationProps } from "~/api/types/users";
 
-const MyPage = ({ userInformation }: GetUserInformationProps) => {
+const MyPage = ({ userInformation, mutate }: any) => {
   const { formData, handleChangeInput } = useEditMyPage({ userInformation });
   const userType = formData.userType;
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    mutate({
+      userId: formData.inputId,
+      password: formData.inputPassword,
+      passwordConfirm: formData.inputPasswordConfirm,
+      name: formData.inputName,
+      email: formData.inputEmail,
+      school: formData.inputSchool,
+      studentId: formData.inputStudentId,
+      positions: formData.inputPositions,
+      backNumber: formData.inputBackNumber,
+      nickname: formData.inputNickname,
+      birth: formData.inputBirth,
+      belong: formData.inputBelong,
+      joinYear: formData.inputJoinYear,
+    });
 
     let userInputValues;
 

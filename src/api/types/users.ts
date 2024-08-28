@@ -2,6 +2,8 @@ export interface GetUserInformationProps {
   userInformation: {
     userType: string | "";
     userId: string;
+    password: string | "";
+    passwordConfirm: string | "";
     name: string;
     email: string;
     school: string;
