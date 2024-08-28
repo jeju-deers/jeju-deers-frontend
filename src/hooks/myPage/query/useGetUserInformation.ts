@@ -1,11 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
-import { GetUserInformationProps } from "~/api/types/users";
 import { getUserInformation } from "~/api/users";
 
-export const useGetUserInformation = (userId: string) => {
-  const { data, isLoading, isError } = useQuery<GetUserInformationProps>({
-    queryKey: ["userId", userId],
-    queryFn: () => getUserInformation(userId),
+const useGetUserInformation = (userId: string, token: string | null) => {
+  const objectInformation = {
+    userId: userId,
+    token: token,
+  };
+
+  const { data, isLoading } = useQuery({
+    queryKey: ["userInformation", objectInformation],
+    queryFn: () => getUserInformation(objectInformation),
   });
-  return { userInformation: data, isLoading, isError };
+
+  return { userInformation: data, isLoading };
 };
+
+export default useGetUserInformation;

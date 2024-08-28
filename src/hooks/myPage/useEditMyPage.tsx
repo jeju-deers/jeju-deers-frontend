@@ -1,20 +1,22 @@
 import { ChangeEvent, useState } from "react";
+import { GetUserInformationProps } from "~/api/types/users";
 
-const useEditMyPage = (temporaryData: any) => {
+const useEditMyPage = ({ userInformation }: GetUserInformationProps) => {
   const [formData, setFormData] = useState({
-    inputId: temporaryData.userId,
+    userType: userInformation.userType,
+    inputId: userInformation.userId,
     inputPassword: "",
     inputPasswordConfirm: "",
-    inputName: temporaryData.name,
-    inputNickname: temporaryData.nickname,
-    inputBirth: temporaryData.birth,
-    inputEmail: temporaryData.email,
-    inputSchool: temporaryData.school,
-    inputStudentId: temporaryData.studentId,
-    inputPositions: temporaryData.positions,
-    inputBackNumber: temporaryData.backNumber,
-    inputBelong: temporaryData.belong,
-    inputJoinYear: temporaryData.joinYear,
+    inputName: userInformation.name,
+    inputNickname: userInformation.nickname,
+    inputBirth: userInformation.birth,
+    inputEmail: userInformation.email,
+    inputSchool: userInformation.school,
+    inputStudentId: userInformation.studentId,
+    inputPositions: userInformation.positions,
+    inputBackNumber: userInformation.backNumber,
+    inputBelong: userInformation.belong,
+    inputJoinYear: userInformation.joinYear,
   });
 
   const handleChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
