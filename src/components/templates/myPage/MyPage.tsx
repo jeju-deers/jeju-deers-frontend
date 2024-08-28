@@ -13,82 +13,46 @@ import CoachItemsInputField from "~/components/organisms/myPage/CoachItemsInputF
 import SubmitButton from "~/components/atoms/myPage/body/SubmitButton";
 import CancelButton from "~/components/atoms/myPage/body/CancelButton";
 import ExternalItemsInputField from "~/components/organisms/myPage/ExternalItemsInputField";
-import { FormEvent, useEffect } from "react";
+import { FormEvent } from "react";
 import useEditMyPage from "~/hooks/myPage/useEditMyPage";
-import { GetUserInformationProps } from "~/api/types/users";
 
-const MyPage = ({ userInformation, mutate }: any) => {
+const MyPage = ({ userInformation, updateUserInformation }: any) => {
   const { formData, handleChangeInput } = useEditMyPage({ userInformation });
-  const userType = formData.userType;
+  const {
+    userType,
+    inputId,
+    inputPassword,
+    inputPasswordConfirm,
+    inputName,
+    inputEmail,
+    inputSchool,
+    inputStudentId,
+    inputPositions,
+    inputBackNumber,
+    inputNickname,
+    inputBirth,
+    inputBelong,
+    inputJoinYear,
+  } = formData;
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    mutate({
-      userId: formData.inputId,
-      password: formData.inputPassword,
-      passwordConfirm: formData.inputPasswordConfirm,
-      name: formData.inputName,
-      email: formData.inputEmail,
-      school: formData.inputSchool,
-      studentId: formData.inputStudentId,
-      positions: formData.inputPositions,
-      backNumber: formData.inputBackNumber,
-      nickname: formData.inputNickname,
-      birth: formData.inputBirth,
-      belong: formData.inputBelong,
-      joinYear: formData.inputJoinYear,
+    updateUserInformation.mutate({
+      userId: inputId,
+      password: inputPassword,
+      passwordConfirm: inputPasswordConfirm,
+      name: inputName,
+      email: inputEmail,
+      school: inputSchool,
+      studentId: inputStudentId,
+      positions: inputPositions,
+      backNumber: inputBackNumber,
+      nickname: inputNickname,
+      birth: inputBirth,
+      belong: inputBelong,
+      joinYear: inputJoinYear,
     });
-
-    let userInputValues;
-
-    const basicInputValues = {
-      userId: formData.inputId,
-      password: formData.inputPassword,
-      passwordConfirm: formData.inputPasswordConfirm,
-      name: formData.inputName,
-      nickname: formData.inputNickname,
-      birth: formData.inputBirth,
-      email: formData.inputEmail,
-    };
-
-    if (userType === "player") {
-      const playerInputValues = {
-        ...basicInputValues,
-        school: formData.inputSchool,
-        studentId: formData.inputStudentId,
-        positions: formData.inputPositions,
-        backNumber: formData.inputBackNumber,
-        belong: formData.inputBelong,
-        joinYear: formData.inputJoinYear,
-      };
-      userInputValues = playerInputValues;
-      console.log(userInputValues);
-    }
-
-    if (userType === "coach") {
-      const coachInputValues = {
-        ...basicInputValues,
-        school: formData.inputSchool,
-        studentId: formData.inputStudentId,
-        positions: formData.inputPositions,
-      };
-      userInputValues = coachInputValues;
-      console.log(userInputValues);
-    }
-
-    if (userType === "external") {
-      const externalInputValues = {
-        userId: formData.inputId,
-        password: formData.inputPassword,
-        passwordConfirm: formData.inputPasswordConfirm,
-        name: formData.inputName,
-        nickname: formData.inputNickname,
-        email: formData.inputEmail,
-      };
-      userInputValues = externalInputValues;
-    }
-    console.log(userInputValues);
   };
 
   const getOptionInputField = () => {
@@ -108,14 +72,6 @@ const MyPage = ({ userInformation, mutate }: any) => {
         />
       );
     }
-    //   if (temporaryData.userType === "external") {
-    //     return (
-    //       <ExternalItemsInputField
-    //         temporaryUserInformation={formData}
-    //         onChangeInput={handleChangeInput}
-    //       />
-    //     );
-    //   }
   };
 
   return (

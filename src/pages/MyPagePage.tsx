@@ -7,13 +7,13 @@ const MyPagePage = () => {
   const userId = "player012";
 
   const { userInformation, isLoading } = useGetUserInformation(userId, token);
-  const { mutate } = useUpdateUserInformation(userId, token);
+  const updateUserInformation = useUpdateUserInformation(userId, token);
 
   if (isLoading) {
     return <>...Loading</>;
   }
 
-  return <MyPage userInformation={userInformation} mutate={mutate} />;
+  return <MyPage userInformation={userInformation} updateUserInformation={updateUserInformation} />;
 };
 
 export default MyPagePage;
