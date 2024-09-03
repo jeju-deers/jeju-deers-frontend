@@ -39,6 +39,7 @@ const MyPage = ({ userInformation, updateUserInformation }: any) => {
     event.preventDefault();
 
     updateUserInformation.mutate({
+      userType: userType,
       userId: inputId,
       password: inputPassword,
       passwordConfirm: inputPasswordConfirm,

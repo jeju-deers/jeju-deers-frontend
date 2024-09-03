@@ -31,20 +31,16 @@ export const getUserInformation = async (objectInformation: {
   return data;
 };
 
-export const putUserInformation = (
+export const putUserInformation = async (
   objectInformation: {
     userId: string;
     token: string | null;
   },
-  { userInformation }: GetUserInformationProps,
+  userInformation: GetUserInformationProps,
 ) => {
-  return instance.put(
-    `/users/edit/${objectInformation.userId}`,
-    { userInformation },
-    {
-      headers: {
-        Authorization: objectInformation.token ? `Bearer ${objectInformation.token}` : "",
-      },
+  return await instance.put(`/users/edit/${objectInformation.userId}`, userInformation, {
+    headers: {
+      Authorization: objectInformation.token ? `Bearer ${objectInformation.token}` : "",
     },
-  );
+  });
 };
