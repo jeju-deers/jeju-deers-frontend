@@ -6,7 +6,7 @@ interface Props {
   temporaryUserInformation: {
     inputId: string;
     inputPassword?: string;
-    inputConfirmPassword?: string;
+    inputPasswordConfirm?: string;
     inputName: string;
     inputNickname?: string;
     inputBirth: string;
@@ -17,8 +17,8 @@ interface Props {
 
 const BasicItemsInputField = ({ temporaryUserInformation, onChangeInput }: Props) => {
   const temporaryUserId = temporaryUserInformation.inputId;
-  const temporaryInputPassword = temporaryUserInformation.inputPassword;
-  const temporaryInputConfirmPassword = temporaryUserInformation.inputConfirmPassword;
+  const temporaryPassword = temporaryUserInformation.inputPassword;
+  const temporaryPasswordConfirm = temporaryUserInformation.inputPasswordConfirm;
   const temporaryName = temporaryUserInformation.inputName;
   const temporaryNickname = temporaryUserInformation.inputNickname;
   const temporaryBirth = temporaryUserInformation.inputBirth;
@@ -34,17 +34,17 @@ const BasicItemsInputField = ({ temporaryUserInformation, onChangeInput }: Props
         onChange={onChangeInput}
       />
       <ItemInputField
-        id="password"
+        id="inputPassword"
         text="비밀번호"
-        value={temporaryInputPassword}
+        value={temporaryPassword}
         required={false}
         condition="(6자리 이상, 영문과 숫자 포함)"
         onChange={onChangeInput}
       />
       <ItemInputField
-        id="passwordConfirm"
+        id="inputPasswordConfirm"
         text="비밀번호 확인"
-        value={temporaryInputConfirmPassword}
+        value={temporaryPasswordConfirm}
         required={false}
         onChange={onChangeInput}
       />

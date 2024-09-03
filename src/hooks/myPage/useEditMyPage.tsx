@@ -1,12 +1,12 @@
 import { ChangeEvent, useState } from "react";
 import { GetUserInformationProps } from "~/api/types/users";
 
-const useEditMyPage = ({ userInformation }: GetUserInformationProps) => {
+const useEditMyPage = ({ userInformation }: any) => {
   const [formData, setFormData] = useState({
     userType: userInformation.userType,
     inputId: userInformation.userId,
-    inputPassword: userInformation.password,
-    inputPasswordConfirm: userInformation.passwordConfirm,
+    inputPassword: userInformation.password || "",
+    inputPasswordConfirm: userInformation.passwordConfirm || "",
     inputName: userInformation.name,
     inputNickname: userInformation.nickname,
     inputBirth: userInformation.birth,
