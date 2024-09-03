@@ -31,7 +31,7 @@ export const getUserInformation = async (objectInformation: {
   return data;
 };
 
-export const updateUserInformation = (
+export const putUserInformation = (
   objectInformation: {
     userId: string;
     token: string | null;

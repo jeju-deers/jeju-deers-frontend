@@ -5,8 +5,8 @@ const useEditMyPage = ({ userInformation }: GetUserInformationProps) => {
   const [formData, setFormData] = useState({
     userType: userInformation.userType,
     inputId: userInformation.userId,
-    inputPassword: "",
-    inputPasswordConfirm: "",
+    inputPassword: userInformation.password,
+    inputPasswordConfirm: userInformation.passwordConfirm,
     inputName: userInformation.name,
     inputNickname: userInformation.nickname,
     inputBirth: userInformation.birth,
