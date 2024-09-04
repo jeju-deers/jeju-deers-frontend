@@ -19,7 +19,7 @@ export const GetUsers = async (usertype: string) => {
 };
 
 export const getUserInformation = async (objectInformation: {
-  userId: string;
+  userId: string | null;
   token: string | null;
 }) => {
   const { data } = await instance.get(`/users/${objectInformation.userId}`, {
@@ -33,7 +33,7 @@ export const getUserInformation = async (objectInformation: {
 
 export const putUserInformation = async (
   objectInformation: {
-    userId: string;
+    userId: string | null;
     token: string | null;
   },
   userInformation: GetUserInformationProps,

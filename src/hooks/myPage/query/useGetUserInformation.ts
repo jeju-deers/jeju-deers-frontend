@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getUserInformation } from "~/api/users";
 
-const useGetUserInformation = (userId: string, token: string | null) => {
+const useGetUserInformation = (userId: string | null, token: string | null) => {
   const objectInformation = {
     userId: userId,
     token: token,

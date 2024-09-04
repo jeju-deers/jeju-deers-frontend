@@ -5,7 +5,7 @@ import useGetUserInformation from "~/hooks/myPage/query/useGetUserInformation";
 
 const MyPagePage = () => {
   const token = localStorage.getItem("token");
-  const userId = "player012";
+  const userId = localStorage.getItem("userId");
 
   const { userInformation, isLoading } = useGetUserInformation(userId, token);
   const updateUserInformation = useUpdateUserInformation(userId, token);

@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { GetUserInformationProps } from "~/api/types/users";
 import { putUserInformation } from "~/api/users";
 
-const useUpdateUserInformation = (userId: string, token: string | null) => {
+const useUpdateUserInformation = (userId: string | null, token: string | null) => {
   const objectInformation = {
     userId: userId,
     token: token,
