@@ -23,6 +23,7 @@ const CoachItemsInputField = ({ temporaryUserInformation, onChangeInput }: Props
         text="출신학교"
         value={temporarySchool}
         required={false}
+        pattern="^(?=.*[\uAC00-\uD7A3])[\uAC00-\uD7A3]*$"
         onChange={onChangeInput}
       />
       <ItemInputField
@@ -30,6 +31,7 @@ const CoachItemsInputField = ({ temporaryUserInformation, onChangeInput }: Props
         text="학번"
         value={temporaryStudentId}
         required={false}
+        pattern="^(?=.*\d)[\d]{2}$"
         onChange={onChangeInput}
       />
       <ItemInputField
@@ -37,6 +39,7 @@ const CoachItemsInputField = ({ temporaryUserInformation, onChangeInput }: Props
         text="담당"
         value={temporaryPositions}
         required={false}
+        pattern="^(?=.*[A-Za-z])[A-Za-z]{2}$"
         condition="(여러개 입력 가능)"
         onChange={onChangeInput}
       />

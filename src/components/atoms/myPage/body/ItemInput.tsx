@@ -5,12 +5,13 @@ interface Props {
   id: string;
   value?: string;
   required: boolean;
+  pattern?: string;
   minLength?: number;
   maxLength?: number;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const ItemInput = ({ id, value, required, minLength, maxLength, onChange }: Props) => {
+const ItemInput = ({ id, value, required, pattern, minLength, maxLength, onChange }: Props) => {
   return (
     <ItemInputInput
       type="text"
@@ -18,6 +19,7 @@ const ItemInput = ({ id, value, required, minLength, maxLength, onChange }: Prop
       name={id}
       value={value}
       required={required}
+      pattern={pattern}
       minLength={minLength}
       maxLength={maxLength}
       onChange={onChange}

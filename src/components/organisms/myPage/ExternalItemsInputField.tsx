@@ -25,12 +25,14 @@ const ExternalItemsInputField = ({ temporaryUserInformation, onChangeInput }: Pr
         text="아이디"
         value={temporaryUserId}
         required={false}
+        pattern="^[A-Za-z\d$@$!%*#?&\uAC00-\uD7A3]*$"
         onChange={onChangeInput}
       />
       <ItemInputField
         id="password"
         text="비밀번호"
         required={false}
+        pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&\uAC00-\uD7A3]{6,}$"
         condition="(6자리 이상, 영문과 숫자 포함)"
         onChange={onChangeInput}
       />
@@ -38,6 +40,7 @@ const ExternalItemsInputField = ({ temporaryUserInformation, onChangeInput }: Pr
         id="passwordConfirm"
         text="비밀번호 확인"
         required={false}
+        pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&\uAC00-\uD7A3]{6,}$"
         onChange={onChangeInput}
       />
       <ItemInputField
@@ -45,6 +48,7 @@ const ExternalItemsInputField = ({ temporaryUserInformation, onChangeInput }: Pr
         text="이름"
         value={temporaryName}
         required={false}
+        pattern="^[A-Za-z\uAC00-\uD7A3]*$"
         onChange={onChangeInput}
       />
       <ItemInputField
@@ -52,6 +56,7 @@ const ExternalItemsInputField = ({ temporaryUserInformation, onChangeInput }: Pr
         text="닉네임"
         value={temporaryNickname}
         required={false}
+        pattern="^[A-Za-z\d$@$!%*#?&\uAC00-\uD7A3]*$"
         onChange={onChangeInput}
       />
       <ItemInputField

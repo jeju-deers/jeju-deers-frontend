@@ -29,6 +29,7 @@ const PlayerItemsInputField = ({ temporaryUserInformation, onChangeInput }: Prop
         text="출신학교"
         value={temporarySchool}
         required={false}
+        pattern="^(?=.*[\uAC00-\uD7A3])[\uAC00-\uD7A3]*$"
         onChange={onChangeInput}
       />
       <ItemInputField
@@ -36,6 +37,7 @@ const PlayerItemsInputField = ({ temporaryUserInformation, onChangeInput }: Prop
         text="학번"
         value={temporaryStudentId}
         required={false}
+        pattern="^(?=.*\d)[\d]{2}$"
         onChange={onChangeInput}
       />
       <ItemInputField
@@ -43,6 +45,7 @@ const PlayerItemsInputField = ({ temporaryUserInformation, onChangeInput }: Prop
         text="포지션"
         value={temporaryPositions}
         required={false}
+        pattern="^(?=.*[A-Za-z])[A-Za-z]{2}$"
         condition="(여러개 입력 가능)"
         onChange={onChangeInput}
       />
@@ -51,6 +54,7 @@ const PlayerItemsInputField = ({ temporaryUserInformation, onChangeInput }: Prop
         text="백넘버"
         value={temporaryBackNumber}
         required={false}
+        pattern="^(?=.*\d)[\d]{1,3}$"
         onChange={onChangeInput}
       />
       <ItemInputField
@@ -58,6 +62,7 @@ const PlayerItemsInputField = ({ temporaryUserInformation, onChangeInput }: Prop
         text="소속"
         value={temporaryBelong}
         required={false}
+        pattern="(?=.*[A-Za-z])[A-Za-z]{2}$"
         onChange={onChangeInput}
       />
       <ItemInputField
@@ -65,6 +70,7 @@ const PlayerItemsInputField = ({ temporaryUserInformation, onChangeInput }: Prop
         text="입단년도"
         value={temporaryJoinYear}
         required={false}
+        pattern="^(?=.*\d)[\d]{4}$"
         onChange={onChangeInput}
       />
     </PlayerItemsInputFieldBox>
