@@ -1,23 +1,27 @@
 import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 import { GetUserInformationProps } from "~/api/types/users";
 import { putUserInformation } from "~/api/users";
 
 const useUpdateUserInformation = (userId: string | null, token: string | null) => {
+  const navigate = useNavigate();
+
   const objectInformation = {
     userId: userId,
     token: token,
   };
 
-  // TODO: [2024-08-28] 요청 데이터 및 응답 error 확인가능하지만, api 요청 시 500 에러로 확인 필요
   const mutation = useMutation({
     mutationFn: (userInformation: any) => {
       return putUserInformation(objectInformation, userInformation);
     },
     onSuccess: () => {
-      console.log(`edit success`);
+      console.log(`회원정보 수정 성공`);
+      alert("회원정보가 수정되었습니다.");
+      navigate("/");
     },
     onError: (error) => {
-      console.log(`edit error: ${error}`);
+      console.log(`회원정보 수정 실패, error: ${error}`);
     },
   });
 
