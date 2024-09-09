@@ -20,6 +20,7 @@ import NewsPage from "../pages/news/NewsPage";
 import Base from "../Base";
 import MyPagePage from "~/pages/MyPagePage";
 import SignUpPage from "~/pages/SignUpPage";
+import BoardDetailPage from "~/pages/board/BoardDetailPage";
 
 const Router = () => {
   return (
@@ -50,6 +51,8 @@ const Router = () => {
           <Route path="/community/fan_board" element={<FanBoardPage />} />
           <Route path="/community/media" element={<MediaPage />} />
           <Route path="/community/support" element={<SupportPage />} />
+
+          <Route path="/teamroom/practice_schedule/detail" element={<BoardDetailPage />} />
         </Route>
 
         <Route path="*" element={<NotFound />} />
