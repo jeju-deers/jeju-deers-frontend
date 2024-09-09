@@ -15,8 +15,11 @@ import CancelButton from "~/components/atoms/myPage/body/CancelButton";
 import ExternalItemsInputField from "~/components/organisms/myPage/ExternalItemsInputField";
 import { FormEvent } from "react";
 import useEditMyPage from "~/hooks/myPage/useEditMyPage";
+import { useNavigate } from "react-router-dom";
 
 const MyPage = ({ userInformation, updateUserInformation }: any) => {
+  const navigate = useNavigate();
+
   const { formData, handleChangeInput } = useEditMyPage({ userInformation });
   const {
     userType,
@@ -34,6 +37,10 @@ const MyPage = ({ userInformation, updateUserInformation }: any) => {
     inputBelong,
     inputJoinYear,
   } = formData;
+
+  const handleClickCancel = () => {
+    navigate("/");
+  };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -96,7 +103,7 @@ const MyPage = ({ userInformation, updateUserInformation }: any) => {
         </BasicItemsInputFieldWrap>
         <OptionItemsInputFieldWrap>{getOptionInputField()}</OptionItemsInputFieldWrap>
         <FormActionButtonBox>
-          <CancelButton text="취소" formId="myPageCancel" />
+          <CancelButton text="취소" onClick={handleClickCancel} />
           <SubmitButton text="저장" formId="myPageSubmit" />
         </FormActionButtonBox>
       </MyPageForm>
