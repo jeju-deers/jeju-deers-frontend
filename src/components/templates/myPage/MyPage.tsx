@@ -12,26 +12,73 @@ import PlayerItemsInputField from "~/components/organisms/myPage/PlayerItemsInpu
 import CoachItemsInputField from "~/components/organisms/myPage/CoachItemsInputField";
 import SubmitButton from "~/components/atoms/myPage/body/SubmitButton";
 import CancelButton from "~/components/atoms/myPage/body/CancelButton";
-import { useState } from "react";
+import ExternalItemsInputField from "~/components/organisms/myPage/ExternalItemsInputField";
+import { FormEvent } from "react";
+import useEditMyPage from "~/hooks/myPage/useEditMyPage";
+import { useNavigate } from "react-router-dom";
 
-const MyPage = () => {
-  const [selectedOption, setSelectedOption] = useState("player");
+const MyPage = ({ userInformation, updateUserInformation }: any) => {
+  const navigate = useNavigate();
 
-  // TODO: [2024-08-02] userType에 따라 다른 마이페이지 양식을 띄워주는 코드를 작성해야합니다.
-  //   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //     const selectedId = event.target.id;
-  //     setSelectedOption(selectedId);
-  //   };
+  const { formData, handleChangeInput } = useEditMyPage({ userInformation });
+  const {
+    userType,
+    inputId,
+    inputPassword,
+    inputPasswordConfirm,
+    inputName,
+    inputEmail,
+    inputSchool,
+    inputStudentId,
+    inputPositions,
+    inputBackNumber,
+    inputNickname,
+    inputBirth,
+    inputBelong,
+    inputJoinYear,
+  } = formData;
+
+  const handleClickCancel = () => {
+    navigate("/");
+  };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    updateUserInformation.mutate({
+      userType: userType,
+      userId: inputId,
+      password: inputPassword,
+      passwordConfirm: inputPasswordConfirm,
+      name: inputName,
+      email: inputEmail,
+      school: inputSchool,
+      studentId: inputStudentId,
+      positions: inputPositions,
+      backNumber: inputBackNumber,
+      nickname: inputNickname,
+      birth: inputBirth,
+      belong: inputBelong,
+      joinYear: inputJoinYear,
+    });
+  };
 
   const getOptionInputField = () => {
-    if (selectedOption === "player") {
-      return <PlayerItemsInputField />;
+    if (userType === "player") {
+      return (
+        <PlayerItemsInputField
+          temporaryUserInformation={formData}
+          onChangeInput={handleChangeInput}
+        />
+      );
     }
-    if (selectedOption === "coachesStaff") {
-      return <CoachItemsInputField />;
-    }
-    if (selectedOption === "outsider") {
-      return <></>;
+    if (userType === "coach") {
+      return (
+        <CoachItemsInputField
+          temporaryUserInformation={formData}
+          onChangeInput={handleChangeInput}
+        />
+      );
     }
   };
 
@@ -40,13 +87,23 @@ const MyPage = () => {
       <SubHeaderWrap>
         <SubHeader />
       </SubHeaderWrap>
-      <MyPageForm id="myPageSubmit">
+      <MyPageForm id="myPageSubmit" onSubmit={handleSubmit}>
         <BasicItemsInputFieldWrap>
-          <BasicItemsInputField />
+          {userType === "external" ? (
+            <ExternalItemsInputField
+              temporaryUserInformation={formData}
+              onChangeInput={handleChangeInput}
+            />
+          ) : (
+            <BasicItemsInputField
+              temporaryUserInformation={formData}
+              onChangeInput={handleChangeInput}
+            />
+          )}
         </BasicItemsInputFieldWrap>
         <OptionItemsInputFieldWrap>{getOptionInputField()}</OptionItemsInputFieldWrap>
         <FormActionButtonBox>
-          <CancelButton text="취소" formId="myPageCancel" />
+          <CancelButton text="취소" onClick={handleClickCancel} />
           <SubmitButton text="저장" formId="myPageSubmit" />
         </FormActionButtonBox>
       </MyPageForm>

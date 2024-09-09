@@ -2,12 +2,12 @@ import { CancelButtonButton } from "./CancelButtonStyles";
 
 interface Props {
   text: string;
-  formId: string;
+  onClick: () => void;
 }
 
-const CancelButton = ({ text, formId }: Props) => {
+const CancelButton = ({ text, onClick }: Props) => {
   return (
-    <CancelButtonButton type="submit" form={formId}>
+    <CancelButtonButton type="button" onClick={onClick}>
       {text}
     </CancelButtonButton>
   );
