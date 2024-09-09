@@ -1,5 +1,6 @@
 import upArrowImage from "~/assets/images/up_arrow.svg";
 import downArrowImage from "~/assets/images/down_arrow.svg";
+import nextArrowImage from "~/assets/images/next_arrow.svg";
 import Button from "~/common/components/atom/boardDetail/Button";
 import { BoardDetailLayout, MoveListButtonBox, MovePostButtonBox } from "./BoardDetailStyles";
 
@@ -12,7 +13,10 @@ const BoardDetail = () => {
         <Button text="등록" styleType="submitCommentButton" />
       </MovePostButtonBox>
       <div>
-        <div>디어스 훈련 일정</div>
+        <div>
+          디어스 훈련 일정
+          <img src={nextArrowImage} />
+        </div>
         <div>24년 8월 훈련 일정 공지</div>
         <div>
           <div>
