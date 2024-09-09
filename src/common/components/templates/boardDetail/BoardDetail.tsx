@@ -1,11 +1,16 @@
+import upArrowImage from "~/assets/images/up_arrow.svg";
+import downArrowImage from "~/assets/images/down_arrow.svg";
+import Button from "~/common/components/atom/boardDetail/Button";
+import { BoardDetailLayout, MoveListButtonBox, MovePostButtonBox } from "./BoardDetailStyles";
+
 const BoardDetail = () => {
   return (
-    <>
-      <div>
-        <div>이전글</div>
-        <div>다음글</div>
-        <div>등록</div>
-      </div>
+    <BoardDetailLayout>
+      <MovePostButtonBox>
+        <Button text="이전글" image={upArrowImage} styleType="movePostButton" />
+        <Button text="다음글" image={downArrowImage} styleType="movePostButton" />
+        <Button text="등록" styleType="submitCommentButton" />
+      </MovePostButtonBox>
       <div>
         <div>디어스 훈련 일정</div>
         <div>24년 8월 훈련 일정 공지</div>
@@ -43,14 +48,14 @@ const BoardDetail = () => {
             <div>박재광</div>
             <div>댓글을 남겨보세요</div>
           </div>
-          <div>등록</div>
+          <Button text="등록" styleType="submitCommentButton" />
         </div>
       </div>
-      <div>
-        <div>목록</div>
-        <div>TOP</div>
-      </div>
-    </>
+      <MoveListButtonBox>
+        <Button text="목록" styleType="moveListButton" />
+        <Button text="TOP" image={upArrowImage} styleType="moveListButton" />
+      </MoveListButtonBox>
+    </BoardDetailLayout>
   );
 };
 

@@ -13,6 +13,9 @@ module.exports = {
         "gray-1000": "#6B6B6B",
       },
       width: {
+        25: "100px",
+        28.25: "113px",
+        33: "132px",
         75: "300px",
         125: "500px",
         145: "580px",
@@ -23,6 +26,7 @@ module.exports = {
       },
       minWidth: {
         235: "940px",
+        250: "1000px",
         363: "1452px",
       },
       maxWidth: {
@@ -38,6 +42,9 @@ module.exports = {
       fontSize: {
         1.75: "28px",
         2.5: "40px",
+      },
+      borderRadius: {
+        "lg-xl": "10px",
       },
     },
   },
