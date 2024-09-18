@@ -27,3 +27,13 @@ export const MoveListButtonBox = styled.div`
     justify-end
   `}
 `;
+
+export const PostDetailBox = styled.div`
+  ${tw`
+    border
+    border-[#C2C2C2]
+    rounded-[5px]
+    my-[24px]
+    p-[40px]
+  `}
+`;

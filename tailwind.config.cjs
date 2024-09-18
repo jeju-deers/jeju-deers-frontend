@@ -6,10 +6,13 @@ module.exports = {
         red: "#FF0000",
         green: "#0A281E",
         "green-dark": "#0C2F23",
+        "green-light": "#285E67",
         blue: "#69A6FF",
         "gray-300": "#EBEBEB",
         "gray-400": "#DFDFDF",
+        "gray-450": "#CCCCCC",
         "gray-500": "#C8C8C8",
+        "gray-600": "#A5A5A5",
         "gray-1000": "#6B6B6B",
       },
       width: {
@@ -40,6 +43,9 @@ module.exports = {
         "6/10-screen": "60vh",
       },
       fontSize: {
+        "sm-base": "15px",
+        4.5: "18px",
+        8: "32px",
         1.75: "28px",
         2.5: "40px",
       },
