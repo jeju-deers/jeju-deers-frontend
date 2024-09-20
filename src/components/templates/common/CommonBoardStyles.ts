@@ -1,7 +1,7 @@
 import tw from "twin.macro";
 import styled from "styled-components";
 
-export const MembershipFeeLayout = styled.div`
+export const CommonBoardLayout = styled.div`
   ${tw`
     h-full
     w-full
