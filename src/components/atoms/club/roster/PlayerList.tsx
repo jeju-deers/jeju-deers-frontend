@@ -7,7 +7,6 @@ import ErrorMessage from "~/common/components/atom/ErrorMessage";
 
 const PlayerList = () => {
   const { data: playerListData, isLoading, error } = useGetUsers("player");
-  console.log(playerListData);
 
   if (isLoading) {
     return <PendingMessage />;
