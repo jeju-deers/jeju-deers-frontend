@@ -1,7 +1,7 @@
-import { PlaybookPageLayout } from "./PlaybookPageStyles";
+import PlayBook from "~/components/templates/teamroom/PlayBook";
 
 const PlaybookPage = () => {
-  return <PlaybookPageLayout>PlayBook 페이지입니다.</PlaybookPageLayout>;
+  return <PlayBook />;
 };
 
 export default PlaybookPage;

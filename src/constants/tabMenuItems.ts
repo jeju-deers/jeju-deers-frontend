@@ -11,7 +11,7 @@ const TAB_MENU_ITEMS = {
     { to: "/news/news", text: "News" },
   ],
   teamroom: [
-    { to: "/teamroom/practice_schedule", text: "Practice Schedule" },
+    { to: "/teamroom/workout_schedules", text: "Workout Schedules" },
     { to: "/teamroom/team_board", text: "Team Board" },
     { to: "/teamroom/coach_board", text: "Coach Board" },
     { to: "/teamroom/staff_board", text: "Staff Board" },
@@ -19,7 +19,7 @@ const TAB_MENU_ITEMS = {
     { to: "/teamroom/membership_fee", text: "Membership Fee" },
   ],
   community: [
-    { to: "/community/fan_board", text: "Fan Board" },
+    { to: "/community/guest_board", text: "Guest Board" },
     { to: "/community/media", text: "Media" },
     { to: "/community/support", text: "Support" },
   ],

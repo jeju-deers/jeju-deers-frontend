@@ -1,7 +1,7 @@
-import { NewsPageLayout } from "./NewsPageStyles";
+import News from "~/components/templates/news/news/News";
 
 const NewsPage = () => {
-  return <NewsPageLayout>News 페이지입니다.</NewsPageLayout>;
+  return <News />;
 };
 
 export default NewsPage;

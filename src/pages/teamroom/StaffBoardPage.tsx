@@ -1,7 +1,7 @@
-import { StaffBoardPageLayout } from "./StaffBoardPageStyles";
+import StaffBoard from "~/components/templates/teamroom/StaffBoard";
 
 const StaffBoardPage = () => {
-  return <StaffBoardPageLayout>Staff Board 페이지입니다.</StaffBoardPageLayout>;
+  return <StaffBoard />;
 };
 
 export default StaffBoardPage;

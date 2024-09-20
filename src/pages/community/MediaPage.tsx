@@ -1,7 +1,7 @@
-import { MediaPageLayout } from "./MediaPageStyles";
+import Media from "~/components/templates/community/Media";
 
 const MediaPage = () => {
-  return <MediaPageLayout>Media 페이지입니다.</MediaPageLayout>;
+  return <Media />;
 };
 
 export default MediaPage;

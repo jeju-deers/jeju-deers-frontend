@@ -6,17 +6,17 @@ export const PlayerListBox = styled.div`
     flex
     flex-col
     border-y-2
-    min-w-[1050px]
+    min-w-262.5
   `}
   & > *:nth-child(odd) {
     & > *:nth-child(-n + 4) {
       ${tw`
-        bg-[#f0f0f0]
+        bg-gray-200
       `}
     }
     & > *:nth-last-child(-n + 3) {
       ${tw`
-        bg-[#f5f5f5]
+        bg-gray-150
       `}
     }
   }
@@ -24,12 +24,12 @@ export const PlayerListBox = styled.div`
   & > *:nth-child(even) {
     & > *:nth-child(-n + 4) {
       ${tw`
-        bg-[#f5f5f5]
+        bg-gray-150
       `}
     }
     & > *:nth-last-child(-n + 3) {
       ${tw`
-        bg-[#ffffff]
+        bg-white
       `}
     }
   }
@@ -37,12 +37,12 @@ export const PlayerListBox = styled.div`
   & > *:nth-child(1) {
     & > *:nth-child(-n + 4) {
       ${tw`
-        bg-[#f5f5f5]
+        bg-gray-150
       `}
     }
     & > *:nth-last-child(-n + 3) {
       ${tw`
-        bg-[#ffffff]
+        bg-white
       `}
     }
   }
@@ -58,34 +58,38 @@ export const PlayerListHeader = styled.div`
 
   *:nth-child(1) {
     ${tw`
-        justify-start
-        pl-2
+      justify-start
+      pl-2
     `}
   }
 
   *:nth-child(2),
   *:nth-child(4) {
-    ${tw`border-r-2`}
+    ${tw`
+      border-r-2
+    `}
   }
 
   & > *:nth-child(1),
   & > *:nth-child(2) {
     ${tw`
-        basis-[15%]
-        bg-white
+      basis-[15%]
+      bg-white
     `}
   }
 
   & > *:nth-child(3),
   & > *:nth-child(4) {
     ${tw`
-        basis-[10%]
-        bg-white
+      basis-[10%]
+      bg-white
     `}
   }
 
   & > *:nth-last-child(-n + 3) {
-    ${tw`basis-[16.666%]`}
+    ${tw`
+      basis-[16.666%]
+    `}
   }
 `;
 
@@ -108,34 +112,44 @@ export const PlayerlistRow = styled.div`
 
   *:nth-child(2) {
     ${tw`
-        justify-start
-        border-r-2
+      justify-start
+      border-r-2
     `}
   }
 
   *:nth-child(4) {
-    ${tw`border-r-2`}
+    ${tw`
+      border-r-2
+    `}
   }
 
   & > *:nth-child(1) {
     ${tw`
-        basis-[12%]
+      basis-[12%]
     `}
   }
   & > *:nth-child(2) {
-    ${tw`basis-[18%]`}
+    ${tw`
+      basis-[18%]
+    `}
   }
 
   & > *:nth-child(3),
   & > *:nth-child(4) {
-    ${tw`basis-[10%]`}
+    ${tw`
+      basis-[10%]
+    `}
   }
 
   & > *:nth-last-child(-n + 3) {
-    ${tw`basis-[16.666%]`}
+    ${tw`
+      basis-[16.666%]
+    `}
   }
 `;
 
 export const PlayerImage = styled.img`
-  ${tw`bg-white`}
+  ${tw`
+    bg-white
+  `}
 `;
