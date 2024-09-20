@@ -9,8 +9,16 @@ import TITLES from "./constants/TitleList";
 const Base = () => {
   const location = useLocation();
   const pathParts = location.pathname.split("/").filter(Boolean);
-  const titleEnglish = pathParts.length >= 1 ? TITLES[pathParts[pathParts.length - 1]][0] : "";
-  const titleKorean = pathParts.length >= 1 ? TITLES[pathParts[pathParts.length - 1]][1] : "";
+  let currentPathKey = "";
+
+  if (pathParts.length === 1) {
+    currentPathKey = pathParts[0];
+  } else if (pathParts.length >= 2) {
+    currentPathKey = pathParts[1];
+  }
+
+  const titleEnglish = currentPathKey && TITLES[currentPathKey] ? TITLES[currentPathKey][0] : "";
+  const titleKorean = currentPathKey && TITLES[currentPathKey] ? TITLES[currentPathKey][1] : "";
   const isRootPath = pathParts.length === 0;
 
   return (
