@@ -1,7 +1,7 @@
 import tw from "twin.macro";
 import styled from "styled-components";
 
-export const PracticeSchedulePageLayout = styled.div`
+export const WorkoutSchedulePageLayout = styled.div`
   ${tw`
     font-bold
   `}

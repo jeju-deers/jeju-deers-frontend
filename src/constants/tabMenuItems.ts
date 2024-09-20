@@ -11,7 +11,7 @@ const TAB_MENU_ITEMS = {
     { to: "/news/news", text: "News" },
   ],
   teamroom: [
-    { to: "/teamroom/practice_schedule", text: "Practice Schedule" },
+    { to: "/teamroom/workout_schedule", text: "Workout Schedule" },
     { to: "/teamroom/team_board", text: "Team Board" },
     { to: "/teamroom/coach_board", text: "Coach Board" },
     { to: "/teamroom/staff_board", text: "Staff Board" },

@@ -6,7 +6,7 @@ import OrganizationPage from "../pages/club/OrganizationPage";
 import PlayerPage from "~/pages/club/PlayerPage";
 import CoachesStaffPage from "../pages/club/CoachPage";
 import SponsorPage from "../pages/club/SponsorPage";
-import PracticeSchedulePage from "../pages/teamroom/PracticeSchedulePage";
+import WorkoutSchedulePage from "~/pages/teamroom/WorkoutSchedulePage";
 import TeamBoardPage from "../pages/teamroom/TeamBoardPage";
 import CoachBoardPage from "../pages/teamroom/CoachBoardPage";
 import StaffBoardPage from "../pages/teamroom/StaffBoardPage";
@@ -47,7 +47,7 @@ const Router = () => {
           </Route>
 
           <Route path="teamroom">
-            <Route path="practice_schedule" element={<PracticeSchedulePage />} />
+            <Route path="workout_schedule" element={<WorkoutSchedulePage />} />
             <Route path="team_board" element={<TeamBoardPage />} />
             <Route path="coach_board" element={<CoachBoardPage />} />
             <Route path="staff_board" element={<StaffBoardPage />} />
