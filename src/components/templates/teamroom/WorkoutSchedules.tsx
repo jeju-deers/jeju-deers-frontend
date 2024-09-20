@@ -12,6 +12,8 @@ import Board from "~/common/components/atom/board/Board";
 import WriteButton from "~/common/components/atom/board/WriteButton";
 import Pagination from "~/common/components/molecules/board/Pagination";
 import Search from "~/common/components/molecules/board/Search";
+import PendingMessage from "~/common/components/atom/PendingMessage";
+import ErrorMessage from "~/common/components/atom/ErrorMessage";
 
 const WorkoutSchedules = () => {
   const { data: workoutSchedulesData = [], isLoading, error } = useGetBoards("Workout");
@@ -34,20 +36,12 @@ const WorkoutSchedules = () => {
   };
 
   if (isLoading) {
-    return <div>로딩중입니다</div>;
+    return <PendingMessage />;
   }
 
   if (error) {
-    return <div>에러</div>;
+    return <ErrorMessage text="에러" />;
   }
-
-  // if (isLoading) {
-  //   return <PendingMessage />;
-  // }
-
-  // if (error) {
-  //   return <ErrorMessage text="에러" />;
-  // }
 
   return (
     <WorkoutSchedulesLayout>
