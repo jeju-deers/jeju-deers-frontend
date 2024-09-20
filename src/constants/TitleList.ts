@@ -5,7 +5,7 @@ const TITLES: { [key: string]: string[] } = {
   member: ["MEMBER", "코치 및 스태프"],
   sponsor: ["SPONSOR", "후원사"],
   schedule: ["SCHEDULE", "일정"],
-  news: ["NEWS", "소식"],
+  news: ["NEWS", "공지사항"],
   workout_schedules: ["WORKOUT SCHEDULES", "디어스 훈련 일정"],
   team_board: ["TEAM BOARD", "선수 게시판"],
   coach_board: ["COACH BOARD", "코치 게시판"],
