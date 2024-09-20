@@ -37,3 +37,111 @@ export const PostDetailBox = styled.div`
     p-[40px]
   `}
 `;
+
+export const DetailToListBox = styled.div`
+  ${tw`
+    flex
+  `}
+`;
+
+export const TitleBox = styled.div`
+  ${tw`
+    pb-3
+    border-b
+    border-black
+  `}
+`;
+
+export const PostInformationBox = styled.div`
+  ${tw`
+    flex
+    pt-3
+    justify-between
+    items-center
+  `}
+`;
+
+export const CreationInformationBox = styled.div`
+  ${tw`
+    
+  `}
+`;
+
+export const AuthorBox = styled.div`
+  ${tw`
+    flex
+    gap-2
+  `}
+`;
+
+export const PostStats = styled.div`
+  ${tw`
+    flex
+    gap-6
+  `}
+`;
+
+export const StatsCountBox = styled.div`
+  ${tw`
+    flex
+    gap-2
+  `}
+`;
+
+export const ContentBox = styled.div`
+  ${tw`
+    pt-10
+    pb-40
+  `}
+`;
+
+export const CommentBox = styled.div`
+  ${tw`
+    flex
+    flex-col
+    py-5
+  `}
+`;
+
+export const CommentAuthorBox = styled.div`
+  ${tw`
+    flex
+    gap-2
+  `}
+`;
+
+export const CommentSeparateLineBox = styled.div`
+  ${tw`
+    border
+    border-[#ECECEC]
+  `}
+`;
+
+export const CommentFieldBox = styled.div`
+  ${tw`
+    flex
+    justify-between
+    border
+    border-gray-1000
+    rounded
+    my-10
+    py-5
+    px-5
+    h-[133px]
+  `}
+`;
+
+export const CommentInformationBox = styled.div`
+  ${tw`
+    flex
+    flex-col
+    pr-5
+  `}
+`;
+
+export const CommentSubmitButtonBox = styled.div`
+  ${tw`
+    flex
+    items-center
+  `}
+`;
