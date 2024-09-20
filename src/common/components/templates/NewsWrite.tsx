@@ -43,7 +43,7 @@ const NewsWrite = ({ writeOption, setWriteOption }: Props) => {
         },
         {
           headers: {
-            Authorization: `Bearer ${token}`, // Include the token in the headers
+            Authorization: `Bearer ${token}`,
           },
         },
       );
