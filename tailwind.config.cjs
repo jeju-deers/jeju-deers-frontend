@@ -12,6 +12,7 @@ module.exports = {
         "gray-400": "#DFDFDF",
         "gray-450": "#CCCCCC",
         "gray-500": "#C8C8C8",
+        "gray-550": "#C2C2C2",
         "gray-600": "#A5A5A5",
         "gray-1000": "#6B6B6B",
       },
@@ -38,6 +39,7 @@ module.exports = {
       },
       height: {
         17.5: "70px",
+        33.25: "133px",
         75: "300px",
         137.5: "550px",
         "6/10-screen": "60vh",
@@ -50,6 +52,7 @@ module.exports = {
         2.5: "40px",
       },
       borderRadius: {
+        "default-md": "5px",
         "lg-xl": "10px",
       },
     },

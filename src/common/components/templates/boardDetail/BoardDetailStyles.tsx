@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 export const BoardDetailLayout = styled.div`
   ${tw`
-    w-full
     px-32
     py-20
     min-w-250
@@ -14,7 +13,6 @@ export const MovePostButtonBox = styled.div`
   ${tw`
     flex
     gap-3
-    w-full
     justify-end
   `}
 `;
@@ -23,7 +21,6 @@ export const MoveListButtonBox = styled.div`
   ${tw`
     flex
     gap-5
-    w-full
     justify-end
   `}
 `;
@@ -31,10 +28,10 @@ export const MoveListButtonBox = styled.div`
 export const PostDetailBox = styled.div`
   ${tw`
     border
-    border-[#C2C2C2]
-    rounded-[5px]
-    my-[24px]
-    p-[40px]
+    border-gray-550
+    rounded-default-md
+    my-6
+    p-10
   `}
 `;
 
@@ -56,7 +53,6 @@ export const PostInformationBox = styled.div`
   ${tw`
     flex
     pt-3
-    justify-between
     items-center
   `}
 `;
@@ -77,7 +73,9 @@ export const AuthorBox = styled.div`
 export const PostStats = styled.div`
   ${tw`
     flex
+    w-full
     gap-6
+    justify-end
   `}
 `;
 
@@ -113,7 +111,7 @@ export const CommentAuthorBox = styled.div`
 export const CommentSeparateLineBox = styled.div`
   ${tw`
     border
-    border-[#ECECEC]
+    border-gray-300
   `}
 `;
 
@@ -127,7 +125,7 @@ export const CommentFieldBox = styled.div`
     my-10
     py-5
     px-5
-    h-[133px]
+    h-33.25
   `}
 `;
 

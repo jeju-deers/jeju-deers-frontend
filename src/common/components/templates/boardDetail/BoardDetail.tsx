@@ -30,7 +30,6 @@ const BoardDetail = () => {
       <MovePostButtonBox>
         <Button text="이전글" image={upArrowImage} styleType="movePostButton" />
         <Button text="다음글" image={downArrowImage} styleType="movePostButton" />
-        <Button text="등록" styleType="submitCommentButton" />
       </MovePostButtonBox>
       <PostDetailBox>
         <DetailToListBox>
@@ -55,11 +54,11 @@ const BoardDetail = () => {
           <PostStats>
             <StatsCountBox>
               <Text text="조회수" className="text-4.5" />
-              <Text text="0" className="text-4.5" />
+              <Text text="0" className="flex justify-end text-4.5 w-7" />
             </StatsCountBox>
             <StatsCountBox>
               <Text text="댓글수" className="text-4.5" />
-              <Text text="10" className="text-4.5" />
+              <Text text="10" className="flex justify-end text-4.5 w-7" />
             </StatsCountBox>
           </PostStats>
         </PostInformationBox>
