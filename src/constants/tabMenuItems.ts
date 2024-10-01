@@ -1,4 +1,17 @@
-const TAB_MENU_ITEMS = {
+interface MenuItem {
+  to: string;
+  text: string;
+  boardType?: string;
+}
+
+export interface TabMenuItems {
+  club: MenuItem[];
+  news: MenuItem[];
+  teamroom: MenuItem[];
+  community: MenuItem[];
+}
+
+const TAB_MENU_ITEMS: TabMenuItems = {
   club: [
     { to: "/club/about", text: "About" },
     { to: "/club/organization", text: "Organization" },
@@ -7,21 +20,25 @@ const TAB_MENU_ITEMS = {
     { to: "/club/sponsor", text: "Sponsor" },
   ],
   news: [
-    { to: "/news/schedule", text: "Schedule" },
-    { to: "/news/news", text: "News" },
+    { to: "/news/schedule", text: "Schedule", boardType: "SCHEDULE" },
+    { to: "/news/news", text: "News", boardType: "NEWS" },
   ],
   teamroom: [
-    { to: "/teamroom/practice_schedule", text: "Practice Schedule" },
-    { to: "/teamroom/team_board", text: "Team Board" },
-    { to: "/teamroom/coach_board", text: "Coach Board" },
-    { to: "/teamroom/staff_board", text: "Staff Board" },
-    { to: "/teamroom/playbook", text: "Playbook" },
-    { to: "/teamroom/membership_fee", text: "Membership Fee" },
+    {
+      to: "/teamroom/practice_schedule",
+      text: "Practice Schedule",
+      boardType: "PRACTICE_SCHEDULE",
+    },
+    { to: "/teamroom/team_board", text: "Team Board", boardType: "TEAM_BOARD" },
+    { to: "/teamroom/coach_board", text: "Coach Board", boardType: "COACH_BOARD" },
+    { to: "/teamroom/staff_board", text: "Staff Board", boardType: "STAFF_BOARD" },
+    { to: "/teamroom/playbook", text: "Playbook", boardType: "PLAYBOOK" },
+    { to: "/teamroom/membership_fee", text: "Membership Fee", boardType: "MEMBERSHIP_FEE" },
   ],
   community: [
-    { to: "/community/fan_board", text: "Fan Board" },
-    { to: "/community/media", text: "Media" },
-    { to: "/community/support", text: "Support" },
+    { to: "/community/fan_board", text: "Fan Board", boardType: "FAN_BOARD" },
+    { to: "/community/media", text: "Media", boardType: "MEDIA" },
+    { to: "/community/support", text: "Support", boardType: "SUPPORT" },
   ],
 };
 

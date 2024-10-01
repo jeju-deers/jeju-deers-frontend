@@ -25,6 +25,8 @@ import {
 import Text from "~/common/components/atom/boardDetail/Text";
 import useGetSingleBoard from "~/hooks/board/query/useGetSingleBoard";
 import PendingMessage from "../../atom/PendingMessage";
+import { Link } from "react-router-dom";
+import TAB_MENU_ITEMS, { TabMenuItems } from "~/constants/tabMenuItems";
 
 interface Props {
   singleBoardId: string;
@@ -40,6 +42,19 @@ const BoardDetail = ({ singleBoardId }: Props) => {
   // TODO: [2024-10-01] belong(소속), views(조회수)에 대한 데이터가 서버에서 추가되면 사용 예정
   const { title, content, owner, type, createdAt } = singleBoard;
 
+  const findBoardRoute = (type: string) => {
+    for (const category in TAB_MENU_ITEMS) {
+      const menus = TAB_MENU_ITEMS[category as keyof TabMenuItems];
+
+      const menu = menus.find((item) => item.boardType === type);
+
+      if (menu) {
+        return menu.to;
+      }
+    }
+    return "/";
+  };
+
   return (
     <BoardDetailLayout>
       <MovePostButtonBox>
@@ -47,14 +62,16 @@ const BoardDetail = ({ singleBoardId }: Props) => {
         <Button text="다음글" image={downArrowImage} styleType="movePostButton" />
       </MovePostButtonBox>
       <PostDetailBox>
-        <DetailToListBox>
-          <Text
-            text={type}
-            // image={nextArrowImage}
-            className="text-lg text-green-light"
-          />
-          <img src={nextArrowImage} />
-        </DetailToListBox>
+        <Link to={findBoardRoute(type)}>
+          <DetailToListBox>
+            <Text
+              text={type}
+              // image={nextArrowImage}
+              className="text-lg text-green-light"
+            />
+            <img src={nextArrowImage} />
+          </DetailToListBox>
+        </Link>
         <TitleBox>
           <Text text={title} className="text-8" />
         </TitleBox>
