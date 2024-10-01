@@ -4,11 +4,12 @@ interface Props {
   text: string;
   image?: string;
   styleType: string;
+  onClick?: any;
 }
 
-const Button = ({ text, image, styleType }: Props) => {
+const Button = ({ text, image, styleType, onClick }: Props) => {
   return (
-    <ButtonButton styleType={styleType}>
+    <ButtonButton styleType={styleType} onClick={onClick}>
       {text}
       {image && <img src={image} />}
     </ButtonButton>

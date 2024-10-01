@@ -43,6 +43,8 @@ const BoardDetail = ({ singleBoardId }: Props) => {
   // TODO: [2024-10-01] belong(소속) 데이터가 서버에서 추가되면 사용 예정
   const { title, content, owner, type, createdAt, views } = singleBoard;
 
+  const { year, month, day, hours, minutes } = useFormatKoreanTime(createdAt);
+
   const findBoardRoute = (type: string) => {
     for (const category in TAB_MENU_ITEMS) {
       const menus = TAB_MENU_ITEMS[category as keyof TabMenuItems];
@@ -56,7 +58,9 @@ const BoardDetail = ({ singleBoardId }: Props) => {
     return "/";
   };
 
-  const { year, month, day, hours, minutes } = useFormatKoreanTime(createdAt);
+  const handleScrollTop = () => {
+    window.scrollTo({ top: 0 });
+  };
 
   return (
     <BoardDetailLayout>
@@ -133,7 +137,12 @@ const BoardDetail = ({ singleBoardId }: Props) => {
         <Link to={findBoardRoute(type)}>
           <Button text="목록" styleType="moveListButton" />
         </Link>
-        <Button text="TOP" image={upArrowImage} styleType="moveListButton" />
+        <Button
+          text="TOP"
+          image={upArrowImage}
+          styleType="moveListButton"
+          onClick={handleScrollTop}
+        />
       </MoveListButtonBox>
     </BoardDetailLayout>
   );
