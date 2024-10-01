@@ -24,13 +24,19 @@ import {
 } from "./BoardDetailStyles";
 import Text from "~/common/components/atom/boardDetail/Text";
 import useGetSingleBoard from "~/hooks/board/query/useGetSingleBoard";
+import PendingMessage from "../../atom/PendingMessage";
 
 interface Props {
   singleBoardId: string;
 }
 
 const BoardDetail = ({ singleBoardId }: Props) => {
-  const { singleBoard } = useGetSingleBoard(singleBoardId);
+  const { singleBoard, isLoading } = useGetSingleBoard(singleBoardId);
+
+  if (isLoading) {
+    return <PendingMessage />;
+  }
+
   // TODO: [2024-10-01] belong(소속), views(조회수)에 대한 데이터가 서버에서 추가되면 사용 예정
   const { title, content, owner, type, createdAt } = singleBoard;
 
