@@ -130,7 +130,9 @@ const BoardDetail = ({ singleBoardId }: Props) => {
         </CommentFieldBox>
       </PostDetailBox>
       <MoveListButtonBox>
-        <Button text="목록" styleType="moveListButton" />
+        <Link to={findBoardRoute(type)}>
+          <Button text="목록" styleType="moveListButton" />
+        </Link>
         <Button text="TOP" image={upArrowImage} styleType="moveListButton" />
       </MoveListButtonBox>
     </BoardDetailLayout>
