@@ -31,6 +31,7 @@ interface Props {
 
 const BoardDetail = ({ singleBoardId }: Props) => {
   const { singleBoard } = useGetSingleBoard(singleBoardId);
+  // TODO: [2024-10-01] belong(소속), views(조회수)에 대한 데이터가 서버에서 추가되면 사용 예정
   const { title, content, owner, type, createdAt } = singleBoard;
 
   return (
