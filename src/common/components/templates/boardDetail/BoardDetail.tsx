@@ -27,6 +27,7 @@ import useGetSingleBoard from "~/hooks/board/query/useGetSingleBoard";
 import PendingMessage from "../../atom/PendingMessage";
 import { Link } from "react-router-dom";
 import TAB_MENU_ITEMS, { TabMenuItems } from "~/constants/tabMenuItems";
+import useFormatKoreanTime from "~/hooks/board/useFormatKoreanTime";
 
 interface Props {
   singleBoardId: string;
@@ -39,8 +40,8 @@ const BoardDetail = ({ singleBoardId }: Props) => {
     return <PendingMessage />;
   }
 
-  // TODO: [2024-10-01] belong(소속), views(조회수)에 대한 데이터가 서버에서 추가되면 사용 예정
-  const { title, content, owner, type, createdAt } = singleBoard;
+  // TODO: [2024-10-01] belong(소속) 데이터가 서버에서 추가되면 사용 예정
+  const { title, content, owner, type, createdAt, views } = singleBoard;
 
   const findBoardRoute = (type: string) => {
     for (const category in TAB_MENU_ITEMS) {
@@ -54,6 +55,8 @@ const BoardDetail = ({ singleBoardId }: Props) => {
     }
     return "/";
   };
+
+  const { year, month, day, hours, minutes } = useFormatKoreanTime(createdAt);
 
   return (
     <BoardDetailLayout>
@@ -81,12 +84,15 @@ const BoardDetail = ({ singleBoardId }: Props) => {
               <Text text={owner} className="text-sm-base" />
               <Text text="매니저" className="text-sm-base text-blue" />
             </AuthorBox>
-            <Text text={createdAt} className="text-sm-base text-gray-600" />
+            <Text
+              text={`${year}년 ${month}월 ${day}일 ${hours}:${minutes}`}
+              className="text-sm-base text-gray-600"
+            />
           </CreationInformationBox>
           <PostStats>
             <StatsCountBox>
               <Text text="조회수" className="text-4.5" />
-              <Text text="0" className="flex justify-end text-4.5 w-7" />
+              <Text text={views} className="flex justify-end text-4.5 w-7" />
             </StatsCountBox>
             <StatsCountBox>
               <Text text="댓글수" className="text-4.5" />
