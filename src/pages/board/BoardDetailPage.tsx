@@ -1,7 +1,9 @@
 import BoardDetail from "~/common/components/templates/boardDetail/BoardDetail";
 
 const BoardDetailPage = () => {
-  return <BoardDetail />;
+  const singleBoardId = "15";
+
+  return <BoardDetail singleBoardId={singleBoardId} />;
 };
 
 export default BoardDetailPage;

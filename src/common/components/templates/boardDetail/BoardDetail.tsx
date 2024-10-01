@@ -23,8 +23,16 @@ import {
   TitleBox,
 } from "./BoardDetailStyles";
 import Text from "~/common/components/atom/boardDetail/Text";
+import useGetSingleBoard from "~/hooks/board/query/useGetSingleBoard";
 
-const BoardDetail = () => {
+interface Props {
+  singleBoardId: string;
+}
+
+const BoardDetail = ({ singleBoardId }: Props) => {
+  const { singleBoard } = useGetSingleBoard(singleBoardId);
+  const { title, content, owner, type, createdAt } = singleBoard;
+
   return (
     <BoardDetailLayout>
       <MovePostButtonBox>
@@ -34,22 +42,22 @@ const BoardDetail = () => {
       <PostDetailBox>
         <DetailToListBox>
           <Text
-            text="디어스 훈련 일정"
+            text={type}
             // image={nextArrowImage}
             className="text-lg text-green-light"
           />
           <img src={nextArrowImage} />
         </DetailToListBox>
         <TitleBox>
-          <Text text="24년 8월 훈련 일정 공지" className="text-8" />
+          <Text text={title} className="text-8" />
         </TitleBox>
         <PostInformationBox>
           <CreationInformationBox>
             <AuthorBox>
-              <Text text="박재광" className="text-sm-base" />
+              <Text text={owner} className="text-sm-base" />
               <Text text="매니저" className="text-sm-base text-blue" />
             </AuthorBox>
-            <Text text="2024년 8월 23일 13:30" className="text-sm-base text-gray-600" />
+            <Text text={createdAt} className="text-sm-base text-gray-600" />
           </CreationInformationBox>
           <PostStats>
             <StatsCountBox>
@@ -62,11 +70,7 @@ const BoardDetail = () => {
             </StatsCountBox>
           </PostStats>
         </PostInformationBox>
-        <ContentBox>
-          제 이름은 박재광 입니다. <br />
-          저는 바보입니다. <br />
-          감사합니다.
-        </ContentBox>
+        <ContentBox dangerouslySetInnerHTML={{ __html: content }} />
         <Text text="댓글" className="text-2xl font-semibold" />
         <CommentBox>
           <CommentAuthorBox>
