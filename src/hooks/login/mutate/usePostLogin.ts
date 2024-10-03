@@ -17,6 +17,7 @@ const usePostLogin = () => {
     onSuccess: (loginResponse: AxiosResponse) => {
       console.log(`로그인 성공, data: ${loginResponse}, token: ${loginResponse.data.token}`);
       localStorage.setItem("token", loginResponse.data.token);
+      localStorage.setItem("owner", loginResponse.data.user.name);
     },
     onError: (error: Error) => {
       console.log(`로그인 실패, error: ${error}`);

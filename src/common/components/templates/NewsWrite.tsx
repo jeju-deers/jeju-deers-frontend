@@ -33,9 +33,9 @@ const NewsWrite = ({ writeOption, setWriteOption }: Props) => {
 
   const handleSave = () => {
     const token = localStorage.getItem("token");
-    const owner = "abc";
+    const owner = localStorage.getItem("owner");
 
-    if (!token) {
+    if (!token || !owner) {
       console.error("토큰이 만료되었습니다. 다시 로그인 해주세요");
       return;
     }
