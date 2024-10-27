@@ -45,6 +45,7 @@ const Router = () => {
             <Route path="schedule" element={<SchedulePage />} />
             <Route path="news" element={<NewsPage />} />
             <Route path=":section/write" element={<NewsWritePage />} />
+            <Route path=":section/board_detail" element={<BoardDetailPage />} />
           </Route>
 
           <Route path="teamroom">
@@ -55,6 +56,7 @@ const Router = () => {
             <Route path="playbook" element={<PlaybookPage />} />
             <Route path="membership_fee" element={<MembershipFeePage />} />
             <Route path=":section/write" element={<NewsWritePage />} />
+            <Route path=":section/board_detail" element={<BoardDetailPage />} />
           </Route>
 
           <Route path="community">
@@ -62,6 +64,7 @@ const Router = () => {
             <Route path="media" element={<MediaPage />} />
             <Route path="support" element={<SupportPage />} />
             <Route path=":section/write" element={<NewsWritePage />} />
+            <Route path=":section/board_detail" element={<BoardDetailPage />} />
           </Route>
         </Route>
 
