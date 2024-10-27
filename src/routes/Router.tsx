@@ -20,6 +20,7 @@ import NewsPage from "../pages/news/NewsPage";
 import Base from "../Base";
 import MyPagePage from "~/pages/MyPagePage";
 import SignUpPage from "~/pages/SignUpPage";
+import BoardDetailPage from "~/pages/board/BoardDetailPage";
 import NewsWritePage from "~/pages/common/NewsWritePage";
 
 const Router = () => {
@@ -44,23 +45,26 @@ const Router = () => {
             <Route path="schedule" element={<SchedulePage />} />
             <Route path="news" element={<NewsPage />} />
             <Route path=":section/write" element={<NewsWritePage />} />
+            <Route path=":section/board_detail" element={<BoardDetailPage />} />
           </Route>
 
           <Route path="teamroom">
-            <Route path="practice_schedule" element={<PracticeSchedulePage />} />
+            <Route path="workout_schedules" element={<WorkoutSchedulesPage />} />
             <Route path="team_board" element={<TeamBoardPage />} />
             <Route path="coach_board" element={<CoachBoardPage />} />
             <Route path="staff_board" element={<StaffBoardPage />} />
             <Route path="playbook" element={<PlaybookPage />} />
             <Route path="membership_fee" element={<MembershipFeePage />} />
             <Route path=":section/write" element={<NewsWritePage />} />
+            <Route path=":section/board_detail" element={<BoardDetailPage />} />
           </Route>
 
           <Route path="community">
-            <Route path="fan_board" element={<FanBoardPage />} />
+            <Route path="guest_board" element={<GuestBoardPage />} />
             <Route path="media" element={<MediaPage />} />
             <Route path="support" element={<SupportPage />} />
             <Route path=":section/write" element={<NewsWritePage />} />
+            <Route path=":section/board_detail" element={<BoardDetailPage />} />
           </Route>
         </Route>
 
