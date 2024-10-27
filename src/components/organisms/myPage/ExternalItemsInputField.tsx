@@ -29,7 +29,7 @@ const ExternalItemsInputField = ({ temporaryUserInformation, onChangeInput }: Pr
         onChange={onChangeInput}
       />
       <ItemInputField
-        id="password"
+        id="inputPassword"
         text="비밀번호"
         required={false}
         pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&\uAC00-\uD7A3]{6,}$"
@@ -37,7 +37,7 @@ const ExternalItemsInputField = ({ temporaryUserInformation, onChangeInput }: Pr
         onChange={onChangeInput}
       />
       <ItemInputField
-        id="passwordConfirm"
+        id="inputPasswordConfirm"
         text="비밀번호 확인"
         required={false}
         pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&\uAC00-\uD7A3]{6,}$"
