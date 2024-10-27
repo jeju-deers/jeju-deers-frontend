@@ -35,7 +35,7 @@ export const PostDetailBox = styled.div`
   `}
 `;
 
-export const DetailToListBox = styled.div`
+export const DetailToBoardBox = styled.div`
   ${tw`
     flex
   `}

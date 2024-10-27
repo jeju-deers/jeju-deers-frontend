@@ -13,7 +13,7 @@ import {
   CommentSubmitButtonBox,
   ContentBox,
   CreationInformationBox,
-  DetailToListBox,
+  DetailToBoardBox,
   MoveListButtonBox,
   MovePostButtonBox,
   PostDetailBox,
@@ -32,14 +32,14 @@ const BoardDetail = () => {
         <Button text="다음글" image={downArrowImage} styleType="movePostButton" />
       </MovePostButtonBox>
       <PostDetailBox>
-        <DetailToListBox>
+        <DetailToBoardBox>
           <Text
             text="디어스 훈련 일정"
             // image={nextArrowImage}
             className="text-lg text-green-light"
           />
           <img src={nextArrowImage} />
-        </DetailToListBox>
+        </DetailToBoardBox>
         <TitleBox>
           <Text text="24년 8월 훈련 일정 공지" className="text-8" />
         </TitleBox>
