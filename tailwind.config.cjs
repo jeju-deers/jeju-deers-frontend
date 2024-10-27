@@ -7,7 +7,8 @@ module.exports = {
         green: "#0A281E",
         "green-dark": "#0C2F23",
         blue: "#69A6FF",
-        "gray-200": "#F0F1F3", // [TODO] main과 머지시 색상 확인 후 수치 변경 할 것
+        "gray-100": "F9F9FA",
+        "gray-200": "#F0F1F3",
         "gray-300": "#EBEBEB",
         "gray-400": "#DFDFDF",
         "gray-500": "#C8C8C8",
