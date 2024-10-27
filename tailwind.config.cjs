@@ -7,9 +7,12 @@ module.exports = {
         green: "#0A281E",
         "green-dark": "#0C2F23",
         blue: "#69A6FF",
-        "gray-100": "F9F9FA",
-        "gray-200": "#F0F1F3",
+        "gray-100": "#F9F9F9",
+        "gray-150": "#F5F5F5",
+        "gray-200": "#F0F0F0",
+        "gray-250": "#F0F1F3",
         "gray-300": "#EBEBEB",
+        "gray-350": "#E5E5E5",
         "gray-400": "#DFDFDF",
         "gray-500": "#C8C8C8",
         "gray-1000": "#6B6B6B",
@@ -26,6 +29,7 @@ module.exports = {
       minWidth: {
         235: "940px",
         250: "1000px",
+        262.5: "1050px",
         363: "1452px",
       },
       maxWidth: {
@@ -41,6 +45,10 @@ module.exports = {
       fontSize: {
         1.75: "28px",
         2.5: "40px",
+        3.75: "60px",
+      },
+      borderWidth: {
+        5: "5px",
       },
     },
   },
