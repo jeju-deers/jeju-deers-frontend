@@ -1,7 +1,7 @@
-import { CoachBoardPageLayout } from "./CoachBoardPageStyles";
+import CoachBoard from "~/components/templates/teamroom/CoachBoard";
 
 const CoachBoardPage = () => {
-  return <CoachBoardPageLayout>Coach Board 페이지입니다.</CoachBoardPageLayout>;
+  return <CoachBoard />;
 };
 
 export default CoachBoardPage;

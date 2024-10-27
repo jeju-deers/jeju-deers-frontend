@@ -8,7 +8,12 @@ module.exports = {
         "green-dark": "#0C2F23",
         "green-light": "#285E67",
         blue: "#69A6FF",
+        "gray-100": "#F9F9F9",
+        "gray-150": "#F5F5F5",
+        "gray-200": "#F0F0F0",
+        "gray-250": "#F0F1F3",
         "gray-300": "#EBEBEB",
+        "gray-350": "#E5E5E5",
         "gray-400": "#DFDFDF",
         "gray-450": "#CCCCCC",
         "gray-500": "#C8C8C8",
@@ -21,16 +26,17 @@ module.exports = {
         28.25: "113px",
         33: "132px",
         75: "300px",
+        100: "400px",
         125: "500px",
         145: "580px",
         150: "600px",
         184: "735px",
-
         235: "940px",
       },
       minWidth: {
         235: "940px",
         250: "1000px",
+        262.5: "1050px",
         363: "1452px",
       },
       maxWidth: {
@@ -50,6 +56,10 @@ module.exports = {
         8: "32px",
         1.75: "28px",
         2.5: "40px",
+        3.75: "60px",
+      },
+      borderWidth: {
+        5: "5px",
       },
       borderRadius: {
         "default-md": "5px",
