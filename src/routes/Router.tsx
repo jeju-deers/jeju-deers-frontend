@@ -6,13 +6,13 @@ import OrganizationPage from "../pages/club/OrganizationPage";
 import PlayerPage from "~/pages/club/PlayerPage";
 import CoachesStaffPage from "../pages/club/CoachPage";
 import SponsorPage from "../pages/club/SponsorPage";
-import PracticeSchedulePage from "../pages/teamroom/PracticeSchedulePage";
+import WorkoutSchedulesPage from "~/pages/teamroom/WorkoutSchedulesPage";
 import TeamBoardPage from "../pages/teamroom/TeamBoardPage";
 import CoachBoardPage from "../pages/teamroom/CoachBoardPage";
 import StaffBoardPage from "../pages/teamroom/StaffBoardPage";
 import PlaybookPage from "../pages/teamroom/PlaybookPage";
 import MembershipFeePage from "../pages/teamroom/MembershipFeePage";
-import FanBoardPage from "../pages/community/FanBoardPage";
+import GuestBoardPage from "~/pages/community/GuestBoardPage";
 import MediaPage from "../pages/community/MediaPage";
 import SupportPage from "../pages/community/SupportPage";
 import SchedulePage from "../pages/news/SchedulePage";
@@ -40,14 +40,14 @@ const Router = () => {
           <Route path="/news/schedule" element={<SchedulePage />} />
           <Route path="/news/news" element={<NewsPage />} />
 
-          <Route path="/teamroom/practice_schedule" element={<PracticeSchedulePage />} />
+          <Route path="/teamroom/workout_schedules" element={<WorkoutSchedulesPage />} />
           <Route path="/teamroom/team_board" element={<TeamBoardPage />} />
           <Route path="/teamroom/coach_board" element={<CoachBoardPage />} />
           <Route path="/teamroom/staff_board" element={<StaffBoardPage />} />
           <Route path="/teamroom/playbook" element={<PlaybookPage />} />
           <Route path="/teamroom/membership_fee" element={<MembershipFeePage />} />
 
-          <Route path="/community/fan_board" element={<FanBoardPage />} />
+          <Route path="/community/guest_board" element={<GuestBoardPage />} />
           <Route path="/community/media" element={<MediaPage />} />
           <Route path="/community/support" element={<SupportPage />} />
         </Route>
