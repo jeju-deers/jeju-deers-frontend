@@ -25,8 +25,8 @@ const NewsWrite = ({ writeOption, setWriteOption }: Props) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
-  const handleWriteDropdownChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setWriteOption(e.target.value);
+  const handleWriteDropdownChange = (element: React.ChangeEvent<HTMLSelectElement>) => {
+    setWriteOption(element.target.value);
   };
 
   return (
@@ -46,7 +46,7 @@ const NewsWrite = ({ writeOption, setWriteOption }: Props) => {
           type="text"
           placeholder="제목을 입력해주세요"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={(element) => setTitle(element.target.value)}
         />
       </WriteTitleBox>
       <WriteContentBox>
