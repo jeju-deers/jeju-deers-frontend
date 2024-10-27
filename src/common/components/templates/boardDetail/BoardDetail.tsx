@@ -18,7 +18,7 @@ import {
   MovePostButtonBox,
   PostDetailBox,
   PostInformationBox,
-  PostStats,
+  PostStatsBox,
   StatsCountBox,
   TitleBox,
 } from "./BoardDetailStyles";
@@ -51,7 +51,7 @@ const BoardDetail = () => {
             </AuthorBox>
             <Text text="2024년 8월 23일 13:30" className="text-sm-base text-gray-600" />
           </CreationInformationBox>
-          <PostStats>
+          <PostStatsBox>
             <StatsCountBox>
               <Text text="조회수" className="text-4.5" />
               <Text text="0" className="flex justify-end text-4.5 w-7" />
@@ -60,7 +60,7 @@ const BoardDetail = () => {
               <Text text="댓글수" className="text-4.5" />
               <Text text="10" className="flex justify-end text-4.5 w-7" />
             </StatsCountBox>
-          </PostStats>
+          </PostStatsBox>
         </PostInformationBox>
         <ContentBox>
           제 이름은 박재광 입니다. <br />
@@ -74,7 +74,7 @@ const BoardDetail = () => {
             <Text text="OB" className="text-xl text-blue" />
           </CommentAuthorBox>
           <Text text="확실한 가요?" className="text-xl" />
-          <Text text="2024.08.23. 14:00" className="text-xl text-gray-450" />{" "}
+          <Text text="2024.08.23. 14:00" className="text-xl text-gray-450" />
         </CommentBox>
         <CommentSeparateLineBox />
         <CommentBox>
@@ -83,7 +83,7 @@ const BoardDetail = () => {
             <Text text="OB" className="text-xl text-blue" />
           </CommentAuthorBox>
           <Text text="지가 봤구먼유" className="text-xl" />
-          <Text text="2024.08.23. 14:10" className="text-xl text-gray-450" />{" "}
+          <Text text="2024.08.23. 14:10" className="text-xl text-gray-450" />
         </CommentBox>
         <CommentFieldBox>
           <CommentInformationBox>
