@@ -20,36 +20,48 @@ import NewsPage from "../pages/news/NewsPage";
 import Base from "../Base";
 import MyPagePage from "~/pages/MyPagePage";
 import SignUpPage from "~/pages/SignUpPage";
+import NewsWritePage from "~/pages/common/NewsWritePage";
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Base />}>
-          <Route path="/" element={<MainPage />} />
+          <Route index element={<MainPage />} />
 
-          <Route path="/my_page" element={<MyPagePage />} />
-          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="my_page" element={<MyPagePage />} />
+          <Route path="signup" element={<SignUpPage />} />
 
-          <Route path="/club/about" element={<AboutPage />} />
-          <Route path="/club/organization" element={<OrganizationPage />} />
-          <Route path="/club/roster" element={<PlayerPage />} />
-          <Route path="/club/member" element={<CoachesStaffPage />} />
-          <Route path="/club/sponsor" element={<SponsorPage />} />
+          <Route path="club">
+            <Route path="about" element={<AboutPage />} />
+            <Route path="organization" element={<OrganizationPage />} />
+            <Route path="roster" element={<PlayerPage />} />
+            <Route path="member" element={<CoachesStaffPage />} />
+            <Route path="sponsor" element={<SponsorPage />} />
+          </Route>
 
-          <Route path="/news/schedule" element={<SchedulePage />} />
-          <Route path="/news/news" element={<NewsPage />} />
+          <Route path="news">
+            <Route path="schedule" element={<SchedulePage />} />
+            <Route path="news" element={<NewsPage />} />
+            <Route path=":section/write" element={<NewsWritePage />} />
+          </Route>
 
-          <Route path="/teamroom/workout_schedules" element={<WorkoutSchedulesPage />} />
-          <Route path="/teamroom/team_board" element={<TeamBoardPage />} />
-          <Route path="/teamroom/coach_board" element={<CoachBoardPage />} />
-          <Route path="/teamroom/staff_board" element={<StaffBoardPage />} />
-          <Route path="/teamroom/playbook" element={<PlaybookPage />} />
-          <Route path="/teamroom/membership_fee" element={<MembershipFeePage />} />
+          <Route path="teamroom">
+            <Route path="practice_schedule" element={<PracticeSchedulePage />} />
+            <Route path="team_board" element={<TeamBoardPage />} />
+            <Route path="coach_board" element={<CoachBoardPage />} />
+            <Route path="staff_board" element={<StaffBoardPage />} />
+            <Route path="playbook" element={<PlaybookPage />} />
+            <Route path="membership_fee" element={<MembershipFeePage />} />
+            <Route path=":section/write" element={<NewsWritePage />} />
+          </Route>
 
-          <Route path="/community/guest_board" element={<GuestBoardPage />} />
-          <Route path="/community/media" element={<MediaPage />} />
-          <Route path="/community/support" element={<SupportPage />} />
+          <Route path="community">
+            <Route path="fan_board" element={<FanBoardPage />} />
+            <Route path="media" element={<MediaPage />} />
+            <Route path="support" element={<SupportPage />} />
+            <Route path=":section/write" element={<NewsWritePage />} />
+          </Route>
         </Route>
 
         <Route path="*" element={<NotFound />} />

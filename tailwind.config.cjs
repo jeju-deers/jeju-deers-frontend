@@ -10,6 +10,7 @@ module.exports = {
         "gray-100": "#F9F9F9",
         "gray-150": "#F5F5F5",
         "gray-200": "#F0F0F0",
+        "gray-250": "#F0F1F3",
         "gray-300": "#EBEBEB",
         "gray-350": "#E5E5E5",
         "gray-400": "#DFDFDF",
@@ -18,6 +19,7 @@ module.exports = {
       },
       width: {
         75: "300px",
+        100: "400px",
         125: "500px",
         145: "580px",
         150: "600px",
@@ -26,6 +28,7 @@ module.exports = {
       },
       minWidth: {
         235: "940px",
+        250: "1000px",
         262.5: "1050px",
         363: "1452px",
       },
