@@ -13,7 +13,6 @@ import {
 import { NOTICE_DATA } from "~/constants/noticeData";
 import WriteDropdownButton from "../atom/board/WriteDropDownButton";
 import CkEditor from "../atom/board/CkEditor";
-import axios from "axios";
 import Heading from "~/components/atoms/club/Heading";
 import helmet from "~/assets/images/helmet.svg";
 
@@ -30,34 +29,11 @@ const NewsWrite = ({ writeOption, setWriteOption }: Props) => {
     setWriteOption(e.target.value);
   };
 
-  const handleSave = async () => {
-    const token = localStorage.getItem("token");
-    try {
-      const response = await axios.post(
-        "https://jeju-deers-backend.fly.dev/boards",
-        {
-          title,
-          content,
-          type: writeOption,
-          owner: "kimmjae2312",
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
-      );
-      console.log("Post saved successfully:", response.data);
-    } catch (error) {
-      console.error("Error saving the post:", error);
-    }
-  };
-
   return (
     <NewsWriteLayout>
       <Heading src={helmet} alt="helmet" text="게시글 작성" />
       <SaveButtonWrap>
-        <SaveButton onClick={handleSave}>등록</SaveButton>
+        <SaveButton>등록</SaveButton>
       </SaveButtonWrap>
       <NoticeBox>
         <Notice>{NOTICE_DATA}</Notice>
