@@ -23,8 +23,44 @@ import {
   TitleBox,
 } from "./BoardDetailStyles";
 import Text from "~/common/components/atom/boardDetail/Text";
+import useGetSingleBoard from "~/hooks/board/query/useGetSingleBoard";
+import PendingMessage from "../../atom/PendingMessage";
+import { Link } from "react-router-dom";
+import TAB_MENU_ITEMS, { TabMenuItems } from "~/constants/tabMenuItems";
+import useFormatKoreanTime from "~/hooks/board/useFormatKoreanTime";
 
-const BoardDetail = () => {
+interface Props {
+  singleBoardId: string;
+}
+
+const BoardDetail = ({ singleBoardId }: Props) => {
+  const { singleBoard, isLoading } = useGetSingleBoard(singleBoardId);
+
+  if (isLoading) {
+    return <PendingMessage />;
+  }
+
+  const { title, content, owner, belong, type, createdAt, views } = singleBoard;
+
+  const { year, month, day, hours, minutes } = useFormatKoreanTime(createdAt);
+
+  const findBoardRoute = (type: string) => {
+    for (const category in TAB_MENU_ITEMS) {
+      const menus = TAB_MENU_ITEMS[category as keyof TabMenuItems];
+
+      const menu = menus.find((item) => item.boardType === type);
+
+      if (menu) {
+        return menu.to;
+      }
+    }
+    return "/";
+  };
+
+  const handleScrollTop = () => {
+    window.scrollTo({ top: 0 });
+  };
+
   return (
     <BoardDetailLayout>
       <MovePostButtonBox>
@@ -32,29 +68,35 @@ const BoardDetail = () => {
         <Button text="다음글" image={downArrowImage} styleType="movePostButton" />
       </MovePostButtonBox>
       <PostDetailBox>
-        <DetailToBoardBox>
-          <Text
-            text="디어스 훈련 일정"
-            // image={nextArrowImage}
-            className="text-lg text-green-light"
-          />
-          <img src={nextArrowImage} />
-        </DetailToBoardBox>
+        <Link to={findBoardRoute(type)}>
+          <DetailToBoardBox>
+            <Text
+              text={type}
+              // image={nextArrowImage}
+              className="text-lg text-green-light"
+            />
+            <img src={nextArrowImage} />
+          </DetailToBoardBox>
+        </Link>
         <TitleBox>
-          <Text text="24년 8월 훈련 일정 공지" className="text-8" />
+          <Text text={title} className="text-8" />
         </TitleBox>
         <PostInformationBox>
           <CreationInformationBox>
             <AuthorBox>
-              <Text text="박재광" className="text-sm-base" />
-              <Text text="매니저" className="text-sm-base text-blue" />
+              <Text text={owner || "알 수 없음"} className="text-sm-base" />
+              {/* TODO: [2024-10-28] 게시물 등록 시, belong(소속) 데이터를 전달 받아야합니다. 아직 글쓰기 작업에서 belong을 전달 하는 코드가 구현되지 않아 belong을 전달 받지 못해, 이 경우 "소속없음"을 출력하도록 구현하였습니다.*/}
+              <Text text={belong || "소속없음"} className="text-sm-base text-blue" />
             </AuthorBox>
-            <Text text="2024년 8월 23일 13:30" className="text-sm-base text-gray-600" />
+            <Text
+              text={`${year}년 ${month}월 ${day}일 ${hours}:${minutes}`}
+              className="text-sm-base text-gray-600"
+            />
           </CreationInformationBox>
           <PostStatsBox>
             <StatsCountBox>
               <Text text="조회수" className="text-4.5" />
-              <Text text="0" className="flex justify-end text-4.5 w-7" />
+              <Text text={views} className="flex justify-end text-4.5 w-7" />
             </StatsCountBox>
             <StatsCountBox>
               <Text text="댓글수" className="text-4.5" />
@@ -62,11 +104,7 @@ const BoardDetail = () => {
             </StatsCountBox>
           </PostStatsBox>
         </PostInformationBox>
-        <ContentBox>
-          제 이름은 박재광 입니다. <br />
-          저는 바보입니다. <br />
-          감사합니다.
-        </ContentBox>
+        <ContentBox dangerouslySetInnerHTML={{ __html: content }} />
         <Text text="댓글" className="text-2xl font-semibold" />
         <CommentBox>
           <CommentAuthorBox>
@@ -96,8 +134,15 @@ const BoardDetail = () => {
         </CommentFieldBox>
       </PostDetailBox>
       <MoveListButtonBox>
-        <Button text="목록" styleType="moveListButton" />
-        <Button text="TOP" image={upArrowImage} styleType="moveListButton" />
+        <Link to={findBoardRoute(type)}>
+          <Button text="목록" styleType="moveListButton" />
+        </Link>
+        <Button
+          text="TOP"
+          image={upArrowImage}
+          styleType="moveListButton"
+          onClick={handleScrollTop}
+        />
       </MoveListButtonBox>
     </BoardDetailLayout>
   );

@@ -65,6 +65,10 @@ module.exports = {
         "default-md": "5px",
         "lg-xl": "10px",
       },
+      borderRadius: {
+        "default-md": "5px",
+        "lg-xl": "10px",
+      },
     },
   },
   plugins: [],
