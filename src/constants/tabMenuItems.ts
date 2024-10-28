@@ -24,11 +24,7 @@ const TAB_MENU_ITEMS: TabMenuItems = {
     { to: "/news/news", text: "News", boardType: "NEWS" },
   ],
   teamroom: [
-    {
-      to: "/teamroom/practice_schedule",
-      text: "Practice Schedule",
-      boardType: "PRACTICE_SCHEDULE",
-    },
+    { to: "/teamroom/workout_schedules", text: "Workout Schedules", boardType: "WORKOUT_SCHEDULES" },
     { to: "/teamroom/team_board", text: "Team Board", boardType: "TEAM_BOARD" },
     { to: "/teamroom/coach_board", text: "Coach Board", boardType: "COACH_BOARD" },
     { to: "/teamroom/staff_board", text: "Staff Board", boardType: "STAFF_BOARD" },
@@ -36,7 +32,7 @@ const TAB_MENU_ITEMS: TabMenuItems = {
     { to: "/teamroom/membership_fee", text: "Membership Fee", boardType: "MEMBERSHIP_FEE" },
   ],
   community: [
-    { to: "/community/fan_board", text: "Fan Board", boardType: "FAN_BOARD" },
+    { to: "/community/guest_board", text: "Guest Board", boardType: "GUEST_BOARD" },
     { to: "/community/media", text: "Media", boardType: "MEDIA" },
     { to: "/community/support", text: "Support", boardType: "SUPPORT" },
   ],

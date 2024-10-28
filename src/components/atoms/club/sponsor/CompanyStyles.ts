@@ -8,7 +8,7 @@ export const SponsorBox = styled.div`
     justify-center
     items-center
     border-2
-    border-[#C8C8C8]
+    border-gray-500
     rounded-lg
     py-20
     m-8

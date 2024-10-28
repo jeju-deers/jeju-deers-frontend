@@ -13,12 +13,12 @@ import {
   CommentSubmitButtonBox,
   ContentBox,
   CreationInformationBox,
-  DetailToListBox,
+  DetailToBoardBox,
   MoveListButtonBox,
   MovePostButtonBox,
   PostDetailBox,
   PostInformationBox,
-  PostStats,
+  PostStatsBox,
   StatsCountBox,
   TitleBox,
 } from "./BoardDetailStyles";
@@ -70,14 +70,14 @@ const BoardDetail = ({ singleBoardId }: Props) => {
       </MovePostButtonBox>
       <PostDetailBox>
         <Link to={findBoardRoute(type)}>
-          <DetailToListBox>
+          <DetailToBoardBox>
             <Text
               text={type}
               // image={nextArrowImage}
               className="text-lg text-green-light"
             />
             <img src={nextArrowImage} />
-          </DetailToListBox>
+          </DetailToBoardBox>
         </Link>
         <TitleBox>
           <Text text={title} className="text-8" />
@@ -93,7 +93,7 @@ const BoardDetail = ({ singleBoardId }: Props) => {
               className="text-sm-base text-gray-600"
             />
           </CreationInformationBox>
-          <PostStats>
+          <PostStatsBox>
             <StatsCountBox>
               <Text text="조회수" className="text-4.5" />
               <Text text={views} className="flex justify-end text-4.5 w-7" />
@@ -102,7 +102,7 @@ const BoardDetail = ({ singleBoardId }: Props) => {
               <Text text="댓글수" className="text-4.5" />
               <Text text="10" className="flex justify-end text-4.5 w-7" />
             </StatsCountBox>
-          </PostStats>
+          </PostStatsBox>
         </PostInformationBox>
         <ContentBox dangerouslySetInnerHTML={{ __html: content }} />
         <Text text="댓글" className="text-2xl font-semibold" />
@@ -112,7 +112,7 @@ const BoardDetail = ({ singleBoardId }: Props) => {
             <Text text="OB" className="text-xl text-blue" />
           </CommentAuthorBox>
           <Text text="확실한 가요?" className="text-xl" />
-          <Text text="2024.08.23. 14:00" className="text-xl text-gray-450" />{" "}
+          <Text text="2024.08.23. 14:00" className="text-xl text-gray-450" />
         </CommentBox>
         <CommentSeparateLineBox />
         <CommentBox>
@@ -121,7 +121,7 @@ const BoardDetail = ({ singleBoardId }: Props) => {
             <Text text="OB" className="text-xl text-blue" />
           </CommentAuthorBox>
           <Text text="지가 봤구먼유" className="text-xl" />
-          <Text text="2024.08.23. 14:10" className="text-xl text-gray-450" />{" "}
+          <Text text="2024.08.23. 14:10" className="text-xl text-gray-450" />
         </CommentBox>
         <CommentFieldBox>
           <CommentInformationBox>
