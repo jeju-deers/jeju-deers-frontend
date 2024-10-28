@@ -35,7 +35,7 @@ export const PostDetailBox = styled.div`
   `}
 `;
 
-export const DetailToListBox = styled.div`
+export const DetailToBoardBox = styled.div`
   ${tw`
     flex
   `}
@@ -70,7 +70,7 @@ export const AuthorBox = styled.div`
   `}
 `;
 
-export const PostStats = styled.div`
+export const PostStatsBox = styled.div`
   ${tw`
     flex
     w-full

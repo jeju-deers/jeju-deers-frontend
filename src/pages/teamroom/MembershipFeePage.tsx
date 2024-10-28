@@ -1,7 +1,7 @@
-import { MembershipFeePageLayout } from "./MembershipFeePageStyles";
+import MembershipFee from "~/components/templates/teamroom/MembershipFee";
 
 const MembershipFeePage = () => {
-  return <MembershipFeePageLayout>Membership Fee 페이지입니다.</MembershipFeePageLayout>;
+  return <MembershipFee />;
 };
 
 export default MembershipFeePage;

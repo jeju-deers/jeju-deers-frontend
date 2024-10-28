@@ -1,7 +1,7 @@
-import { SupportPageLayout } from "./SupportPageStyles";
+import Support from "~/components/templates/community/Support";
 
 const SupportPage = () => {
-  return <SupportPageLayout>Support 페이지입니다.</SupportPageLayout>;
+  return <Support />;
 };
 
 export default SupportPage;
