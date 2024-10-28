@@ -9,7 +9,6 @@ import TITLES from "./constants/TitleList";
 const Base = () => {
   const location = useLocation();
   const pathParts = location.pathname.split("/").filter(Boolean);
-  
   let currentPathKey = "";
 
   if (pathParts.length === 1) {
