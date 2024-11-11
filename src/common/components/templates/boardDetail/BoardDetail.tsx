@@ -28,6 +28,7 @@ import PendingMessage from "../../atom/PendingMessage";
 import { Link } from "react-router-dom";
 import TAB_MENU_ITEMS, { TabMenuItems } from "~/constants/tabMenuItems";
 import useFormatKoreanTime from "~/hooks/board/useFormatKoreanTime";
+import COMMENT_TEMPORORY_DATA from "~/constants/commentTemporaryData";
 
 interface Props {
   singleBoardId: string;
@@ -35,6 +36,9 @@ interface Props {
 
 const BoardDetail = ({ singleBoardId }: Props) => {
   const { singleBoard, isLoading } = useGetSingleBoard(singleBoardId);
+  
+  // TODO: [2024-10-27] 임시 댓글 목록 상수 데이터를 이용하여 구현. 댓글 조회 api 구현 이후 수정 및 삭제 필요.
+  const commentData = COMMENT_TEMPORORY_DATA;
 
   if (isLoading) {
     return <PendingMessage />;
@@ -106,23 +110,19 @@ const BoardDetail = ({ singleBoardId }: Props) => {
         </PostInformationBox>
         <ContentBox dangerouslySetInnerHTML={{ __html: content }} />
         <Text text="댓글" className="text-2xl font-semibold" />
-        <CommentBox>
-          <CommentAuthorBox>
-            <Text text="김민재" className="text-xl font-semibold" />
-            <Text text="OB" className="text-xl text-blue" />
-          </CommentAuthorBox>
-          <Text text="확실한 가요?" className="text-xl" />
-          <Text text="2024.08.23. 14:00" className="text-xl text-gray-450" />
-        </CommentBox>
-        <CommentSeparateLineBox />
-        <CommentBox>
-          <CommentAuthorBox>
-            <Text text="고겨레" className="text-xl font-semibold" />
-            <Text text="OB" className="text-xl text-blue" />
-          </CommentAuthorBox>
-          <Text text="지가 봤구먼유" className="text-xl" />
-          <Text text="2024.08.23. 14:10" className="text-xl text-gray-450" />
-        </CommentBox>
+        {commentData.map(({ name, belong, create_at: createAt, content }, index) => (
+          <>
+            {index != 0 && <CommentSeparateLineBox />}
+            <CommentBox key={index + "-" + content}>
+              <CommentAuthorBox>
+                <Text text={name} className="text-xl font-semibold" />
+                <Text text={belong} className="text-xl text-blue" />
+              </CommentAuthorBox>
+              <Text text={content} className="text-xl" />
+              <Text text={createAt} className="text-xl text-gray-450" />
+            </CommentBox>
+          </>
+        ))}
         <CommentFieldBox>
           <CommentInformationBox>
             <Text text="박재광" className="text-xl" />
