@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "../pages/MainPage";
-import NotFound from "../pages/NotFound";
+// import NotFound from "../pages/NotFound";
 import AboutPage from "../pages/club/AboutPage";
 import OrganizationPage from "../pages/club/OrganizationPage";
 import PlayerPage from "~/pages/club/PlayerPage";
@@ -68,7 +68,7 @@ const Router = () => {
           </Route>
         </Route>
 
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<Base />} />
       </Routes>
     </BrowserRouter>
   );
