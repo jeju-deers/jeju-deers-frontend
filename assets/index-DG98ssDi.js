@@ -85,7 +85,7 @@ Error generating stack: `+s.message+`
   ${{display:"flex",height:"100%",overflowX:"hidden"}}
 `,R7=()=>g.jsx(I7,{children:g.jsx(P7,{})}),O7=()=>g.jsx(R7,{}),M7=x.div`
   ${{fontWeight:"700"}}
-`,B7=()=>g.jsx(M7,{children:"404 Error"}),L7=x.div`
+`,B7=()=>g.jsx(M7,{children:"404 Error12"}),L7=x.div`
   ${{display:"flex",gap:"1rem",borderBottomWidth:"1px","--tw-border-opacity":"1",borderColor:"rgb(0 0 0 / var(--tw-border-opacity))",paddingBottom:"1rem",fontSize:"2.25rem",lineHeight:"2.5rem"}}
 `,V7=x.span`
   ${{fontWeight:"700"}}
