@@ -16,6 +16,7 @@
     "@types/node": "^20.12.12",
     "axios": "^1.7.2",
     "ckeditor5": "^43.0.0",
+    "gh-pages": "^6.2.0",
     "postcss-import": "^16.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
