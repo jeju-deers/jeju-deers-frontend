@@ -23,9 +23,10 @@ interface Props {
 
 const NewsWrite = ({ writeOption, setWriteOption }: Props) => {
   const [title, setTitle] = useState("");
-  // ESLint에서 '사용되지 않는 변수'에 대한 기본 규칙에 대해 예외 처리를 위해 아래 주석 사용
-  // eslint-disable-next-line no-unused-vars
   const [content, setContent] = useState("");
+
+  // TODO: [2024-11-24] ESLint에서 '사용되지 않는 변수'에 대한 기본 규칙에 대해 예외 처리를 위해 임시 콘솔 사용
+  console.log(content);
 
   const handleWriteDropdownChange = (element: React.ChangeEvent<HTMLSelectElement>) => {
     setWriteOption(element.target.value);
