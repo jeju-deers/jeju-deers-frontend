@@ -7,5 +7,5 @@ export default defineConfig({
   resolve: {
     alias: [{ find: "~", replacement: "/src" }],
   },
-  base: "/",
+  base: "/jeju-deers-frontend/",
 });
