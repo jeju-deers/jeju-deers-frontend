@@ -1,7 +1,7 @@
-import { SchedulePageLayout } from "./SchedulePageStyles";
+import Schedule from "~/components/templates/news/schedule/Schedule";
 
 const SchedulePage = () => {
-  return <SchedulePageLayout>Schedule 페이지입니다.</SchedulePageLayout>;
+  return <Schedule />;
 };
 
 export default SchedulePage;
