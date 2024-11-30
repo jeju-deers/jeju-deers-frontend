@@ -25,7 +25,7 @@ import NewsWritePage from "~/pages/common/NewsWritePage";
 
 const Router = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/jeju-deers-frontend">
       <Routes>
         <Route path="/" element={<Base />}>
           <Route index element={<MainPage />} />

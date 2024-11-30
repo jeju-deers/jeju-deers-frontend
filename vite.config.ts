@@ -8,4 +8,7 @@ export default defineConfig({
     alias: [{ find: "~", replacement: "/src" }],
   },
   base: "/jeju-deers-frontend/",
+  build: {
+    outDir: "dist",
+  },
 });
