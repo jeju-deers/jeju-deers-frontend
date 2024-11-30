@@ -15,7 +15,7 @@ import MembershipFeePage from "../pages/teamroom/MembershipFeePage";
 import GuestBoardPage from "~/pages/community/GuestBoardPage";
 import MediaPage from "../pages/community/MediaPage";
 import SupportPage from "../pages/community/SupportPage";
-import SchedulePage from "../pages/news/SchedulePage";
+import SchedulePage from "~/pages/news/SchedulePage";
 import NewsPage from "../pages/news/NewsPage";
 import Base from "../Base";
 import MyPagePage from "~/pages/MyPagePage";
