@@ -15,6 +15,7 @@ import WriteDropdownButton from "../atom/board/WriteDropDownButton";
 import CkEditor from "../atom/board/CkEditor";
 import Heading from "~/components/atoms/club/Heading";
 import helmet from "~/assets/images/helmet.svg";
+import usePostWrite from "~/common/hooks/write/mutate/usePostWrite";
 
 interface Props {
   writeOption: string;
@@ -24,20 +25,33 @@ interface Props {
 const NewsWrite = ({ writeOption, setWriteOption }: Props) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-
-  // TODO: [2024-11-24] ESLint에서 '사용되지 않는 변수'에 대한 기본 규칙에 대해 예외 처리를 위해 임시 콘솔 사용
-  console.log(content);
+  const { mutate, isError, isSuccess } = usePostWrite();
 
   const handleWriteDropdownChange = (element: React.ChangeEvent<HTMLSelectElement>) => {
     setWriteOption(element.target.value);
+  };
+
+  const handleSave = () => {
+    const token = localStorage.getItem("token");
+    const owner = localStorage.getItem("owner");
+
+    if (!token || !owner) {
+      console.error("토큰이 만료되었습니다. 다시 로그인 해주세요");
+      return;
+    }
+    const upperCaseWriteOption = writeOption.toUpperCase();
+    mutate({ title, content, owner, type: upperCaseWriteOption, token });
+    console.log(title, content, owner, upperCaseWriteOption);
   };
 
   return (
     <NewsWriteLayout>
       <Heading src={helmet} alt="helmet" text="게시글 작성" />
       <SaveButtonWrap>
-        <SaveButton>등록</SaveButton>
+        <SaveButton onClick={handleSave}>등록</SaveButton>
       </SaveButtonWrap>
+      {isError && <p style={{ color: "red" }}>게시글 저장 실패!</p>}
+      {isSuccess && <p style={{ color: "green" }}>게시글이 성공적으로 저장되었습니다!</p>}
       <NoticeBox>
         <Notice>{NOTICE_DATA}</Notice>
       </NoticeBox>

@@ -19,6 +19,7 @@ const usePostLogin = () => {
         `로그인 성공, data: ${loginResponse}, token: ${loginResponse.data.token}, user: ${loginResponse.data.user.userId}`,
       );
       localStorage.setItem("token", loginResponse.data.token);
+      localStorage.setItem("owner", loginResponse.data.user.name);
       localStorage.setItem("userId", loginResponse.data.user.userId);
     },
     onError: (error: Error) => {
