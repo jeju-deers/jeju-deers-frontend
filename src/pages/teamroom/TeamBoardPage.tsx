@@ -1,7 +1,7 @@
-import { TeamBoardPageLayout } from "./TeamBoardPageStyles";
+import TeamBoard from "~/components/templates/teamroom/TeamBoard";
 
 const TeamBoardPage = () => {
-  return <TeamBoardPageLayout>Team Board 페이지입니다.</TeamBoardPageLayout>;
+  return <TeamBoard />;
 };
 
 export default TeamBoardPage;

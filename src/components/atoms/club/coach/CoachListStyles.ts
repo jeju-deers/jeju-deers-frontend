@@ -6,17 +6,17 @@ export const CoachListBox = styled.div`
     flex
     flex-col
     border-y-2
-    min-w-[1050px]
+    min-w-262.5
   `}
   & > *:nth-child(odd) {
     & > *:nth-child(-n + 3) {
       ${tw`
-        bg-[#f0f0f0]
+        bg-gray-200
       `}
     }
     & > *:nth-last-child(-n + 3) {
       ${tw`
-        bg-[#f5f5f5]
+        bg-gray-150
       `}
     }
   }
@@ -24,12 +24,12 @@ export const CoachListBox = styled.div`
   & > *:nth-child(even) {
     & > *:nth-child(-n + 3) {
       ${tw`
-        bg-[#f5f5f5]
+        bg-gray-150
       `}
     }
     & > *:nth-last-child(-n + 3) {
       ${tw`
-        bg-[#ffffff]
+        bg-white
       `}
     }
   }
@@ -37,12 +37,12 @@ export const CoachListBox = styled.div`
   & > *:nth-child(1) {
     & > *:nth-child(-n + 3) {
       ${tw`
-        bg-[#f5f5f5]
+        bg-gray-150
       `}
     }
     & > *:nth-last-child(-n + 3) {
       ${tw`
-        bg-[#ffffff]
+        bg-white
       `}
     }
   }
@@ -59,25 +59,29 @@ export const CoachListHeaderBox = styled.div`
 
   & > *:nth-child(1) {
     ${tw`
-        justify-start
-        pl-2
-        basis-[12%]
+      justify-start
+      pl-2
+      basis-[12%]
     `}
   }
 
   & > *:nth-child(2) {
-    ${tw`basis-[18%]`}
+    ${tw`
+      basis-[18%]
+    `}
   }
 
   & > *:nth-child(3) {
     ${tw`
       border-x-2
       basis-[20%]
-      `}
+    `}
   }
 
   & > *:nth-last-child(-n + 3) {
-    ${tw`basis-[16.666%]`}
+    ${tw`
+      basis-[16.666%]
+    `}
   }
 `;
 
@@ -119,10 +123,14 @@ export const CoachListRowBox = styled.div`
   }
 
   & > *:nth-last-child(-n + 3) {
-    ${tw`basis-[16.666%]`}
+    ${tw`
+      basis-[16.666%]
+    `}
   }
 `;
 
 export const CoachImage = styled.img`
-  ${tw`bg-white`}
+  ${tw`
+    bg-white
+  `}
 `;

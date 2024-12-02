@@ -8,9 +8,9 @@ interface Props {
 
 const WriteDropdownButton = ({ value, onChange }: Props) => (
   <WriteDropdownButtonSelect value={value} onChange={onChange}>
-    {Object.entries(TITLES).map(([key, [_, label]]) => (
-      <option key={key} value={key}>
-        {label}
+    {Object.entries(TITLES).map(([title, [_, koreanTitle]]) => (
+      <option key={title} value={title}>
+        {koreanTitle}
       </option>
     ))}
   </WriteDropdownButtonSelect>

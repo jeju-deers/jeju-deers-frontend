@@ -1,8 +1,8 @@
 import tw from "twin.macro";
 import styled from "styled-components";
 
-export const TeamBoardPageLayout = styled.div`
+export const TextSpan = styled.span`
   ${tw`
-    font-bold
+    
   `}
 `;

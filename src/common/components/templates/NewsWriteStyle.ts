@@ -13,8 +13,11 @@ export const NewsWriteLayout = styled.div`
 
 export const Notice = styled.div`
   ${tw`
-    bg-gray-200
+    bg-gray-100
+    border
+    border-gray-200
     p-4
+    rounded-md
   `}
 
   span {

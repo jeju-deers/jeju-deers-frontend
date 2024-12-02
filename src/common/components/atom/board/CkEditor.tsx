@@ -32,6 +32,7 @@ import "ckeditor5/ckeditor5.css";
 import { CKEditorWrapper, EditorContainer, MainContainer } from "./CkEditorStyles";
 import translations from "ckeditor5/translations/ko.js";
 
+
 const LICENSE_KEY =
   "eyJhbGciOiJFUzI1NiJ9.eyJleHAiOjE3MzQzOTM1OTksImp0aSI6IjgxMTU3NGY4LWRiYzctNGQ0Yy04NzdhLTkyMjA2M2YxMDliZCIsInVzYWdlRW5kcG9pbnQiOiJodHRwczovL3Byb3h5LWV2ZW50LmNrZWRpdG9yLmNvbSIsImRpc3RyaWJ1dGlvbkNoYW5uZWwiOlsiY2xvdWQiLCJkcnVwYWwiLCJzaCJdLCJ3aGl0ZUxhYmVsIjp0cnVlLCJsaWNlbnNlVHlwZSI6InRyaWFsIiwiZmVhdHVyZXMiOlsiKiJdLCJ2YyI6IjVmN2NhN2JlIn0.1fZzESTRnBCOdq9sel0kbzNV375y4lyzDDC5F4L4emoFcRd5d-Pp0TEXX8Vmcr9uSLGCXpAoeVuu12AzJTfeeg";
 
@@ -67,10 +68,7 @@ const CkEditor = ({ onChange }: Props) => {
       shouldNotGroupWhenFull: false,
     },
     plugins: [
-      Alignment,
-      AutoImage,
-      AutoLink,
-      Autosave,
+      AccessibilityHelp,
       Bold,
       Essentials,
       Heading,
