@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "../pages/MainPage";
-import NotFound from "../pages/NotFound";
+// import NotFound from "../pages/NotFound";
 import AboutPage from "../pages/club/AboutPage";
 import OrganizationPage from "../pages/club/OrganizationPage";
 import PlayerPage from "~/pages/club/PlayerPage";
@@ -25,7 +25,7 @@ import NewsWritePage from "~/pages/common/NewsWritePage";
 
 const Router = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/jeju-deers-frontend">
       <Routes>
         <Route path="/" element={<Base />}>
           <Route index element={<MainPage />} />
@@ -68,7 +68,7 @@ const Router = () => {
           </Route>
         </Route>
 
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<Base />} />
       </Routes>
     </BrowserRouter>
   );
