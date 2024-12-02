@@ -3,11 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://jeju-deers.github.io/jeju-deers-frontend",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "pnpm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@ckeditor/ckeditor5-react": "^9.0.0",
@@ -16,6 +19,7 @@
     "@types/node": "^20.12.12",
     "axios": "^1.7.2",
     "ckeditor5": "^43.0.0",
+    "gh-pages": "^6.2.0",
     "postcss-import": "^16.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

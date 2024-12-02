@@ -27,8 +27,8 @@ const NewsWrite = ({ writeOption, setWriteOption }: Props) => {
   const [content, setContent] = useState("");
   const { mutate, isError, isSuccess } = usePostWrite();
 
-  const handleWriteDropdownChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setWriteOption(e.target.value);
+  const handleWriteDropdownChange = (element: React.ChangeEvent<HTMLSelectElement>) => {
+    setWriteOption(element.target.value);
   };
 
   const handleSave = () => {
