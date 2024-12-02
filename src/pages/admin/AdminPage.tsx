@@ -1,5 +1,16 @@
+import SideBar from "~/components/atoms/admin/SideBar";
+import { ContentBox, HeaderBox, PrimaryContentBox, WholePageBox } from "./AdminPageStyles";
+
 const AdminPage = () => {
-  return <>AdminPage 입니다</>;
+  return (
+    <WholePageBox>
+      <SideBar />
+      <PrimaryContentBox>
+        <HeaderBox>header</HeaderBox>
+        <ContentBox>content</ContentBox>
+      </PrimaryContentBox>
+    </WholePageBox>
+  );
 };
 
 export default AdminPage;
