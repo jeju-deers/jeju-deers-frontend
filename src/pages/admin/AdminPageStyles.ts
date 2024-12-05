@@ -5,21 +5,13 @@ export const WholePageBox = styled.div`
   ${tw`
     flex
     h-screen
+    min-w-363
   `}
 `;
 
 export const PrimaryContentBox = styled.div`
   ${tw`
-    flex
-    flex-col
-    
-  `}
-`;
-
-export const HeaderBox = styled.div`
-  ${tw`
-    flex
-    
+    flex-1
   `}
 `;
 
