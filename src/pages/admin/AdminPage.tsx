@@ -1,5 +1,5 @@
 import SideBar from "~/components/atoms/admin/SideBar";
-import { ContentBox, PrimaryContentBox, WholePageBox } from "./AdminPageStyles";
+import { ContentBox, ContentBoxWrap, PrimaryContentBox, WholePageBox } from "./AdminPageStyles";
 import Header from "~/components/atoms/admin/Header";
 
 const AdminPage = () => {
@@ -8,7 +8,9 @@ const AdminPage = () => {
       <SideBar />
       <PrimaryContentBox>
         <Header />
-        <ContentBox>content</ContentBox>
+        <ContentBoxWrap>
+          <ContentBox>content</ContentBox>
+        </ContentBoxWrap>
       </PrimaryContentBox>
     </WholePageBox>
   );

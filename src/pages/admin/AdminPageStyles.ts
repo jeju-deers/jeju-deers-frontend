@@ -15,8 +15,19 @@ export const PrimaryContentBox = styled.div`
   `}
 `;
 
-export const ContentBox = styled.div`
+export const ContentBoxWrap = styled.div`
   ${tw`
     flex
+    h-[calc(100vh-6rem)]
+    bg-gray-275
+  `}
+`;
+
+export const ContentBox = styled.div`
+  ${tw`
+    flex-1
+    m-6
+    rounded-lg-xl
+    bg-white
   `}
 `;

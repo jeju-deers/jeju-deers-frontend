@@ -12,6 +12,7 @@ module.exports = {
         "gray-150": "#F5F5F5",
         "gray-200": "#F0F0F0",
         "gray-250": "#F0F1F3",
+        "gray-275": "#EEEEEE",
         "gray-300": "#EBEBEB",
         "gray-350": "#E5E5E5",
         "gray-400": "#DFDFDF",
@@ -63,10 +64,6 @@ module.exports = {
       },
       borderWidth: {
         5: "5px",
-      },
-      borderRadius: {
-        "default-md": "5px",
-        "lg-xl": "10px",
       },
       borderRadius: {
         "default-md": "5px",
