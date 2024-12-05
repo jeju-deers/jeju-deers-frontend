@@ -5,7 +5,7 @@ import {
   UserManagementBox,
   UserManagementImage,
   UserManagementText,
-} from "./SideBarStyle";
+} from "./SideBarStyles";
 import jejuDeersText from "~/assets/images/jeju_deers_text.svg";
 import userManagement from "~/assets/images/user_management.svg";
 
