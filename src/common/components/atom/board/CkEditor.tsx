@@ -2,10 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import {
   ClassicEditor,
-  Alignment,
-  AutoImage,
-  AutoLink,
-  Autosave,
   Bold,
   Essentials,
   Heading,
@@ -66,7 +62,6 @@ const CkEditor = ({ onChange }: Props) => {
       shouldNotGroupWhenFull: false,
     },
     plugins: [
-      AccessibilityHelp,
       Bold,
       Essentials,
       Heading,
