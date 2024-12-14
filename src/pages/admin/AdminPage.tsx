@@ -15,6 +15,8 @@ import {
   ListSectionBox,
   PrimaryContentBox,
   SearchBox,
+  SearchButton,
+  SearchButtonWrap,
   SearchInput,
   WholePageBox,
 } from "./AdminPageStyles";
@@ -41,6 +43,9 @@ const AdminPage = () => {
               <DropDown text="소속" options={BELONG_DATA}></DropDown>
               <DropDown text="역할" options={USER_TYPE_DATA}></DropDown>
               <DropDown text="권한" options={AUTHORITY_DATA}></DropDown>
+              <SearchButtonWrap>
+                <SearchButton>검색</SearchButton>
+              </SearchButtonWrap>
             </SearchBox>
             <DeleteButton>삭제</DeleteButton>
             <ListBox>

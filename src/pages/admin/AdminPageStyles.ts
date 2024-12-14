@@ -45,6 +45,7 @@ export const ContentTitleBox = styled.div`
 export const SearchBox = styled.div`
   ${tw`
     flex
+    relative
     gap-5
     pb-6
     border-b
@@ -69,6 +70,26 @@ export const SearchInput = styled.input`
       text-gray-1000
     `}
   }
+`;
+
+export const SearchButtonWrap = styled.div`
+  ${tw`
+    absolute
+    right-0
+  `}
+`;
+
+export const SearchButton = styled.button`
+  ${tw`
+    flex
+    w-16
+    h-10.25
+    rounded-lg
+    bg-blue
+    items-center
+    justify-center
+    text-white
+  `}
 `;
 
 export const DeleteButton = styled.button`
