@@ -28,8 +28,16 @@ import DropDown from "~/components/atoms/admin/content/DropDown";
 import BELONG_DATA from "~/constants/belongData";
 import USER_TYPE_DATA from "~/constants/userTypeData";
 import AUTHORITY_DATA from "~/constants/authorityData";
+import useGetUsersInformation from "~/hooks/admin/query/useGetUsersInformation";
+import PendingMessage from "~/common/components/atom/PendingMessage";
 
 const AdminPage = () => {
+  const { usersInformation, isLoading } = useGetUsersInformation();
+
+  if (isLoading) {
+    <PendingMessage />;
+  }
+
   return (
     <WholePageBox>
       <SideBarWrap>
@@ -65,19 +73,22 @@ const AdminPage = () => {
                 </ListSectionBox>
               </ListHeaderBox>
 
-              <ListItemBox>
-                <CheckBoxInput type="checkbox" />
-                <ListItemSection basis="35%" text="고겨레" />
-                <ListItemSection basis="9.4%" text="OB" />
-                <ListItemSection basis="28.6%" text="선수" />
-                <ListItemSection basis="9.4%" text="일반 회원" />
-                <ListItemSection basis="38.1%" text="2024.08.23. 14:10" />
-                <ListSectionBox>
-                  <AccountEditButton>
-                    <ListItemTextSpan>정보수정</ListItemTextSpan>
-                  </AccountEditButton>
-                </ListSectionBox>
-              </ListItemBox>
+              {/* TODO: [2024-12-15] 백엔드에서 역할, 권한, 수정날짜 데이터 추가 되면 변경 필요 */}
+              {usersInformation.map((userInformation: any) => (
+                <ListItemBox>
+                  <CheckBoxInput type="checkbox" />
+                  <ListItemSection basis="35%" text={userInformation.name} />
+                  <ListItemSection basis="9.4%" text={userInformation.belong} />
+                  <ListItemSection basis="28.6%" text={userInformation.userType} />
+                  <ListItemSection basis="9.4%" text="일반 회원" />
+                  <ListItemSection basis="38.1%" text="2024.08.23. 14:10" />
+                  <ListSectionBox>
+                    <AccountEditButton>
+                      <ListItemTextSpan>정보수정</ListItemTextSpan>
+                    </AccountEditButton>
+                  </ListSectionBox>
+                </ListItemBox>
+              ))}
             </ListBox>
             <ExitButtonBox>
               <ExitButton>나가기</ExitButton>
