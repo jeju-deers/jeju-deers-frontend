@@ -4,10 +4,12 @@ module.exports = {
     extend: {
       colors: {
         red: "#FF0000",
+        "red-dark": "#C43737",
         green: "#0A281E",
         "green-dark": "#0C2F23",
         "green-light": "#285E67",
         blue: "#69A6FF",
+        "blue-gray": "#ACB8C9",
         "gray-100": "#F9F9F9",
         "gray-150": "#F5F5F5",
         "gray-200": "#F0F0F0",
@@ -27,7 +29,9 @@ module.exports = {
         25: "100px",
         28.25: "113px",
         33: "132px",
+        45: "180px",
         58.25: "233px",
+        62: "124px",
         75: "300px",
         86.75: "347px",
         100: "400px",
@@ -42,12 +46,14 @@ module.exports = {
         250: "1000px",
         262.5: "1050px",
         363: "1452px",
+        380: "1520px",
       },
       maxWidth: {
         300: "1200px",
         428: "1712px",
       },
       height: {
+        10.25: "43px",
         17.5: "70px",
         33.25: "133px",
         75: "300px",
