@@ -1,4 +1,4 @@
-import TITLES from "~/constants/TitleList";
+import TITLES from "~/constants/writeOption";
 import { WriteDropdownButtonSelect } from "./WriteDropDownButtonStyles";
 
 interface Props {
@@ -6,14 +6,24 @@ interface Props {
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
-const WriteDropdownButton = ({ value, onChange }: Props) => (
-  <WriteDropdownButtonSelect value={value} onChange={onChange}>
-    {Object.entries(TITLES).map(([title, [_, koreanTitle]]) => (
-      <option key={title} value={title}>
-        {koreanTitle}
-      </option>
-    ))}
-  </WriteDropdownButtonSelect>
-);
+const WriteDropdownButton = ({ value, onChange }: Props) => {
+  const userType = localStorage.getItem("userType");
+  const accessibleTitles = Object.entries(TITLES).filter(([title, [_, koreanTitle]]) => {
+    if (userType === "external") {
+      return ["guest_board", "media"].includes(title);
+    }
+    return true;
+  });
+
+  return (
+    <WriteDropdownButtonSelect value={value} onChange={onChange}>
+      {accessibleTitles.map(([title, [_, koreanTitle]]) => (
+        <option key={title} value={title}>
+          {koreanTitle}
+        </option>
+      ))}
+    </WriteDropdownButtonSelect>
+  );
+};
 
 export default WriteDropdownButton;
