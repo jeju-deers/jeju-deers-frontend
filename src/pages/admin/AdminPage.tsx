@@ -18,6 +18,7 @@ import {
   SearchButton,
   SearchButtonWrap,
   SearchInput,
+  SideBarWrap,
   WholePageBox,
 } from "./AdminPageStyles";
 import Header from "~/components/atoms/admin/Header";
@@ -31,7 +32,9 @@ import AUTHORITY_DATA from "~/constants/authorityData";
 const AdminPage = () => {
   return (
     <WholePageBox>
-      <SideBar />
+      <SideBarWrap>
+        <SideBar />
+      </SideBarWrap>
       <PrimaryContentBox>
         <Header />
         <ContentBoxWrap>
@@ -39,7 +42,6 @@ const AdminPage = () => {
             <ContentTitleBox>사용자 정보 목록</ContentTitleBox>
             <SearchBox>
               <SearchInput type="text" placeholder="이름" />
-              {/* <SearchInput value={input} onChange={handleEnte;.ㅣrName} type="text" placeholder="이름" /> */}
               <DropDown text="소속" options={BELONG_DATA}></DropDown>
               <DropDown text="역할" options={USER_TYPE_DATA}></DropDown>
               <DropDown text="권한" options={AUTHORITY_DATA}></DropDown>

@@ -3,8 +3,7 @@ import styled from "styled-components";
 
 export const SideBarBox = styled.div`
   ${tw`
-    flex
-    flex-col
+    fixed
     w-86.75
     h-full
     bg-green

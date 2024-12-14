@@ -4,8 +4,18 @@ import styled from "styled-components";
 export const WholePageBox = styled.div`
   ${tw`
     flex
-    h-screen
+    h-lvh
     min-w-380
+  `}
+`;
+
+export const SideBarWrap = styled.div`
+  ${tw`
+    flex
+    w-86.75
+    h-full
+    bg-green
+    z-10
   `}
 `;
 
@@ -18,7 +28,7 @@ export const PrimaryContentBox = styled.div`
 export const ContentBoxWrap = styled.div`
   ${tw`
     flex
-    h-[calc(100vh-6rem)]
+    min-h-[calc(100vh-6rem)]
     bg-gray-275
   `}
 `;
@@ -109,8 +119,6 @@ export const ListBox = styled.div`
   ${tw`
     flex
     flex-col
-    w-full
-    justify-center
   `}
 `;
 
