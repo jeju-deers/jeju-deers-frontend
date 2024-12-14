@@ -20,6 +20,7 @@ const usePostLogin = () => {
       );
       localStorage.setItem("token", loginResponse.data.token);
       localStorage.setItem("owner", loginResponse.data.user.name);
+      localStorage.setItem("userType", loginResponse.data.user.userType);
       localStorage.setItem("userId", loginResponse.data.user.userId);
     },
     onError: (error: Error) => {
