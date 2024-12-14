@@ -2,8 +2,14 @@ import { useState, useEffect, useRef } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import {
   ClassicEditor,
+  Alignment,
+  AutoImage,
+  AutoLink,
+  Autosave,
+  Base64UploadAdapter,
   Bold,
   Essentials,
+  GeneralHtmlSupport,
   Heading,
   ImageBlock,
   ImageInsert,
@@ -13,14 +19,7 @@ import {
   ImageToolbar,
   ImageUpload,
   Link,
-  MediaEmbed,
-  Mention,
   Paragraph,
-  SimpleUploadAdapter,
-  Table,
-  TableColumnResize,
-  TableProperties,
-  TableToolbar,
 } from "ckeditor5";
 
 import "ckeditor5/ckeditor5.css";
@@ -47,23 +46,18 @@ const CkEditor = ({ onChange }: Props) => {
 
   const editorConfig: any = {
     toolbar: {
-      items: [
-        "heading",
-        "|",
-        "bold",
-        "|",
-        "link",
-        "insertImage",
-        "mediaEmbed",
-        "insertTable",
-        "|",
-        "alignment",
-      ],
+      items: ["heading", "|", "bold", "|", "link", "|", "alignment"],
       shouldNotGroupWhenFull: false,
     },
     plugins: [
+      Alignment,
+      AutoImage,
+      AutoLink,
+      Autosave,
+      Base64UploadAdapter,
       Bold,
       Essentials,
+      GeneralHtmlSupport,
       Heading,
       ImageBlock,
       ImageInsert,
@@ -73,14 +67,7 @@ const CkEditor = ({ onChange }: Props) => {
       ImageToolbar,
       ImageUpload,
       Link,
-      MediaEmbed,
-      Mention,
       Paragraph,
-      SimpleUploadAdapter,
-      Table,
-      TableColumnResize,
-      TableProperties,
-      TableToolbar,
     ],
     heading: {
       options: [
@@ -127,6 +114,16 @@ const CkEditor = ({ onChange }: Props) => {
         },
       ],
     },
+    htmlSupport: {
+      allow: [
+        {
+          name: /^.*$/,
+          styles: true,
+          attributes: true,
+          classes: true,
+        },
+      ],
+    },
     image: {
       toolbar: [
         "imageTextAlternative",
@@ -158,9 +155,6 @@ const CkEditor = ({ onChange }: Props) => {
       },
     },
     placeholder: "내용을 입력해주세요",
-    table: {
-      contentToolbar: ["tableColumn", "tableRow", "mergeTableCells", "tableProperties"],
-    },
     translations: [translations],
   };
 
