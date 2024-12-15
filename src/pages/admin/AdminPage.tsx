@@ -34,6 +34,11 @@ import { useState } from "react";
 const AdminPage = () => {
   const [selectedUserId, setSelectedUserId] = useState<string[]>([]);
 
+  const userCountPerPage = 25;
+  const currentPage = 1;
+  const currentPageUsers = USER_INFORMATION_DATA.slice((currentPage - 1) * userCountPerPage);
+  const currentPageUsersId = currentPageUsers.map((user) => user.userId);
+
   const updateSelectedUserId = (userId: string) => {
     setSelectedUserId((previousState: string[]) => [...previousState, userId]);
   };
@@ -42,6 +47,11 @@ const AdminPage = () => {
     setSelectedUserId((previousState: string[]) =>
       previousState.filter((removeId) => removeId !== userId),
     );
+  };
+
+  const handleSelectAllCheckBox = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const checkbox = event.target;
+    checkbox.checked ? setSelectedUserId(currentPageUsersId) : setSelectedUserId([]);
   };
 
   const handleSelectCheckBox = (event: React.ChangeEvent<HTMLInputElement>, userId: string) => {
@@ -75,7 +85,10 @@ const AdminPage = () => {
             <DeleteButton onClick={() => handleDeleteUser(selectedUserId)}>삭제</DeleteButton>
             <ListBox>
               <ListHeaderBox>
-                <CheckBoxInput type="checkbox" />
+                <CheckBoxInput
+                  type="checkbox"
+                  onChange={(event) => handleSelectAllCheckBox(event)}
+                />
                 <ListHeaderSection basis="35%" text="이름" />
                 <ListHeaderSection basis="9.4%" text="소속" />
                 <ListHeaderSection basis="28.6%" text="역할" />
@@ -92,7 +105,7 @@ const AdminPage = () => {
                 <ListItemBox>
                   <CheckBoxInput
                     type="checkbox"
-                    onChange={(element) => handleSelectCheckBox(element, user.userId)}
+                    onChange={(event) => handleSelectCheckBox(event, user.userId)}
                   />
                   <ListItemSection basis="35%" text={user.name} />
                   <ListItemSection basis="9.4%" text={user.belong} />
