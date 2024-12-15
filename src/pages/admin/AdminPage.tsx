@@ -105,6 +105,7 @@ const AdminPage = () => {
                 <ListItemBox>
                   <CheckBoxInput
                     type="checkbox"
+                    checked={selectedUserId.includes(user.userId)}
                     onChange={(event) => handleSelectCheckBox(event, user.userId)}
                   />
                   <ListItemSection basis="35%" text={user.name} />
