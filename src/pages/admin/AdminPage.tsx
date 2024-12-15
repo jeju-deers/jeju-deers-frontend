@@ -40,7 +40,7 @@ const AdminPage = () => {
   const currentPageUsersId = currentPageUsers.map((user) => user.userId);
 
   const updateSelectedUserId = (userId: string) => {
-    setSelectedUserId((previousState: string[]) => [...previousState, userId]);
+    setSelectedUserId((previousState: string[]) => [...new Set([...previousState, userId])]);
   };
 
   const removeSelectedUserId = (userId: string) => {
