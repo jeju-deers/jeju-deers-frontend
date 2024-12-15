@@ -28,8 +28,25 @@ import DropDown from "~/components/atoms/admin/content/DropDown";
 import BELONG_DATA from "~/constants/belongData";
 import USER_TYPE_DATA from "~/constants/userTypeData";
 import AUTHORITY_DATA from "~/constants/authorityData";
+import USER_INFORMATION_DATA from "~/constants/userInformationData";
+import { useState } from "react";
 
 const AdminPage = () => {
+  const [selectedUserId, setSelectedUserId] = useState<string[]>([]);
+
+  const updateSelectedUserId = (userId: string) => {
+    setSelectedUserId((previousState: any) => [...previousState, userId]);
+  };
+
+  const handleSelectCheckBox = (event: React.ChangeEvent<HTMLInputElement>, userId: string) => {
+    const checkbox = event.target;
+    checkbox.checked ? updateSelectedUserId(userId) : console.log("unchecked");
+  };
+
+  const handleDeleteUser = (selectedUserId: string[]) => {
+    console.log(selectedUserId);
+  };
+
   return (
     <WholePageBox>
       <SideBarWrap>
@@ -49,7 +66,7 @@ const AdminPage = () => {
                 <SearchButton>검색</SearchButton>
               </SearchButtonWrap>
             </SearchBox>
-            <DeleteButton>삭제</DeleteButton>
+            <DeleteButton onClick={() => handleDeleteUser(selectedUserId)}>삭제</DeleteButton>
             <ListBox>
               <ListHeaderBox>
                 <CheckBoxInput type="checkbox" />
@@ -65,19 +82,24 @@ const AdminPage = () => {
                 </ListSectionBox>
               </ListHeaderBox>
 
-              <ListItemBox>
-                <CheckBoxInput type="checkbox" />
-                <ListItemSection basis="35%" text="고겨레" />
-                <ListItemSection basis="9.4%" text="OB" />
-                <ListItemSection basis="28.6%" text="선수" />
-                <ListItemSection basis="9.4%" text="일반 회원" />
-                <ListItemSection basis="38.1%" text="2024.08.23. 14:10" />
-                <ListSectionBox>
-                  <AccountEditButton>
-                    <ListItemTextSpan>정보수정</ListItemTextSpan>
-                  </AccountEditButton>
-                </ListSectionBox>
-              </ListItemBox>
+              {USER_INFORMATION_DATA.map((user) => (
+                <ListItemBox>
+                  <CheckBoxInput
+                    type="checkbox"
+                    onChange={(element) => handleSelectCheckBox(element, user.userId)}
+                  />
+                  <ListItemSection basis="35%" text={user.name} />
+                  <ListItemSection basis="9.4%" text={user.belong} />
+                  <ListItemSection basis="28.6%" text="선수" />
+                  <ListItemSection basis="9.4%" text="일반 회원" />
+                  <ListItemSection basis="38.1%" text="2024.08.23. 14:10" />
+                  <ListSectionBox>
+                    <AccountEditButton>
+                      <ListItemTextSpan>정보수정</ListItemTextSpan>
+                    </AccountEditButton>
+                  </ListSectionBox>
+                </ListItemBox>
+              ))}
             </ListBox>
             <ExitButtonBox>
               <ExitButton>나가기</ExitButton>
