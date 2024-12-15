@@ -33,8 +33,9 @@ import { useState } from "react";
 
 const AdminPage = () => {
   const [userName, setUserName] = useState("");
-  const [userBelong, setUserBelong] = useState("");
-  const [userAuthority, setUserAuthority] = useState("");
+  const [childBelongOption, setChildBelongOption] = useState("");
+  const [childRoleOption, setChildRoleOption] = useState("");
+  const [childAuthorityOption, setChildAuthorityOption] = useState("");
 
   const [searchUser, setSearchUser] = useState(USER_INFORMATION_DATA);
 
@@ -44,10 +45,27 @@ const AdminPage = () => {
   console.log(userName);
 
   const handleClickSearchButton = () => {
-    const filtered = USER_INFORMATION_DATA.filter((user) =>
-      user.name.toLowerCase().includes(userName.toLowerCase()),
+    // const filtered = USER_INFORMATION_DATA.filter((user) =>
+    //   user.name.toLowerCase().includes(userName.toLowerCase()),
+    // );
+    const filtered = USER_INFORMATION_DATA.filter(
+      (user) =>
+        user.name.toLowerCase().includes(userName.toLowerCase()) &&
+        user.belong.toLowerCase().includes(childBelongOption.toLowerCase()) &&
+        user.userType.toLowerCase().includes(childRoleOption.toLowerCase()) &&
+        user.authority.toLowerCase().includes(childAuthorityOption.toLowerCase()),
     );
     setSearchUser(filtered);
+  };
+
+  const handleChildBelongOptionChange = (option: string) => {
+    setChildBelongOption(option);
+  };
+  const handleChildRoleOptionChange = (option: string) => {
+    setChildRoleOption(option);
+  };
+  const handleChildAuthorityOptionChange = (option: string) => {
+    setChildAuthorityOption(option);
   };
 
   return (
@@ -67,9 +85,18 @@ const AdminPage = () => {
                 type="text"
                 placeholder="이름"
               />
-              <DropDown text="소속" options={BELONG_DATA}></DropDown>
-              <DropDown text="역할" options={USER_TYPE_DATA}></DropDown>
-              <DropDown text="권한" options={AUTHORITY_DATA}></DropDown>
+              <DropDown
+                text="소속"
+                options={BELONG_DATA}
+                onOptionSelected={handleChildBelongOptionChange}></DropDown>
+              <DropDown
+                text="역할"
+                options={USER_TYPE_DATA}
+                onOptionSelected={handleChildRoleOptionChange}></DropDown>
+              <DropDown
+                text="권한"
+                options={AUTHORITY_DATA}
+                onOptionSelected={handleChildAuthorityOptionChange}></DropDown>
               <SearchButtonWrap>
                 <SearchButton onClick={handleClickSearchButton}>검색</SearchButton>
               </SearchButtonWrap>
