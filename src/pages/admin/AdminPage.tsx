@@ -28,8 +28,28 @@ import DropDown from "~/components/atoms/admin/content/DropDown";
 import BELONG_DATA from "~/constants/belongData";
 import USER_TYPE_DATA from "~/constants/userTypeData";
 import AUTHORITY_DATA from "~/constants/authorityData";
+import USER_INFORMATION_DATA from "~/constants/userInformationData";
+import { useState } from "react";
 
 const AdminPage = () => {
+  const [userName, setUserName] = useState("");
+  const [userBelong, setUserBelong] = useState("");
+  const [userAuthority, setUserAuthority] = useState("");
+
+  const [searchUser, setSearchUser] = useState(USER_INFORMATION_DATA);
+
+  const handleEnterName = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUserName(event.target.value);
+  };
+  console.log(userName);
+
+  const handleClickSearchButton = () => {
+    const filtered = USER_INFORMATION_DATA.filter((user) =>
+      user.name.toLowerCase().includes(userName.toLowerCase()),
+    );
+    setSearchUser(filtered);
+  };
+
   return (
     <WholePageBox>
       <SideBarWrap>
@@ -41,12 +61,17 @@ const AdminPage = () => {
           <ContentBox>
             <ContentTitleBox>사용자 정보 목록</ContentTitleBox>
             <SearchBox>
-              <SearchInput type="text" placeholder="이름" />
+              <SearchInput
+                value={userName}
+                onChange={handleEnterName}
+                type="text"
+                placeholder="이름"
+              />
               <DropDown text="소속" options={BELONG_DATA}></DropDown>
               <DropDown text="역할" options={USER_TYPE_DATA}></DropDown>
               <DropDown text="권한" options={AUTHORITY_DATA}></DropDown>
               <SearchButtonWrap>
-                <SearchButton>검색</SearchButton>
+                <SearchButton onClick={handleClickSearchButton}>검색</SearchButton>
               </SearchButtonWrap>
             </SearchBox>
             <DeleteButton>삭제</DeleteButton>
@@ -64,20 +89,21 @@ const AdminPage = () => {
                   </AccountEditButton>
                 </ListSectionBox>
               </ListHeaderBox>
-
-              <ListItemBox>
-                <CheckBoxInput type="checkbox" />
-                <ListItemSection basis="35%" text="고겨레" />
-                <ListItemSection basis="9.4%" text="OB" />
-                <ListItemSection basis="28.6%" text="선수" />
-                <ListItemSection basis="9.4%" text="일반 회원" />
-                <ListItemSection basis="38.1%" text="2024.08.23. 14:10" />
-                <ListSectionBox>
-                  <AccountEditButton>
-                    <ListItemTextSpan>정보수정</ListItemTextSpan>
-                  </AccountEditButton>
-                </ListSectionBox>
-              </ListItemBox>
+              {searchUser.map((user) => (
+                <ListItemBox>
+                  <CheckBoxInput type="checkbox" />
+                  <ListItemSection basis="35%" text={user.name} />
+                  <ListItemSection basis="9.4%" text={user.belong} />
+                  <ListItemSection basis="28.6%" text={user.userType} />
+                  <ListItemSection basis="9.4%" text={user.authority} />
+                  <ListItemSection basis="38.1%" text={user.createAt} />
+                  <ListSectionBox>
+                    <AccountEditButton>
+                      <ListItemTextSpan>정보수정</ListItemTextSpan>
+                    </AccountEditButton>
+                  </ListSectionBox>
+                </ListItemBox>
+              ))}
             </ListBox>
             <ExitButtonBox>
               <ExitButton>나가기</ExitButton>
