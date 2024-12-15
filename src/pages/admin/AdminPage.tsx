@@ -35,12 +35,18 @@ const AdminPage = () => {
   const [selectedUserId, setSelectedUserId] = useState<string[]>([]);
 
   const updateSelectedUserId = (userId: string) => {
-    setSelectedUserId((previousState: any) => [...previousState, userId]);
+    setSelectedUserId((previousState: string[]) => [...previousState, userId]);
+  };
+
+  const removeSelectedUserId = (userId: string) => {
+    setSelectedUserId((previousState: string[]) =>
+      previousState.filter((removeId) => removeId !== userId),
+    );
   };
 
   const handleSelectCheckBox = (event: React.ChangeEvent<HTMLInputElement>, userId: string) => {
     const checkbox = event.target;
-    checkbox.checked ? updateSelectedUserId(userId) : console.log("unchecked");
+    checkbox.checked ? updateSelectedUserId(userId) : removeSelectedUserId(userId);
   };
 
   const handleDeleteUser = (selectedUserId: string[]) => {
