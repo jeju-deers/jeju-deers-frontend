@@ -8,7 +8,7 @@ const USER_INFORMATION_DATA = [
     userId: "userId1",
   },
   {
-    name: "고겨래2",
+    name: "고겨레2",
     belong: "YB",
     userType: "코치",
     authority: "관리자",
