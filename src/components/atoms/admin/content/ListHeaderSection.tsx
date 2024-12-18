@@ -1,4 +1,4 @@
-import { ListHeaderTextSpan, ListSectionBox } from "./ListHeaderSectionStyles";
+import { ListHeaderSectionBox, ListHeaderTextSpan } from "./ListHeaderSectionStyles";
 
 interface Props {
   basis: string;
@@ -7,9 +7,9 @@ interface Props {
 
 const ListHeaderSection = ({ basis, text }: Props) => {
   return (
-    <ListSectionBox basis={basis}>
+    <ListHeaderSectionBox basis={basis}>
       <ListHeaderTextSpan>{text}</ListHeaderTextSpan>
-    </ListSectionBox>
+    </ListHeaderSectionBox>
   );
 };
 
