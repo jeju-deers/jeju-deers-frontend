@@ -22,11 +22,14 @@ import MyPagePage from "~/pages/MyPagePage";
 import SignUpPage from "~/pages/SignUpPage";
 import BoardDetailPage from "~/pages/board/BoardDetailPage";
 import NewsWritePage from "~/pages/common/NewsWritePage";
+import AdminPage from "~/pages/admin/AdminPage";
 
 const Router = () => {
   return (
     <BrowserRouter basename="/jeju-deers-frontend">
       <Routes>
+        <Route path="admin" element={<AdminPage />} />
+
         <Route path="/" element={<Base />}>
           <Route index element={<MainPage />} />
 
