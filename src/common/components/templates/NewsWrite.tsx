@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   NewsWriteLayout,
   Notice,
@@ -26,6 +27,20 @@ const NewsWrite = ({ writeOption, setWriteOption }: Props) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const { mutate, isError, isSuccess } = usePostWrite();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isError) {
+      alert("게시글 저장 실패!");
+    }
+
+    if (isSuccess) {
+      alert("게시글이 성공적으로 저장되었습니다!");
+      setTimeout(() => {
+        navigate("/");
+      }, 1000);
+    }
+  }, [isError, isSuccess]);
 
   const handleWriteDropdownChange = (element: React.ChangeEvent<HTMLSelectElement>) => {
     setWriteOption(element.target.value);
@@ -50,8 +65,6 @@ const NewsWrite = ({ writeOption, setWriteOption }: Props) => {
       <SaveButtonWrap>
         <SaveButton onClick={handleSave}>등록</SaveButton>
       </SaveButtonWrap>
-      {isError && <p style={{ color: "red" }}>게시글 저장 실패!</p>}
-      {isSuccess && <p style={{ color: "green" }}>게시글이 성공적으로 저장되었습니다!</p>}
       <NoticeBox>
         <Notice>{NOTICE_DATA}</Notice>
       </NoticeBox>
