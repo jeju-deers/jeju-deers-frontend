@@ -32,6 +32,7 @@ import useGetUsersInformation from "~/hooks/admin/query/useGetUsersInformation";
 import PendingMessage from "~/common/components/atom/PendingMessage";
 
 const AdminPage = () => {
+  // TODO: [2024-12-21] 백엔드에서 admin 페이지에 반영될 사용자 정보 api를 생성한 후, 해당 api로 교체 필요
   const { usersInformation, isLoading } = useGetUsersInformation();
 
   if (isLoading) {
