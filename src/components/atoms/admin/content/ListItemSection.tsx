@@ -1,4 +1,4 @@
-import { ListItemTextSpan, ListSectionBox } from "./ListItemSectionStyles";
+import { ListItemSectionBox, ListItemTextSpan } from "./ListItemSectionStyles";
 
 interface Props {
   basis: string;
@@ -7,9 +7,9 @@ interface Props {
 
 const ListItemSection = ({ basis, text }: Props) => {
   return (
-    <ListSectionBox basis={basis}>
+    <ListItemSectionBox basis={basis}>
       <ListItemTextSpan>{text}</ListItemTextSpan>
-    </ListSectionBox>
+    </ListItemSectionBox>
   );
 };
 

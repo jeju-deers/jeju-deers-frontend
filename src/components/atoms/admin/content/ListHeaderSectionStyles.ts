@@ -1,7 +1,7 @@
 import tw from "twin.macro";
 import styled from "styled-components";
 
-export const ListSectionBox = styled.div<{ basis?: string }>`
+export const ListHeaderSectionBox = styled.div<{ basis?: string }>`
   ${tw`
     flex-1
     flex

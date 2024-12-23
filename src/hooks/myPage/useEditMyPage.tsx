@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from "react";
-import { GetUserInformationProps } from "~/api/types/users";
+// import { GetUserInformationProps } from "~/api/types/users";
 
 const useEditMyPage = ({ userInformation }: any) => {
   const [formData, setFormData] = useState({
