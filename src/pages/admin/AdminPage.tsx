@@ -114,6 +114,7 @@ const AdminPage = () => {
                   </AccountEditButton>
                 </ListSectionBox>
               </ListHeaderBox>
+
               {searchUser.map((user) => (
                 <ListItemBox>
                   <CheckBoxInput type="checkbox" />

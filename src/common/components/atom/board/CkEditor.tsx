@@ -2,15 +2,12 @@ import { useState, useEffect, useRef } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import {
   ClassicEditor,
-  AccessibilityHelp,
   Alignment,
   AutoImage,
   AutoLink,
   Autosave,
-  Base64UploadAdapter,
   Bold,
   Essentials,
-  GeneralHtmlSupport,
   Heading,
   ImageBlock,
   ImageInsert,
@@ -19,22 +16,23 @@ import {
   ImageStyle,
   ImageToolbar,
   ImageUpload,
-  Italic,
   Link,
   MediaEmbed,
+  Mention,
   Paragraph,
-  SelectAll,
+  SimpleUploadAdapter,
   Table,
+  TableColumnResize,
   TableProperties,
   TableToolbar,
-  Underline,
-  Undo,
 } from "ckeditor5";
 
 import "ckeditor5/ckeditor5.css";
 
 import { CKEditorWrapper, EditorContainer, MainContainer } from "./CkEditorStyles";
 import translations from "ckeditor5/translations/ko.js";
+
+const LICENSE_KEY = import.meta.env.LICENSE_KEY;
 
 interface Props {
   onChange: (data: string) => void;
@@ -53,18 +51,10 @@ const CkEditor = ({ onChange }: Props) => {
 
   const editorConfig: any = {
     toolbar: {
-      viewportTopOffset: 100,
       items: [
-        "undo",
-        "redo",
-        "|",
-        "selectAll",
-        "|",
         "heading",
         "|",
         "bold",
-        "italic",
-        "underline",
         "|",
         "link",
         "insertImage",
@@ -72,21 +62,13 @@ const CkEditor = ({ onChange }: Props) => {
         "insertTable",
         "|",
         "alignment",
-        "|",
-        "accessibilityHelp",
       ],
       shouldNotGroupWhenFull: false,
     },
     plugins: [
       AccessibilityHelp,
-      Alignment,
-      AutoImage,
-      AutoLink,
-      Autosave,
-      Base64UploadAdapter,
       Bold,
       Essentials,
-      GeneralHtmlSupport,
       Heading,
       ImageBlock,
       ImageInsert,
@@ -95,16 +77,15 @@ const CkEditor = ({ onChange }: Props) => {
       ImageStyle,
       ImageToolbar,
       ImageUpload,
-      Italic,
       Link,
       MediaEmbed,
+      Mention,
       Paragraph,
-      SelectAll,
+      SimpleUploadAdapter,
       Table,
+      TableColumnResize,
       TableProperties,
       TableToolbar,
-      Underline,
-      Undo,
     ],
     heading: {
       options: [
@@ -151,16 +132,6 @@ const CkEditor = ({ onChange }: Props) => {
         },
       ],
     },
-    htmlSupport: {
-      allow: [
-        {
-          name: /^.*$/,
-          styles: true,
-          attributes: true,
-          classes: true,
-        },
-      ],
-    },
     image: {
       toolbar: [
         "imageTextAlternative",
@@ -177,6 +148,7 @@ const CkEditor = ({ onChange }: Props) => {
     },
     initialData: "",
     language: "ko",
+    licenseKey: LICENSE_KEY,
     link: {
       addTargetToExternalLinks: true,
       defaultProtocol: "https://",
