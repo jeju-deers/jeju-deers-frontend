@@ -44,10 +44,8 @@ const AdminPage = () => {
   };
   console.log(userName);
 
+  // TODO: [2023-12-24] 추후 백엔드에서 관리자의 사용자 목록 검색 api가 구현되면, 해당 api를 연결해야 합니다.
   const handleClickSearchButton = () => {
-    // const filtered = USER_INFORMATION_DATA.filter((user) =>
-    //   user.name.toLowerCase().includes(userName.toLowerCase()),
-    // );
     const filtered = USER_INFORMATION_DATA.filter(
       (user) =>
         user.name.toLowerCase().includes(userName.toLowerCase()) &&
