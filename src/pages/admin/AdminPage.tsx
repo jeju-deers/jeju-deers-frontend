@@ -28,8 +28,44 @@ import DropDown from "~/components/atoms/admin/content/DropDown";
 import BELONG_DATA from "~/constants/belongData";
 import USER_TYPE_DATA from "~/constants/userTypeData";
 import AUTHORITY_DATA from "~/constants/authorityData";
+import USER_INFORMATION_DATA from "~/constants/userInformationData";
+import { useState } from "react";
 
 const AdminPage = () => {
+  const [userName, setUserName] = useState("");
+  const [childBelongOption, setChildBelongOption] = useState("");
+  const [childRoleOption, setChildRoleOption] = useState("");
+  const [childAuthorityOption, setChildAuthorityOption] = useState("");
+
+  const [searchUser, setSearchUser] = useState(USER_INFORMATION_DATA);
+
+  const handleEnterName = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUserName(event.target.value);
+  };
+  console.log(userName);
+
+  // TODO: [2023-12-24] 추후 백엔드에서 관리자의 사용자 목록 검색 api가 구현되면, 해당 api를 연결해야 합니다.
+  const handleClickSearchButton = () => {
+    const filtered = USER_INFORMATION_DATA.filter(
+      (user) =>
+        user.name.toLowerCase().includes(userName.toLowerCase()) &&
+        user.belong.toLowerCase().includes(childBelongOption.toLowerCase()) &&
+        user.userType.toLowerCase().includes(childRoleOption.toLowerCase()) &&
+        user.authority.toLowerCase().includes(childAuthorityOption.toLowerCase()),
+    );
+    setSearchUser(filtered);
+  };
+
+  const handleChildBelongOptionChange = (option: string) => {
+    setChildBelongOption(option);
+  };
+  const handleChildRoleOptionChange = (option: string) => {
+    setChildRoleOption(option);
+  };
+  const handleChildAuthorityOptionChange = (option: string) => {
+    setChildAuthorityOption(option);
+  };
+
   return (
     <WholePageBox>
       <SideBarWrap>
@@ -41,12 +77,26 @@ const AdminPage = () => {
           <ContentBox>
             <ContentTitleBox>사용자 정보 목록</ContentTitleBox>
             <SearchBox>
-              <SearchInput type="text" placeholder="이름" />
-              <DropDown text="소속" options={BELONG_DATA}></DropDown>
-              <DropDown text="역할" options={USER_TYPE_DATA}></DropDown>
-              <DropDown text="권한" options={AUTHORITY_DATA}></DropDown>
+              <SearchInput
+                value={userName}
+                onChange={handleEnterName}
+                type="text"
+                placeholder="이름"
+              />
+              <DropDown
+                text="소속"
+                options={BELONG_DATA}
+                onOptionSelected={handleChildBelongOptionChange}></DropDown>
+              <DropDown
+                text="역할"
+                options={USER_TYPE_DATA}
+                onOptionSelected={handleChildRoleOptionChange}></DropDown>
+              <DropDown
+                text="권한"
+                options={AUTHORITY_DATA}
+                onOptionSelected={handleChildAuthorityOptionChange}></DropDown>
               <SearchButtonWrap>
-                <SearchButton>검색</SearchButton>
+                <SearchButton onClick={handleClickSearchButton}>검색</SearchButton>
               </SearchButtonWrap>
             </SearchBox>
             <DeleteButton>삭제</DeleteButton>
@@ -65,19 +115,21 @@ const AdminPage = () => {
                 </ListSectionBox>
               </ListHeaderBox>
 
-              <ListItemBox>
-                <CheckBoxInput type="checkbox" />
-                <ListItemSection basis="35%" text="고겨레" />
-                <ListItemSection basis="9.4%" text="OB" />
-                <ListItemSection basis="28.6%" text="선수" />
-                <ListItemSection basis="9.4%" text="일반 회원" />
-                <ListItemSection basis="38.1%" text="2024.08.23. 14:10" />
-                <ListSectionBox>
-                  <AccountEditButton>
-                    <ListItemTextSpan>정보수정</ListItemTextSpan>
-                  </AccountEditButton>
-                </ListSectionBox>
-              </ListItemBox>
+              {searchUser.map((user) => (
+                <ListItemBox>
+                  <CheckBoxInput type="checkbox" />
+                  <ListItemSection basis="35%" text={user.name} />
+                  <ListItemSection basis="9.4%" text={user.belong} />
+                  <ListItemSection basis="28.6%" text={user.userType} />
+                  <ListItemSection basis="9.4%" text={user.authority} />
+                  <ListItemSection basis="38.1%" text={user.createAt} />
+                  <ListSectionBox>
+                    <AccountEditButton>
+                      <ListItemTextSpan>정보수정</ListItemTextSpan>
+                    </AccountEditButton>
+                  </ListSectionBox>
+                </ListItemBox>
+              ))}
             </ListBox>
             <ExitButtonBox>
               <ExitButton>나가기</ExitButton>
