@@ -26,7 +26,7 @@ const BoardWrite = ({ section }: Props) => {
   const [writeOption, setWriteOption] = useState(section || "");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const { mutate, isError, isSuccess } = usePostWrite();
+  const { mutate: postWrite, isError, isSuccess } = usePostWrite();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -55,7 +55,7 @@ const BoardWrite = ({ section }: Props) => {
       return;
     }
     const upperCaseWriteOption = writeOption.toUpperCase();
-    mutate({ title, content, owner, type: upperCaseWriteOption, token });
+    postWrite({ title, content, owner, type: upperCaseWriteOption, token });
     console.log(title, content, owner, upperCaseWriteOption);
   };
 
