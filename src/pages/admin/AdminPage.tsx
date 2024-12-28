@@ -28,22 +28,32 @@ import DropDown from "~/components/atoms/admin/content/DropDown";
 import BELONG_DATA from "~/constants/belongData";
 import USER_TYPE_DATA from "~/constants/userTypeData";
 import AUTHORITY_DATA from "~/constants/authorityData";
-import USER_INFORMATION_DATA from "~/constants/userInformationData";
 import PendingMessage from "~/common/components/atom/PendingMessage";
 import useGetUsersInformation from "~/hooks/admin/query/useGetUsersInformation";
-
 import { useState } from "react";
+
+interface User {
+  userId: string;
+  name: string;
+  belong: string;
+  userType: string;
+  role?: string;
+  authority?: string;
+  modifiedDate?: string;
+}
 
 const AdminPage = () => {
   const [selectedUserId, setSelectedUserId] = useState<string[]>([]);
   // TODO: [2024-12-21] 백엔드에서 admin 페이지에 반영될 사용자 정보 api를 생성한 후, 해당 api로 교체 필요
-  const { usersInformation, isLoading } = useGetUsersInformation();
-  
+  const { usersInformation = [], isLoading } = useGetUsersInformation();
+
   const userCountPerPage = 25;
   const currentPage = 1;
-  const currentPageUsers = USER_INFORMATION_DATA.slice((currentPage - 1) * userCountPerPage);
-  const currentPageUsersId = currentPageUsers.map((user) => user.userId);
-  
+  const startUserIndex = (currentPage - 1) * userCountPerPage;
+  const endUserIndex = currentPage * userCountPerPage;
+  const currentPageUsers = usersInformation.slice(startUserIndex, endUserIndex);
+  const currentPageUsersId = currentPageUsers.map(({ userId }: User) => userId);
+
   const updateSelectedUserId = (userId: string) => {
     setSelectedUserId((previousState: string[]) => [...new Set([...previousState, userId])]);
   };
@@ -67,7 +77,7 @@ const AdminPage = () => {
   const handleDeleteUser = (selectedUserId: string[]) => {
     console.log(selectedUserId);
   };
-  
+
   if (isLoading) {
     <PendingMessage />;
   }
@@ -111,37 +121,28 @@ const AdminPage = () => {
               </ListHeaderBox>
 
               {/* TODO: [2024-12-15] 백엔드에서 역할, 권한, 수정날짜 데이터 추가 되면 변경 필요 */}
-              {usersInformation?.map(
-                (userInformation: {
-                  name: string;
-                  belong: string;
-                  userType: string;
-                  role?: string;
-                  authority?: string;
-                  modifiedDate?: string;
-                }) => (
-                  <ListItemBox>
-                    <CheckBoxInput
-                      type="checkbox"
-                      checked={selectedUserId.includes(user.userId)}
-                      onChange={(event) => handleSelectCheckBox(event, user.userId)}
-                    />
-                    <ListItemSection basis="35%" text={userInformation.name} />
-                    <ListItemSection basis="9.4%" text={userInformation.belong} />
-                    <ListItemSection basis="28.6%" text={userInformation.userType} />
-                    <ListItemSection basis="9.4%" text={userInformation.authority || "일반 회원"} />
-                    <ListItemSection
-                      basis="38.1%"
-                      text={userInformation.modifiedDate || "2024.08.23. 14:10"}
-                    />
-                    <ListSectionBox>
-                      <AccountEditButton>
-                        <ListItemTextSpan>정보수정</ListItemTextSpan>
-                      </AccountEditButton>
-                    </ListSectionBox>
-                  </ListItemBox>
-                ),
-              )}
+              {usersInformation?.map((userInformation: User) => (
+                <ListItemBox>
+                  <CheckBoxInput
+                    type="checkbox"
+                    checked={selectedUserId.includes(userInformation.userId)}
+                    onChange={(event) => handleSelectCheckBox(event, userInformation.userId)}
+                  />
+                  <ListItemSection basis="35%" text={userInformation.name} />
+                  <ListItemSection basis="9.4%" text={userInformation.belong} />
+                  <ListItemSection basis="28.6%" text={userInformation.userType} />
+                  <ListItemSection basis="9.4%" text={userInformation.authority || "일반 회원"} />
+                  <ListItemSection
+                    basis="38.1%"
+                    text={userInformation.modifiedDate || "2024.08.23. 14:10"}
+                  />
+                  <ListSectionBox>
+                    <AccountEditButton>
+                      <ListItemTextSpan>정보수정</ListItemTextSpan>
+                    </AccountEditButton>
+                  </ListSectionBox>
+                </ListItemBox>
+              ))}
             </ListBox>
             <ExitButtonBox>
               <ExitButton>나가기</ExitButton>
