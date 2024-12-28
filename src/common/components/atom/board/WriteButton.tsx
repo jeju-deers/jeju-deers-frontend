@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { WriteButtonButton } from "./WriteButtonStyles";
 
 const WriteButton = () => {
-  const handleClick = (e: React.MouseEvent) => {
+  const handleClickButton = (e: React.MouseEvent) => {
     const token = localStorage.getItem("token");
 
     if (!token) {
@@ -14,7 +14,7 @@ const WriteButton = () => {
 
   return (
     <WriteButtonButton>
-      <Link to="./write" onClick={handleClick}>
+      <Link to="./write" onClick={handleClickButton}>
         글쓰기
       </Link>
     </WriteButtonButton>
