@@ -33,7 +33,7 @@ export const postSignUp = ({
   belong,
   joinYear,
 }: PostSignUpProps) => {
-  return instance.post("auth/signup", {
+  return instance.post("/auth/signup", {
     userType,
     userId,
     password,
@@ -57,7 +57,7 @@ interface PostLoginProps {
 }
 
 export const postLogin = ({ userId, password }: PostLoginProps) => {
-  return instance.post("auth/login", {
+  return instance.post("/auth/login", {
     userId,
     password,
   });
