@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
-  NewsWriteLayout,
+  BoardWriteLayout,
   Notice,
   NoticeBox,
   TitleInput,
@@ -9,7 +10,7 @@ import {
   WriteTitleBox,
   SaveButtonWrap,
   SaveButton,
-} from "./NewsWriteStyle";
+} from "./BoardWriteStyle";
 import { NOTICE_DATA } from "~/constants/noticeData";
 import WriteDropdownButton from "../atom/board/WriteDropDownButton";
 import CkEditor from "../atom/board/CkEditor";
@@ -18,20 +19,34 @@ import helmet from "~/assets/images/helmet.svg";
 import usePostWrite from "~/common/hooks/write/mutate/usePostWrite";
 
 interface Props {
-  writeOption: string;
-  setWriteOption: React.Dispatch<React.SetStateAction<string>>;
+  section: string;
 }
 
-const NewsWrite = ({ writeOption, setWriteOption }: Props) => {
+const BoardWrite = ({ section }: Props) => {
+  const [writeOption, setWriteOption] = useState(section || "");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const { mutate, isError, isSuccess } = usePostWrite();
+  const { mutate: postWrite, isError, isSuccess } = usePostWrite();
+  const navigate = useNavigate();
 
-  const handleWriteDropdownChange = (element: React.ChangeEvent<HTMLSelectElement>) => {
-    setWriteOption(element.target.value);
+  useEffect(() => {
+    if (isError) {
+      alert("게시글 저장 실패!");
+    }
+
+    if (isSuccess) {
+      alert("게시글이 성공적으로 저장되었습니다!");
+      setTimeout(() => {
+        navigate("/");
+      }, 1000);
+    }
+  }, [isError, isSuccess]);
+
+  const handleWriteDropdownChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setWriteOption(event.target.value);
   };
 
-  const handleSave = () => {
+  const handleSaveButton = () => {
     const token = localStorage.getItem("token");
     const owner = localStorage.getItem("owner");
 
@@ -40,18 +55,16 @@ const NewsWrite = ({ writeOption, setWriteOption }: Props) => {
       return;
     }
     const upperCaseWriteOption = writeOption.toUpperCase();
-    mutate({ title, content, owner, type: upperCaseWriteOption, token });
+    postWrite({ title, content, owner, type: upperCaseWriteOption, token });
     console.log(title, content, owner, upperCaseWriteOption);
   };
 
   return (
-    <NewsWriteLayout>
+    <BoardWriteLayout>
       <Heading src={helmet} alt="helmet" text="게시글 작성" />
       <SaveButtonWrap>
-        <SaveButton onClick={handleSave}>등록</SaveButton>
+        <SaveButton onClick={handleSaveButton}>등록</SaveButton>
       </SaveButtonWrap>
-      {isError && <p style={{ color: "red" }}>게시글 저장 실패!</p>}
-      {isSuccess && <p style={{ color: "green" }}>게시글이 성공적으로 저장되었습니다!</p>}
       <NoticeBox>
         <Notice>{NOTICE_DATA}</Notice>
       </NoticeBox>
@@ -63,14 +76,14 @@ const NewsWrite = ({ writeOption, setWriteOption }: Props) => {
           type="text"
           placeholder="제목을 입력해주세요"
           value={title}
-          onChange={(element) => setTitle(element.target.value)}
+          onChange={(event) => setTitle(event.target.value)}
         />
       </WriteTitleBox>
       <WriteContentBox>
         <CkEditor onChange={(data) => setContent(data)} />
       </WriteContentBox>
-    </NewsWriteLayout>
+    </BoardWriteLayout>
   );
 };
 
-export default NewsWrite;
+export default BoardWrite;
