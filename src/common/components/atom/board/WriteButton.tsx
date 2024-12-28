@@ -2,16 +2,16 @@ import { Link } from "react-router-dom";
 import { WriteButtonButton } from "./WriteButtonStyles";
 
 const WriteButton = () => {
-  const section = location.pathname.split("/").filter(Boolean).pop();
+  const boardType = location.pathname.split("/").filter(Boolean).pop();
   const token = localStorage.getItem("token");
   const userType = localStorage.getItem("userType");
 
   const canWrite = (() => {
     if (!token) return false;
-    if (userType === "player" && (section === "coach_board" || section === "staff_board")) {
+    if (userType === "player" && (boardType === "coach_board" || boardType === "staff_board")) {
       return false;
     }
-    if (userType === "external" && section !== "guest_board") {
+    if (userType === "external" && boardType !== "guest_board") {
       return false;
     }
     return true;
