@@ -19,11 +19,11 @@ import helmet from "~/assets/images/helmet.svg";
 import usePostWrite from "~/common/hooks/write/mutate/usePostWrite";
 
 interface Props {
-  writeOption: string;
-  setWriteOption: React.Dispatch<React.SetStateAction<string>>;
+  section: any;
 }
 
-const BoardWrite = ({ writeOption, setWriteOption }: Props) => {
+const BoardWrite = ({ section }: Props) => {
+  const [writeOption, setWriteOption] = useState(section || "");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const { mutate, isError, isSuccess } = usePostWrite();
