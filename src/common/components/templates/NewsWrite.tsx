@@ -76,7 +76,7 @@ const NewsWrite = ({ writeOption, setWriteOption }: Props) => {
           type="text"
           placeholder="제목을 입력해주세요"
           value={title}
-          onChange={(element) => setTitle(element.target.value)}
+          onChange={(event) => setTitle(event.target.value)}
         />
       </WriteTitleBox>
       <WriteContentBox>
