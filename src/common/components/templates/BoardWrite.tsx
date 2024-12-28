@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  NewsWriteLayout,
+  BoardWriteLayout,
   Notice,
   NoticeBox,
   TitleInput,
@@ -10,7 +10,7 @@ import {
   WriteTitleBox,
   SaveButtonWrap,
   SaveButton,
-} from "./NewsWriteStyle";
+} from "./BoardWriteStyle";
 import { NOTICE_DATA } from "~/constants/noticeData";
 import WriteDropdownButton from "../atom/board/WriteDropDownButton";
 import CkEditor from "../atom/board/CkEditor";
@@ -23,7 +23,7 @@ interface Props {
   setWriteOption: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const NewsWrite = ({ writeOption, setWriteOption }: Props) => {
+const BoardWrite = ({ writeOption, setWriteOption }: Props) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const { mutate, isError, isSuccess } = usePostWrite();
@@ -60,7 +60,7 @@ const NewsWrite = ({ writeOption, setWriteOption }: Props) => {
   };
 
   return (
-    <NewsWriteLayout>
+    <BoardWriteLayout>
       <Heading src={helmet} alt="helmet" text="게시글 작성" />
       <SaveButtonWrap>
         <SaveButton onClick={handleSaveButton}>등록</SaveButton>
@@ -82,8 +82,8 @@ const NewsWrite = ({ writeOption, setWriteOption }: Props) => {
       <WriteContentBox>
         <CkEditor onChange={(data) => setContent(data)} />
       </WriteContentBox>
-    </NewsWriteLayout>
+    </BoardWriteLayout>
   );
 };
 
-export default NewsWrite;
+export default BoardWrite;
