@@ -8,7 +8,7 @@ const WriteButton = () => {
 
   const canWrite = (() => {
     if (!token) return false;
-    if (userType === "player" && (boardType === "coach_board" || boardType === "staff_board")) {
+    if (userType === "player" && (boardType === "coach_board" || "staff_board")) {
       return false;
     }
     if (userType === "external" && boardType !== "guest_board") {
