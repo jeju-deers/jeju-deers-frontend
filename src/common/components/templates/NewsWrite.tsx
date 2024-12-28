@@ -46,7 +46,7 @@ const NewsWrite = ({ writeOption, setWriteOption }: Props) => {
     setWriteOption(element.target.value);
   };
 
-  const handleSave = () => {
+  const handleSaveButton = () => {
     const token = localStorage.getItem("token");
     const owner = localStorage.getItem("owner");
 
@@ -63,7 +63,7 @@ const NewsWrite = ({ writeOption, setWriteOption }: Props) => {
     <NewsWriteLayout>
       <Heading src={helmet} alt="helmet" text="게시글 작성" />
       <SaveButtonWrap>
-        <SaveButton onClick={handleSave}>등록</SaveButton>
+        <SaveButton onClick={handleSaveButton}>등록</SaveButton>
       </SaveButtonWrap>
       <NoticeBox>
         <Notice>{NOTICE_DATA}</Notice>
