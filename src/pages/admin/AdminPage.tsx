@@ -25,10 +25,11 @@ import Header from "~/components/atoms/admin/Header";
 import ListHeaderSection from "~/components/atoms/admin/content/ListHeaderSection";
 import ListItemSection from "~/components/atoms/admin/content/ListItemSection";
 import DropDown from "~/components/atoms/admin/content/DropDown";
+import PendingMessage from "~/common/components/atom/PendingMessage";
 import BELONG_DATA from "~/constants/belongData";
 import USER_TYPE_DATA from "~/constants/userTypeData";
 import AUTHORITY_DATA from "~/constants/authorityData";
-import PendingMessage from "~/common/components/atom/PendingMessage";
+import { CURRENT_PAGE, ADMIN_USER_COUNT_PER_PAGE } from "~/constants/constants";
 import useGetUsersInformation from "~/hooks/admin/query/useGetUsersInformation";
 import { useState } from "react";
 
@@ -47,10 +48,8 @@ const AdminPage = () => {
   // TODO: [2024-12-21] 백엔드에서 admin 페이지에 반영될 사용자 정보 api를 생성한 후, 해당 api로 교체 필요
   const { usersInformation = [], isLoading } = useGetUsersInformation();
 
-  const userCountPerPage = 25;
-  const currentPage = 1;
-  const startUserIndex = (currentPage - 1) * userCountPerPage;
-  const endUserIndex = currentPage * userCountPerPage;
+  const startUserIndex = (CURRENT_PAGE - 1) * ADMIN_USER_COUNT_PER_PAGE;
+  const endUserIndex = CURRENT_PAGE * ADMIN_USER_COUNT_PER_PAGE;
   const currentPageUsers = usersInformation.slice(startUserIndex, endUserIndex);
   const currentPageUsersId = currentPageUsers.map(({ userId }: User) => userId);
 
