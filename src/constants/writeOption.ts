@@ -1,4 +1,4 @@
-const TITLES: { [key: string]: string[] } = {
+const WRITEOPTIONS: { [key: string]: string[] } = {
   news: ["NEWS", "공지사항"],
   workout_schedules: ["WORKOUT SCHEDULES", "디어스 훈련 일정"],
   team_board: ["TEAM BOARD", "선수 게시판"],
@@ -11,4 +11,4 @@ const TITLES: { [key: string]: string[] } = {
   support: ["SUPPORT", "서포터즈"],
 };
 
-export default TITLES;
+export default WRITEOPTIONS;

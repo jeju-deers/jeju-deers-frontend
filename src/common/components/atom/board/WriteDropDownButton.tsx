@@ -1,4 +1,4 @@
-import TITLES from "~/constants/writeOption";
+import WRITEOPTIONS from "~/constants/writeOption";
 import { WriteDropdownButtonSelect } from "./WriteDropDownButtonStyles";
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
 
 const WriteDropdownButton = ({ value, onChange }: Props) => {
   const userType = localStorage.getItem("userType");
-  const accessibleTitles = Object.entries(TITLES).filter(([title, [_, koreanTitle]]) => {
+  const accessibleTitles = Object.entries(WRITEOPTIONS).filter(([title, [_]]) => {
     if (userType === "external") {
       return ["guest_board", "media"].includes(title);
     }
