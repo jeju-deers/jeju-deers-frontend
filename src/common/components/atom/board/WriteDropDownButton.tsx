@@ -10,7 +10,7 @@ const WriteDropdownButton = ({ value, onChange }: Props) => {
   const userType = localStorage.getItem("userType");
   const accessibleTitles = Object.entries(WRITEOPTIONS).filter(([title, [_]]) => {
     if (userType === "external") {
-      return ["guest_board", "media"].includes(title);
+      return ["guest_board"].includes(title);
     }
     if (userType === "player") {
       return [
