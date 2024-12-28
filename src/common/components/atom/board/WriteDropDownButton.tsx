@@ -12,6 +12,18 @@ const WriteDropdownButton = ({ value, onChange }: Props) => {
     if (userType === "external") {
       return ["guest_board", "media"].includes(title);
     }
+    if (userType === "player") {
+      return [
+        "news",
+        "workout_schedules",
+        "team_board",
+        "playbook",
+        "membership_fee",
+        "guest_board",
+        "media",
+        "support",
+      ];
+    }
     return true;
   });
 
