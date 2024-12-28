@@ -42,8 +42,8 @@ const BoardWrite = ({ writeOption, setWriteOption }: Props) => {
     }
   }, [isError, isSuccess]);
 
-  const handleWriteDropdownChange = (element: React.ChangeEvent<HTMLSelectElement>) => {
-    setWriteOption(element.target.value);
+  const handleWriteDropdownChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setWriteOption(event.target.value);
   };
 
   const handleSaveButton = () => {
