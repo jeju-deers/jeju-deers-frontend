@@ -22,7 +22,7 @@ const WriteDropdownButton = ({ value, onChange }: Props) => {
         "guest_board",
         "media",
         "support",
-      ];
+      ].includes(title);
     }
     return true;
   });
