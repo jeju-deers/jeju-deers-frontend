@@ -48,9 +48,9 @@ const AdminPage = () => {
   // TODO: [2024-12-21] 백엔드에서 admin 페이지에 반영될 사용자 정보 api를 생성한 후, 해당 api로 교체 필요
   const { usersInformation = [], isLoading } = useGetUsersInformation();
 
-  const startUserIndex = (CURRENT_PAGE - 1) * ADMIN_USER_COUNT_PER_PAGE;
-  const endUserIndex = CURRENT_PAGE * ADMIN_USER_COUNT_PER_PAGE;
-  const currentPageUsers = usersInformation.slice(startUserIndex, endUserIndex);
+  const firstUserIndex = (CURRENT_PAGE - 1) * ADMIN_USER_COUNT_PER_PAGE;
+  const lastUserIndex = CURRENT_PAGE * ADMIN_USER_COUNT_PER_PAGE;
+  const currentPageUsers = usersInformation.slice(firstUserIndex, lastUserIndex);
   const currentPageUsersId = currentPageUsers.map(({ userId }: User) => userId);
 
   const updateSelectedUserId = (userId: string) => {
