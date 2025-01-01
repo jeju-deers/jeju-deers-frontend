@@ -12,11 +12,11 @@ import { BoardTitleWrap, BoardWrap, CommonBoardLayout, WriteButtonWrap } from ".
 
 interface Props {
   title: string;
-  Boards: string;
+  boards: string;
 }
 
-const CommonBoard = ({ title, Boards }: Props) => {
-  const { data: boardData = [], isLoading, error } = useGetBoards(Boards);
+const CommonBoard = ({ title, boards }: Props) => {
+  const { data: boardData = [], isLoading, error } = useGetBoards(boards);
   const [filteredBoardlist, setFilteredBoardlist] = useState(boardData);
   const [page, setPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");

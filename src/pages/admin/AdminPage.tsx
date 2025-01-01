@@ -25,19 +25,68 @@ import Header from "~/components/atoms/admin/Header";
 import ListHeaderSection from "~/components/atoms/admin/content/ListHeaderSection";
 import ListItemSection from "~/components/atoms/admin/content/ListItemSection";
 import DropDown from "~/components/atoms/admin/content/DropDown";
+import PendingMessage from "~/common/components/atom/PendingMessage";
 import BELONG_DATA from "~/constants/belongData";
 import USER_TYPE_DATA from "~/constants/userTypeData";
 import AUTHORITY_DATA from "~/constants/authorityData";
-import USER_INFORMATION_DATA from "~/constants/userInformationData";
-import { useState } from "react";
+import { CURRENT_PAGE, ADMIN_USER_COUNT_PER_PAGE } from "~/constants/constants";
+import useGetUsersInformation from "~/hooks/admin/query/useGetUsersInformation";
+import { useEffect, useState } from "react";
+
+interface User {
+  userId: string;
+  name: string;
+  belong: string;
+  userType: string;
+  role?: string;
+  authority?: string;
+  modifiedDate?: string;
+}
 
 const AdminPage = () => {
+  const [selectedUserId, setSelectedUserId] = useState<string[]>([]);
+
   const [userName, setUserName] = useState("");
   const [childBelongOption, setChildBelongOption] = useState("");
   const [childRoleOption, setChildRoleOption] = useState("");
   const [childAuthorityOption, setChildAuthorityOption] = useState("");
 
-  const [searchUser, setSearchUser] = useState(USER_INFORMATION_DATA);
+  // TODO: [2024-12-21] 백엔드에서 admin 페이지에 반영될 사용자 정보 api를 생성한 후, 해당 api로 교체 필요
+  const { usersInformation = [], isLoading } = useGetUsersInformation();
+  const [searchUser, setSearchUser] = useState(usersInformation);
+
+  useEffect(() => {
+    setSearchUser(usersInformation);
+  }, [usersInformation]);
+
+  const firstUserIndex = (CURRENT_PAGE - 1) * ADMIN_USER_COUNT_PER_PAGE;
+  const lastUserIndex = CURRENT_PAGE * ADMIN_USER_COUNT_PER_PAGE;
+  const currentPageUsers = usersInformation.slice(firstUserIndex, lastUserIndex);
+  const currentPageUsersId = currentPageUsers.map(({ userId }: User) => userId);
+
+  const updateSelectedUserId = (userId: string) => {
+    setSelectedUserId((previousState: string[]) => [...new Set([...previousState, userId])]);
+  };
+
+  const removeSelectedUserId = (userId: string) => {
+    setSelectedUserId((previousState: string[]) =>
+      previousState.filter((removeId) => removeId !== userId),
+    );
+  };
+
+  const handleSelectAllCheckBox = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const checkbox = event.target;
+    checkbox.checked ? setSelectedUserId(currentPageUsersId) : setSelectedUserId([]);
+  };
+
+  const handleSelectCheckBox = (event: React.ChangeEvent<HTMLInputElement>, userId: string) => {
+    const checkbox = event.target;
+    checkbox.checked ? updateSelectedUserId(userId) : removeSelectedUserId(userId);
+  };
+
+  const handleDeleteUser = (selectedUserId: string[]) => {
+    console.log(selectedUserId);
+  };
 
   const handleEnterName = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserName(event.target.value);
@@ -46,13 +95,23 @@ const AdminPage = () => {
 
   // TODO: [2023-12-24] 추후 백엔드에서 관리자의 사용자 목록 검색 api가 구현되면, 해당 api를 연결해야 합니다.
   const handleClickSearchButton = () => {
-    const filtered = USER_INFORMATION_DATA.filter(
-      (user) =>
-        user.name.toLowerCase().includes(userName.toLowerCase()) &&
-        user.belong.toLowerCase().includes(childBelongOption.toLowerCase()) &&
-        user.userType.toLowerCase().includes(childRoleOption.toLowerCase()) &&
-        user.authority.toLowerCase().includes(childAuthorityOption.toLowerCase()),
-    );
+    console.log("filtered");
+    const filtered = usersInformation.filter((user: any) => {
+      const nameMatch =
+        user.name?.toLowerCase().includes(userName.toLowerCase()) || userName === "";
+      const belongMatch =
+        user.belong?.toLowerCase().includes(childBelongOption.toLowerCase()) ||
+        childBelongOption === "";
+      const userTypeMatch =
+        user.userType?.toLowerCase().includes(childRoleOption.toLowerCase()) ||
+        childRoleOption === "";
+      const autorityMatch =
+        user.authority?.toLowerCase().includes(childAuthorityOption.toLowerCase()) ||
+        childAuthorityOption === "";
+
+      return nameMatch && belongMatch && userTypeMatch && autorityMatch;
+    });
+    console.log(filtered);
     setSearchUser(filtered);
   };
 
@@ -65,6 +124,10 @@ const AdminPage = () => {
   const handleChildAuthorityOptionChange = (option: string) => {
     setChildAuthorityOption(option);
   };
+
+  if (isLoading) {
+    <PendingMessage />;
+  }
 
   return (
     <WholePageBox>
@@ -99,10 +162,13 @@ const AdminPage = () => {
                 <SearchButton onClick={handleClickSearchButton}>검색</SearchButton>
               </SearchButtonWrap>
             </SearchBox>
-            <DeleteButton>삭제</DeleteButton>
+            <DeleteButton onClick={() => handleDeleteUser(selectedUserId)}>삭제</DeleteButton>
             <ListBox>
               <ListHeaderBox>
-                <CheckBoxInput type="checkbox" />
+                <CheckBoxInput
+                  type="checkbox"
+                  onChange={(event) => handleSelectAllCheckBox(event)}
+                />
                 <ListHeaderSection basis="35%" text="이름" />
                 <ListHeaderSection basis="9.4%" text="소속" />
                 <ListHeaderSection basis="28.6%" text="역할" />
@@ -115,14 +181,22 @@ const AdminPage = () => {
                 </ListSectionBox>
               </ListHeaderBox>
 
-              {searchUser.map((user) => (
+              {/* TODO: [2024-12-15] 백엔드에서 역할, 권한, 수정날짜 데이터 추가 되면 변경 필요 */}
+              {searchUser?.map((userInformation: User) => (
                 <ListItemBox>
-                  <CheckBoxInput type="checkbox" />
-                  <ListItemSection basis="35%" text={user.name} />
-                  <ListItemSection basis="9.4%" text={user.belong} />
-                  <ListItemSection basis="28.6%" text={user.userType} />
-                  <ListItemSection basis="9.4%" text={user.authority} />
-                  <ListItemSection basis="38.1%" text={user.createAt} />
+                  <CheckBoxInput
+                    type="checkbox"
+                    checked={selectedUserId.includes(userInformation.userId)}
+                    onChange={(event) => handleSelectCheckBox(event, userInformation.userId)}
+                  />
+                  <ListItemSection basis="35%" text={userInformation.name} />
+                  <ListItemSection basis="9.4%" text={userInformation.belong} />
+                  <ListItemSection basis="28.6%" text={userInformation.userType} />
+                  <ListItemSection basis="9.4%" text={userInformation.authority || "일반 회원"} />
+                  <ListItemSection
+                    basis="38.1%"
+                    text={userInformation.modifiedDate || "2024.08.23. 14:10"}
+                  />
                   <ListSectionBox>
                     <AccountEditButton>
                       <ListItemTextSpan>정보수정</ListItemTextSpan>
