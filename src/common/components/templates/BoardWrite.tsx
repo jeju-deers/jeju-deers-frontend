@@ -19,7 +19,7 @@ import helmet from "~/assets/images/helmet.svg";
 import usePostWrite from "~/common/hooks/write/mutate/usePostWrite";
 
 interface Props {
-  section: string;
+  section?: string;
 }
 
 const BoardWrite = ({ section }: Props) => {
