@@ -7,7 +7,8 @@ const BoardDetailPage = () => {
   const singleBoardId = useParams().id;
 
   if (!singleBoardId) {
-    return <ErrorMessage text="잘못된 접근입니다." />;
+    console.log("올바른 singleBoardId가 존재하지 않습니다.");
+    return <ErrorMessage text="올바른 접근이 아닙니다." />;
   }
 
   return <BoardDetail singleBoardId={singleBoardId} />;
