@@ -24,7 +24,6 @@ import BoardDetailPage from "~/pages/board/BoardDetailPage";
 import BoardWritePage from "~/pages/common/BoardWritePage";
 import AdminPage from "~/pages/admin/AdminPage";
 
-
 const Router = () => {
   return (
     <BrowserRouter basename="/jeju-deers-frontend">
@@ -49,7 +48,7 @@ const Router = () => {
             <Route path="schedule" element={<SchedulePage />} />
             <Route path="news" element={<NewsPage />} />
             <Route path=":section/write" element={<BoardWritePage />} />
-            <Route path=":section/board_detail" element={<BoardDetailPage />} />
+            <Route path=":section/board/:id" element={<BoardDetailPage />} />
           </Route>
 
           <Route path="teamroom">
@@ -60,7 +59,7 @@ const Router = () => {
             <Route path="playbook" element={<PlaybookPage />} />
             <Route path="membership_fee" element={<MembershipFeePage />} />
             <Route path=":section/write" element={<BoardWritePage />} />
-            <Route path=":section/board_detail" element={<BoardDetailPage />} />
+            <Route path=":section/board/:id" element={<BoardDetailPage />} />
           </Route>
 
           <Route path="community">
@@ -68,7 +67,7 @@ const Router = () => {
             <Route path="media" element={<MediaPage />} />
             <Route path="support" element={<SupportPage />} />
             <Route path=":section/write" element={<BoardWritePage />} />
-            <Route path=":section/board_detail" element={<BoardDetailPage />} />
+            <Route path=":section/board/:id" element={<BoardDetailPage />} />
           </Route>
         </Route>
 

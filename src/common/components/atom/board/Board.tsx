@@ -1,4 +1,4 @@
-import { BoardBox, BoardHeaderBox, BoardItemBox, BoardRowBox } from "./BoardStyles";
+import { BoardBox, BoardHeaderBox, BoardItemBox, BoardLink, BoardRowBox } from "./BoardStyles";
 
 interface Props {
   boardlist: {
@@ -35,7 +35,9 @@ const Board = ({ boardlist }: Props) => {
         return (
           <BoardRowBox key={id}>
             <BoardItemBox>{index + 1}</BoardItemBox>
-            <BoardItemBox>{title}</BoardItemBox>
+            <BoardItemBox>
+              <BoardLink to={`./board/${id}`}>{title}</BoardLink>
+            </BoardItemBox>
             <BoardItemBox>{owner}</BoardItemBox>
             <BoardItemBox>{formatDate(createdAt)}</BoardItemBox>
             <BoardItemBox>{views}</BoardItemBox>
