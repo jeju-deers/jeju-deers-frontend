@@ -31,7 +31,7 @@ import USER_TYPE_DATA from "~/constants/userTypeData";
 import AUTHORITY_DATA from "~/constants/authorityData";
 import { CURRENT_PAGE, ADMIN_USER_COUNT_PER_PAGE } from "~/constants/constants";
 import useGetUsersInformation from "~/hooks/admin/query/useGetUsersInformation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface User {
   userId: string;
@@ -45,8 +45,19 @@ interface User {
 
 const AdminPage = () => {
   const [selectedUserId, setSelectedUserId] = useState<string[]>([]);
+
+  const [userName, setUserName] = useState("");
+  const [childBelongOption, setChildBelongOption] = useState("");
+  const [childRoleOption, setChildRoleOption] = useState("");
+  const [childAuthorityOption, setChildAuthorityOption] = useState("");
+
   // TODO: [2024-12-21] 백엔드에서 admin 페이지에 반영될 사용자 정보 api를 생성한 후, 해당 api로 교체 필요
   const { usersInformation = [], isLoading } = useGetUsersInformation();
+  const [searchUser, setSearchUser] = useState(usersInformation);
+
+  useEffect(() => {
+    setSearchUser(usersInformation);
+  }, [usersInformation]);
 
   const firstUserIndex = (CURRENT_PAGE - 1) * ADMIN_USER_COUNT_PER_PAGE;
   const lastUserIndex = CURRENT_PAGE * ADMIN_USER_COUNT_PER_PAGE;
@@ -77,6 +88,43 @@ const AdminPage = () => {
     console.log(selectedUserId);
   };
 
+  const handleEnterName = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUserName(event.target.value);
+  };
+  console.log(userName);
+
+  // TODO: [2023-12-24] 추후 백엔드에서 관리자의 사용자 목록 검색 api가 구현되면, 해당 api를 연결해야 합니다.
+  const handleClickSearchButton = () => {
+    console.log("filtered");
+    const filtered = usersInformation.filter((user: any) => {
+      const nameMatch =
+        user.name?.toLowerCase().includes(userName.toLowerCase()) || userName === "";
+      const belongMatch =
+        user.belong?.toLowerCase().includes(childBelongOption.toLowerCase()) ||
+        childBelongOption === "";
+      const userTypeMatch =
+        user.userType?.toLowerCase().includes(childRoleOption.toLowerCase()) ||
+        childRoleOption === "";
+      const autorityMatch =
+        user.authority?.toLowerCase().includes(childAuthorityOption.toLowerCase()) ||
+        childAuthorityOption === "";
+
+      return nameMatch && belongMatch && userTypeMatch && autorityMatch;
+    });
+    console.log(filtered);
+    setSearchUser(filtered);
+  };
+
+  const handleChildBelongOptionChange = (option: string) => {
+    setChildBelongOption(option);
+  };
+  const handleChildRoleOptionChange = (option: string) => {
+    setChildRoleOption(option);
+  };
+  const handleChildAuthorityOptionChange = (option: string) => {
+    setChildAuthorityOption(option);
+  };
+
   if (isLoading) {
     <PendingMessage />;
   }
@@ -92,12 +140,26 @@ const AdminPage = () => {
           <ContentBox>
             <ContentTitleBox>사용자 정보 목록</ContentTitleBox>
             <SearchBox>
-              <SearchInput type="text" placeholder="이름" />
-              <DropDown text="소속" options={BELONG_DATA}></DropDown>
-              <DropDown text="역할" options={USER_TYPE_DATA}></DropDown>
-              <DropDown text="권한" options={AUTHORITY_DATA}></DropDown>
+              <SearchInput
+                value={userName}
+                onChange={handleEnterName}
+                type="text"
+                placeholder="이름"
+              />
+              <DropDown
+                text="소속"
+                options={BELONG_DATA}
+                onOptionSelected={handleChildBelongOptionChange}></DropDown>
+              <DropDown
+                text="역할"
+                options={USER_TYPE_DATA}
+                onOptionSelected={handleChildRoleOptionChange}></DropDown>
+              <DropDown
+                text="권한"
+                options={AUTHORITY_DATA}
+                onOptionSelected={handleChildAuthorityOptionChange}></DropDown>
               <SearchButtonWrap>
-                <SearchButton>검색</SearchButton>
+                <SearchButton onClick={handleClickSearchButton}>검색</SearchButton>
               </SearchButtonWrap>
             </SearchBox>
             <DeleteButton onClick={() => handleDeleteUser(selectedUserId)}>삭제</DeleteButton>
@@ -120,7 +182,7 @@ const AdminPage = () => {
               </ListHeaderBox>
 
               {/* TODO: [2024-12-15] 백엔드에서 역할, 권한, 수정날짜 데이터 추가 되면 변경 필요 */}
-              {usersInformation?.map((userInformation: User) => (
+              {searchUser?.map((userInformation: User) => (
                 <ListItemBox>
                   <CheckBoxInput
                     type="checkbox"
