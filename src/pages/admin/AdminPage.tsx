@@ -149,15 +149,18 @@ const AdminPage = () => {
               <DropDown
                 text="소속"
                 options={BELONG_DATA}
-                onOptionSelected={handleChildBelongOptionChange}></DropDown>
+                onOptionSelected={handleChildBelongOptionChange}
+              />
               <DropDown
                 text="역할"
                 options={USER_TYPE_DATA}
-                onOptionSelected={handleChildRoleOptionChange}></DropDown>
+                onOptionSelected={handleChildRoleOptionChange}
+              />
               <DropDown
                 text="권한"
                 options={AUTHORITY_DATA}
-                onOptionSelected={handleChildAuthorityOptionChange}></DropDown>
+                onOptionSelected={handleChildAuthorityOptionChange}
+              />
               <SearchButtonWrap>
                 <SearchButton onClick={handleClickSearchButton}>검색</SearchButton>
               </SearchButtonWrap>
