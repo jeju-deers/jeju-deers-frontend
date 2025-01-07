@@ -36,7 +36,7 @@ interface Props {
 
 const BoardDetail = ({ singleBoardId }: Props) => {
   const { singleBoard, isLoading } = useGetSingleBoard(singleBoardId);
-  
+
   // TODO: [2024-10-27] 임시 댓글 목록 상수 데이터를 이용하여 구현. 댓글 조회 api 구현 이후 수정 및 삭제 필요.
   const commentData = COMMENT_TEMPORORY_DATA;
 
