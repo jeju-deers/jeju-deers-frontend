@@ -91,11 +91,9 @@ const AdminPage = () => {
   const handleEnterName = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserName(event.target.value);
   };
-  console.log(userName);
 
   // TODO: [2023-12-24] 추후 백엔드에서 관리자의 사용자 목록 검색 api가 구현되면, 해당 api를 연결해야 합니다.
   const handleClickSearchButton = () => {
-    console.log("filtered");
     const filtered = usersInformation.filter((user: any) => {
       const nameMatch =
         user.name?.toLowerCase().includes(userName.toLowerCase()) || userName === "";
@@ -111,7 +109,6 @@ const AdminPage = () => {
 
       return nameMatch && belongMatch && userTypeMatch && autorityMatch;
     });
-    console.log(filtered);
     setSearchUser(filtered);
   };
 
