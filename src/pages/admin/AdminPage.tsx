@@ -47,9 +47,12 @@ const AdminPage = () => {
   const [selectedUserId, setSelectedUserId] = useState<string[]>([]);
 
   const [userName, setUserName] = useState("");
-  const [childBelongOption, setChildBelongOption] = useState("");
-  const [childRoleOption, setChildRoleOption] = useState("");
-  const [childAuthorityOption, setChildAuthorityOption] = useState("");
+
+  const [searchOptions, setSearchOptions] = useState({
+    belong: "",
+    role: "",
+    authority: "",
+  });
 
   // TODO: [2024-12-21] 백엔드에서 admin 페이지에 반영될 사용자 정보 api를 생성한 후, 해당 api로 교체 필요
   const { usersInformation = [], isLoading } = useGetUsersInformation();
@@ -98,28 +101,22 @@ const AdminPage = () => {
       const nameMatch =
         user.name?.toLowerCase().includes(userName.toLowerCase()) || userName === "";
       const belongMatch =
-        user.belong?.toLowerCase().includes(childBelongOption.toLowerCase()) ||
-        childBelongOption === "";
+        user.belong?.toLowerCase().includes(searchOptions.belong.toLowerCase()) ||
+        searchOptions.belong === "";
       const userTypeMatch =
-        user.userType?.toLowerCase().includes(childRoleOption.toLowerCase()) ||
-        childRoleOption === "";
+        user.userType?.toLowerCase().includes(searchOptions.role.toLowerCase()) ||
+        searchOptions.role === "";
       const autorityMatch =
-        user.authority?.toLowerCase().includes(childAuthorityOption.toLowerCase()) ||
-        childAuthorityOption === "";
+        user.authority?.toLowerCase().includes(searchOptions.authority.toLowerCase()) ||
+        searchOptions.authority === "";
 
       return nameMatch && belongMatch && userTypeMatch && autorityMatch;
     });
     setSearchUser(filtered);
   };
 
-  const handleChildBelongOptionChange = (option: string) => {
-    setChildBelongOption(option);
-  };
-  const handleChildRoleOptionChange = (option: string) => {
-    setChildRoleOption(option);
-  };
-  const handleChildAuthorityOptionChange = (option: string) => {
-    setChildAuthorityOption(option);
+  const handleSearchOptionsChange = (searchOption: string) => (value: string) => {
+    setSearchOptions((previous) => ({ ...previous, [searchOption]: value }));
   };
 
   if (isLoading) {
@@ -146,17 +143,17 @@ const AdminPage = () => {
               <DropDown
                 text="소속"
                 options={BELONG_DATA}
-                onOptionSelected={handleChildBelongOptionChange}
+                onOptionSelected={handleSearchOptionsChange("belong")}
               />
               <DropDown
                 text="역할"
                 options={USER_TYPE_DATA}
-                onOptionSelected={handleChildRoleOptionChange}
+                onOptionSelected={handleSearchOptionsChange("role")}
               />
               <DropDown
                 text="권한"
                 options={AUTHORITY_DATA}
-                onOptionSelected={handleChildAuthorityOptionChange}
+                onOptionSelected={handleSearchOptionsChange("authority")}
               />
               <SearchButtonWrap>
                 <SearchButton onClick={handleClickSearchButton}>검색</SearchButton>
