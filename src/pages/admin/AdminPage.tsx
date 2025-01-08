@@ -44,22 +44,20 @@ interface User {
 }
 
 const AdminPage = () => {
+  // TODO: [2024-12-21] 백엔드에서 admin 페이지에 반영될 사용자 정보 api를 생성한 후, 해당 api로 교체 필요
+  const { usersInformation = [], isLoading } = useGetUsersInformation();
+
   const [selectedUserId, setSelectedUserId] = useState<string[]>([]);
-
-  const [userName, setUserName] = useState("");
-
+  const [searchUserName, setSearchUserName] = useState("");
   const [searchOptions, setSearchOptions] = useState({
     belong: "",
     role: "",
     authority: "",
   });
-
-  // TODO: [2024-12-21] 백엔드에서 admin 페이지에 반영될 사용자 정보 api를 생성한 후, 해당 api로 교체 필요
-  const { usersInformation = [], isLoading } = useGetUsersInformation();
-  const [searchUser, setSearchUser] = useState(usersInformation);
+  const [userList, setUserList] = useState(usersInformation);
 
   useEffect(() => {
-    setSearchUser(usersInformation);
+    setUserList(usersInformation);
   }, [usersInformation]);
 
   const firstUserIndex = (CURRENT_PAGE - 1) * ADMIN_USER_COUNT_PER_PAGE;
@@ -92,23 +90,23 @@ const AdminPage = () => {
   };
 
   const handleEnterName = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUserName(event.target.value);
+    setSearchUserName(event.target.value);
   };
 
   // TODO: [2023-12-24] 추후 백엔드에서 관리자의 사용자 목록 검색 api가 구현되면, 해당 api를 연결해야 합니다.
   const handleClickSearchButton = () => {
-    const matchValues = (userValue: string, searchValue: string) =>
+    const matchValues = (userValue?: string, searchValue?: string) =>
       !searchValue || userValue?.includes(searchValue);
 
-    const filtered = usersInformation.filter((user: any) => {
+    const filtered = usersInformation.filter(({ name, belong, role, authority }: User) => {
       return (
-        matchValues(user.name, userName) &&
-        matchValues(user.belong, searchOptions.belong) &&
-        matchValues(user.role, searchOptions.role) &&
-        matchValues(user.authority, searchOptions.authority)
+        matchValues(name, searchUserName) &&
+        matchValues(belong, searchOptions.belong) &&
+        matchValues(role, searchOptions.role) &&
+        matchValues(authority, searchOptions.authority)
       );
     });
-    setSearchUser(filtered);
+    setUserList(filtered);
   };
 
   const handleSearchOptionsChange = (searchOption: string) => (value: string) => {
@@ -131,7 +129,7 @@ const AdminPage = () => {
             <ContentTitleBox>사용자 정보 목록</ContentTitleBox>
             <SearchBox>
               <SearchInput
-                value={userName}
+                value={searchUserName}
                 onChange={handleEnterName}
                 type="text"
                 placeholder="이름"
@@ -175,7 +173,7 @@ const AdminPage = () => {
               </ListHeaderBox>
 
               {/* TODO: [2024-12-15] 백엔드에서 역할, 권한, 수정날짜 데이터 추가 되면 변경 필요 */}
-              {searchUser?.map(
+              {userList?.map(
                 ({ userId, name, belong, userType, authority, modifiedDate }: User) => (
                   <ListItemBox>
                     <CheckBoxInput
