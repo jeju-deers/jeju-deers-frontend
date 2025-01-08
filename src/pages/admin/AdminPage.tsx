@@ -98,7 +98,7 @@ const AdminPage = () => {
   // TODO: [2023-12-24] 추후 백엔드에서 관리자의 사용자 목록 검색 api가 구현되면, 해당 api를 연결해야 합니다.
   const handleClickSearchButton = () => {
     const matchValues = (userValue: string, searchValue: string) =>
-      !searchValue || userValue?.toLowerCase().includes(searchValue.toLowerCase());
+      !searchValue || userValue?.includes(searchValue);
 
     const filtered = usersInformation.filter((user: any) => {
       return (
