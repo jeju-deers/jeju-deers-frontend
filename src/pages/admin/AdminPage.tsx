@@ -175,28 +175,27 @@ const AdminPage = () => {
               </ListHeaderBox>
 
               {/* TODO: [2024-12-15] 백엔드에서 역할, 권한, 수정날짜 데이터 추가 되면 변경 필요 */}
-              {searchUser?.map((userInformation: User) => (
-                <ListItemBox>
-                  <CheckBoxInput
-                    type="checkbox"
-                    checked={selectedUserId.includes(userInformation.userId)}
-                    onChange={(event) => handleSelectCheckBox(event, userInformation.userId)}
-                  />
-                  <ListItemSection basis="35%" text={userInformation.name} />
-                  <ListItemSection basis="9.4%" text={userInformation.belong} />
-                  <ListItemSection basis="28.6%" text={userInformation.userType} />
-                  <ListItemSection basis="9.4%" text={userInformation.authority || "일반 회원"} />
-                  <ListItemSection
-                    basis="38.1%"
-                    text={userInformation.modifiedDate || "2024.08.23. 14:10"}
-                  />
-                  <ListSectionBox>
-                    <AccountEditButton>
-                      <ListItemTextSpan>정보수정</ListItemTextSpan>
-                    </AccountEditButton>
-                  </ListSectionBox>
-                </ListItemBox>
-              ))}
+              {searchUser?.map(
+                ({ userId, name, belong, userType, authority, modifiedDate }: User) => (
+                  <ListItemBox>
+                    <CheckBoxInput
+                      type="checkbox"
+                      checked={selectedUserId.includes(userId)}
+                      onChange={(event) => handleSelectCheckBox(event, userId)}
+                    />
+                    <ListItemSection basis="35%" text={name} />
+                    <ListItemSection basis="9.4%" text={belong} />
+                    <ListItemSection basis="28.6%" text={userType} />
+                    <ListItemSection basis="9.4%" text={authority || "일반 회원"} />
+                    <ListItemSection basis="38.1%" text={modifiedDate || "2024.08.23. 14:10"} />
+                    <ListSectionBox>
+                      <AccountEditButton>
+                        <ListItemTextSpan>정보수정</ListItemTextSpan>
+                      </AccountEditButton>
+                    </ListSectionBox>
+                  </ListItemBox>
+                ),
+              )}
             </ListBox>
             <ExitButtonBox>
               <ExitButton>나가기</ExitButton>
