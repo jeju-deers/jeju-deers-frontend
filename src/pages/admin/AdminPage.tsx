@@ -111,11 +111,6 @@ const AdminPage = () => {
     setSearchUser(filtered);
   };
 
-  useEffect(() => {
-    console.log(searchUser);
-    console.log(searchOptions.belong);
-  }, [searchUser]);
-
   const handleSearchOptionsChange = (searchOption: string) => (value: string) => {
     setSearchOptions((previous) => ({ ...previous, [searchOption]: value }));
   };
