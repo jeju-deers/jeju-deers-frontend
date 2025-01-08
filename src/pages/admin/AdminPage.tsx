@@ -97,23 +97,24 @@ const AdminPage = () => {
 
   // TODO: [2023-12-24] 추후 백엔드에서 관리자의 사용자 목록 검색 api가 구현되면, 해당 api를 연결해야 합니다.
   const handleClickSearchButton = () => {
-    const filtered = usersInformation.filter((user: any) => {
-      const nameMatch =
-        user.name?.toLowerCase().includes(userName.toLowerCase()) || userName === "";
-      const belongMatch =
-        user.belong?.toLowerCase().includes(searchOptions.belong.toLowerCase()) ||
-        searchOptions.belong === "";
-      const userTypeMatch =
-        user.userType?.toLowerCase().includes(searchOptions.role.toLowerCase()) ||
-        searchOptions.role === "";
-      const autorityMatch =
-        user.authority?.toLowerCase().includes(searchOptions.authority.toLowerCase()) ||
-        searchOptions.authority === "";
+    const matchValues = (userValue: string, searchValue: string) =>
+      !searchValue || userValue?.toLowerCase().includes(searchValue.toLowerCase());
 
-      return nameMatch && belongMatch && userTypeMatch && autorityMatch;
+    const filtered = usersInformation.filter((user: any) => {
+      return (
+        matchValues(user.name, userName) &&
+        matchValues(user.belong, searchOptions.belong) &&
+        matchValues(user.role, searchOptions.role) &&
+        matchValues(user.authority, searchOptions.authority)
+      );
     });
     setSearchUser(filtered);
   };
+
+  useEffect(() => {
+    console.log(searchUser);
+    console.log(searchOptions.belong);
+  }, [searchUser]);
 
   const handleSearchOptionsChange = (searchOption: string) => (value: string) => {
     setSearchOptions((previous) => ({ ...previous, [searchOption]: value }));
