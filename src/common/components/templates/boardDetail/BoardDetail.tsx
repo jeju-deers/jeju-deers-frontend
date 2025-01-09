@@ -41,11 +41,9 @@ const BoardDetail = ({ singleBoardId }: Props) => {
   // TODO: [2024-10-27] 임시 댓글 목록 상수 데이터를 이용하여 구현. 댓글 조회 api 구현 이후 수정 및 삭제 필요.
   const commentData = COMMENT_TEMPORORY_DATA;
 
-  if (isLoading) {
-    return <PendingMessage />;
-  }
-
   const { title, content, owner, belong, type, createdAt, views } = singleBoard;
+
+  const loginOwner = localStorage.getItem("owner");
 
   const { year, month, day, hours, minutes } = useFormatKoreanTime(createdAt);
 
@@ -65,6 +63,10 @@ const BoardDetail = ({ singleBoardId }: Props) => {
   const handleScrollTop = () => {
     window.scrollTo({ top: 0 });
   };
+
+  if (isLoading) {
+    return <PendingMessage />;
+  }
 
   return (
     <BoardDetailLayout>
@@ -126,7 +128,7 @@ const BoardDetail = ({ singleBoardId }: Props) => {
         ))}
         <CommentFieldBox>
           <CommentInformationBox>
-            <Text text="박재광" className="text-xl" />
+            <Text text={loginOwner || "알 수 없음"} className="text-xl" />
             <CommentTextArea placeholder="댓글을 남겨보세요" />
           </CommentInformationBox>
           <CommentSubmitButtonBox>
