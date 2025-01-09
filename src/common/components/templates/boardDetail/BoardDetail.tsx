@@ -50,9 +50,9 @@ const BoardDetail = ({ singleBoardId }: Props) => {
 
   const { title, content, owner, belong, type, createdAt, views } = singleBoard;
 
-  const loginOwner = localStorage.getItem("owner");
-
   const { year, month, day, hours, minutes } = useFormatKoreanTime(createdAt);
+
+  const loginOwner = localStorage.getItem("owner");
 
   const findBoardRoute = (type: string) => {
     for (const category in TAB_MENU_ITEMS) {
@@ -72,6 +72,10 @@ const BoardDetail = ({ singleBoardId }: Props) => {
   };
 
   const handleSubmitComment = () => {
+    if (!comment) {
+      alert("댓글을 입력해주세요.");
+    }
+
     console.log(comment);
   };
 
