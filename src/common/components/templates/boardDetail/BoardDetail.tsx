@@ -30,6 +30,7 @@ import { Link } from "react-router-dom";
 import TAB_MENU_ITEMS, { TabMenuItems } from "~/constants/tabMenuItems";
 import useFormatKoreanTime from "~/hooks/board/useFormatKoreanTime";
 import COMMENT_TEMPORORY_DATA from "~/constants/commentTemporaryData";
+import { useState } from "react";
 
 interface Props {
   singleBoardId: string;
@@ -37,6 +38,12 @@ interface Props {
 
 const BoardDetail = ({ singleBoardId }: Props) => {
   const { singleBoard, isLoading } = useGetSingleBoard(singleBoardId);
+
+  const [comment, setComment] = useState("");
+
+  if (isLoading) {
+    return <PendingMessage />;
+  }
 
   // TODO: [2024-10-27] 임시 댓글 목록 상수 데이터를 이용하여 구현. 댓글 조회 api 구현 이후 수정 및 삭제 필요.
   const commentData = COMMENT_TEMPORORY_DATA;
@@ -64,9 +71,9 @@ const BoardDetail = ({ singleBoardId }: Props) => {
     window.scrollTo({ top: 0 });
   };
 
-  if (isLoading) {
-    return <PendingMessage />;
-  }
+  const handleSubmitComment = () => {
+    console.log(comment);
+  };
 
   return (
     <BoardDetailLayout>
@@ -129,10 +136,14 @@ const BoardDetail = ({ singleBoardId }: Props) => {
         <CommentFieldBox>
           <CommentInformationBox>
             <Text text={loginOwner || "알 수 없음"} className="text-xl" />
-            <CommentTextArea placeholder="댓글을 남겨보세요" />
+            <CommentTextArea
+              placeholder="댓글을 남겨보세요"
+              value={comment}
+              onChange={(event) => setComment(event.target.value)}
+            />
           </CommentInformationBox>
           <CommentSubmitButtonBox>
-            <Button text="등록" styleType="submitCommentButton" />
+            <Button text="등록" styleType="submitCommentButton" onClick={handleSubmitComment} />
           </CommentSubmitButtonBox>
         </CommentFieldBox>
       </PostDetailBox>
