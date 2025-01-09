@@ -11,6 +11,7 @@ import {
   CommentInformationBox,
   CommentSeparateLineBox,
   CommentSubmitButtonBox,
+  CommentTextArea,
   ContentBox,
   CreationInformationBox,
   DetailToBoardBox,
@@ -126,7 +127,7 @@ const BoardDetail = ({ singleBoardId }: Props) => {
         <CommentFieldBox>
           <CommentInformationBox>
             <Text text="박재광" className="text-xl" />
-            <Text text="댓글을 남겨보세요" className="text-4.5 text-gray-500" />
+            <CommentTextArea placeholder="댓글을 남겨보세요" />
           </CommentInformationBox>
           <CommentSubmitButtonBox>
             <Button text="등록" styleType="submitCommentButton" />
