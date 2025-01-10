@@ -34,6 +34,7 @@ import { useEffect, useState } from "react";
 import useGetUserList from "~/hooks/admin/query/useGetUserList";
 import ErrorMessage from "~/common/components/atom/ErrorMessage";
 import Pagination from "~/common/components/molecules/board/Pagination";
+import useDeleteUserList from "~/hooks/admin/query/mutate/useDeleteUserList";
 
 interface User {
   userId: string;
@@ -47,6 +48,7 @@ interface User {
 
 const AdminPage = () => {
   const { userListData, isLoading } = useGetUserList();
+  const { mutate: deleteUserList } = useDeleteUserList();
 
   const [selectedUserId, setSelectedUserId] = useState<string[]>([]);
   const [searchUserName, setSearchUserName] = useState("");
@@ -99,6 +101,7 @@ const AdminPage = () => {
 
   const handleDeleteUser = (selectedUserId: string[]) => {
     console.log(selectedUserId);
+    deleteUserList(selectedUserId);
   };
 
   const handleEnterName = (event: React.ChangeEvent<HTMLInputElement>) => {
