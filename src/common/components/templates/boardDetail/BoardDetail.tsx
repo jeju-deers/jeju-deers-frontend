@@ -31,6 +31,7 @@ import TAB_MENU_ITEMS, { TabMenuItems } from "~/constants/tabMenuItems";
 import useFormatKoreanTime from "~/hooks/board/useFormatKoreanTime";
 import COMMENT_TEMPORORY_DATA from "~/constants/commentTemporaryData";
 import { useState } from "react";
+import usePostComment from "~/hooks/comment/mutate/usePostComment";
 
 interface Props {
   singleBoardId: string;
@@ -38,6 +39,7 @@ interface Props {
 
 const BoardDetail = ({ singleBoardId }: Props) => {
   const { singleBoard, isLoading } = useGetSingleBoard(singleBoardId);
+  const { mutate: postComment } = usePostComment();
 
   const [comment, setComment] = useState("");
 
@@ -53,6 +55,7 @@ const BoardDetail = ({ singleBoardId }: Props) => {
   const { year, month, day, hours, minutes } = useFormatKoreanTime(createdAt);
 
   const loginOwner = localStorage.getItem("owner");
+  const token = localStorage.getItem("token");
 
   const findBoardRoute = (type: string) => {
     for (const category in TAB_MENU_ITEMS) {
@@ -74,9 +77,17 @@ const BoardDetail = ({ singleBoardId }: Props) => {
   const handleSubmitComment = () => {
     if (!comment) {
       alert("댓글을 입력해주세요.");
+      return;
+    }
+
+    if (!token || !loginOwner) {
+      alert("로그인 후 이용해주세요.");
+      return;
     }
 
     console.log(comment);
+
+    postComment({ postId: singleBoardId, name: loginOwner, belong, content: comment, token });
   };
 
   return (
