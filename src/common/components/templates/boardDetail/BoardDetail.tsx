@@ -31,13 +31,30 @@ import TAB_MENU_ITEMS, { TabMenuItems } from "~/constants/tabMenuItems";
 import useFormatKoreanTime from "~/hooks/board/useFormatKoreanTime";
 import COMMENT_TEMPORORY_DATA from "~/constants/commentTemporaryData";
 import { useState } from "react";
+import useGetComments from "~/hooks/comment/query/useGetComments";
 
 interface Props {
   singleBoardId: string;
+  token?: string;
 }
 
-const BoardDetail = ({ singleBoardId }: Props) => {
+const BoardDetail = ({ singleBoardId, token }: Props) => {
   const { singleBoard, isLoading } = useGetSingleBoard(singleBoardId);
+  const {
+    data: commentsDatas = "",
+    isError,
+    error,
+    isSuccess,
+  } = useGetComments({ postId: singleBoardId, token });
+
+  if (isError) {
+    console.log(error, error.message);
+  }
+
+  if (isSuccess) {
+    console.log("댓글 조회 성공");
+    console.log(commentsDatas);
+  }
 
   const [comment, setComment] = useState("");
 
