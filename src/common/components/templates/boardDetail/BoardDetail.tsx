@@ -48,7 +48,7 @@ const BoardDetail = ({ singleBoardId, token }: Props) => {
   } = useGetComments({ postId: singleBoardId, token });
 
   if (isError) {
-    console.log(error, error.message);
+    console.log(error);
   }
 
   if (isSuccess) {
