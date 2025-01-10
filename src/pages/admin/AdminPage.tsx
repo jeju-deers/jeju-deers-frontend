@@ -30,8 +30,9 @@ import BELONG_DATA from "~/constants/belongData";
 import USER_TYPE_DATA from "~/constants/userTypeData";
 import AUTHORITY_DATA from "~/constants/authorityData";
 import { CURRENT_PAGE, ADMIN_USER_COUNT_PER_PAGE } from "~/constants/constants";
-import useGetUsersInformation from "~/hooks/admin/query/useGetUsersInformation";
 import { useEffect, useState } from "react";
+import useGetUserList from "~/hooks/admin/query/useGetUserList";
+import ErrorMessage from "~/common/components/atom/ErrorMessage";
 
 interface User {
   userId: string;
@@ -45,7 +46,7 @@ interface User {
 
 const AdminPage = () => {
   // TODO: [2024-12-21] 백엔드에서 admin 페이지에 반영될 사용자 정보 api를 생성한 후, 해당 api로 교체 필요
-  const { usersInformation = [], isLoading } = useGetUsersInformation();
+  const { userListData, isLoading } = useGetUserList();
 
   const [selectedUserId, setSelectedUserId] = useState<string[]>([]);
   const [searchUserName, setSearchUserName] = useState("");
@@ -54,15 +55,25 @@ const AdminPage = () => {
     role: "",
     authority: "",
   });
-  const [userList, setUserList] = useState(usersInformation);
+  const [userList, setUserList] = useState<User[]>([]);
 
   useEffect(() => {
-    setUserList(usersInformation);
-  }, [usersInformation]);
+    if (userListData?.latestUsers) {
+      setUserList(userListData.latestUsers);
+    }
+  }, [userListData]);
+
+  if (isLoading) {
+    return <PendingMessage />;
+  }
+
+  if (!userListData) {
+    return <ErrorMessage text="사용자 목록을 불러오지 못했습니다." />;
+  }
 
   const firstUserIndex = (CURRENT_PAGE - 1) * ADMIN_USER_COUNT_PER_PAGE;
   const lastUserIndex = CURRENT_PAGE * ADMIN_USER_COUNT_PER_PAGE;
-  const currentPageUsers = usersInformation.slice(firstUserIndex, lastUserIndex);
+  const currentPageUsers = userList.slice(firstUserIndex, lastUserIndex);
   const currentPageUsersId = currentPageUsers.map(({ userId }: User) => userId);
 
   const updateSelectedUserId = (userId: string) => {
@@ -98,7 +109,7 @@ const AdminPage = () => {
     const matchValues = (userValue?: string, searchValue?: string) =>
       !searchValue || userValue?.includes(searchValue);
 
-    const filtered = usersInformation.filter(({ name, belong, role, authority }: User) => {
+    const filtered = userList.filter(({ name, belong, role, authority }: User) => {
       return (
         matchValues(name, searchUserName) &&
         matchValues(belong, searchOptions.belong) &&
@@ -112,10 +123,6 @@ const AdminPage = () => {
   const handleSearchOptionsChange = (searchOption: string) => (value: string) => {
     setSearchOptions((previous) => ({ ...previous, [searchOption]: value }));
   };
-
-  if (isLoading) {
-    <PendingMessage />;
-  }
 
   return (
     <WholePageBox>
