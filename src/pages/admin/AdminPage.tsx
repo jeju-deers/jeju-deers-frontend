@@ -29,10 +29,11 @@ import PendingMessage from "~/common/components/atom/PendingMessage";
 import BELONG_DATA from "~/constants/belongData";
 import USER_TYPE_DATA from "~/constants/userTypeData";
 import AUTHORITY_DATA from "~/constants/authorityData";
-import { CURRENT_PAGE, ADMIN_USER_COUNT_PER_PAGE } from "~/constants/constants";
+import { ADMIN_USER_COUNT_PER_PAGE } from "~/constants/constants";
 import { useEffect, useState } from "react";
 import useGetUserList from "~/hooks/admin/query/useGetUserList";
 import ErrorMessage from "~/common/components/atom/ErrorMessage";
+import Pagination from "~/common/components/molecules/board/Pagination";
 
 interface User {
   userId: string;
@@ -55,6 +56,7 @@ const AdminPage = () => {
     permission: "",
   });
   const [userList, setUserList] = useState<User[]>([]);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     if (userListData?.latestUsers) {
@@ -70,10 +72,10 @@ const AdminPage = () => {
     return <ErrorMessage text="사용자 목록을 불러오지 못했습니다." />;
   }
 
-  const firstUserIndex = (CURRENT_PAGE - 1) * ADMIN_USER_COUNT_PER_PAGE;
-  const lastUserIndex = CURRENT_PAGE * ADMIN_USER_COUNT_PER_PAGE;
-  const currentPageUsers = userList.slice(firstUserIndex, lastUserIndex);
-  const currentPageUsersId = currentPageUsers.map(({ userId }: User) => userId);
+  const firstUserIndex = (page - 1) * ADMIN_USER_COUNT_PER_PAGE;
+  const lastUserIndex = page * ADMIN_USER_COUNT_PER_PAGE;
+  const currentPageUserList = userList.slice(firstUserIndex, lastUserIndex);
+  const currentPageUsersId = currentPageUserList.map(({ userId }: User) => userId);
 
   const updateSelectedUserId = (userId: string) => {
     setSelectedUserId((previousState: string[]) => [...new Set([...previousState, userId])]);
@@ -179,26 +181,34 @@ const AdminPage = () => {
               </ListHeaderBox>
 
               {/* TODO: [2024-12-15] 백엔드에서 역할, 권한, 수정날짜 데이터 추가 되면 변경 필요 */}
-              {userList?.map(({ userId, name, belong, userType, permission, updatedAt }: User) => (
-                <ListItemBox>
-                  <CheckBoxInput
-                    type="checkbox"
-                    checked={selectedUserId.includes(userId)}
-                    onChange={(event) => handleSelectCheckBox(event, userId)}
-                  />
-                  <ListItemSection basis="35%" text={name} />
-                  <ListItemSection basis="9.4%" text={belong} />
-                  <ListItemSection basis="28.6%" text={userType} />
-                  <ListItemSection basis="9.4%" text={permission || "일반 회원"} />
-                  <ListItemSection basis="38.1%" text={updatedAt || "2024.08.23. 14:10"} />
-                  <ListSectionBox>
-                    <AccountEditButton>
-                      <ListItemTextSpan>정보수정</ListItemTextSpan>
-                    </AccountEditButton>
-                  </ListSectionBox>
-                </ListItemBox>
-              ))}
+              {currentPageUserList?.map(
+                ({ userId, name, belong, userType, permission, updatedAt }: User) => (
+                  <ListItemBox>
+                    <CheckBoxInput
+                      type="checkbox"
+                      checked={selectedUserId.includes(userId)}
+                      onChange={(event) => handleSelectCheckBox(event, userId)}
+                    />
+                    <ListItemSection basis="35%" text={name} />
+                    <ListItemSection basis="9.4%" text={belong} />
+                    <ListItemSection basis="28.6%" text={userType} />
+                    <ListItemSection basis="9.4%" text={permission || "일반 회원"} />
+                    <ListItemSection basis="38.1%" text={updatedAt || "2024.08.23. 14:10"} />
+                    <ListSectionBox>
+                      <AccountEditButton>
+                        <ListItemTextSpan>정보수정</ListItemTextSpan>
+                      </AccountEditButton>
+                    </ListSectionBox>
+                  </ListItemBox>
+                ),
+              )}
             </ListBox>
+            <Pagination
+              total={userList.length}
+              limit={ADMIN_USER_COUNT_PER_PAGE}
+              page={page}
+              setPage={setPage}
+            />
             <ExitButtonBox>
               <ExitButton>나가기</ExitButton>
             </ExitButtonBox>
