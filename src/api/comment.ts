@@ -11,6 +11,7 @@ export const getComments = async ({ postId, token }: GetCommentsProps) => {
       Authorization: `Bearer ${token}`,
     },
   });
+};
 
 interface PostCommentProps {
   postId: string;
