@@ -24,10 +24,10 @@ interface UpdateBoardProps {
   setWriteOption: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const BoardUpdatePage = ({ writeOption, setWriteOption }: UpdateBoardProps) => {
+const BoardUpdate = ({ writeOption, setWriteOption }: UpdateBoardProps) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const { mutate, isError, isSuccess } = useUpdateBoard();
+  const { mutate: updateBoard, isError, isSuccess } = useUpdateBoard();
   const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
@@ -67,7 +67,7 @@ const BoardUpdatePage = ({ writeOption, setWriteOption }: UpdateBoardProps) => {
       console.error("ID가 존재하지 않습니다. URL을 확인하세요.");
       return;
     }
-    mutate({ id, title, content, type: upperCaseWriteOption, token, owner });
+    updateBoard({ id, title, content, type: upperCaseWriteOption, token, owner });
     console.log(`Updated: ${title}, ${content}, ${upperCaseWriteOption}`);
   };
 
@@ -100,4 +100,4 @@ const BoardUpdatePage = ({ writeOption, setWriteOption }: UpdateBoardProps) => {
   );
 };
 
-export default BoardUpdatePage;
+export default BoardUpdate;

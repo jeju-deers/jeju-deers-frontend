@@ -8,6 +8,7 @@ import {
   EditButton,
 } from "./BoardStyles";
 import useDeleteBoard from "~/hooks/board/mutate/useDeleteBoard";
+import { deleteBoard } from "~/api/boards";
 
 interface Props {
   boardlist: {
@@ -24,7 +25,7 @@ interface Props {
 }
 
 const Board = ({ boardlist }: Props) => {
-  const { mutate } = useDeleteBoard();
+  const { mutate: deleteBoard } = useDeleteBoard();
   const totalRows = 15;
   const navigate = useNavigate();
 
@@ -56,7 +57,7 @@ const Board = ({ boardlist }: Props) => {
       return;
     }
     if (window.confirm("정말로 이 게시물을 삭제하시겠습니까?")) {
-      mutate({ id, token });
+      deleteBoard({ id, token });
     }
   };
 
