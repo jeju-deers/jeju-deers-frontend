@@ -1,7 +1,7 @@
 import tw from "twin.macro";
 import styled from "styled-components";
 
-export const NewsUpdateLayout = styled.div`
+export const BoardUpdateLayout = styled.div`
   ${tw`
     h-full
     w-full

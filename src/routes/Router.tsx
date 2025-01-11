@@ -23,7 +23,7 @@ import SignUpPage from "~/pages/SignUpPage";
 import BoardDetailPage from "~/pages/board/BoardDetailPage";
 import BoardWritePage from "~/pages/common/BoardWritePage";
 import AdminPage from "~/pages/admin/AdminPage";
-import NewsUpdatePage from "~/pages/common/NewsUpdatePage";
+import BoardUpdatePage from "~/pages/common/BoardUpdatePage";
 
 const Router = () => {
   return (
@@ -50,7 +50,7 @@ const Router = () => {
             <Route path="news" element={<NewsPage />} />
             <Route path=":section/write" element={<BoardWritePage />} />
             <Route path=":section/board_detail" element={<BoardDetailPage />} />
-            <Route path=":section/update/:id" element={<NewsUpdatePage />} />
+            <Route path=":section/update/:id" element={<BoardUpdatePage />} />
           </Route>
 
           <Route path="teamroom">
@@ -62,7 +62,7 @@ const Router = () => {
             <Route path="membership_fee" element={<MembershipFeePage />} />
             <Route path=":section/write" element={<BoardWritePage />} />
             <Route path=":section/board_detail" element={<BoardDetailPage />} />
-            <Route path=":section/update/:id" element={<NewsUpdatePage />} />
+            <Route path=":section/update/:id" element={<BoardUpdatePage />} />
           </Route>
 
           <Route path="community">
@@ -71,7 +71,7 @@ const Router = () => {
             <Route path="support" element={<SupportPage />} />
             <Route path=":section/write" element={<BoardWritePage />} />
             <Route path=":section/board_detail" element={<BoardDetailPage />} />
-            <Route path=":section/update/:id" element={<NewsUpdatePage />} />
+            <Route path=":section/update/:id" element={<BoardUpdatePage />} />
           </Route>
         </Route>
 

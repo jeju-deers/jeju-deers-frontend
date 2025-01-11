@@ -4,11 +4,11 @@ import WriteDropdownButton from "../atom/board/WriteDropDownButton";
 import CkEditor from "../atom/board/CkEditor";
 import Heading from "~/components/atoms/club/Heading";
 import helmet from "~/assets/images/helmet.svg";
-import useUpdateBoard from "~/common/hooks/update/mutate/useUpdateBoard"; // New hook for updating
+import useUpdateBoard from "~/common/hooks/update/mutate/useUpdateBoard";
 import { useParams } from "react-router-dom";
 import { getBoardDetails } from "~/api/boards";
 import {
-  NewsUpdateLayout,
+  BoardUpdateLayout,
   Notice,
   NoticeBox,
   SaveButton,
@@ -17,14 +17,14 @@ import {
   WriteContentBox,
   WriteDropdownButtonWrap,
   WriteTitleBox,
-} from "./NewsUpdateStyle";
+} from "./BoardUpdateStyle";
 
 interface UpdateBoardProps {
   writeOption: string;
   setWriteOption: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const NewsUpdatePage = ({ writeOption, setWriteOption }: UpdateBoardProps) => {
+const BoardUpdatePage = ({ writeOption, setWriteOption }: UpdateBoardProps) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const { mutate, isError, isSuccess } = useUpdateBoard();
@@ -72,7 +72,7 @@ const NewsUpdatePage = ({ writeOption, setWriteOption }: UpdateBoardProps) => {
   };
 
   return (
-    <NewsUpdateLayout>
+    <BoardUpdateLayout>
       <Heading src={helmet} alt="helmet" text="게시글 수정" />
       <SaveButtonWrap>
         <SaveButton onClick={handleSave}>수정 완료</SaveButton>
@@ -96,8 +96,8 @@ const NewsUpdatePage = ({ writeOption, setWriteOption }: UpdateBoardProps) => {
       <WriteContentBox>
         <CkEditor onChange={(data) => setContent(data)} />
       </WriteContentBox>
-    </NewsUpdateLayout>
+    </BoardUpdateLayout>
   );
 };
 
-export default NewsUpdatePage;
+export default BoardUpdatePage;
