@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { DeleteBoard } from "~/api/boards";
+import { deleteBoard } from "~/api/boards";
 
 interface Props {
   id: string;
@@ -9,7 +9,7 @@ interface Props {
 const useDeleteBoard = () => {
   const mutation = useMutation({
     mutationFn: ({ id, token }: Props) => {
-      return DeleteBoard(id, token);
+      return deleteBoard(id, token);
     },
     onSuccess: () => {
       console.log("게시물이 삭제되었습니다.");

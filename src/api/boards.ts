@@ -1,7 +1,7 @@
 import { instance } from "~/api";
 import { Board } from "./types/board";
 
-export const GetBoards = async (type: string) => {
+export const getBoards = async (type: string) => {
   const { data } = await instance.get("/boards");
   return data
     .filter((board: Board) => board.type === type)
@@ -10,7 +10,7 @@ export const GetBoards = async (type: string) => {
     );
 };
 
-export const DeleteBoard = async (id: string, token: string | null) => {
+export const deleteBoard = async (id: string, token: string | null) => {
   return await instance.delete(`/boards/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -27,7 +27,7 @@ interface UpdateBoardProps {
   token: string;
 }
 
-export const UpdateBoard = async ({ id, title, content, type, token, owner }: UpdateBoardProps) => {
+export const updateBoard = async ({ id, title, content, type, token, owner }: UpdateBoardProps) => {
   const response = await instance.put(
     `/boards/${id}`,
     { title, content, type, owner },

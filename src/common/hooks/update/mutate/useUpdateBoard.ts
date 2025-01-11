@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { UpdateBoard } from "~/api/boards";
+import { updateBoard } from "~/api/boards";
 
 interface UpdateBoardProps {
   id: string;
@@ -14,7 +14,7 @@ const useUpdateBoard = () => {
 
   const mutation = useMutation({
     mutationFn: ({ id, title, content, type, owner, token }: UpdateBoardProps) => {
-      return UpdateBoard({ id, title, content, type, owner, token });
+      return updateBoard({ id, title, content, type, owner, token });
     },
     onSuccess: () => {
       console.log("게시물이 성공적으로 수정되었습니다.");
