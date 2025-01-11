@@ -7,13 +7,7 @@
     <script>
       const redirectPath = window.location.pathname + window.location.search;
       window.history.replaceState(null, "", window.location.pathname);
-      if (!window.location.pathname.includes("/jeju-deers-frontend")) {
-        window.location.replace(
-          "/jeju-deers-frontend/?redirect=" + encodeURIComponent(redirectPath),
-        );
-      } else {
-        window.location.replace("/?redirect=" + encodeURIComponent(redirectPath));
-      }
+      window.location.replace("/jeju-deers-frontend/?redirect=" + encodeURIComponent(redirectPath));
     </script>
   </head>
   <body>
