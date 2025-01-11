@@ -32,6 +32,7 @@ import useFormatKoreanTime from "~/hooks/board/useFormatKoreanTime";
 import COMMENT_TEMPORORY_DATA from "~/constants/commentTemporaryData";
 import { useState } from "react";
 import useGetComments from "~/hooks/comment/query/useGetComments";
+import usePostComment from "~/hooks/comment/mutate/usePostComment";
 
 interface Props {
   singleBoardId: string;
@@ -55,6 +56,8 @@ const BoardDetail = ({ singleBoardId, token }: Props) => {
     console.log("댓글 조회 성공");
     console.log(commentsDatas);
   }
+
+  const { mutate: postComment } = usePostComment();
 
   const [comment, setComment] = useState("");
 
@@ -91,9 +94,17 @@ const BoardDetail = ({ singleBoardId, token }: Props) => {
   const handleSubmitComment = () => {
     if (!comment) {
       alert("댓글을 입력해주세요.");
+      return;
+    }
+
+    if (!token || !loginOwner) {
+      alert("로그인 후 이용해주세요.");
+      return;
     }
 
     console.log(comment);
+
+    postComment({ postId: singleBoardId, name: loginOwner, belong, content: comment, token });
   };
 
   return (

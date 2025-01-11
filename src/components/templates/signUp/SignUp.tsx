@@ -6,11 +6,9 @@ import SubHeader from "~/components/molecules/signUp/subHeader/SubHeader";
 import BasicItemsInputField from "~/components/organisms/signUp/body/BasicItemsInputField";
 import CoachItemsInputField from "~/components/organisms/signUp/body/CoachItemsInputField";
 import PlayerItemsInputField from "~/components/organisms/signUp/body/PlayerItemsInputField";
-import PrimaryHeader from "~/components/organisms/signUp/primaryHeader/PrimaryHeader";
 import {
   BasicItemsInputFieldWrap,
   OptionItemsInputFieldWrap,
-  PrimaryHeaderWrap,
   PrivacyPolicyFieldWrap,
   SignUpForm,
   SignUpLayout,
@@ -42,9 +40,6 @@ const SignUp = ({ selectedOption, onChangeInput, onChangeSelected, onSubmit }: P
   return (
     // TODO: [2024-08-02] WholeSignUpLayout 제거 및 outlet subheader을 이용하여 병합
     <WholeSignUpLayout>
-      <PrimaryHeaderWrap>
-        <PrimaryHeader />
-      </PrimaryHeaderWrap>
       <SignUpLayout>
         <SubHeaderWrap>
           <SubHeader />
