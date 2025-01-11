@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "../pages/MainPage";
-// import NotFound from "../pages/NotFound";
 import AboutPage from "../pages/club/AboutPage";
 import OrganizationPage from "../pages/club/OrganizationPage";
 import PlayerPage from "~/pages/club/PlayerPage";
@@ -23,10 +22,13 @@ import SignUpPage from "~/pages/SignUpPage";
 import BoardDetailPage from "~/pages/board/BoardDetailPage";
 import BoardWritePage from "~/pages/common/BoardWritePage";
 import AdminPage from "~/pages/admin/AdminPage";
+import NotFound from "~/pages/NotFound";
+import RedirectHandler from "~/RedirectHandler";
 
 const Router = () => {
   return (
     <BrowserRouter basename="/jeju-deers-frontend">
+      <RedirectHandler />
       <Routes>
         <Route path="admin" element={<AdminPage />} />
 
@@ -71,7 +73,7 @@ const Router = () => {
           </Route>
         </Route>
 
-        <Route path="*" element={<Base />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
