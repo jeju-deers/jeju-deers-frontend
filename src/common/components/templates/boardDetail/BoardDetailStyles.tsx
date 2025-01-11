@@ -133,8 +133,25 @@ export const CommentInformationBox = styled.div`
   ${tw`
     flex
     flex-col
+    w-full
     pr-5
   `}
+`;
+
+export const CommentTextArea = styled.textarea`
+  ${tw`
+    pt-1
+    text-4.5
+    outline-none
+    resize-none
+  `}
+
+  &::placeholder {
+    ${tw`
+      text-4.5
+      text-gray-500
+    `}
+  }
 `;
 
 export const CommentSubmitButtonBox = styled.div`
