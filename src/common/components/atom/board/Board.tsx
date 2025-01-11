@@ -8,7 +8,6 @@ import {
   EditButton,
 } from "./BoardStyles";
 import useDeleteBoard from "~/hooks/board/mutate/useDeleteBoard";
-import { deleteBoard } from "~/api/boards";
 
 interface Props {
   boardlist: {
@@ -44,7 +43,7 @@ const Board = ({ boardlist }: Props) => {
       console.error("토큰이 만료되었습니다. 다시 로그인해주세요");
       return;
     }
-    navigate(`/news/news/update/${id}`);
+    navigate(`./update/${id}`);
   };
 
   const handleDelete = (id: string) => {

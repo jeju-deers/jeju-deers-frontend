@@ -19,12 +19,8 @@ import {
   WriteTitleBox,
 } from "./BoardUpdateStyle";
 
-interface UpdateBoardProps {
-  writeOption: string;
-  setWriteOption: React.Dispatch<React.SetStateAction<string>>;
-}
-
-const BoardUpdate = ({ writeOption, setWriteOption }: UpdateBoardProps) => {
+const BoardUpdate = () => {
+  const [writeOption, setWriteOption] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const { mutate: updateBoard, isError, isSuccess } = useUpdateBoard();
@@ -42,7 +38,7 @@ const BoardUpdate = ({ writeOption, setWriteOption }: UpdateBoardProps) => {
         const boardData = await getBoardDetails({ id: numericId, token });
         setTitle(boardData.title);
         setContent(boardData.content);
-        setWriteOption(boardData.type);
+        setWriteOption(boardData.type.toLowerCase());
       }
     };
 
