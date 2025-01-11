@@ -11,6 +11,7 @@ import {
   CommentInformationBox,
   CommentSeparateLineBox,
   CommentSubmitButtonBox,
+  CommentTextArea,
   ContentBox,
   CreationInformationBox,
   DetailToBoardBox,
@@ -29,6 +30,7 @@ import { Link } from "react-router-dom";
 import TAB_MENU_ITEMS, { TabMenuItems } from "~/constants/tabMenuItems";
 import useFormatKoreanTime from "~/hooks/board/useFormatKoreanTime";
 import COMMENT_TEMPORORY_DATA from "~/constants/commentTemporaryData";
+import { useState } from "react";
 
 interface Props {
   singleBoardId: string;
@@ -37,16 +39,20 @@ interface Props {
 const BoardDetail = ({ singleBoardId }: Props) => {
   const { singleBoard, isLoading } = useGetSingleBoard(singleBoardId);
 
-  // TODO: [2024-10-27] 임시 댓글 목록 상수 데이터를 이용하여 구현. 댓글 조회 api 구현 이후 수정 및 삭제 필요.
-  const commentData = COMMENT_TEMPORORY_DATA;
+  const [comment, setComment] = useState("");
 
   if (isLoading) {
     return <PendingMessage />;
   }
 
+  // TODO: [2024-10-27] 임시 댓글 목록 상수 데이터를 이용하여 구현. 댓글 조회 api 구현 이후 수정 및 삭제 필요.
+  const commentData = COMMENT_TEMPORORY_DATA;
+
   const { title, content, owner, belong, type, createdAt, views } = singleBoard;
 
   const { year, month, day, hours, minutes } = useFormatKoreanTime(createdAt);
+
+  const loginOwner = localStorage.getItem("owner");
 
   const findBoardRoute = (type: string) => {
     for (const category in TAB_MENU_ITEMS) {
@@ -63,6 +69,14 @@ const BoardDetail = ({ singleBoardId }: Props) => {
 
   const handleScrollTop = () => {
     window.scrollTo({ top: 0 });
+  };
+
+  const handleSubmitComment = () => {
+    if (!comment) {
+      alert("댓글을 입력해주세요.");
+    }
+
+    console.log(comment);
   };
 
   return (
@@ -125,11 +139,15 @@ const BoardDetail = ({ singleBoardId }: Props) => {
         ))}
         <CommentFieldBox>
           <CommentInformationBox>
-            <Text text="박재광" className="text-xl" />
-            <Text text="댓글을 남겨보세요" className="text-4.5 text-gray-500" />
+            <Text text={loginOwner || "알 수 없음"} className="text-xl" />
+            <CommentTextArea
+              placeholder="댓글을 남겨보세요"
+              value={comment}
+              onChange={(event) => setComment(event.target.value)}
+            />
           </CommentInformationBox>
           <CommentSubmitButtonBox>
-            <Button text="등록" styleType="submitCommentButton" />
+            <Button text="등록" styleType="submitCommentButton" onClick={handleSubmitComment} />
           </CommentSubmitButtonBox>
         </CommentFieldBox>
       </PostDetailBox>
