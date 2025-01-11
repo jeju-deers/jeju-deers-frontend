@@ -33,10 +33,6 @@ export const updateBoard = async ({ id, title, content, type, token, owner }: Up
     { title, content, type, owner },
     { headers: { Authorization: `Bearer ${token}` } },
   );
-  console.log(title);
-  console.log(owner);
-  console.log(type);
-  console.log(content);
   return response.data;
 };
 
