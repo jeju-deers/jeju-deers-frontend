@@ -36,7 +36,7 @@ const Board = ({ boardlist }: Props) => {
     return date.split("T")[0];
   };
 
-  const handleEdit = (id: string) => {
+  const handleNavigateToEdit = (id: string) => {
     const token = localStorage.getItem("token");
 
     if (!token) {
@@ -46,16 +46,13 @@ const Board = ({ boardlist }: Props) => {
     navigate(`./update/${id}`);
   };
 
-  const handleDelete = (id: string) => {
+  const handleDeleteBoard = (id: string) => {
     const token = localStorage.getItem("token");
-    console.dir(boardlist);
-    console.log(token);
-    console.log(id);
     if (!token) {
       console.error("토큰이 만료되었습니다. 다시 로그인해주세요");
       return;
     }
-    if (window.confirm("정말로 이 게시물을 삭제하시겠습니까?")) {
+    if (confirm("정말로 이 게시물을 삭제하시겠습니까?")) {
       deleteBoard({ id, token });
     }
   };
@@ -84,8 +81,8 @@ const Board = ({ boardlist }: Props) => {
             <BoardItemBox>{views}</BoardItemBox>
             {isOwner && (
               <>
-                <EditButton onClick={() => handleEdit(id)}>수정</EditButton>
-                <DeleteButton onClick={() => handleDelete(id)}>삭제</DeleteButton>
+                <EditButton onClick={() => handleNavigateToEdit(id)}>수정</EditButton>
+                <DeleteButton onClick={() => handleDeleteBoard(id)}>삭제</DeleteButton>
               </>
             )}
           </BoardRowBox>
@@ -93,11 +90,11 @@ const Board = ({ boardlist }: Props) => {
       })}
       {[...Array(emptyRows)].map((_, index) => (
         <BoardRowBox key={`${index}-empty`}>
-          <BoardItemBox></BoardItemBox>
-          <BoardItemBox></BoardItemBox>
-          <BoardItemBox></BoardItemBox>
-          <BoardItemBox></BoardItemBox>
-          <BoardItemBox></BoardItemBox>
+          <BoardItemBox />
+          <BoardItemBox />
+          <BoardItemBox />
+          <BoardItemBox />
+          <BoardItemBox />
         </BoardRowBox>
       ))}
     </BoardBox>

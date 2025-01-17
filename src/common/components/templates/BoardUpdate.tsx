@@ -5,8 +5,6 @@ import CkEditor from "../atom/board/CkEditor";
 import Heading from "~/components/atoms/club/Heading";
 import helmet from "~/assets/images/helmet.svg";
 import useUpdateBoard from "~/common/hooks/update/mutate/useUpdateBoard";
-import { useParams } from "react-router-dom";
-import { getBoardDetails } from "~/api/boards";
 import {
   BoardUpdateLayout,
   Notice,
@@ -19,34 +17,37 @@ import {
   WriteTitleBox,
 } from "./BoardUpdateStyle";
 
-const BoardUpdate = () => {
+interface Props {
+  singleBoardId: string;
+}
+
+const BoardUpdate = ({ singleBoardId }: Props) => {
   const [writeOption, setWriteOption] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const { mutate: updateBoard, isError, isSuccess } = useUpdateBoard();
-  const { id } = useParams<{ id: string }>();
 
-  useEffect(() => {
-    const fetchBoardData = async () => {
-      const token = localStorage.getItem("token");
-      if (!token) {
-        console.error("토큰이 만료되었습니다. 다시 로그인 해주세요");
-        return;
-      }
-      if (id) {
-        const numericId = parseInt(id, 10);
-        const boardData = await getBoardDetails({ id: numericId, token });
-        setTitle(boardData.title);
-        setContent(boardData.content);
-        setWriteOption(boardData.type.toLowerCase());
-      }
-    };
+  // useEffect(() => {
+  //   const fetchBoardData = async () => {
+  //     const token = localStorage.getItem("token");
+  //     if (!token) {
+  //       console.error("토큰이 만료되었습니다. 다시 로그인 해주세요");
+  //       return;
+  //     }
+  //     if (singleBoardId) {
+  //       // const numericId = parseInt(id, 10);
+  //       // const boardData = await getBoardDetails({ id: numericId, token });
+  //       setTitle(singleBoard.title);
+  //       setContent(singleBoard.content);
+  //       setWriteOption(singleBoard.type.toLowerCase());
+  //     }
+  //   };
 
-    fetchBoardData();
-  }, [id, setWriteOption]);
+  //   fetchBoardData();
+  // }, [singleBoardId, setWriteOption]);
 
-  const handleWriteDropdownChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setWriteOption(e.target.value);
+  const handleWriteDropdownChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setWriteOption(event.target.value);
   };
 
   const handleSave = () => {
@@ -59,11 +60,13 @@ const BoardUpdate = () => {
     }
 
     const upperCaseWriteOption = writeOption.toUpperCase();
-    if (!id) {
+
+    if (!singleBoardId) {
       console.error("ID가 존재하지 않습니다. URL을 확인하세요.");
       return;
     }
-    updateBoard({ id, title, content, type: upperCaseWriteOption, token, owner });
+
+    updateBoard({ id: singleBoardId, title, content, type: upperCaseWriteOption, token, owner });
     console.log(`Updated: ${title}, ${content}, ${upperCaseWriteOption}`);
   };
 
