@@ -16,38 +16,29 @@ import {
   WriteDropdownButtonWrap,
   WriteTitleBox,
 } from "./BoardUpdateStyle";
+import useGetSingleBoard from "~/hooks/board/query/useGetSingleBoard";
 
 interface Props {
   singleBoardId: string;
 }
 
 const BoardUpdate = ({ singleBoardId }: Props) => {
+  const { singleBoard } = useGetSingleBoard(singleBoardId);
   const [writeOption, setWriteOption] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const { mutate: updateBoard, isError, isSuccess } = useUpdateBoard();
 
-  // useEffect(() => {
-  //   const fetchBoardData = async () => {
-  //     const token = localStorage.getItem("token");
-  //     if (!token) {
-  //       console.error("토큰이 만료되었습니다. 다시 로그인 해주세요");
-  //       return;
-  //     }
-  //     if (singleBoardId) {
-  //       // const numericId = parseInt(id, 10);
-  //       // const boardData = await getBoardDetails({ id: numericId, token });
-  //       setTitle(singleBoard.title);
-  //       setContent(singleBoard.content);
-  //       setWriteOption(singleBoard.type.toLowerCase());
-  //     }
-  //   };
+  useEffect(() => {
+    if (singleBoard) {
+      setTitle(singleBoard.title || "");
+      setContent(singleBoard.content || "");
+      setWriteOption(singleBoard.type?.toLowerCase() || "");
+    }
+  }, [singleBoard]);
 
-  //   fetchBoardData();
-  // }, [singleBoardId, setWriteOption]);
-
-  const handleWriteDropdownChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setWriteOption(event.target.value);
+  const handleWriteDropdownChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setWriteOption(e.target.value);
   };
 
   const handleSave = () => {
@@ -65,7 +56,6 @@ const BoardUpdate = ({ singleBoardId }: Props) => {
       console.error("ID가 존재하지 않습니다. URL을 확인하세요.");
       return;
     }
-
     updateBoard({ id: singleBoardId, title, content, type: upperCaseWriteOption, token, owner });
     console.log(`Updated: ${title}, ${content}, ${upperCaseWriteOption}`);
   };
