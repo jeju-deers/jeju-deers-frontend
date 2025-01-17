@@ -22,6 +22,7 @@ import SignUpPage from "~/pages/SignUpPage";
 import BoardDetailPage from "~/pages/board/BoardDetailPage";
 import BoardWritePage from "~/pages/common/BoardWritePage";
 import AdminPage from "~/pages/admin/AdminPage";
+import BoardUpdatePage from "~/pages/common/BoardUpdatePage";
 import NotFound from "~/pages/NotFound";
 import RedirectHandler from "~/RedirectHandler";
 
@@ -50,6 +51,7 @@ const Router = () => {
             <Route path="schedule" element={<SchedulePage />} />
             <Route path="news" element={<NewsPage />} />
             <Route path=":section/write" element={<BoardWritePage />} />
+            <Route path=":section/update/:id" element={<BoardUpdatePage />} />
             <Route path=":section/board/:id" element={<BoardDetailPage />} />
           </Route>
 
@@ -61,6 +63,7 @@ const Router = () => {
             <Route path="playbook" element={<PlaybookPage />} />
             <Route path="membership_fee" element={<MembershipFeePage />} />
             <Route path=":section/write" element={<BoardWritePage />} />
+            <Route path=":section/update/:id" element={<BoardUpdatePage />} />
             <Route path=":section/board/:id" element={<BoardDetailPage />} />
           </Route>
 
@@ -69,6 +72,7 @@ const Router = () => {
             <Route path="media" element={<MediaPage />} />
             <Route path="support" element={<SupportPage />} />
             <Route path=":section/write" element={<BoardWritePage />} />
+            <Route path=":section/update/:id" element={<BoardUpdatePage />} />
             <Route path=":section/board/:id" element={<BoardDetailPage />} />
           </Route>
         </Route>
