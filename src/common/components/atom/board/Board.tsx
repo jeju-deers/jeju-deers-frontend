@@ -9,7 +9,6 @@ import {
 } from "./BoardStyles";
 import useDeleteBoard from "~/hooks/board/mutate/useDeleteBoard";
 
-
 interface Props {
   boardlist: {
     id: string;
@@ -58,6 +57,10 @@ const Board = ({ boardlist }: Props) => {
     }
   };
 
+  const handleTitleClick = (id: string) => {
+    navigate(`/news/news/board/${id}`);
+  };
+
   return (
     <BoardBox>
       <BoardHeaderBox>
@@ -72,9 +75,7 @@ const Board = ({ boardlist }: Props) => {
         return (
           <BoardRowBox key={id}>
             <BoardItemBox>{index + 1}</BoardItemBox>
-            <BoardItemBox>
-              <BoardLink to={`./board/${id}`}>{title}</BoardLink>
-            </BoardItemBox>
+            <BoardItemBox onClick={() => handleTitleClick(id)}>{title}</BoardItemBox>
             <BoardItemBox>{owner}</BoardItemBox>
             <BoardItemBox>{formatDate(createdAt)}</BoardItemBox>
             <BoardItemBox>{views}</BoardItemBox>
