@@ -38,8 +38,8 @@ const BoardUpdate = ({ singleBoardId }: Props) => {
     }
   }, [singleBoard]);
 
-  const handleWriteDropdownChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setWriteOption(e.target.value);
+  const handleWriteDropdownChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setWriteOption(event.target.value);
   };
 
   const handleSave = () => {
@@ -80,7 +80,7 @@ const BoardUpdate = ({ singleBoardId }: Props) => {
           type="text"
           placeholder="제목을 입력해주세요"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={(event) => setTitle(event.target.value)}
         />
       </WriteTitleBox>
       <WriteContentBox>
