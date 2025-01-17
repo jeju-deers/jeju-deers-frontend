@@ -24,10 +24,11 @@ interface Props {
 
 const BoardUpdate = ({ singleBoardId }: Props) => {
   const { singleBoard } = useGetSingleBoard(singleBoardId);
+  const { mutate: updateBoard, isError, isSuccess } = useUpdateBoard();
+
   const [writeOption, setWriteOption] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const { mutate: updateBoard, isError, isSuccess } = useUpdateBoard();
 
   useEffect(() => {
     if (singleBoard) {
