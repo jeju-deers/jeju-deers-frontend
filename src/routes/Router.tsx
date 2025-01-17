@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "../pages/MainPage";
-// import NotFound from "../pages/NotFound";
 import AboutPage from "../pages/club/AboutPage";
 import OrganizationPage from "../pages/club/OrganizationPage";
 import PlayerPage from "~/pages/club/PlayerPage";
@@ -24,10 +23,13 @@ import BoardDetailPage from "~/pages/board/BoardDetailPage";
 import BoardWritePage from "~/pages/common/BoardWritePage";
 import AdminPage from "~/pages/admin/AdminPage";
 import BoardUpdatePage from "~/pages/common/BoardUpdatePage";
+import NotFound from "~/pages/NotFound";
+import RedirectHandler from "~/RedirectHandler";
 
 const Router = () => {
   return (
     <BrowserRouter basename="/jeju-deers-frontend">
+      <RedirectHandler />
       <Routes>
         <Route path="admin" element={<AdminPage />} />
 
@@ -49,8 +51,8 @@ const Router = () => {
             <Route path="schedule" element={<SchedulePage />} />
             <Route path="news" element={<NewsPage />} />
             <Route path=":section/write" element={<BoardWritePage />} />
-            <Route path=":section/board_detail" element={<BoardDetailPage />} />
             <Route path=":section/update/:id" element={<BoardUpdatePage />} />
+            <Route path=":section/board/:id" element={<BoardDetailPage />} />
           </Route>
 
           <Route path="teamroom">
@@ -61,8 +63,8 @@ const Router = () => {
             <Route path="playbook" element={<PlaybookPage />} />
             <Route path="membership_fee" element={<MembershipFeePage />} />
             <Route path=":section/write" element={<BoardWritePage />} />
-            <Route path=":section/board_detail" element={<BoardDetailPage />} />
             <Route path=":section/update/:id" element={<BoardUpdatePage />} />
+            <Route path=":section/board/:id" element={<BoardDetailPage />} />
           </Route>
 
           <Route path="community">
@@ -70,12 +72,12 @@ const Router = () => {
             <Route path="media" element={<MediaPage />} />
             <Route path="support" element={<SupportPage />} />
             <Route path=":section/write" element={<BoardWritePage />} />
-            <Route path=":section/board_detail" element={<BoardDetailPage />} />
             <Route path=":section/update/:id" element={<BoardUpdatePage />} />
+            <Route path=":section/board/:id" element={<BoardDetailPage />} />
           </Route>
         </Route>
 
-        <Route path="*" element={<Base />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
