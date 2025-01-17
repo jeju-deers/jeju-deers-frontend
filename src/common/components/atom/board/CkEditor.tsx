@@ -31,9 +31,10 @@ const LICENSE_KEY = import.meta.env.LICENSE_KEY;
 
 interface Props {
   onChange: (data: string) => void;
+  content: string;
 }
 
-const CkEditor = ({ onChange }: Props) => {
+const CkEditor = ({ onChange, content }: Props) => {
   const editorContainerRef = useRef(null);
   const editorRef = useRef(null);
   const [isLayoutReady, setIsLayoutReady] = useState(false);
@@ -138,7 +139,7 @@ const CkEditor = ({ onChange }: Props) => {
         options: ["alignBlockLeft", "block", "alignBlockRight"],
       },
     },
-    initialData: "",
+    initialData: content,
     language: "ko",
     licenseKey: LICENSE_KEY,
     link: {
@@ -166,6 +167,7 @@ const CkEditor = ({ onChange }: Props) => {
             <CKEditor
               editor={ClassicEditor}
               config={editorConfig}
+              data={content}
               onChange={(_, editor) => {
                 const data = editor.getData();
                 onChange(data);

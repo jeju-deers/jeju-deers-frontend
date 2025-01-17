@@ -84,7 +84,7 @@ const BoardUpdate = ({ singleBoardId }: Props) => {
         />
       </WriteTitleBox>
       <WriteContentBox>
-        <CkEditor onChange={(data) => setContent(data)} />
+        <CkEditor content={content} onChange={(data) => setContent(data)} />
       </WriteContentBox>
     </BoardUpdateLayout>
   );
