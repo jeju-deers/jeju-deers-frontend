@@ -35,6 +35,7 @@ import useGetUserList from "~/hooks/admin/query/useGetUserList";
 import ErrorMessage from "~/common/components/atom/ErrorMessage";
 import Pagination from "~/common/components/molecules/board/Pagination";
 import useDeleteUserList from "~/hooks/admin/query/mutate/useDeleteUserList";
+import { Link } from "react-router-dom";
 
 interface User {
   userId: string;
@@ -198,9 +199,11 @@ const AdminPage = () => {
                     <ListItemSection basis="9.4%" text={permission || "일반 회원"} />
                     <ListItemSection basis="38.1%" text={updatedAt || "2024.08.23. 14:10"} />
                     <ListSectionBox>
-                      <AccountEditButton>
-                        <ListItemTextSpan>정보수정</ListItemTextSpan>
-                      </AccountEditButton>
+                      <Link to={`./update/${userId}`}>
+                        <AccountEditButton>
+                          <ListItemTextSpan>정보수정</ListItemTextSpan>
+                        </AccountEditButton>
+                      </Link>
                     </ListSectionBox>
                   </ListItemBox>
                 ),
