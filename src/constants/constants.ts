@@ -1,0 +1,1 @@
+export const ADMIN_USER_COUNT_PER_PAGE = 25;

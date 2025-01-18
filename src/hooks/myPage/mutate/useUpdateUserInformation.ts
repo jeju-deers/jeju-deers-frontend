@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-import { GetUserInformationProps } from "~/api/types/users";
+// import { GetUserInformationProps } from "~/api/types/users";
 import { putUserInformation } from "~/api/users";
 
 const useUpdateUserInformation = (userId: string | null, token: string | null) => {

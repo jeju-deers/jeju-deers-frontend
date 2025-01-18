@@ -1,5 +1,6 @@
 import tw from "twin.macro";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const BoardBox = styled.div`
   ${tw`
@@ -67,12 +68,20 @@ export const BoardItemBox = styled.div`
   }
 `;
 
+export const BoardLink = styled(Link)`
+  ${tw`
+    flex
+    w-full
+  `}
+`;
+
 export const BoardRowBox = styled.div`
   ${tw`
     flex
     font-normal
     border-y
     border-gray-200
+    relative
   `}
 
   & > *:nth-child(1) {
@@ -105,4 +114,19 @@ export const BoardRowBox = styled.div`
       min-w-[8.33%]
     `}
   }
+`;
+
+const Button = styled.button`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 5px 10px;
+`;
+
+export const EditButton = styled(Button)`
+  right: -20px;
+`;
+
+export const DeleteButton = styled(Button)`
+  right: -70px;
 `;
