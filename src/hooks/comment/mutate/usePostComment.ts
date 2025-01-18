@@ -1,4 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { postComment } from "~/api/comment";
 
@@ -11,16 +11,17 @@ interface PostCommentProps {
 }
 
 const usePostComment = () => {
+  const queryClient = useQueryClient();
+
   const mutation = useMutation({
     mutationFn: ({ postId, name, belong, content, token }: PostCommentProps) =>
       postComment({ postId, name, belong, content, token }),
-    onSuccess: () => {
+    onSuccess: (_, { postId }) => {
       console.log(`댓글 작성 성공`);
-      console.dir();
+      queryClient.invalidateQueries({ queryKey: ["comments", postId] });
     },
     onError: (error: Error) => {
       console.log(`댓글 작성 실패, error: ${error}`);
-      console.dir(error);
 
       if (!axios.isAxiosError(error)) {
         return;
