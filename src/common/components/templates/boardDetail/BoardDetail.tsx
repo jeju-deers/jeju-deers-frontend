@@ -150,19 +150,26 @@ const BoardDetail = ({ singleBoardId, token }: Props) => {
         <ContentBox dangerouslySetInnerHTML={{ __html: content }} />
         <Text text="댓글" className="text-2xl font-semibold" />
         {commentsData.map(
-          ({ postId, commentId, name, belong, createdAt, content }: Comments, index: any) => (
-            <>
-              {index != 0 && <CommentSeparateLineBox />}
-              <CommentBox key={postId + "-" + commentId}>
-                <CommentAuthorBox>
-                  <Text text={name} className="text-xl font-semibold" />
-                  <Text text={belong} className="text-xl text-blue" />
-                </CommentAuthorBox>
-                <Text text={content} className="text-xl" />
-                <Text text={createdAt} className="text-xl text-gray-450" />
-              </CommentBox>
-            </>
-          ),
+          ({ postId, commentId, name, belong, createdAt, content }: Comments, index: any) => {
+            const { year, month, day, hours, minutes } = useFormatKoreanTime(createdAt);
+
+            return (
+              <>
+                {index !== 0 && <CommentSeparateLineBox />}
+                <CommentBox key={`${postId}-${commentId}`}>
+                  <CommentAuthorBox>
+                    <Text text={name} className="text-xl font-semibold" />
+                    <Text text={belong} className="text-xl text-blue" />
+                  </CommentAuthorBox>
+                  <Text text={content} className="text-xl" />
+                  <Text
+                    text={`${year}.${month}.${day}. ${hours}:${minutes}`}
+                    className="text-xl text-gray-450"
+                  />
+                </CommentBox>
+              </>
+            );
+          },
         )}
         <CommentFieldBox>
           <CommentInformationBox>
