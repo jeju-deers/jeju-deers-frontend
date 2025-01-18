@@ -41,21 +41,7 @@ interface Props {
 
 const BoardDetail = ({ singleBoardId, token }: Props) => {
   const { singleBoard, isLoading } = useGetSingleBoard(singleBoardId);
-  const {
-    data: commentsData = [],
-    isError,
-    error,
-    isSuccess,
-  } = useGetComments({ postId: singleBoardId, token });
-
-  if (isError) {
-    console.log(error);
-  }
-
-  if (isSuccess) {
-    console.log("댓글 조회 성공");
-    console.log(commentsData);
-  }
+  const { data: commentsData = [] } = useGetComments({ postId: singleBoardId, token });
 
   const { mutate: postComment } = usePostComment();
 
@@ -65,11 +51,20 @@ const BoardDetail = ({ singleBoardId, token }: Props) => {
     return <PendingMessage />;
   }
 
-  const { title, content, owner, belong, type, createdAt, views } = singleBoard;
+  const {
+    title,
+    content,
+    owner: boardOwner,
+    belong: boardBelong,
+    type,
+    createdAt,
+    views,
+  } = singleBoard;
 
   const { year, month, day, hours, minutes } = useFormatKoreanTime(createdAt);
 
   const loginOwner = localStorage.getItem("owner");
+  const loginBelong = localStorage.getItem("belong");
 
   const findBoardRoute = (type: string) => {
     for (const category in TAB_MENU_ITEMS) {
@@ -99,9 +94,13 @@ const BoardDetail = ({ singleBoardId, token }: Props) => {
       return;
     }
 
-    console.log(comment);
-
-    postComment({ postId: singleBoardId, name: loginOwner, belong, content: comment, token });
+    postComment({
+      postId: singleBoardId,
+      name: loginOwner,
+      belong: loginBelong || "소속없음",
+      content: comment,
+      token,
+    });
   };
 
   return (
@@ -113,11 +112,7 @@ const BoardDetail = ({ singleBoardId, token }: Props) => {
       <PostDetailBox>
         <Link to={findBoardRoute(type)}>
           <DetailToBoardBox>
-            <Text
-              text={type}
-              // image={nextArrowImage}
-              className="text-lg text-green-light"
-            />
+            <Text text={type} className="text-lg text-green-light" />
             <img src={nextArrowImage} />
           </DetailToBoardBox>
         </Link>
@@ -127,9 +122,9 @@ const BoardDetail = ({ singleBoardId, token }: Props) => {
         <PostInformationBox>
           <CreationInformationBox>
             <AuthorBox>
-              <Text text={owner || "알 수 없음"} className="text-sm-base" />
+              <Text text={boardOwner || "알 수 없음"} className="text-sm-base" />
               {/* TODO: [2024-10-28] 게시물 등록 시, belong(소속) 데이터를 전달 받아야합니다. 아직 글쓰기 작업에서 belong을 전달 하는 코드가 구현되지 않아 belong을 전달 받지 못해, 이 경우 "소속없음"을 출력하도록 구현하였습니다.*/}
-              <Text text={belong || "소속없음"} className="text-sm-base text-blue" />
+              <Text text={boardBelong || "소속없음"} className="text-sm-base text-blue" />
             </AuthorBox>
             <Text
               text={`${year}년 ${month}월 ${day}일 ${hours}:${minutes}`}
@@ -144,7 +139,7 @@ const BoardDetail = ({ singleBoardId, token }: Props) => {
             <StatsCountBox>
               <Text text="댓글수" className="text-4.5" />
               {/* TODO: [2025-01-18] 게시물 조회 시, 댓글 수에 대한 데이터를 전달 받아야합니다. */}
-              <Text text="10" className="flex justify-end text-4.5 w-7" />
+              <Text text={commentsData.length} className="flex justify-end text-4.5 w-7" />
             </StatsCountBox>
           </PostStatsBox>
         </PostInformationBox>

@@ -5,7 +5,7 @@ import { postComment } from "~/api/comment";
 interface PostCommentProps {
   postId: string;
   name: string;
-  belong?: string;
+  belong: string;
   content: string;
   token: string;
 }
