@@ -143,6 +143,7 @@ const BoardDetail = ({ singleBoardId, token }: Props) => {
             </StatsCountBox>
             <StatsCountBox>
               <Text text="댓글수" className="text-4.5" />
+              {/* TODO: [2025-01-18] 게시물 조회 시, 댓글 수에 대한 데이터를 전달 받아야합니다. */}
               <Text text="10" className="flex justify-end text-4.5 w-7" />
             </StatsCountBox>
           </PostStatsBox>
