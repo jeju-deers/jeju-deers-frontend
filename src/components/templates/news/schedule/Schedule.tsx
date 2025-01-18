@@ -1,84 +1,64 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GameSchedule from "~/components/atoms/news/schedule/GameSchedule";
 import { ScheduleLayout, AddButton } from "./ScheduleStyles";
 import teamlogo from "~/assets/images/homepage_logo_top.svg";
-
-interface GameScheduleData {
-  id: number;
-  datetime: string;
-  location: string;
-  opposingTeam: string;
-  opposingTeamImage: string;
-  score1: string;
-  score2: string;
-  isEditing: boolean;
-}
+import { GameScheduleData } from "~/api/types/schedule";
+import { GetSchedules } from "~/api/schedule";
 
 const Schedule = () => {
-  const [games, setGames] = useState<GameScheduleData[]>([
-    {
-      id: 1,
-      datetime: "2024-07-25 13:00",
-      location: "제주대학교 대운동장",
-      opposingTeam: "HYU LIONS",
-      opposingTeamImage: teamlogo,
-      score1: "0",
-      score2: "0",
-      isEditing: false,
-    },
-  ]);
+  const [games, setGames] = useState<GameScheduleData[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const addGame = () => {
-    setGames((prevGames) => [
-      ...prevGames,
-      {
-        id: Date.now(),
-        datetime: "", // 기본값
-        location: "", // 기본값
-        opposingTeam: "", // 기본값
-        opposingTeamImage: teamlogo,
-        score1: "", // 기본값
-        score2: "", // 기본값
-        isEditing: true, // 추가 시 편집 상태로
-      },
-    ]);
-  };
+  useEffect(() => {
+    const fetchSchedules = async () => {
+      try {
+        const data = await GetSchedules();
+        setGames(data);
+      } catch (err) {
+        setError("일정 정보를 가져오는 데 실패했습니다.");
+        console.dir(err);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const updateGame = (id: number, updatedData: Partial<GameScheduleData>) => {
-    setGames((prevGames) =>
-      prevGames.map((game) =>
-        game.id === id ? { ...game, ...updatedData, isEditing: false } : game,
-      ),
-    );
-  };
+    fetchSchedules();
+  }, []);
 
-  const editGame = (id: number) => {
-    setGames((prevGames) =>
-      prevGames.map((game) => (game.id === id ? { ...game, isEditing: true } : game)),
-    );
-  };
+  const addGame = () => {};
 
-  const deleteGame = (id: number) => {
-    setGames((prevGames) => prevGames.filter((game) => game.id !== id));
-  };
+  const updateGame = (id: number, updatedData: Partial<GameScheduleData>) => {};
+
+  const editGame = (id: number) => {};
+
+  const deleteGame = (id: number) => {};
 
   return (
     <ScheduleLayout>
-      {games.map((game) => (
-        <GameSchedule
-          key={game.id}
-          datetime={game.datetime}
-          location={game.location}
-          opposingTeam={game.opposingTeam}
-          opposingTeamImage={game.opposingTeamImage}
-          score1={game.score1}
-          score2={game.score2}
-          isEditing={game.isEditing}
-          onSave={(updatedData) => updateGame(game.id, updatedData)}
-          onEdit={() => editGame(game.id)}
-          onDelete={() => deleteGame(game.id)}
-        />
-      ))}
+      {loading ? (
+        <div>로딩 중...</div>
+      ) : error ? (
+        <div>{error}</div>
+      ) : games.length === 0 ? (
+        <div>일정이 없습니다. 추가해주세요.</div>
+      ) : (
+        games.map((game) => (
+          <GameSchedule
+            key={game.id}
+            datetime={game.datetime}
+            location={game.location}
+            opposingTeam={game.opposingTeam}
+            opposingTeamImage={game.opposingTeamImage}
+            score1={game.score1}
+            score2={game.score2}
+            isEditing={game.isEditing}
+            onSave={(updatedData) => updateGame(game.id, updatedData)}
+            onEdit={() => editGame(game.id)}
+            onDelete={() => deleteGame(game.id)}
+          />
+        ))
+      )}
       <AddButton onClick={addGame}>추가하기</AddButton>
     </ScheduleLayout>
   );
