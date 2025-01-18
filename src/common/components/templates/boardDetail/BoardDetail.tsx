@@ -28,7 +28,7 @@ import useGetSingleBoard from "~/hooks/board/query/useGetSingleBoard";
 import PendingMessage from "../../atom/PendingMessage";
 import { Link } from "react-router-dom";
 import TAB_MENU_ITEMS, { TabMenuItems } from "~/constants/tabMenuItems";
-import useFormatKoreanTime from "~/hooks/board/useFormatKoreanTime";
+import useFormatKoreanTime from "~/common/hooks/useFormatKoreanTime";
 import { useState } from "react";
 import useGetComments from "~/hooks/comment/query/useGetComments";
 import usePostComment from "~/hooks/comment/mutate/usePostComment";
