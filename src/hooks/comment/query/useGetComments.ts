@@ -9,7 +9,11 @@ interface Props {
 const useGetComments = ({ postId, token }: Props) => {
   const { data, isLoading, isError, error, isSuccess } = useQuery({
     queryKey: ["comments", postId],
-    queryFn: () => getComments({ postId, token }),
+    queryFn: async () => {
+      const response = await getComments({ postId, token });
+
+      return response.data;
+    },
   });
 
   return { data, isLoading, isError, error, isSuccess };

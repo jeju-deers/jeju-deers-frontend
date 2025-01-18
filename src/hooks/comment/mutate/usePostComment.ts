@@ -16,9 +16,11 @@ const usePostComment = () => {
       postComment({ postId, name, belong, content, token }),
     onSuccess: () => {
       console.log(`댓글 작성 성공`);
+      console.dir();
     },
     onError: (error: Error) => {
       console.log(`댓글 작성 실패, error: ${error}`);
+      console.dir(error);
 
       if (!axios.isAxiosError(error)) {
         return;

@@ -29,10 +29,10 @@ import PendingMessage from "../../atom/PendingMessage";
 import { Link } from "react-router-dom";
 import TAB_MENU_ITEMS, { TabMenuItems } from "~/constants/tabMenuItems";
 import useFormatKoreanTime from "~/hooks/board/useFormatKoreanTime";
-import COMMENT_TEMPORORY_DATA from "~/constants/commentTemporaryData";
 import { useState } from "react";
 import useGetComments from "~/hooks/comment/query/useGetComments";
 import usePostComment from "~/hooks/comment/mutate/usePostComment";
+import { Comments } from "~/api/types/comments";
 
 interface Props {
   singleBoardId: string;
@@ -42,7 +42,7 @@ interface Props {
 const BoardDetail = ({ singleBoardId, token }: Props) => {
   const { singleBoard, isLoading } = useGetSingleBoard(singleBoardId);
   const {
-    data: commentsDatas = "",
+    data: commentsData = [],
     isError,
     error,
     isSuccess,
@@ -54,7 +54,7 @@ const BoardDetail = ({ singleBoardId, token }: Props) => {
 
   if (isSuccess) {
     console.log("댓글 조회 성공");
-    console.log(commentsDatas);
+    console.log(commentsData);
   }
 
   const { mutate: postComment } = usePostComment();
@@ -64,9 +64,6 @@ const BoardDetail = ({ singleBoardId, token }: Props) => {
   if (isLoading) {
     return <PendingMessage />;
   }
-
-  // TODO: [2024-10-27] 임시 댓글 목록 상수 데이터를 이용하여 구현. 댓글 조회 api 구현 이후 수정 및 삭제 필요.
-  const commentData = COMMENT_TEMPORORY_DATA;
 
   const { title, content, owner, belong, type, createdAt, views } = singleBoard;
 
@@ -152,19 +149,21 @@ const BoardDetail = ({ singleBoardId, token }: Props) => {
         </PostInformationBox>
         <ContentBox dangerouslySetInnerHTML={{ __html: content }} />
         <Text text="댓글" className="text-2xl font-semibold" />
-        {commentData.map(({ name, belong, create_at: createAt, content }, index) => (
-          <>
-            {index != 0 && <CommentSeparateLineBox />}
-            <CommentBox key={index + "-" + content}>
-              <CommentAuthorBox>
-                <Text text={name} className="text-xl font-semibold" />
-                <Text text={belong} className="text-xl text-blue" />
-              </CommentAuthorBox>
-              <Text text={content} className="text-xl" />
-              <Text text={createAt} className="text-xl text-gray-450" />
-            </CommentBox>
-          </>
-        ))}
+        {commentsData.map(
+          ({ postId, commentId, name, belong, createdAt, content }: Comments, index: any) => (
+            <>
+              {index != 0 && <CommentSeparateLineBox />}
+              <CommentBox key={postId + "-" + commentId}>
+                <CommentAuthorBox>
+                  <Text text={name} className="text-xl font-semibold" />
+                  <Text text={belong} className="text-xl text-blue" />
+                </CommentAuthorBox>
+                <Text text={content} className="text-xl" />
+                <Text text={createdAt} className="text-xl text-gray-450" />
+              </CommentBox>
+            </>
+          ),
+        )}
         <CommentFieldBox>
           <CommentInformationBox>
             <Text text={loginOwner || "알 수 없음"} className="text-xl" />
