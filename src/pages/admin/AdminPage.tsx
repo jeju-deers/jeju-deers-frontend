@@ -199,7 +199,7 @@ const AdminPage = () => {
                     <ListItemSection basis="9.4%" text={permission || "일반 회원"} />
                     <ListItemSection basis="38.1%" text={updatedAt || "2024.08.23. 14:10"} />
                     <ListSectionBox>
-                      <Link to={`./update/${userId}`}>
+                      <Link to={`./edit/${userId}`}>
                         <AccountEditButton>
                           <ListItemTextSpan>정보수정</ListItemTextSpan>
                         </AccountEditButton>
