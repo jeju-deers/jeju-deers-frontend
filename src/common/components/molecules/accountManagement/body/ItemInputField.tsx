@@ -1,8 +1,8 @@
+import ItemTitle from "~/common/components/atom/accountManagement/body/ItemTitle";
 import { ItemInputFieldBox } from "./ItemInputFieldStyles";
-import ItemInput from "~/components/atoms/myPage/body/ItemInput";
-import ItemCondition from "~/components/atoms/myPage/body/ItemCondition";
-import ItemTitle from "~/components/atoms/myPage/body/ItemTitle";
 import { ChangeEvent } from "react";
+import ItemInput from "~/common/components/atom/accountManagement/body/ItemInput";
+import ItemCondition from "~/common/components/atom/accountManagement/body/ItemCondition";
 
 interface Props {
   id: string;
