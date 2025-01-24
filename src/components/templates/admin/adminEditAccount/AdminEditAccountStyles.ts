@@ -36,10 +36,13 @@ export const ContentBoxWrap = styled.div`
 export const ContentBox = styled.div`
   ${tw`
     flex-1
+    flex
+    flex-col
     m-6
     px-12
     rounded-lg-xl
     bg-white
+    items-center
   `}
 `;
 
@@ -65,6 +68,8 @@ export const AdminEditAccountForm = styled.form`
 export const BasicItemsInputFieldWrap = styled.div`
   ${tw`
     w-full
+    items-center
+    justify-center
     pt-12
   `}
 `;
