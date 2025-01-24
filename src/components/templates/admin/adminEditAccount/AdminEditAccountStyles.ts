@@ -52,3 +52,33 @@ export const SubHeaderWrap = styled.div`
     border-green-dark
   `}
 `;
+
+export const AdminEditAccountForm = styled.form`
+  ${tw`
+    w-235
+    flex
+    flex-col
+    items-center
+  `}
+`;
+
+export const BasicItemsInputFieldWrap = styled.div`
+  ${tw`
+    w-full
+    pt-12
+  `}
+`;
+
+export const OptionItemsInputFieldWrap = styled.div`
+  ${tw`
+    w-full
+    pb-12
+  `}
+`;
+
+export const FormActionButtonBox = styled.div`
+  ${tw`
+    flex
+    gap-4
+  `}
+`;
