@@ -61,10 +61,7 @@ const AdminEditAccount = ({ userId }: Props) => {
             </SubHeaderWrap>
             <AdminEditAccountForm id="myPageSubmit">
               <BasicItemsInputFieldWrap>
-                <BasicItemsSelectField
-                  userInformation={formData}
-                  onChangeInput={handleChangeInput}
-                />
+                <BasicItemsSelectField />
                 <BasicItemsInputField
                   userInformation={formData}
                   onChangeInput={handleChangeInput}

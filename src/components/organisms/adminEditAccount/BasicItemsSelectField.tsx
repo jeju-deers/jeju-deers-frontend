@@ -1,44 +1,43 @@
-import ItemInputField from "~/common/components/molecules/accountManagement/body/ItemInputField";
 import { BasicItemsSelectFieldBox } from "./BasicItemsSelectFieldStyles";
-import { ChangeEvent } from "react";
+import { useState } from "react";
+import BELONG_DATA from "~/constants/belongData";
+import USER_TYPE_DATA from "~/constants/userTypeData";
+import AUTHORITY_DATA from "~/constants/authorityData";
+import ItemSelectField from "~/components/molecules/adminEditAccount/ItemSelectField";
 
-interface Props {
-  userInformation: {
-    adminEditAccountBelong: string;
-    adminEditAccountRole?: string;
-    adminEditAccountResponsibility: string;
+const BasicItemsSelectField = () => {
+  const [selectOptions, setSelectOptions] = useState({
+    belong: "",
+    role: "",
+    permission: "",
+  });
+
+  const handleSelectOptionsChange = (selectOptions: string) => (value: string) => {
+    setSelectOptions((previous) => ({ ...previous, [selectOptions]: value }));
   };
-  onChangeInput: (event: ChangeEvent<HTMLInputElement>) => void;
-}
-
-const BasicItemsSelectField = ({ userInformation, onChangeInput }: Props) => {
-  const { adminEditAccountBelong, adminEditAccountRole, adminEditAccountResponsibility } =
-    userInformation;
 
   return (
     <BasicItemsSelectFieldBox>
-      <ItemInputField
+      <ItemSelectField
         id="adminEditAccountBelong"
         text="소속"
-        value={adminEditAccountBelong}
         required={true}
-        pattern="^[A-Za-z\uAC00-\uD7A3]*$"
-        onChange={onChangeInput}
+        options={BELONG_DATA}
+        onOptionSelected={handleSelectOptionsChange}
       />
-      <ItemInputField
+      <ItemSelectField
         id="adminEditAccountRole"
         text="역할"
-        value={adminEditAccountRole}
         required={true}
-        pattern="^[A-Za-z\d$@$!%*#?&\uAC00-\uD7A3]*$"
-        onChange={onChangeInput}
+        options={USER_TYPE_DATA}
+        onOptionSelected={handleSelectOptionsChange}
       />
-      <ItemInputField
+      <ItemSelectField
         id="adminEditAccountResponsibility"
         text="권한"
-        value={adminEditAccountResponsibility}
         required={true}
-        onChange={onChangeInput}
+        options={AUTHORITY_DATA}
+        onOptionSelected={handleSelectOptionsChange}
       />
     </BasicItemsSelectFieldBox>
   );
