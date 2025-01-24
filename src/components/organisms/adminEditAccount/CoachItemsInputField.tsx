@@ -23,7 +23,7 @@ const CoachItemsInputField = ({ userInformation, onChangeInput }: Props) => {
   return (
     <CoachItemsInputFieldBox>
       <ItemInputField
-        id="adminEdiAccountSchool"
+        id="adminEditAccountSchool"
         text="출신학교"
         value={adminEditAccountSchool}
         required={true}
@@ -31,7 +31,7 @@ const CoachItemsInputField = ({ userInformation, onChangeInput }: Props) => {
         onChange={onChangeInput}
       />
       <ItemInputField
-        id="adminEditUserStudentId"
+        id="adminEditAccountStudentId"
         text="학번"
         value={adminEditAccountStudentId}
         required={true}
@@ -39,7 +39,7 @@ const CoachItemsInputField = ({ userInformation, onChangeInput }: Props) => {
         onChange={onChangeInput}
       />
       <ItemInputField
-        id="adminEditUserPositions"
+        id="adminEditAccountPositions"
         text="포지션"
         value={adminEditAccountPositions}
         required={true}
@@ -48,7 +48,7 @@ const CoachItemsInputField = ({ userInformation, onChangeInput }: Props) => {
         onChange={onChangeInput}
       />
       <ItemInputField
-        id="adminEditUserInChange"
+        id="adminEditAccountInChange"
         text="담당"
         value={adminEditAccountInChange}
         required={true}

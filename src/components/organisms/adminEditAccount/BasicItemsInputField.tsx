@@ -25,7 +25,7 @@ const BasicItemsInputField = ({ userInformation, onChangeInput }: Props) => {
         onChange={onChangeInput}
       />
       <ItemInputField
-        id="adminEditUserNickName"
+        id="adminEditAccountNickname"
         text="닉네임"
         value={adminEditAccountNickname}
         required={false}
