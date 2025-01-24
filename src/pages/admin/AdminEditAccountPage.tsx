@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import ErrorMessage from "~/common/components/atom/ErrorMessage";
-import AdminEditAccount from "~/components/templates/admin/AdminEditAccount";
+import AdminEditAccount from "~/components/templates/admin/adminEditAccount/AdminEditAccount";
 
 const AdminEditAccountPage = () => {
   const { id } = useParams();
