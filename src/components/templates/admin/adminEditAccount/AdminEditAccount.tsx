@@ -30,9 +30,10 @@ interface Props {
 const AdminEditAccount = ({ userId }: Props) => {
   const navigate = useNavigate();
 
-  const { formData, handleChangeInput } = useEditUserAccount(USER_INFORMATION_TEMPORORY_DATA[0]);
+  const { formData, handleChangeInput } = useEditUserAccount(USER_INFORMATION_TEMPORORY_DATA[1]);
 
-  const userType = "player";
+  const userType = formData.adminEditAccountUserType;
+
   const handleClickCancel = () => {
     navigate("/admin");
   };
