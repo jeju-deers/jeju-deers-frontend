@@ -5,11 +5,17 @@ import USER_TYPE_DATA from "~/constants/userTypeData";
 import AUTHORITY_DATA from "~/constants/authorityData";
 import ItemSelectField from "~/components/molecules/adminEditAccount/ItemSelectField";
 
-const BasicItemsSelectField = () => {
+interface Props {
+  belong: string;
+  role: string;
+  permission: string;
+}
+
+const BasicItemsSelectField = ({ belong, role, permission }: Props) => {
   const [selectOptions, setSelectOptions] = useState({
-    belong: "",
-    role: "",
-    permission: "",
+    belong: belong || "전체",
+    role: role || "전체",
+    permission: permission || "전체",
   });
 
   const handleSelectOptionsChange = (selectOptions: string) => (value: string) => {
@@ -21,7 +27,7 @@ const BasicItemsSelectField = () => {
       <ItemSelectField
         id="adminEditAccountBelong"
         title="소속"
-        selectText=""
+        selectText={selectOptions.belong}
         required={true}
         options={BELONG_DATA}
         onOptionSelected={handleSelectOptionsChange}
@@ -29,7 +35,7 @@ const BasicItemsSelectField = () => {
       <ItemSelectField
         id="adminEditAccountRole"
         title="역할"
-        selectText=""
+        selectText={selectOptions.role}
         required={true}
         options={USER_TYPE_DATA}
         onOptionSelected={handleSelectOptionsChange}
@@ -37,7 +43,7 @@ const BasicItemsSelectField = () => {
       <ItemSelectField
         id="adminEditAccountResponsibility"
         title="권한"
-        selectText=""
+        selectText={selectOptions.permission}
         required={true}
         options={AUTHORITY_DATA}
         onOptionSelected={handleSelectOptionsChange}
