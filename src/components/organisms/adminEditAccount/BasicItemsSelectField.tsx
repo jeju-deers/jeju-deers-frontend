@@ -9,18 +9,18 @@ interface Props {
   userInformation: {
     adminEditAccountBelong: string;
     adminEditAccountRole: string;
-    adminEditAccountResponsibility: string;
+    adminEditAccountPermission: string;
   };
 }
 
 const BasicItemsSelectField = ({ userInformation }: Props) => {
-  const { adminEditAccountBelong, adminEditAccountRole, adminEditAccountResponsibility } =
+  const { adminEditAccountBelong, adminEditAccountRole, adminEditAccountPermission } =
     userInformation;
 
   const [selectOptions, setSelectOptions] = useState({
     belong: adminEditAccountBelong || "전체",
     role: adminEditAccountRole || "전체",
-    permission: adminEditAccountResponsibility || "전체",
+    permission: adminEditAccountPermission || "전체",
   });
 
   const handleSelectOptionsChange =
@@ -48,7 +48,7 @@ const BasicItemsSelectField = ({ userInformation }: Props) => {
         onOptionSelected={handleSelectOptionsChange}
       />
       <ItemSelectField
-        id="adminEditAccountResponsibility"
+        id="adminEditAccountPermission"
         title="권한"
         selectText={selectOptions.permission}
         required={true}

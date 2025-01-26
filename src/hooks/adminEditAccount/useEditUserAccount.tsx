@@ -14,7 +14,7 @@ const useEditUserAccount = (userInformation: any = {}) => {
     adminEditAccountInChange: userInformation.inChange || "",
     adminEditAccountBelong: userInformation.belong,
     adminEditAccountRole: userInformation.role,
-    adminEditAccountResponsibility: userInformation.responsibility || "",
+    adminEditAccountPermission: userInformation.permission || "",
   });
   console.log("userInfo2:", userInformation);
 
