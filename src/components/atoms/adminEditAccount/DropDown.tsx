@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import {
   DropDownBox,
   DropDownButton,
@@ -20,7 +20,8 @@ const DropDown = ({ text, options, onOptionSelected }: Props) => {
   const [isDropdownView, setDropDownView] = useState(false);
   const [selectedOption, setSelectedOption] = useState(text);
 
-  const handleClickContainer = () => {
+  const handleClickContainer = (event: MouseEvent<HTMLLabelElement>) => {
+    event.preventDefault();
     setDropDownView(!isDropdownView);
   };
 

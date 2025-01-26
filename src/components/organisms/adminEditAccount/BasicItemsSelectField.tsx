@@ -3,7 +3,7 @@ import BELONG_DATA from "~/constants/belongData";
 import USER_TYPE_DATA from "~/constants/userTypeData";
 import AUTHORITY_DATA from "~/constants/authorityData";
 import ItemSelectField from "~/components/molecules/adminEditAccount/ItemSelectField";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 interface Props {
   userInformation: {
@@ -23,9 +23,11 @@ const BasicItemsSelectField = ({ userInformation }: Props) => {
     permission: adminEditAccountResponsibility || "전체",
   });
 
-  const handleSelectOptionsChange = (selectOptions: string) => (value: string) => {
-    setSelectOptions((previous) => ({ ...previous, [selectOptions]: value }));
-  };
+  const handleSelectOptionsChange =
+    (selectOptions: string) => (event: ChangeEvent<HTMLSelectElement>) => {
+      const { value } = event.target;
+      setSelectOptions((previous) => ({ ...previous, [selectOptions]: value }));
+    };
 
   return (
     <BasicItemsSelectFieldBox>
