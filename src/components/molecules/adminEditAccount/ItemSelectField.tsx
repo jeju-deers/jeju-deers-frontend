@@ -5,18 +5,27 @@ import DropDown from "~/components/atoms/adminEditAccount/DropDown";
 
 interface Props {
   id: string;
-  text: string;
+  title: string;
+  selectText: string;
   options: string[];
   required: boolean;
   condition?: string;
   onOptionSelected: (value: string) => void;
 }
 
-const ItemSelectField = ({ id, text, options, required, condition, onOptionSelected }: Props) => {
+const ItemSelectField = ({
+  id,
+  title,
+  selectText,
+  options,
+  required,
+  condition,
+  onOptionSelected,
+}: Props) => {
   return (
     <ItemInputFieldBox>
-      <ItemTitle id={id} text={text} required={required} />
-      <DropDown text={text} options={options} onOptionSelected={onOptionSelected} />
+      <ItemTitle id={id} text={title} required={required} />
+      <DropDown text={selectText} options={options} onOptionSelected={onOptionSelected} />
       {condition && <ItemCondition text={condition} />}
     </ItemInputFieldBox>
   );
