@@ -1,21 +1,26 @@
 import { BasicItemsSelectFieldBox } from "./BasicItemsSelectFieldStyles";
-import { useState } from "react";
 import BELONG_DATA from "~/constants/belongData";
 import USER_TYPE_DATA from "~/constants/userTypeData";
 import AUTHORITY_DATA from "~/constants/authorityData";
 import ItemSelectField from "~/components/molecules/adminEditAccount/ItemSelectField";
+import { useState } from "react";
 
 interface Props {
-  belong: string;
-  role: string;
-  permission: string;
+  userInformation: {
+    adminEditAccountBelong: string;
+    adminEditAccountRole: string;
+    adminEditAccountResponsibility: string;
+  };
 }
 
-const BasicItemsSelectField = ({ belong, role, permission }: Props) => {
+const BasicItemsSelectField = ({ userInformation }: Props) => {
+  const { adminEditAccountBelong, adminEditAccountRole, adminEditAccountResponsibility } =
+    userInformation;
+
   const [selectOptions, setSelectOptions] = useState({
-    belong: belong || "전체",
-    role: role || "전체",
-    permission: permission || "전체",
+    belong: adminEditAccountBelong || "전체",
+    role: adminEditAccountRole || "전체",
+    permission: adminEditAccountResponsibility || "전체",
   });
 
   const handleSelectOptionsChange = (selectOptions: string) => (value: string) => {

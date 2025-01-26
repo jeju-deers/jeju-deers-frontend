@@ -31,12 +31,7 @@ const AdminEditAccount = ({ userInformation }: Props) => {
 
   const { formData, handleChangeInput } = useEditUserAccount(userInformation);
 
-  const {
-    adminEditAccountUserType: userType,
-    adminEditAccountBelong: belong,
-    adminEditAccountRole: role,
-    adminEditAccountResponsibility: permission,
-  } = formData;
+  const { adminEditAccountUserType: userType } = formData;
 
   const getOptionInputField = () => {
     if (userType === "player") {
@@ -65,7 +60,7 @@ const AdminEditAccount = ({ userInformation }: Props) => {
             </SubHeaderWrap>
             <AdminEditAccountForm id="myPageSubmit">
               <BasicItemsInputFieldWrap>
-                <BasicItemsSelectField belong={belong} role={role} permission={permission} />
+                <BasicItemsSelectField userInformation={formData} />
                 <BasicItemsInputField
                   userInformation={formData}
                   onChangeInput={handleChangeInput}
