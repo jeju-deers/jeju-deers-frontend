@@ -1,7 +1,6 @@
 import { ChangeEvent, useState } from "react";
 
 const useEditUserAccount = (userInformation: any = {}) => {
-  console.log("userInfo1:", userInformation);
   const [formData, setFormData] = useState({
     adminEditAccountUserType: userInformation.userType,
     adminEditAccountUserId: userInformation.userId,
@@ -16,7 +15,6 @@ const useEditUserAccount = (userInformation: any = {}) => {
     adminEditAccountRole: userInformation.role,
     adminEditAccountPermission: userInformation.permission || "",
   });
-  console.log("userInfo2:", userInformation);
 
   const handleChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
     const { id, value } = event.target;

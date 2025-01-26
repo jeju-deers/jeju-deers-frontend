@@ -9,6 +9,5 @@ export const deleteUserList = async (ids: string[]) => {
 };
 
 export const getEditAccount = async (userId: string) => {
-  console.log("getEditAccount");
   return await instance.get(`/admin/users/${userId}`);
 };
