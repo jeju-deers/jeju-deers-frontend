@@ -25,12 +25,13 @@ import {
 import teamlogo from "~/assets/images/homepage_logo_top.svg";
 
 interface Props {
-  datetime: string;
+  date: string;
   location: string;
-  opposingTeam: string;
-  opposingTeamImage: string;
-  score1: string;
-  score2: string;
+  homeTeam: string;
+  awayTeam: string;
+  homeScore: string;
+  awayScore: string;
+  awayTeamImage: string;
   isEditing: boolean;
   onSave: (updatedData: Partial<Props>) => void;
   onDelete: () => void;
@@ -38,31 +39,34 @@ interface Props {
 }
 
 const GameSchedule = ({
-  datetime,
+  date,
   location,
-  opposingTeam,
-  opposingTeamImage,
-  score1,
-  score2,
+  homeTeam,
+  awayTeam,
+  homeScore,
+  awayScore,
+  awayTeamImage,
   isEditing,
   onSave,
   onDelete,
   onEdit,
 }: Props) => {
   const [formData, setFormData] = useState({
-    datetime,
+    date,
     location,
-    opposingTeam,
-    score1: score1 || "",
-    score2: score2 || "",
+    homeTeam,
+    awayTeam,
+    homeScore: homeScore || "",
+    awayScore: awayScore || "",
   });
 
   const isFormValid =
-    formData.datetime &&
+    formData.date &&
     formData.location &&
-    formData.opposingTeam &&
-    !isNaN(Number(formData.score1)) &&
-    !isNaN(Number(formData.score2));
+    formData.homeTeam &&
+    formData.awayTeam &&
+    !isNaN(Number(formData.homeScore)) &&
+    !isNaN(Number(formData.awayScore));
 
   const handleInputChange = (field: string, value: string) => {
     // 숫자만 허용
@@ -99,8 +103,8 @@ const GameSchedule = ({
           {isEditing ? (
             <>
               <ScheduleInfomationSelect
-                value={formData.datetime}
-                onChange={(e) => handleInputChange("datetime", e.target.value)}>
+                value={formData.date}
+                onChange={(e) => handleInputChange("date", e.target.value)}>
                 <option value="" disabled>
                   날짜 및 시간 선택
                 </option>
@@ -119,7 +123,7 @@ const GameSchedule = ({
             </>
           ) : (
             <>
-              <GameDateTimeBox>{datetime.replace(" ", " - ")}</GameDateTimeBox>
+              <GameDateTimeBox>{date.replace(" ", " - ")}</GameDateTimeBox>
               <GameLocation location={location} />
             </>
           )}
@@ -128,7 +132,16 @@ const GameSchedule = ({
         <GameTeamDetailsBox>
           <OurTeamBox>
             <OurTeamImage src={teamlogo} />
-            <OurTeamSpan>JEJU DEERS</OurTeamSpan>
+            {isEditing ? (
+              <ScheduleInfomationInput
+                type="text"
+                placeholder="우리 팀"
+                value={formData.homeTeam}
+                onChange={(e) => handleInputChange("homeTeam", e.target.value)}
+              />
+            ) : (
+              <OurTeamSpan>{homeTeam}</OurTeamSpan>
+            )}
           </OurTeamBox>
           <VersusSpan>VS</VersusSpan>
           <OpposingTeamBox>
@@ -136,13 +149,13 @@ const GameSchedule = ({
               <ScheduleInfomationInput
                 type="text"
                 placeholder="상대 팀"
-                value={formData.opposingTeam}
-                onChange={(e) => handleInputChange("opposingTeam", e.target.value)}
+                value={formData.awayTeam}
+                onChange={(e) => handleInputChange("awayTeam", e.target.value)}
               />
             ) : (
-              <OpposingTeamSpan>{opposingTeam}</OpposingTeamSpan>
+              <OpposingTeamSpan>{awayTeam}</OpposingTeamSpan>
             )}
-            <OpposingTeamImage src={opposingTeamImage} />
+            <OpposingTeamImage src={awayTeamImage} />
           </OpposingTeamBox>
         </GameTeamDetailsBox>
 
@@ -152,11 +165,11 @@ const GameSchedule = ({
               <ScheduleInfomationInput
                 type="text"
                 placeholder="우리 팀 점수"
-                value={formData.score1}
-                onChange={(e) => handleInputChange("score1", e.target.value)}
+                value={formData.homeScore}
+                onChange={(e) => handleInputChange("homeScore", e.target.value)}
               />
             ) : (
-              <OurTeamScoreSpan>{score1}</OurTeamScoreSpan>
+              <OurTeamScoreSpan>{homeScore}</OurTeamScoreSpan>
             )}
           </ScoreBox>
           <VersusSpan>VS</VersusSpan>
@@ -165,11 +178,11 @@ const GameSchedule = ({
               <ScheduleInfomationInput
                 type="text"
                 placeholder="상대 팀 점수"
-                value={formData.score2}
-                onChange={(e) => handleInputChange("score2", e.target.value)}
+                value={formData.awayScore}
+                onChange={(e) => handleInputChange("awayScore", e.target.value)}
               />
             ) : (
-              <OpposingTeamScoreSpan>{score2}</OpposingTeamScoreSpan>
+              <OpposingTeamScoreSpan>{awayScore}</OpposingTeamScoreSpan>
             )}
           </ScoreBox>
         </GameResultBox>

@@ -1,10 +1,11 @@
 export interface GameScheduleData {
-  id: number;
-  datetime: string;
+  id: string;
+  date: string;
   location: string;
-  opposingTeam: string;
-  opposingTeamImage: string;
-  score1: string;
-  score2: string;
+  homeTeam: string;
+  homeScore: string;
+  awayTeam: string;
+  awayScore: string;
   isEditing: boolean;
+  awayTeamImage: string;
 }
