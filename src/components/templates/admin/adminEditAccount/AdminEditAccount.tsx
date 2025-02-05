@@ -34,11 +34,9 @@ const AdminEditAccount = ({ userInformation }: Props) => {
   const { formData, handleChangeInput } = useEditUserAccount(userInformation);
 
   const {
-    adminEditAccountUserType: userType,
     adminEditAccountUserId: userId,
     adminEditAccountBelong: belong,
-    // TODO: [2025-02-05] 백엔드에서 role이 userType으로 수정된 이후, role을 userType으로 변경해야합니다.
-    adminEditAccountUserType: role,
+    adminEditAccountUserType: userType,
     adminEditAccountPermission: permission,
     adminEditAccountName: name,
     adminEditAccountNickname: nickname,
@@ -65,7 +63,7 @@ const AdminEditAccount = ({ userInformation }: Props) => {
     putEditUserAccount({
       userId,
       belong,
-      role,
+      userType,
       permission,
       name,
       nickname,

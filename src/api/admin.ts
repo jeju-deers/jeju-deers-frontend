@@ -16,7 +16,7 @@ export const getEditAccount = async (userId: string) => {
 export const putEditAccount = async ({
   userId,
   belong,
-  role,
+  userType,
   permission,
   name,
   nickname,
@@ -27,7 +27,7 @@ export const putEditAccount = async ({
 }: PutEditAccount) => {
   return await instance.put(`/admin/users/${userId}`, {
     belong,
-    role,
+    userType,
     permission,
     name,
     nickname,

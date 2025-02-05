@@ -9,7 +9,7 @@ const usePutEditAccount = () => {
     mutationFn: ({
       userId,
       belong,
-      role,
+      userType,
       permission,
       name,
       nickname,
@@ -21,7 +21,7 @@ const usePutEditAccount = () => {
       putEditAccount({
         userId,
         belong,
-        role,
+        userType,
         permission,
         name,
         nickname,

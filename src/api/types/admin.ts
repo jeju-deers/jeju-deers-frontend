@@ -1,7 +1,7 @@
 export interface PutEditAccount {
   userId: string;
   belong: string;
-  role: string;
+  userType: string;
   permission: string;
   name: string;
   nickname?: string;
