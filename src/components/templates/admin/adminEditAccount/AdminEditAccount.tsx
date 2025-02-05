@@ -21,6 +21,8 @@ import BasicItemsSelectField from "~/components/organisms/adminEditAccount/Basic
 import CoachItemsInputField from "~/components/organisms/adminEditAccount/CoachItemsInputField";
 import PlayerItemsInputField from "~/components/organisms/adminEditAccount/PlayerItemsInputField";
 import useEditUserAccount from "~/hooks/adminEditAccount/useEditUserAccount";
+import usePutEditAccount from "~/hooks/admin/query/mutate/usePutEditAccount";
+import { FormEvent } from "react";
 
 interface Props {
   userInformation: any;
@@ -31,7 +33,22 @@ const AdminEditAccount = ({ userInformation }: Props) => {
 
   const { formData, handleChangeInput } = useEditUserAccount(userInformation);
 
-  const { adminEditAccountUserType: userType } = formData;
+  const {
+    adminEditAccountUserType: userType,
+    adminEditAccountUserId: userId,
+    adminEditAccountBelong: belong,
+    // TODO: [2025-02-05] 백엔드에서 role이 userType으로 수정된 이후, role을 userType으로 변경해야합니다.
+    adminEditAccountUserType: role,
+    adminEditAccountPermission: permission,
+    adminEditAccountName: name,
+    adminEditAccountNickname: nickname,
+    adminEditAccountEmail: email,
+    adminEditAccountSchool: school,
+    adminEditAccountStudentId: studentId,
+    adminEditAccountPositions: positions,
+  } = formData;
+
+  const { mutate: putEditUserAccount } = usePutEditAccount(userId);
 
   const getOptionInputField = () => {
     if (userType === "player") {
@@ -40,6 +57,23 @@ const AdminEditAccount = ({ userInformation }: Props) => {
     if (userType === "coach") {
       return <CoachItemsInputField userInformation={formData} onChangeInput={handleChangeInput} />;
     }
+  };
+
+  const handleSubmitEditAccount = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    putEditUserAccount({
+      userId,
+      belong,
+      role,
+      permission,
+      name,
+      nickname,
+      email,
+      school,
+      studentId,
+      positions,
+    });
   };
 
   const handleClickCancel = () => {
@@ -58,7 +92,7 @@ const AdminEditAccount = ({ userInformation }: Props) => {
             <SubHeaderWrap>
               <SubHeader subTitle="정보수정" />
             </SubHeaderWrap>
-            <AdminEditAccountForm id="myPageSubmit">
+            <AdminEditAccountForm id="adminEditAccountSubmit" onSubmit={handleSubmitEditAccount}>
               <BasicItemsInputFieldWrap>
                 <BasicItemsSelectField userInformation={formData} />
                 <BasicItemsInputField
@@ -69,7 +103,7 @@ const AdminEditAccount = ({ userInformation }: Props) => {
               <OptionItemsInputFieldWrap>{getOptionInputField()}</OptionItemsInputFieldWrap>
               <FormActionButtonBox>
                 <CancelButton text="취소" onClick={handleClickCancel} />
-                <SubmitButton text="저장" formId="myPageSubmit" />
+                <SubmitButton text="저장" formId="adminEditAccountSubmit" />
               </FormActionButtonBox>
             </AdminEditAccountForm>
           </ContentBox>
