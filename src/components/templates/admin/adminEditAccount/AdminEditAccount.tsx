@@ -48,7 +48,7 @@ const AdminEditAccount = ({ userInformation }: Props) => {
     adminEditAccountPositions: positions,
   } = formData;
 
-  const { mutate: putEditUserAccount } = usePutEditAccount(userId);
+  const { mutate: putEditUserAccount } = usePutEditAccount();
 
   const getOptionInputField = () => {
     if (userType === "player") {
