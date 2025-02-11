@@ -16,7 +16,7 @@ interface Props {
   onOptionSelected: (value: string) => void;
 }
 
-const DropDown = ({ text, options, onOptionSelected }: Props) => {
+const DropDown = ({ text = "전체", options, onOptionSelected }: Props) => {
   const [isDropdownView, setDropDownView] = useState(false);
   const [selectedOption, setSelectedOption] = useState(text);
 
@@ -45,8 +45,10 @@ const DropDown = ({ text, options, onOptionSelected }: Props) => {
       </DropDownLabel>
       {isDropdownView && (
         <DropDownOptionsUl>
-          {options.map((option) => (
-            <DropDownOptionLi onClick={() => handleSelectOption(option)}>{option}</DropDownOptionLi>
+          {options.map((option, index) => (
+            <DropDownOptionLi key={`${index}-${option}`} onClick={() => handleSelectOption(option)}>
+              {option}
+            </DropDownOptionLi>
           ))}
         </DropDownOptionsUl>
       )}
