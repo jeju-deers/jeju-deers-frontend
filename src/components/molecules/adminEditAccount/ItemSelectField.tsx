@@ -2,12 +2,13 @@ import ItemTitle from "~/common/components/atom/accountManagement/body/ItemTitle
 import { ItemInputFieldBox } from "./ItemSelectFieldStyles";
 import ItemCondition from "~/common/components/atom/accountManagement/body/ItemCondition";
 import DropDown from "~/components/atoms/adminEditAccount/DropDown";
+import { UserTypeData } from "~/constants/userTypeData";
 
 interface Props {
   id: string;
   title: string;
   selectText: string;
-  options: string[];
+  options: UserTypeData[] | string[];
   required: boolean;
   condition?: string;
   onChangeSelect: (id: string, value: string) => void;

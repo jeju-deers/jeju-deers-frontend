@@ -49,10 +49,10 @@ const AdminEditAccount = ({ userInformation }: Props) => {
   const { mutate: putEditUserAccount } = usePutEditAccount();
 
   const getOptionInputField = () => {
-    if (userType === "player" || userType === "선수") {
+    if (userType === "player") {
       return <PlayerItemsInputField userInformation={formData} onChangeInput={handleChangeInput} />;
     }
-    if (userType === "coach" || userType === "코치") {
+    if (userType === "coach" || userType === "staff") {
       return <CoachItemsInputField userInformation={formData} onChangeInput={handleChangeInput} />;
     }
   };
