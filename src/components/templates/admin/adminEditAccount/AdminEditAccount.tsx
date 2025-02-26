@@ -31,7 +31,7 @@ interface Props {
 const AdminEditAccount = ({ userInformation }: Props) => {
   const navigate = useNavigate();
 
-  const { formData, handleChangeInput } = useEditUserAccount(userInformation);
+  const { formData, handleChangeInput, handleChangeSelect } = useEditUserAccount(userInformation);
 
   const {
     adminEditAccountUserId: userId,
@@ -49,10 +49,10 @@ const AdminEditAccount = ({ userInformation }: Props) => {
   const { mutate: putEditUserAccount } = usePutEditAccount();
 
   const getOptionInputField = () => {
-    if (userType === "player") {
+    if (userType === "player" || userType === "선수") {
       return <PlayerItemsInputField userInformation={formData} onChangeInput={handleChangeInput} />;
     }
-    if (userType === "coach") {
+    if (userType === "coach" || userType === "코치") {
       return <CoachItemsInputField userInformation={formData} onChangeInput={handleChangeInput} />;
     }
   };
@@ -92,7 +92,10 @@ const AdminEditAccount = ({ userInformation }: Props) => {
             </SubHeaderWrap>
             <AdminEditAccountForm id="adminEditAccountSubmit" onSubmit={handleSubmitEditAccount}>
               <BasicItemsInputFieldWrap>
-                <BasicItemsSelectField userInformation={formData} />
+                <BasicItemsSelectField
+                  userInformation={formData}
+                  onChangeSelect={handleChangeSelect}
+                />
                 <BasicItemsInputField
                   userInformation={formData}
                   onChangeInput={handleChangeInput}

@@ -10,7 +10,7 @@ interface Props {
   options: string[];
   required: boolean;
   condition?: string;
-  onOptionSelected: (value: string) => void;
+  onChangeSelect: (id: string, value: string) => void;
 }
 
 const ItemSelectField = ({
@@ -20,12 +20,12 @@ const ItemSelectField = ({
   options,
   required,
   condition,
-  onOptionSelected,
+  onChangeSelect,
 }: Props) => {
   return (
     <ItemInputFieldBox>
       <ItemTitle id={id} text={title} required={required} />
-      <DropDown text={selectText} options={options} onOptionSelected={onOptionSelected} />
+      <DropDown id={id} text={selectText} options={options} onChangeSelect={onChangeSelect} />
       {condition && <ItemCondition text={condition} />}
     </ItemInputFieldBox>
   );

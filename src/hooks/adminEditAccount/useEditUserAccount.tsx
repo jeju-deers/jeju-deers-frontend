@@ -21,9 +21,14 @@ const useEditUserAccount = (userInformation: any = {}) => {
     setFormData((prevFormData) => ({ ...prevFormData, [id]: value }));
   };
 
+  const handleChangeSelect = (id: string, value: string) => {
+    setFormData((prevFormData) => ({ ...prevFormData, [id]: value }));
+  };
+
   return {
     formData,
     handleChangeInput,
+    handleChangeSelect,
   };
 };
 
