@@ -17,9 +17,20 @@ const BasicItemsSelectField = ({ userInformation, onChangeSelect }: Props) => {
   const { adminEditAccountBelong, adminEditAccountUserType, adminEditAccountPermission } =
     userInformation;
 
-  // if(adminEditAccountUserType === "player"){
-  //   adminEditAccountUserType = "선수"
-  // }
+  const getUserTypeKorean = (userType: string) => {
+    switch (userType) {
+      case "player":
+        return "선수";
+      case "coach":
+        return "코치";
+      case "staff":
+        return "스태프";
+      case "external":
+        return "외부인";
+      default:
+        return "외부인";
+    }
+  };
 
   return (
     <BasicItemsSelectFieldBox>
@@ -34,15 +45,7 @@ const BasicItemsSelectField = ({ userInformation, onChangeSelect }: Props) => {
       <ItemSelectField
         id="adminEditAccountUserType"
         title="역할"
-        selectText={
-          adminEditAccountUserType === "player"
-            ? "선수"
-            : adminEditAccountUserType === "coach"
-              ? "코치"
-              : adminEditAccountUserType === "staff"
-                ? "스태프"
-                : "외부인"
-        }
+        selectText={getUserTypeKorean(adminEditAccountUserType)}
         required={true}
         options={USER_TYPE_DATA}
         onChangeSelect={onChangeSelect}
