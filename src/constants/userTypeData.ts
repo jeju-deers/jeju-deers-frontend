@@ -3,7 +3,7 @@ export interface UserTypeData {
   english: string;
 }
 
-const USER_TYPE_DATA = [
+const USER_TYPE_DATA: UserTypeData[] = [
   {
     korean: "선수",
     english: "player",
