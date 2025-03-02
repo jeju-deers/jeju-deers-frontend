@@ -7,18 +7,13 @@ interface Props {
     adminEditAccountSchool: string;
     adminEditAccountStudentId: string;
     adminEditAccountPositions: string;
-    adminEditAccountInChange: string;
   };
   onChangeInput: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const CoachItemsInputField = ({ userInformation, onChangeInput }: Props) => {
-  const {
-    adminEditAccountSchool,
-    adminEditAccountStudentId,
-    adminEditAccountPositions,
-    adminEditAccountInChange,
-  } = userInformation;
+  const { adminEditAccountSchool, adminEditAccountStudentId, adminEditAccountPositions } =
+    userInformation;
 
   return (
     <CoachItemsInputFieldBox>
@@ -40,17 +35,8 @@ const CoachItemsInputField = ({ userInformation, onChangeInput }: Props) => {
       />
       <ItemInputField
         id="adminEditAccountPositions"
-        text="포지션"
-        value={adminEditAccountPositions}
-        required={true}
-        pattern="^(?=.*[A-Za-z])[A-Za-z]{2}$"
-        condition="(여러개 입력 가능)"
-        onChange={onChangeInput}
-      />
-      <ItemInputField
-        id="adminEditAccountInChange"
         text="담당"
-        value={adminEditAccountInChange}
+        value={adminEditAccountPositions}
         required={true}
         pattern="^(?=.*[A-Za-z])[A-Za-z]{2}$"
         condition="(여러개 입력 가능)"
