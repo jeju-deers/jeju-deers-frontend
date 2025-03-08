@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export const GameScheduleBox = styled.div`
   ${tw`
+    min-w-max
   `}
 `;
 
@@ -11,6 +12,7 @@ export const GameScheduleInformationBox = styled.div`
     border
     border-[#D9D9D9]
     mb-6
+    min-w-max
   `}
 `;
 
@@ -30,7 +32,8 @@ export const GameTeamDetailsBox = styled.div`
   ${tw`
     flex
     items-center
-    p-4
+    py-4
+    px-8
     justify-center
   `}
 `;
@@ -163,7 +166,7 @@ export const ScheduleInfomationSelect = styled.select`
     border
     border-gray-300
     rounded-md
-    w-52
+    w-64
     h-16
   `}
 `;
@@ -175,7 +178,7 @@ export const ScheduleInfomationInput = styled.input`
     border
     border-gray-300
     rounded-md
-    w-52
+    w-60
     h-16
   `}
 `;

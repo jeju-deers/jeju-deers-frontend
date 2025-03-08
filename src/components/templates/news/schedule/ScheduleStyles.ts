@@ -9,6 +9,7 @@ export const ScheduleLayout = styled.div`
     px-28
     flex-row
     text-center
+    min-w-max
   `}
 `;
 
