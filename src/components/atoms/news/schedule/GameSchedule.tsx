@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GameLocation from "./GameLocation";
 import {
   GameDetailsBox,
@@ -52,6 +52,7 @@ const GameSchedule = ({
   onEdit,
 }: Props) => {
   const [formData, setFormData] = useState({
+    isEditing,
     date,
     location,
     homeTeam,
@@ -59,6 +60,18 @@ const GameSchedule = ({
     homeScore: homeScore || "",
     awayScore: awayScore || "",
   });
+
+  useEffect(() => {
+    setFormData({
+      isEditing,
+      date,
+      location,
+      homeTeam,
+      awayTeam,
+      homeScore: homeScore || "",
+      awayScore: awayScore || "",
+    });
+  }, [isEditing, date, location, homeTeam, awayTeam, homeScore, awayScore]);
 
   const isFormValid =
     formData.date &&
@@ -69,8 +82,7 @@ const GameSchedule = ({
     !isNaN(Number(formData.awayScore));
 
   const handleInputChange = (field: string, value: string) => {
-    // 숫자만 허용
-    if ((field === "score1" || field === "score2") && !/^\d*$/.test(value)) return;
+    if ((field === "homeScore" || field === "awayScore") && !/^[0-9]*$/.test(value)) return;
 
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
