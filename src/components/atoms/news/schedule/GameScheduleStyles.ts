@@ -10,7 +10,7 @@ export const GameScheduleBox = styled.div`
 export const GameScheduleInformationBox = styled.div`
   ${tw`
     border
-    border-[#D9D9D9]
+    border-gray-425
     mb-6
     min-w-max
   `}
@@ -24,7 +24,7 @@ export const GameDetailsBox = styled.div`
     py-2
     px-4
     border-b
-    border-[#D9D9D9]
+    border-gray-425
   `}
 `;
 
@@ -62,7 +62,7 @@ export const OpposingTeamBox = styled.div`
 export const GameDateTimeBox = styled.div`
   ${tw`
     font-semibold
-    text-[40px]
+    text-2.5
   `}
 `;
 
@@ -90,15 +90,15 @@ export const OpposingTeamImage = styled.img`
 export const OpposingTeamSpan = styled.span`
   ${tw`
     font-bold
-    text-[40px]  
+    text-2.5
   `}
 `;
 
 export const VersusSpan = styled.span`
   ${tw`
     font-bold
-    text-[40px]
-    mx-[40px]
+    text-2.5
+    mx-10
   `}
 `;
 
@@ -121,14 +121,14 @@ export const ScoreBox = styled.div`
 export const OurTeamScoreSpan = styled.span`
   ${tw`
     font-bold
-    text-[40px]
+    text-2.5
   `}
 `;
 
 export const OpposingTeamScoreSpan = styled.span`
   ${tw`
     font-bold
-    text-[40px]
+    text-2.5
   `}
 `;
 
@@ -147,7 +147,7 @@ export const GameScheduleButton = styled.button`
     text-xl
     rounded-lg
     border
-    border-[#D9D9D9]
+    border-gray-425
     bg-white
     hover:bg-gray-300
     focus:outline-none
@@ -162,7 +162,7 @@ export const GameScheduleButton = styled.button`
 export const ScheduleInfomationSelect = styled.select`
   ${tw`
     p-2
-    text-[20px]
+    text-5
     border
     border-gray-300
     rounded-md
@@ -174,7 +174,7 @@ export const ScheduleInfomationSelect = styled.select`
 export const ScheduleInfomationInput = styled.input`
   ${tw`
     p-2
-    text-[30px]
+    text-7.5
     border
     border-gray-300
     rounded-md
