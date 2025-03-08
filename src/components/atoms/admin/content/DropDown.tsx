@@ -5,7 +5,7 @@ import {
   DropDownLabel,
   DropDownOptionLi,
   DropDownOptionsUl,
-  TextSpan,
+  SelectedOptionTextSpan,
 } from "./DropDownStyles";
 import dropdownDownArrowImage from "~/assets/images/dropdown_down_arrow.svg";
 import dropdownUpArrowImage from "~/assets/images/dropdown_up_arrow.svg";
@@ -34,7 +34,7 @@ const DropDown = ({ text, options, onOptionSelected }: Props) => {
     <DropDownBox>
       <DropDownLabel onClick={handleClickContainer}>
         <DropDownButton>
-          <TextSpan>{selectedOption}</TextSpan>
+          <SelectedOptionTextSpan>{selectedOption}</SelectedOptionTextSpan>
           {isDropdownView ? (
             <img src={dropdownUpArrowImage} />
           ) : (
