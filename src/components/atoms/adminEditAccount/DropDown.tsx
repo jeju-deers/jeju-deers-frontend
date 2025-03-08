@@ -17,17 +17,17 @@ interface Props {
 }
 
 const DropDown = ({ text, options, onOptionSelected }: Props) => {
-  const [isDropdownView, setDropDownView] = useState(false);
+  const [isDropdownView, setIsDropdownView] = useState(false);
   const [selectedOption, setSelectedOption] = useState(text);
 
   const handleClickContainer = () => {
-    setDropDownView(!isDropdownView);
+    setIsDropdownView(!isDropdownView);
   };
 
   const handleSelectOption = (option: string) => {
     setSelectedOption(option);
     onOptionSelected(option);
-    setDropDownView(false);
+    setIsDropdownView(false);
   };
 
   return (
