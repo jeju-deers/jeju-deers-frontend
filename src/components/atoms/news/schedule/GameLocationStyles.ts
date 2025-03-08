@@ -11,8 +11,8 @@ export const GameLocationBox = styled.div`
 export const GameLocationSpan = styled.span`
   ${tw`
     font-bold
-    text-[32px]
-    text-[#6B6B6B]
+    text-8
+    text-gray-1000
   `}
 `;
 
