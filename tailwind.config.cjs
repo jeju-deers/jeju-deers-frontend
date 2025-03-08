@@ -18,6 +18,7 @@ module.exports = {
         "gray-300": "#EBEBEB",
         "gray-350": "#E5E5E5",
         "gray-400": "#DFDFDF",
+        "gray-425": "#D9D9D9",
         "gray-450": "#CCCCCC",
         "gray-500": "#C8C8C8",
         "gray-550": "#C2C2C2",
@@ -63,6 +64,8 @@ module.exports = {
       fontSize: {
         "sm-base": "15px",
         4.5: "18px",
+        5: "20px",
+        7.5: "30px",
         8: "32px",
         1.75: "28px",
         2.5: "40px",
