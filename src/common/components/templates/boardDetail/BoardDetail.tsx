@@ -101,6 +101,8 @@ const BoardDetail = ({ singleBoardId, token }: Props) => {
       content: comment,
       token,
     });
+
+    setComment("");
   };
 
   return (
