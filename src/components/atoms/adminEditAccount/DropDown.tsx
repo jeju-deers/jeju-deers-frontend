@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import {
   DropDownBox,
   DropDownButton,
@@ -12,22 +12,24 @@ import dropdownUpArrowImage from "~/assets/images/dropdown_up_arrow.svg";
 import { UserTypeData } from "~/constants/userTypeData";
 
 interface Props {
+  id: string;
   text: string;
   options: UserTypeData[] | string[];
-  onOptionSelected: (value: string) => void;
+  onChangeSelect: (id: string, value: string) => void;
 }
 
-const DropDown = ({ text, options, onOptionSelected }: Props) => {
+const DropDown = ({ id, text = "전체", options, onChangeSelect }: Props) => {
   const [isDropdownView, setDropDownView] = useState(false);
   const [selectedOption, setSelectedOption] = useState(text);
 
-  const handleClickContainer = () => {
+  const handleClickContainer = (event: MouseEvent<HTMLLabelElement>) => {
+    event.preventDefault();
     setDropDownView(!isDropdownView);
   };
 
-  const handleSelectOption = (koreanValue: string, englishValue: string) => {
+  const handleSelectOption = (id: string, koreanValue: string, englishValue: string) => {
     setSelectedOption(koreanValue);
-    onOptionSelected(englishValue);
+    onChangeSelect(id, englishValue);
     setDropDownView(false);
   };
 
@@ -45,10 +47,12 @@ const DropDown = ({ text, options, onOptionSelected }: Props) => {
       </DropDownLabel>
       {isDropdownView && (
         <DropDownOptionsUl>
-          {options.map((option) => (
+          {options.map((option, index) => (
             <DropDownOptionLi
+              key={`${index}-${option}`}
               onClick={() =>
                 handleSelectOption(
+                  id,
                   typeof option === "string" ? option : option.korean,
                   typeof option === "string" ? option : option.english,
                 )

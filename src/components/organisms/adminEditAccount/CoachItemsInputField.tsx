@@ -3,42 +3,41 @@ import { CoachItemsInputFieldBox } from "./CoachItemsInputFieldStyles";
 import { ChangeEvent } from "react";
 
 interface Props {
-  temporaryUserInformation: {
-    inputSchool: string;
-    inputStudentId: string;
-    inputPositions: string;
+  userInformation: {
+    adminEditAccountSchool: string;
+    adminEditAccountStudentId: string;
+    adminEditAccountPositions: string;
   };
   onChangeInput: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const CoachItemsInputField = ({ temporaryUserInformation, onChangeInput }: Props) => {
-  const temporarySchool = temporaryUserInformation.inputSchool;
-  const temporaryStudentId = temporaryUserInformation.inputStudentId;
-  const temporaryPositions = temporaryUserInformation.inputPositions;
+const CoachItemsInputField = ({ userInformation, onChangeInput }: Props) => {
+  const { adminEditAccountSchool, adminEditAccountStudentId, adminEditAccountPositions } =
+    userInformation;
 
   return (
     <CoachItemsInputFieldBox>
       <ItemInputField
-        id="inputSchool"
+        id="adminEditAccountSchool"
         text="출신학교"
-        value={temporarySchool}
-        required={false}
+        value={adminEditAccountSchool}
+        required={true}
         pattern="^(?=.*[\uAC00-\uD7A3])[\uAC00-\uD7A3]*$"
         onChange={onChangeInput}
       />
       <ItemInputField
-        id="inputStudentId"
+        id="adminEditAccountStudentId"
         text="학번"
-        value={temporaryStudentId}
-        required={false}
+        value={adminEditAccountStudentId}
+        required={true}
         pattern="^(?=.*\d)[\d]{2}$"
         onChange={onChangeInput}
       />
       <ItemInputField
-        id="inputPositions"
+        id="adminEditAccountPositions"
         text="담당"
-        value={temporaryPositions}
-        required={false}
+        value={adminEditAccountPositions}
+        required={true}
         pattern="^(?=.*[A-Za-z])[A-Za-z]{2}$"
         condition="(여러개 입력 가능)"
         onChange={onChangeInput}
