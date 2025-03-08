@@ -1,4 +1,4 @@
-import ItemInputField from "~/components/molecules/myPage/body/ItemInputField";
+import ItemInputField from "~/common/components/molecules/accountManagement/body/ItemInputField";
 import { BasicItemsInputFieldBox } from "./BasicItemsInputFieldStyles";
 import { ChangeEvent } from "react";
 
