@@ -11,7 +11,7 @@ export const DropdownLabel = styled.label`
   ${tw`
     flex
     flex-col
-    w-45
+    w-75
     h-10.25
     justify-center
     border
