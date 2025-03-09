@@ -24,7 +24,7 @@ import {
 import Header from "~/components/atoms/admin/Header";
 import ListHeaderSection from "~/components/atoms/admin/content/ListHeaderSection";
 import ListItemSection from "~/components/atoms/admin/content/ListItemSection";
-import DropDown from "~/components/atoms/admin/content/DropDown";
+import Dropdown from "~/components/atoms/admin/content/Dropdown";
 import PendingMessage from "~/common/components/atom/PendingMessage";
 import BELONG_DATA from "~/constants/belongData";
 import USER_TYPE_DATA from "~/constants/userTypeData";
@@ -146,17 +146,17 @@ const AdminPage = () => {
                 type="text"
                 placeholder="이름"
               />
-              <DropDown
+              <Dropdown
                 text="소속"
                 options={BELONG_DATA}
                 onOptionSelected={handleSearchOptionsChange("belong")}
               />
-              <DropDown
+              <Dropdown
                 text="역할"
                 options={USER_TYPE_DATA}
                 onOptionSelected={handleSearchOptionsChange("role")}
               />
-              <DropDown
+              <Dropdown
                 text="권한"
                 options={AUTHORITY_DATA}
                 onOptionSelected={handleSearchOptionsChange("authority")}
