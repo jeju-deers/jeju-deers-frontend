@@ -64,7 +64,7 @@ const GameSchedule = ({
     !isNaN(Number(formData.score1)) &&
     !isNaN(Number(formData.score2));
 
-  const handleInputChange = (field: string, value: string) => {
+  const handleFormChange = (field: string, value: string) => {
     if ((field === "score1" || field === "score2") && !/^\d*$/.test(value)) return;
 
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -119,7 +119,7 @@ const GameSchedule = ({
             <>
               <ScheduleInfomationSelect
                 value={formData.datetime}
-                onChange={(e) => handleInputChange("datetime", e.target.value)}>
+                onChange={(e) => handleFormChange("datetime", e.target.value)}>
                 <option value="" disabled>
                   날짜 및 시간 선택
                 </option>
@@ -133,7 +133,7 @@ const GameSchedule = ({
                 type="text"
                 placeholder="장소"
                 value={formData.location}
-                onChange={(e) => handleInputChange("location", e.target.value)}
+                onChange={(e) => handleFormChange("location", e.target.value)}
               />
             </>
           ) : (
@@ -156,7 +156,7 @@ const GameSchedule = ({
                 type="text"
                 placeholder="상대 팀"
                 value={formData.opposingTeam}
-                onChange={(e) => handleInputChange("opposingTeam", e.target.value)}
+                onChange={(e) => handleFormChange("opposingTeam", e.target.value)}
               />
             ) : (
               <OpposingTeamSpan>{opposingTeam}</OpposingTeamSpan>
@@ -172,7 +172,7 @@ const GameSchedule = ({
                 type="text"
                 placeholder="우리 팀 점수"
                 value={formData.score1}
-                onChange={(e) => handleInputChange("score1", e.target.value)}
+                onChange={(e) => handleFormChange("score1", e.target.value)}
               />
             ) : (
               <OurTeamScoreSpan>{score1}</OurTeamScoreSpan>
@@ -185,7 +185,7 @@ const GameSchedule = ({
                 type="text"
                 placeholder="상대 팀 점수"
                 value={formData.score2}
-                onChange={(e) => handleInputChange("score2", e.target.value)}
+                onChange={(e) => handleFormChange("score2", e.target.value)}
               />
             ) : (
               <OpposingTeamScoreSpan>{score2}</OpposingTeamScoreSpan>
