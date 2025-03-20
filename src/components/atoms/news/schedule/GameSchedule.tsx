@@ -119,7 +119,7 @@ const GameSchedule = ({
             <>
               <ScheduleInfomationSelect
                 value={formData.datetime}
-                onChange={(e) => handleFormChange("datetime", e.target.value)}>
+                onChange={(event) => handleFormChange("datetime", event.target.value)}>
                 <option value="" disabled>
                   날짜 및 시간 선택
                 </option>
@@ -133,7 +133,7 @@ const GameSchedule = ({
                 type="text"
                 placeholder="장소"
                 value={formData.location}
-                onChange={(e) => handleFormChange("location", e.target.value)}
+                onChange={(event) => handleFormChange("location", event.target.value)}
               />
             </>
           ) : (
@@ -156,7 +156,7 @@ const GameSchedule = ({
                 type="text"
                 placeholder="상대 팀"
                 value={formData.opposingTeam}
-                onChange={(e) => handleFormChange("opposingTeam", e.target.value)}
+                onChange={(event) => handleFormChange("opposingTeam", event.target.value)}
               />
             ) : (
               <OpposingTeamSpan>{opposingTeam}</OpposingTeamSpan>
@@ -172,7 +172,7 @@ const GameSchedule = ({
                 type="text"
                 placeholder="우리 팀 점수"
                 value={formData.score1}
-                onChange={(e) => handleFormChange("score1", e.target.value)}
+                onChange={(event) => handleFormChange("score1", event.target.value)}
               />
             ) : (
               <OurTeamScoreSpan>{score1}</OurTeamScoreSpan>
@@ -185,7 +185,7 @@ const GameSchedule = ({
                 type="text"
                 placeholder="상대 팀 점수"
                 value={formData.score2}
-                onChange={(e) => handleFormChange("score2", e.target.value)}
+                onChange={(event) => handleFormChange("score2", event.target.value)}
               />
             ) : (
               <OpposingTeamScoreSpan>{score2}</OpposingTeamScoreSpan>
