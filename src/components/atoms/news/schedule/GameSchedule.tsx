@@ -32,7 +32,7 @@ interface Props {
   score1: string;
   score2: string;
   isEditing: boolean;
-  onSave: (updatedData: Partial<Props>) => void;
+  onUpdate: (updatedData: Partial<Props>) => void;
   onDelete: () => void;
   onEdit: () => void;
 }
@@ -45,7 +45,7 @@ const GameSchedule = ({
   score1,
   score2,
   isEditing,
-  onSave,
+  onUpdate,
   onDelete,
   onEdit,
 }: Props) => {
@@ -103,7 +103,7 @@ const GameSchedule = ({
         {isEditing ? (
           <>
             <GameScheduleButton
-              onClick={() => isFormValid && onSave(formData)}
+              onClick={() => isFormValid && onUpdate(formData)}
               disabled={!isFormValid}>
               저장
             </GameScheduleButton>
