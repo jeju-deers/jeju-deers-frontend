@@ -67,7 +67,7 @@ const GameSchedule = ({
   const handleFormChange = (field: string, value: string) => {
     if ((field === "score1" || field === "score2") && !/^\d*$/.test(value)) return;
 
-    setFormData((prev) => ({ ...prev, [field]: value }));
+    setFormData((previous) => ({ ...previous, [field]: value }));
   };
 
   const formatDateTime = (date: Date, hour: number) => {

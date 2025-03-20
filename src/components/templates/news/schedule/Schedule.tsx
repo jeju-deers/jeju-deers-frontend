@@ -74,7 +74,7 @@ const Schedule = () => {
           score1={game.score1}
           score2={game.score2}
           isEditing={game.isEditing}
-          onSave={(updatedData) => updateGame(game.id, updatedData)}
+          onUpdate={(updatedData) => updateGame(game.id, updatedData)}
           onEdit={() => editGame(game.id)}
           onDelete={() => deleteGame(game.id)}
         />
