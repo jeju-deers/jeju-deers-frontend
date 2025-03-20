@@ -65,18 +65,37 @@ const GameSchedule = ({
     !isNaN(Number(formData.score2));
 
   const handleInputChange = (field: string, value: string) => {
-    // 숫자만 허용
     if ((field === "score1" || field === "score2") && !/^\d*$/.test(value)) return;
 
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const datetimeOptions = [
-    { value: "2024-07-25 13:00", label: "2024-07-25 - 1:00 PM" },
-    { value: "2024-07-25 15:00", label: "2024-07-25 - 3:00 PM" },
-    { value: "2024-07-26 13:00", label: "2024-07-26 - 1:00 PM" },
-    { value: "2024-07-26 15:00", label: "2024-07-26 - 3:00 PM" },
-  ];
+  const formatDateTime = (date: Date, hour: number) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const period = hour >= 12 ? "PM" : "AM";
+    const formattedHour = hour % 12 === 0 ? 12 : hour % 12;
+    return {
+      value: `${year}/${month}/${day} - ${formattedHour}:00 ${period}`,
+      label: `${year}/${month}/${day} - ${formattedHour}:00 ${period}`,
+    };
+  };
+
+  const generateDateTimeOptions = () => {
+    const options = [];
+    const now = new Date();
+    for (let i = 0; i < 7; i++) {
+      const date = new Date();
+      date.setDate(now.getDate() + i);
+      for (let hour = 9; hour <= 21; hour += 2) {
+        options.push(formatDateTime(date, hour));
+      }
+    }
+    return options;
+  };
+
+  const datetimeOptions = generateDateTimeOptions();
 
   return (
     <GameScheduleBox>
@@ -119,7 +138,7 @@ const GameSchedule = ({
             </>
           ) : (
             <>
-              <GameDateTimeBox>{datetime.replace(" ", " - ")}</GameDateTimeBox>
+              <GameDateTimeBox>{datetime}</GameDateTimeBox>
               <GameLocation location={location} />
             </>
           )}
