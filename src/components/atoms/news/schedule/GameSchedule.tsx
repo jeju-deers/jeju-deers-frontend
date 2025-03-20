@@ -12,7 +12,7 @@ import {
   OurTeamBox,
   OurTeamImage,
   OurTeamScoreSpan,
-  OurTeamSpan,
+  OurTeamTextSpan,
   ScoreBox,
   VersusSpan,
   ButtonGroup,
@@ -147,7 +147,7 @@ const GameSchedule = ({
         <GameTeamDetailsBox>
           <OurTeamBox>
             <OurTeamImage src={teamlogo} />
-            <OurTeamSpan>JEJU DEERS</OurTeamSpan>
+            <OurTeamTextSpan>JEJU DEERS</OurTeamTextSpan>
           </OurTeamBox>
           <VersusSpan>VS</VersusSpan>
           <OpposingTeamBox>

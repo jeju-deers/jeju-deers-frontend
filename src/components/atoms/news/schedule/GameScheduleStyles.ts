@@ -73,7 +73,7 @@ export const OurTeamImage = styled.img`
   `}
 `;
 
-export const OurTeamSpan = styled.span`
+export const OurTeamTextSpan = styled.span`
   ${tw`
     font-bold
     text-[40px]
