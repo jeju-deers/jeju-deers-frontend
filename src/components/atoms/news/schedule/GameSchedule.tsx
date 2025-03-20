@@ -15,7 +15,7 @@ import {
   OurTeamTextSpan,
   ScoreBox,
   VersusSpan,
-  ButtonGroup,
+  ScheduleManageButtonGroup,
   ScheduleInfomationSelect,
   ScheduleInfomationInput,
   GameScheduleButton,
@@ -99,7 +99,7 @@ const GameSchedule = ({
 
   return (
     <GameScheduleBox>
-      <ButtonGroup>
+      <ScheduleManageButtonGroup>
         {isEditing ? (
           <>
             <GameScheduleButton
@@ -112,7 +112,7 @@ const GameSchedule = ({
         ) : (
           <GameScheduleButton onClick={onEdit}>수정</GameScheduleButton>
         )}
-      </ButtonGroup>
+      </ScheduleManageButtonGroup>
       <GameScheduleInformationBox>
         <GameDetailsBox>
           {isEditing ? (

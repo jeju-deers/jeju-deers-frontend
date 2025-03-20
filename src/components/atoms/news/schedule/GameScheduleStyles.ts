@@ -132,7 +132,7 @@ export const OpposingTeamScoreSpan = styled.span`
   `}
 `;
 
-export const ButtonGroup = styled.div`
+export const ScheduleManageButtonGroup = styled.div`
   ${tw`
     text-right
     mb-4
