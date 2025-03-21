@@ -25,6 +25,7 @@ import AdminPage from "~/pages/admin/AdminPage";
 import BoardUpdatePage from "~/pages/common/BoardUpdatePage";
 import NotFound from "~/pages/NotFound";
 import RedirectHandler from "~/RedirectHandler";
+import AdminEditAccountPage from "~/pages/admin/AdminEditAccountPage";
 
 const Router = () => {
   return (
@@ -32,6 +33,7 @@ const Router = () => {
       <RedirectHandler />
       <Routes>
         <Route path="admin" element={<AdminPage />} />
+        <Route path="admin/edit/:id" element={<AdminEditAccountPage />} />
 
         <Route path="/" element={<Base />}>
           <Route index element={<MainPage />} />
