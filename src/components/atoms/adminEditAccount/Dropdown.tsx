@@ -1,12 +1,12 @@
 import { MouseEvent, useState } from "react";
 import {
-  DropDownBox,
-  DropDownButton,
-  DropDownLabel,
-  DropDownOptionLi,
-  DropDownOptionsUl,
+  DropdownBox,
+  DropdownButton,
+  DropdownLabel,
+  DropdownOptionLi,
+  DropdownOptionsUl,
   TextSpan,
-} from "./DropDownStyles";
+} from "./DropdownStyles";
 import dropdownDownArrowImage from "~/assets/images/dropdown_down_arrow.svg";
 import dropdownUpArrowImage from "~/assets/images/dropdown_up_arrow.svg";
 
@@ -16,42 +16,42 @@ interface Props {
   onOptionSelected: (value: string) => void;
 }
 
-const DropDown = ({ text, options, onOptionSelected }: Props) => {
-  const [isDropdownView, setDropDownView] = useState(false);
+const Dropdown = ({ text, options, onOptionSelected }: Props) => {
+  const [isDropdownView, setDropdownView] = useState(false);
   const [selectedOption, setSelectedOption] = useState(text);
 
   const handleClickContainer = (event: MouseEvent<HTMLLabelElement>) => {
     event.preventDefault();
-    setDropDownView(!isDropdownView);
+    setDropdownView(!isDropdownView);
   };
 
   const handleSelectOption = (option: string) => {
     setSelectedOption(option);
     onOptionSelected(option);
-    setDropDownView(false);
+    setDropdownView(false);
   };
 
   return (
-    <DropDownBox>
-      <DropDownLabel onClick={handleClickContainer}>
-        <DropDownButton>
+    <DropdownBox>
+      <DropdownLabel onClick={handleClickContainer}>
+        <DropdownButton>
           <TextSpan>{selectedOption}</TextSpan>
           {isDropdownView ? (
             <img src={dropdownUpArrowImage} />
           ) : (
             <img src={dropdownDownArrowImage} />
           )}
-        </DropDownButton>
-      </DropDownLabel>
+        </DropdownButton>
+      </DropdownLabel>
       {isDropdownView && (
-        <DropDownOptionsUl>
+        <DropdownOptionsUl>
           {options.map((option) => (
-            <DropDownOptionLi onClick={() => handleSelectOption(option)}>{option}</DropDownOptionLi>
+            <DropdownOptionLi onClick={() => handleSelectOption(option)}>{option}</DropdownOptionLi>
           ))}
-        </DropDownOptionsUl>
+        </DropdownOptionsUl>
       )}
-    </DropDownBox>
+    </DropdownBox>
   );
 };
 
-export default DropDown;
+export default Dropdown;
