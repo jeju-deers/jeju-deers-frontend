@@ -166,7 +166,7 @@ export const ScheduleInfomationSelect = styled.select`
     border
     border-gray-300
     rounded-md
-    w-64
+    w-40
     h-16
   `}
 `;
