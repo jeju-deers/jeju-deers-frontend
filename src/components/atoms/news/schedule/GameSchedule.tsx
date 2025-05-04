@@ -64,7 +64,7 @@ const GameSchedule = ({
     !isNaN(Number(formData.score1)) &&
     !isNaN(Number(formData.score2));
 
-  const handleFormChange = (field: string, value: string) => {
+  const handleChangeInput = (field: string, value: string) => {
     if ((field === "score1" || field === "score2") && !/^\d*$/.test(value)) return;
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
@@ -170,7 +170,7 @@ const GameSchedule = ({
                 type="text"
                 placeholder="장소"
                 value={formData.location}
-                onChange={(event) => handleFormChange("location", event.target.value)}
+                onChange={(event) => handleChangeInput("location", event.target.value)}
               />
             </>
           ) : (
@@ -193,7 +193,7 @@ const GameSchedule = ({
                 type="text"
                 placeholder="상대 팀"
                 value={formData.opposingTeam}
-                onChange={(event) => handleFormChange("opposingTeam", event.target.value)}
+                onChange={(event) => handleChangeInput("opposingTeam", event.target.value)}
               />
             ) : (
               <OpposingTeamSpan>{opposingTeam}</OpposingTeamSpan>
@@ -209,7 +209,7 @@ const GameSchedule = ({
                 type="text"
                 placeholder="우리 팀 점수"
                 value={formData.score1}
-                onChange={(event) => handleFormChange("score1", event.target.value)}
+                onChange={(event) => handleChangeInput("score1", event.target.value)}
               />
             ) : (
               <OurTeamScoreSpan>{score1}</OurTeamScoreSpan>
@@ -222,7 +222,7 @@ const GameSchedule = ({
                 type="text"
                 placeholder="상대 팀 점수"
                 value={formData.score2}
-                onChange={(event) => handleFormChange("score2", event.target.value)}
+                onChange={(event) => handleChangeInput("score2", event.target.value)}
               />
             ) : (
               <OpposingTeamScoreSpan>{score2}</OpposingTeamScoreSpan>
