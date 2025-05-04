@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import GameLocation from "./GameLocation";
 import {
   GameDetailsBox,
@@ -95,11 +95,31 @@ const GameSchedule = ({
     setFormData((prev) => ({ ...prev, datetime: newDatetime }));
   };
 
+  const isLeapYear = (year: number) => (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+
+  const getDay = (year: number, month: number) => {
+    switch (month) {
+      case 2:
+        return isLeapYear(year) ? 29 : 28;
+      case 4:
+      case 6:
+      case 9:
+      case 11:
+        return 30;
+      default:
+        return 31;
+    }
+  };
+
   const currentParts = parseDatetime(formData.datetime);
-  const years = Array.from({ length: 10 }, (_, i) => 2023 + i);
-  const months = Array.from({ length: 12 }, (_, i) => i + 1);
-  const days = Array.from({ length: 31 }, (_, i) => i + 1);
-  const hours = Array.from({ length: 14 }, (_, i) => 9 + i);
+
+  const years = useMemo(() => Array.from({ length: 10 }, (_, i) => 2023 + i), []);
+  const months = useMemo(() => Array.from({ length: 12 }, (_, i) => i + 1), []);
+  const days = useMemo(
+    () => Array.from({ length: getDay(currentParts.year, currentParts.month) }, (_, i) => i + 1),
+    [currentParts.year, currentParts.month],
+  );
+  const hours = useMemo(() => Array.from({ length: 14 }, (_, i) => 9 + i), []);
 
   return (
     <GameScheduleBox>
@@ -117,6 +137,7 @@ const GameSchedule = ({
           <GameScheduleButton onClick={onEdit}>수정</GameScheduleButton>
         )}
       </ScheduleManageButtonGroup>
+
       <GameScheduleInformationBox>
         <GameDetailsBox>
           {isEditing ? (
@@ -134,6 +155,7 @@ const GameSchedule = ({
                     </option>
                   ))}
                 </ScheduleInfomationSelect>
+
                 <ScheduleInfomationSelect
                   value={currentParts.month}
                   onChange={(e) => updateDatetime("month", +e.target.value)}>
@@ -143,6 +165,7 @@ const GameSchedule = ({
                     </option>
                   ))}
                 </ScheduleInfomationSelect>
+
                 <ScheduleInfomationSelect
                   value={currentParts.day}
                   onChange={(e) => updateDatetime("day", +e.target.value)}>
@@ -152,6 +175,7 @@ const GameSchedule = ({
                     </option>
                   ))}
                 </ScheduleInfomationSelect>
+
                 <ScheduleInfomationSelect
                   value={currentParts.hour}
                   onChange={(e) => updateDatetime("hour", +e.target.value)}>
@@ -166,6 +190,7 @@ const GameSchedule = ({
                   })}
                 </ScheduleInfomationSelect>
               </div>
+
               <ScheduleInfomationInput
                 type="text"
                 placeholder="장소"
