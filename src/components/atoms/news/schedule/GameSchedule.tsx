@@ -66,36 +66,40 @@ const GameSchedule = ({
 
   const handleFormChange = (field: string, value: string) => {
     if ((field === "score1" || field === "score2") && !/^\d*$/.test(value)) return;
-
-    setFormData((previous) => ({ ...previous, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const formatDateTime = (date: Date, hour: number) => {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-    const period = hour >= 12 ? "PM" : "AM";
-    const formattedHour = hour % 12 === 0 ? 12 : hour % 12;
+  const parseDatetime = (datetime: string) => {
+    const match = datetime.match(/(\d{4})\/(\d{2})\/(\d{2}) - (\d+):00 (AM|PM)/);
+    if (!match) return { year: 2023, month: 1, day: 1, hour: 9 };
+    let [_, year, month, day, hour, period] = match;
+    let numericHour = parseInt(hour, 10);
+    if (period === "PM" && numericHour !== 12) numericHour += 12;
+    if (period === "AM" && numericHour === 12) numericHour = 0;
     return {
-      value: `${year}/${month}/${day} - ${formattedHour}:00 ${period}`,
-      label: `${year}/${month}/${day} - ${formattedHour}:00 ${period}`,
+      year: parseInt(year),
+      month: parseInt(month),
+      day: parseInt(day),
+      hour: numericHour,
     };
   };
 
-  const generateDateTimeOptions = () => {
-    const options = [];
-    const now = new Date();
-    for (let i = 0; i < 7; i++) {
-      const date = new Date();
-      date.setDate(now.getDate() + i);
-      for (let hour = 9; hour <= 21; hour += 2) {
-        options.push(formatDateTime(date, hour));
-      }
-    }
-    return options;
+  const updateDatetime = (field: string, value: number) => {
+    const parts = parseDatetime(formData.datetime);
+    const updated = { ...parts, [field]: value };
+    const period = updated.hour >= 12 ? "PM" : "AM";
+    const displayHour = updated.hour % 12 === 0 ? 12 : updated.hour % 12;
+    const newDatetime = `${updated.year}/${String(updated.month).padStart(2, "0")}/${String(
+      updated.day,
+    ).padStart(2, "0")} - ${displayHour}:00 ${period}`;
+    setFormData((prev) => ({ ...prev, datetime: newDatetime }));
   };
 
-  const datetimeOptions = generateDateTimeOptions();
+  const currentParts = parseDatetime(formData.datetime);
+  const years = Array.from({ length: 10 }, (_, i) => 2023 + i);
+  const months = Array.from({ length: 12 }, (_, i) => i + 1);
+  const days = Array.from({ length: 31 }, (_, i) => i + 1);
+  const hours = Array.from({ length: 14 }, (_, i) => 9 + i);
 
   return (
     <GameScheduleBox>
@@ -117,18 +121,51 @@ const GameSchedule = ({
         <GameDetailsBox>
           {isEditing ? (
             <>
-              <ScheduleInfomationSelect
-                value={formData.datetime}
-                onChange={(event) => handleFormChange("datetime", event.target.value)}>
-                <option value="" disabled>
-                  날짜 및 시간 선택
-                </option>
-                {datetimeOptions.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
+              <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+                <ScheduleInfomationSelect
+                  value={currentParts.year}
+                  onChange={(e) => updateDatetime("year", +e.target.value)}>
+                  <option value="" disabled>
+                    년도 선택
                   </option>
-                ))}
-              </ScheduleInfomationSelect>
+                  {years.map((year) => (
+                    <option key={year} value={year}>
+                      {year}년
+                    </option>
+                  ))}
+                </ScheduleInfomationSelect>
+                <ScheduleInfomationSelect
+                  value={currentParts.month}
+                  onChange={(e) => updateDatetime("month", +e.target.value)}>
+                  {months.map((month) => (
+                    <option key={month} value={month}>
+                      {month}월
+                    </option>
+                  ))}
+                </ScheduleInfomationSelect>
+                <ScheduleInfomationSelect
+                  value={currentParts.day}
+                  onChange={(e) => updateDatetime("day", +e.target.value)}>
+                  {days.map((day) => (
+                    <option key={day} value={day}>
+                      {day}일
+                    </option>
+                  ))}
+                </ScheduleInfomationSelect>
+                <ScheduleInfomationSelect
+                  value={currentParts.hour}
+                  onChange={(e) => updateDatetime("hour", +e.target.value)}>
+                  {hours.map((hour) => {
+                    const label =
+                      hour >= 12 ? `오후 ${hour === 12 ? 12 : hour - 12}시` : `오전 ${hour}시`;
+                    return (
+                      <option key={hour} value={hour}>
+                        {label}
+                      </option>
+                    );
+                  })}
+                </ScheduleInfomationSelect>
+              </div>
               <ScheduleInfomationInput
                 type="text"
                 placeholder="장소"
@@ -138,7 +175,7 @@ const GameSchedule = ({
             </>
           ) : (
             <>
-              <GameDateTimeBox>{datetime}</GameDateTimeBox>
+              <GameDateTimeBox>{formData.datetime}</GameDateTimeBox>
               <GameLocation location={location} />
             </>
           )}
