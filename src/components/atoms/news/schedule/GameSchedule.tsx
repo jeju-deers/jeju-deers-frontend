@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import GameLocation from "./GameLocation";
 import {
-  GameDetailsBox,
+  GameDatelineBox,
   GameResultBox,
   GameScheduleBox,
   GameTeamDetailsBox,
@@ -139,7 +139,7 @@ const GameSchedule = ({
       </ScheduleManageButtonGroup>
 
       <GameScheduleInformationBox>
-        <GameDetailsBox>
+        <GameDatelineBox>
           {isEditing ? (
             <>
               <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
@@ -204,7 +204,7 @@ const GameSchedule = ({
               <GameLocation location={location} />
             </>
           )}
-        </GameDetailsBox>
+        </GameDatelineBox>
 
         <GameTeamDetailsBox>
           <OurTeamBox>

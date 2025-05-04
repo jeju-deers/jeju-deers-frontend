@@ -16,7 +16,7 @@ export const GameScheduleInformationBox = styled.div`
   `}
 `;
 
-export const GameDetailsBox = styled.div`
+export const GameDatelineBox = styled.div`
   ${tw`
     flex
     justify-between
