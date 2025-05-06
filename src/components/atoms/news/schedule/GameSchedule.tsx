@@ -65,7 +65,7 @@ const GameSchedule = ({
     !isNaN(Number(formData.score2));
 
   const handleChangeInput = (field: string, value: string) => {
-    if ((field === "score1" || field === "score2") && !/^\d*$/.test(value)) return;
+    if ((field === "score1" || field === "score2") && isNaN(Number(value))) return;
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
