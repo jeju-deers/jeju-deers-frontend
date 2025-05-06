@@ -7,3 +7,7 @@ export const getUserList = async () => {
 export const deleteUserList = async (ids: string[]) => {
   return await instance.delete("/admin/users", { data: { ids } });
 };
+
+export const getEditAccount = async (userId: string) => {
+  return await instance.get(`/admin/users/${userId}`);
+};

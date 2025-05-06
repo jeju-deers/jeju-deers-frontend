@@ -21,22 +21,17 @@ import BasicItemsSelectField from "~/components/organisms/adminEditAccount/Basic
 import CoachItemsInputField from "~/components/organisms/adminEditAccount/CoachItemsInputField";
 import PlayerItemsInputField from "~/components/organisms/adminEditAccount/PlayerItemsInputField";
 import useEditUserAccount from "~/hooks/adminEditAccount/useEditUserAccount";
-import USER_INFORMATION_TEMPORORY_DATA from "~/constants/userInformationTemporaryData";
 
 interface Props {
-  userId: string;
+  userInformation: any;
 }
 
-const AdminEditAccount = ({ userId }: Props) => {
+const AdminEditAccount = ({ userInformation }: Props) => {
   const navigate = useNavigate();
 
-  const { formData, handleChangeInput } = useEditUserAccount(USER_INFORMATION_TEMPORORY_DATA[1]);
+  const { formData, handleChangeInput } = useEditUserAccount(userInformation);
 
-  const userType = formData.adminEditAccountUserType;
-
-  const handleClickCancel = () => {
-    navigate("/admin");
-  };
+  const { adminEditAccountUserType: userType } = formData;
 
   const getOptionInputField = () => {
     if (userType === "player") {
@@ -45,6 +40,10 @@ const AdminEditAccount = ({ userId }: Props) => {
     if (userType === "coach") {
       return <CoachItemsInputField userInformation={formData} onChangeInput={handleChangeInput} />;
     }
+  };
+  
+  const handleClickCancel = () => {
+    navigate("/admin");
   };
 
   return (
@@ -61,7 +60,7 @@ const AdminEditAccount = ({ userId }: Props) => {
             </SubHeaderWrap>
             <AdminEditAccountForm id="myPageSubmit">
               <BasicItemsInputFieldWrap>
-                <BasicItemsSelectField />
+                <BasicItemsSelectField userInformation={formData} />
                 <BasicItemsInputField
                   userInformation={formData}
                   onChangeInput={handleChangeInput}
@@ -73,7 +72,6 @@ const AdminEditAccount = ({ userId }: Props) => {
                 <SubmitButton text="저장" formId="myPageSubmit" />
               </FormActionButtonBox>
             </AdminEditAccountForm>
-            <>사용자 Id: {userId}</>
           </ContentBox>
         </ContentBoxWrap>
       </PrimaryContentBox>
