@@ -113,13 +113,15 @@ const GameSchedule = ({
 
   const currentParts = parseDatetime(formData.datetime);
 
-  const years = useMemo(() => Array.from({ length: 10 }, (_, i) => 2023 + i), []);
-  const months = useMemo(() => Array.from({ length: 12 }, (_, i) => i + 1), []);
-  const days = useMemo(
-    () => Array.from({ length: getDay(currentParts.year, currentParts.month) }, (_, i) => i + 1),
-    [currentParts.year, currentParts.month],
-  );
-  const hours = useMemo(() => Array.from({ length: 14 }, (_, i) => 9 + i), []);
+  const { year, month } = currentParts;
+
+  const range = (start: number, end: number) =>
+    Array.from({ length: end - start + 1 }, (_, i) => start + i);
+
+  const years = useMemo(() => range(2023, 2032), []);
+  const months = useMemo(() => range(1, 12), []);
+  const days = useMemo(() => range(1, getDay(year, month)), [year, month]);
+  const hours = useMemo(() => range(9, 22), []);
 
   return (
     <GameScheduleBox>
