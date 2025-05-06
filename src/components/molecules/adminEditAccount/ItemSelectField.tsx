@@ -1,7 +1,7 @@
 import ItemTitle from "~/common/components/atom/accountManagement/body/ItemTitle";
 import { ItemInputFieldBox } from "./ItemSelectFieldStyles";
 import ItemCondition from "~/common/components/atom/accountManagement/body/ItemCondition";
-import DropDown from "~/components/atoms/adminEditAccount/DropDown";
+import Dropdown from "~/components/atoms/adminEditAccount/Dropdown";
 import { UserTypeData } from "~/constants/userTypeData";
 
 interface Props {
@@ -26,7 +26,7 @@ const ItemSelectField = ({
   return (
     <ItemInputFieldBox>
       <ItemTitle id={id} text={title} required={required} />
-      <DropDown id={id} text={selectText} options={options} onChangeSelect={onChangeSelect} />
+      <Dropdown id={id} text={selectText} options={options} onChangeSelect={onChangeSelect} />
       {condition && <ItemCondition text={condition} />}
     </ItemInputFieldBox>
   );

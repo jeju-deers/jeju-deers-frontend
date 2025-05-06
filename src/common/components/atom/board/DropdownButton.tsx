@@ -1,4 +1,4 @@
-import { DropdownButtonSelect } from "./DropDownButtonStyles";
+import { DropdownButtonSelect } from "./DropdownButtonStyles";
 
 interface Props {
   value: string;

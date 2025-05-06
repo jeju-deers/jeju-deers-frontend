@@ -1,4 +1,4 @@
-import DropdownButton from "../../atom/board/DropDownButton";
+import DropdownButton from "../../atom/board/DropdownButton";
 import SearchButton from "../../atom/board/SearchButton";
 import { SearchBox, SearchInput } from "./SearchStyles";
 

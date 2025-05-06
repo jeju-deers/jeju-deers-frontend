@@ -1,12 +1,12 @@
 import { MouseEvent, useState } from "react";
 import {
-  DropDownBox,
-  DropDownButton,
-  DropDownLabel,
-  DropDownOptionLi,
-  DropDownOptionsUl,
+  DropdownBox,
+  DropdownButton,
+  DropdownLabel,
+  DropdownOptionLi,
+  DropdownOptionsUl,
   TextSpan,
-} from "./DropDownStyles";
+} from "./DropdownStyles";
 import dropdownDownArrowImage from "~/assets/images/dropdown_down_arrow.svg";
 import dropdownUpArrowImage from "~/assets/images/dropdown_up_arrow.svg";
 import { UserTypeData } from "~/constants/userTypeData";
@@ -18,37 +18,37 @@ interface Props {
   onChangeSelect: (id: string, value: string) => void;
 }
 
-const DropDown = ({ id, text = "전체", options, onChangeSelect }: Props) => {
-  const [isDropdownView, setDropDownView] = useState(false);
+const Dropdown = ({ id, text = "전체", options, onChangeSelect }: Props) => {
+  const [isDropdownView, setDropdownView] = useState(false);
   const [selectedOption, setSelectedOption] = useState(text);
 
   const handleClickContainer = (event: MouseEvent<HTMLLabelElement>) => {
     event.preventDefault();
-    setDropDownView(!isDropdownView);
+    setDropdownView(!isDropdownView);
   };
 
   const handleSelectOption = (id: string, koreanValue: string, englishValue: string) => {
     setSelectedOption(koreanValue);
     onChangeSelect(id, englishValue);
-    setDropDownView(false);
+    setDropdownView(false);
   };
 
   return (
-    <DropDownBox>
-      <DropDownLabel onClick={handleClickContainer}>
-        <DropDownButton>
+    <DropdownBox>
+      <DropdownLabel onClick={handleClickContainer}>
+        <DropdownButton>
           <TextSpan>{selectedOption}</TextSpan>
           {isDropdownView ? (
             <img src={dropdownUpArrowImage} />
           ) : (
             <img src={dropdownDownArrowImage} />
           )}
-        </DropDownButton>
-      </DropDownLabel>
+        </DropdownButton>
+      </DropdownLabel>
       {isDropdownView && (
-        <DropDownOptionsUl>
+        <DropdownOptionsUl>
           {options.map((option, index) => (
-            <DropDownOptionLi
+            <DropdownOptionLi
               key={`${index}-${option}`}
               onClick={() =>
                 handleSelectOption(
@@ -58,12 +58,12 @@ const DropDown = ({ id, text = "전체", options, onChangeSelect }: Props) => {
                 )
               }>
               {typeof option === "string" ? option : option.korean}
-            </DropDownOptionLi>
+            </DropdownOptionLi>
           ))}
-        </DropDownOptionsUl>
+        </DropdownOptionsUl>
       )}
-    </DropDownBox>
+    </DropdownBox>
   );
 };
 
-export default DropDown;
+export default Dropdown;
