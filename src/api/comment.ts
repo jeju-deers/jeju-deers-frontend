@@ -16,7 +16,7 @@ export const getComments = async ({ postId, token }: GetCommentsProps) => {
 interface PostCommentProps {
   postId: string;
   name: string;
-  belong?: string;
+  belong: string;
   content: string;
   token: string;
 }

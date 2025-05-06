@@ -41,7 +41,7 @@ const AdminEditAccount = ({ userInformation }: Props) => {
       return <CoachItemsInputField userInformation={formData} onChangeInput={handleChangeInput} />;
     }
   };
-
+  
   const handleClickCancel = () => {
     navigate("/admin");
   };
