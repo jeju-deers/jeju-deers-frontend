@@ -20,7 +20,7 @@ interface GameScheduleProps {
 export const postSchedule = async ({
   token,
   id,
-  date,
+  date: datetime,
   location,
   homeTeam,
   homeScore,
@@ -33,7 +33,7 @@ export const postSchedule = async ({
     {
       token,
       id,
-      date,
+      date: datetime,
       location,
       homeTeam,
       homeScore,
