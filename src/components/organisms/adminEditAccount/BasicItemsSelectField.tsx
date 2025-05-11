@@ -1,40 +1,56 @@
 import { BasicItemsSelectFieldBox } from "./BasicItemsSelectFieldStyles";
-import { useState } from "react";
 import BELONG_DATA from "~/constants/belongData";
 import USER_TYPE_DATA from "~/constants/userTypeData";
 import AUTHORITY_DATA from "~/constants/authorityData";
 import ItemSelectField from "~/components/molecules/adminEditAccount/ItemSelectField";
+import { ChangeEvent, useState } from "react";
 
-const BasicItemsSelectField = () => {
+interface Props {
+  userInformation: {
+    adminEditAccountBelong: string;
+    adminEditAccountRole: string;
+    adminEditAccountPermission: string;
+  };
+}
+
+const BasicItemsSelectField = ({ userInformation }: Props) => {
+  const { adminEditAccountBelong, adminEditAccountRole, adminEditAccountPermission } =
+    userInformation;
+
   const [selectOptions, setSelectOptions] = useState({
-    belong: "",
-    role: "",
-    permission: "",
+    belong: adminEditAccountBelong || "전체",
+    role: adminEditAccountRole || "전체",
+    permission: adminEditAccountPermission || "전체",
   });
 
-  const handleSelectOptionsChange = (selectOptions: string) => (value: string) => {
-    setSelectOptions((previous) => ({ ...previous, [selectOptions]: value }));
-  };
+  const handleSelectOptionsChange =
+    (selectOptions: string) => (event: ChangeEvent<HTMLSelectElement>) => {
+      const { value } = event.target;
+      setSelectOptions((previous) => ({ ...previous, [selectOptions]: value }));
+    };
 
   return (
     <BasicItemsSelectFieldBox>
       <ItemSelectField
         id="adminEditAccountBelong"
-        text="소속"
+        title="소속"
+        selectText={selectOptions.belong}
         required={true}
         options={BELONG_DATA}
         onOptionSelected={handleSelectOptionsChange}
       />
       <ItemSelectField
         id="adminEditAccountRole"
-        text="역할"
+        title="역할"
+        selectText={selectOptions.role}
         required={true}
         options={USER_TYPE_DATA}
         onOptionSelected={handleSelectOptionsChange}
       />
       <ItemSelectField
-        id="adminEditAccountResponsibility"
-        text="권한"
+        id="adminEditAccountPermission"
+        title="권한"
+        selectText={selectOptions.permission}
         required={true}
         options={AUTHORITY_DATA}
         onOptionSelected={handleSelectOptionsChange}
