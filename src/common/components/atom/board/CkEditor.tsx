@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import {
   ClassicEditor,
-  AccessibilityHelp,
   Alignment,
   AutoImage,
   AutoLink,
@@ -19,16 +18,8 @@ import {
   ImageStyle,
   ImageToolbar,
   ImageUpload,
-  Italic,
   Link,
-  MediaEmbed,
   Paragraph,
-  SelectAll,
-  Table,
-  TableProperties,
-  TableToolbar,
-  Underline,
-  Undo,
 } from "ckeditor5";
 
 import "ckeditor5/ckeditor5.css";
@@ -36,11 +27,14 @@ import "ckeditor5/ckeditor5.css";
 import { CKEditorWrapper, EditorContainer, MainContainer } from "./CkEditorStyles";
 import translations from "ckeditor5/translations/ko.js";
 
+const LICENSE_KEY = import.meta.env.LICENSE_KEY;
+
 interface Props {
   onChange: (data: string) => void;
+  content: string;
 }
 
-const CkEditor = ({ onChange }: Props) => {
+const CkEditor = ({ onChange, content }: Props) => {
   const editorContainerRef = useRef(null);
   const editorRef = useRef(null);
   const [isLayoutReady, setIsLayoutReady] = useState(false);
@@ -53,32 +47,10 @@ const CkEditor = ({ onChange }: Props) => {
 
   const editorConfig: any = {
     toolbar: {
-      viewportTopOffset: 100,
-      items: [
-        "undo",
-        "redo",
-        "|",
-        "selectAll",
-        "|",
-        "heading",
-        "|",
-        "bold",
-        "italic",
-        "underline",
-        "|",
-        "link",
-        "insertImage",
-        "mediaEmbed",
-        "insertTable",
-        "|",
-        "alignment",
-        "|",
-        "accessibilityHelp",
-      ],
+      items: ["heading", "|", "bold", "|", "link", "|", "alignment"],
       shouldNotGroupWhenFull: false,
     },
     plugins: [
-      AccessibilityHelp,
       Alignment,
       AutoImage,
       AutoLink,
@@ -95,16 +67,8 @@ const CkEditor = ({ onChange }: Props) => {
       ImageStyle,
       ImageToolbar,
       ImageUpload,
-      Italic,
       Link,
-      MediaEmbed,
       Paragraph,
-      SelectAll,
-      Table,
-      TableProperties,
-      TableToolbar,
-      Underline,
-      Undo,
     ],
     heading: {
       options: [
@@ -175,8 +139,9 @@ const CkEditor = ({ onChange }: Props) => {
         options: ["alignBlockLeft", "block", "alignBlockRight"],
       },
     },
-    initialData: "",
+    initialData: content,
     language: "ko",
+    licenseKey: LICENSE_KEY,
     link: {
       addTargetToExternalLinks: true,
       defaultProtocol: "https://",
@@ -191,9 +156,6 @@ const CkEditor = ({ onChange }: Props) => {
       },
     },
     placeholder: "내용을 입력해주세요",
-    table: {
-      contentToolbar: ["tableColumn", "tableRow", "mergeTableCells", "tableProperties"],
-    },
     translations: [translations],
   };
 
@@ -205,6 +167,7 @@ const CkEditor = ({ onChange }: Props) => {
             <CKEditor
               editor={ClassicEditor}
               config={editorConfig}
+              data={content}
               onChange={(_, editor) => {
                 const data = editor.getData();
                 onChange(data);

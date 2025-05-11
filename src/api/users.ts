@@ -18,6 +18,11 @@ export const GetUsers = async (usertype: string) => {
   return data.filter((users: User) => users.userType === usertype);
 };
 
+export const getUsers = async () => {
+  const { data } = await instance.get("/users");
+  return data;
+};
+
 export const getUserInformation = async (objectInformation: {
   userId: string | null;
   token: string | null;

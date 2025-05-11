@@ -6,12 +6,12 @@ import {
   OptionItemsInputFieldWrap,
   SubHeaderWrap,
 } from "./MyPageStyles";
-import SubHeader from "~/components/molecules/myPage/subHeader/SubHeader";
+import SubHeader from "~/common/components/molecules/accountManagement/subHeader/SubHeader";
 import BasicItemsInputField from "~/components/organisms/myPage/BasicItemsInputField";
 import PlayerItemsInputField from "~/components/organisms/myPage/PlayerItemsInputField";
 import CoachItemsInputField from "~/components/organisms/myPage/CoachItemsInputField";
-import SubmitButton from "~/components/atoms/myPage/body/SubmitButton";
-import CancelButton from "~/components/atoms/myPage/body/CancelButton";
+import SubmitButton from "~/common/components/atom/accountManagement/body/SubmitButton";
+import CancelButton from "~/common/components/atom/accountManagement/body/CancelButton";
 import ExternalItemsInputField from "~/components/organisms/myPage/ExternalItemsInputField";
 import { FormEvent } from "react";
 import useEditMyPage from "~/hooks/myPage/useEditMyPage";
@@ -85,7 +85,7 @@ const MyPage = ({ userInformation, updateUserInformation }: any) => {
   return (
     <MyPageLayout>
       <SubHeaderWrap>
-        <SubHeader />
+        <SubHeader subTitle="기본 정보 변경하기" />
       </SubHeaderWrap>
       <MyPageForm id="myPageSubmit" onSubmit={handleSubmit}>
         <BasicItemsInputFieldWrap>

@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "~/pages/MainPage";
-import NotFound from "~/pages/NotFound";
 import AboutPage from "~/pages/club/AboutPage";
 import OrganizationPage from "~/pages/club/OrganizationPage";
 import PlayerPage from "~/pages/club/PlayerPage";
@@ -21,12 +20,21 @@ import Base from "~/Base";
 import MyPagePage from "~/pages/MyPagePage";
 import SignUpPage from "~/pages/SignUpPage";
 import BoardDetailPage from "~/pages/board/BoardDetailPage";
-import NewsWritePage from "~/pages/common/NewsWritePage";
+import BoardWritePage from "~/pages/common/BoardWritePage";
+import AdminPage from "~/pages/admin/AdminPage";
+import BoardUpdatePage from "~/pages/common/BoardUpdatePage";
+import NotFound from "~/pages/NotFound";
+import RedirectHandler from "~/RedirectHandler";
+import AdminEditAccountPage from "~/pages/admin/AdminEditAccountPage";
 
 const Router = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/jeju-deers-frontend">
+      <RedirectHandler />
       <Routes>
+        <Route path="admin" element={<AdminPage />} />
+        <Route path="admin/edit/:id" element={<AdminEditAccountPage />} />
+
         <Route path="/" element={<Base />}>
           <Route index element={<MainPage />} />
 
@@ -44,8 +52,9 @@ const Router = () => {
           <Route path="news">
             <Route path="schedule" element={<SchedulePage />} />
             <Route path="news" element={<NewsPage />} />
-            <Route path=":section/write" element={<NewsWritePage />} />
-            <Route path=":section/board_detail" element={<BoardDetailPage />} />
+            <Route path=":section/write" element={<BoardWritePage />} />
+            <Route path=":section/update/:id" element={<BoardUpdatePage />} />
+            <Route path=":section/board/:id" element={<BoardDetailPage />} />
           </Route>
 
           <Route path="teamroom">
@@ -55,16 +64,18 @@ const Router = () => {
             <Route path="staff_board" element={<StaffBoardPage />} />
             <Route path="playbook" element={<PlaybookPage />} />
             <Route path="membership_fee" element={<MembershipFeePage />} />
-            <Route path=":section/write" element={<NewsWritePage />} />
-            <Route path=":section/board_detail" element={<BoardDetailPage />} />
+            <Route path=":section/write" element={<BoardWritePage />} />
+            <Route path=":section/update/:id" element={<BoardUpdatePage />} />
+            <Route path=":section/board/:id" element={<BoardDetailPage />} />
           </Route>
 
           <Route path="community">
             <Route path="guest_board" element={<GuestBoardPage />} />
             <Route path="media" element={<MediaPage />} />
             <Route path="support" element={<SupportPage />} />
-            <Route path=":section/write" element={<NewsWritePage />} />
-            <Route path=":section/board_detail" element={<BoardDetailPage />} />
+            <Route path=":section/write" element={<BoardWritePage />} />
+            <Route path=":section/update/:id" element={<BoardUpdatePage />} />
+            <Route path=":section/board/:id" element={<BoardDetailPage />} />
           </Route>
         </Route>
 

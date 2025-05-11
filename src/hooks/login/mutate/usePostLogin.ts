@@ -15,11 +15,12 @@ const usePostLogin = () => {
         password,
       }),
     onSuccess: (loginResponse: AxiosResponse) => {
-      console.log(
-        `로그인 성공, data: ${loginResponse}, token: ${loginResponse.data.token}, user: ${loginResponse.data.user.userId}`,
-      );
+      console.log(`로그인 성공`);
       localStorage.setItem("token", loginResponse.data.token);
+      localStorage.setItem("owner", loginResponse.data.user.name);
+      localStorage.setItem("userType", loginResponse.data.user.userType);
       localStorage.setItem("userId", loginResponse.data.user.userId);
+      localStorage.setItem("belong", loginResponse.data.user.belong);
     },
     onError: (error: Error) => {
       console.log(`로그인 실패, error: ${error}`);
