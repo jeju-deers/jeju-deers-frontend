@@ -18,7 +18,7 @@ const usePostSchedule = () => {
   const mutation = useMutation({
     mutationFn: ({
       id,
-      date,
+      date: datetime,
       location,
       homeTeam,
       homeScore,
@@ -29,7 +29,7 @@ const usePostSchedule = () => {
     }: Props) =>
       postSchedule({
         id,
-        date,
+        date: datetime,
         location,
         homeTeam,
         homeScore,

@@ -23,6 +23,7 @@ import {
   GameDateTimeBox,
 } from "./GameScheduleStyles";
 import teamlogo from "~/assets/images/homepage_logo_top.svg";
+import { parseDatetime } from "./ParseDatetime";
 
 interface Props {
   datetime: string;
@@ -51,7 +52,7 @@ const GameSchedule = ({
   onEdit,
 }: Props) => {
   const [formData, setFormData] = useState({
-    datetime,
+    date: datetime,
     location,
     awayTeam,
     homeScore: homeScore || "",
@@ -59,7 +60,7 @@ const GameSchedule = ({
   });
 
   const isFormValid =
-    formData.datetime &&
+    formData.date &&
     formData.location &&
     formData.awayTeam &&
     !isNaN(Number(formData.homeScore)) &&
@@ -70,30 +71,15 @@ const GameSchedule = ({
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const parseDatetime = (datetime: string) => {
-    const match = datetime.match(/(\d{4})\/(\d{2})\/(\d{2}) - (\d+):00 (AM|PM)/); // YYYY/MM/DD - H:00 AM/PM
-    if (!match) return { year: 2023, month: 1, day: 1, hour: 9 };
-    let [_, year, month, day, hour, period] = match;
-    let numericHour = parseInt(hour, 10);
-    if (period === "PM" && numericHour !== 12) numericHour += 12;
-    if (period === "AM" && numericHour === 12) numericHour = 0;
-    return {
-      year: parseInt(year),
-      month: parseInt(month),
-      day: parseInt(day),
-      hour: numericHour,
-    };
-  };
-
   const updateDatetime = (field: string, value: number) => {
-    const parts = parseDatetime(formData.datetime);
+    const parts = parseDatetime(formData.date);
     const updated = { ...parts, [field]: value };
     const period = updated.hour >= 12 ? "PM" : "AM";
     const displayHour = updated.hour % 12 === 0 ? 12 : updated.hour % 12;
     const newDatetime = `${updated.year}/${String(updated.month).padStart(2, "0")}/${String(
       updated.day,
     ).padStart(2, "0")} - ${displayHour}:00 ${period}`;
-    setFormData((prev) => ({ ...prev, datetime: newDatetime }));
+    setFormData((prev) => ({ ...prev, date: newDatetime }));
   };
 
   const isLeapYear = (year: number) => (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
@@ -112,7 +98,7 @@ const GameSchedule = ({
     }
   };
 
-  const currentParts = parseDatetime(formData.datetime);
+  const currentParts = parseDatetime(formData.date);
 
   const { year, month } = currentParts;
 
@@ -130,7 +116,10 @@ const GameSchedule = ({
         {isEditing ? (
           <>
             <GameScheduleButton
-              onClick={() => isFormValid && onUpdate(formData)}
+              onClick={() =>
+                isFormValid &&
+                onUpdate({ ...formData, homeTeam: "JEJU DEERS", datetime: formData.date })
+              }
               disabled={!isFormValid}>
               저장
             </GameScheduleButton>
@@ -203,7 +192,7 @@ const GameSchedule = ({
             </>
           ) : (
             <>
-              <GameDateTimeBox>{formData.datetime}</GameDateTimeBox>
+              <GameDateTimeBox>{formData.date}</GameDateTimeBox>
               <GameLocation location={location} />
             </>
           )}
@@ -221,7 +210,7 @@ const GameSchedule = ({
                 type="text"
                 placeholder="상대 팀"
                 value={formData.awayTeam}
-                onChange={(event) => handleChangeInput("opposingTeam", event.target.value)}
+                onChange={(event) => handleChangeInput("awayTeam", event.target.value)}
               />
             ) : (
               <OpposingTeamSpan>{awayTeam}</OpposingTeamSpan>
@@ -250,7 +239,7 @@ const GameSchedule = ({
                 type="text"
                 placeholder="상대 팀 점수"
                 value={formData.awayScore}
-                onChange={(event) => handleChangeInput("score2", event.target.value)}
+                onChange={(event) => handleChangeInput("awayScore", event.target.value)}
               />
             ) : (
               <OpposingTeamScoreSpan>{awayScore}</OpposingTeamScoreSpan>

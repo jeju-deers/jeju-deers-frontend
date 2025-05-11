@@ -5,6 +5,7 @@ import teamlogo from "~/assets/images/homepage_logo_top.svg";
 import { GameScheduleData } from "~/api/types/schedule";
 import { useGetSchedules } from "~/hooks/schedule/query/useGetSchedules";
 import usePostSchedule from "~/hooks/schedule/mutate/usePostSchedule";
+import { parseDatetime } from "~/components/atoms/news/schedule/ParseDatetime";
 
 const Schedule = () => {
   const { data: games, isLoading, error } = useGetSchedules();
@@ -14,12 +15,17 @@ const Schedule = () => {
   // Retrieve the token from localStorage
   const token = localStorage.getItem("token");
 
+  const formatToISO = (customDateStr: string): string => {
+    const { year, month, day, hour } = parseDatetime(customDateStr);
+    return new Date(year, month - 1, day, hour).toISOString();
+  };
+
   const addGame = () => {
     const newGame: GameScheduleData = {
       id: Date.now().toString(),
       date: "",
       location: "",
-      homeTeam: "",
+      homeTeam: "JEJU DEERS",
       homeScore: "",
       awayTeam: "",
       awayScore: "",
@@ -50,7 +56,15 @@ const Schedule = () => {
   const saveGame = (id: string, updatedData: Partial<GameScheduleData>) => {
     const gameToSave = formatGames.find((game) => game.id === id);
     if (gameToSave && token) {
-      postSchedule({ ...gameToSave, ...updatedData, token });
+      const isoDate = formatToISO(updatedData.date || gameToSave.date);
+
+      postSchedule({
+        ...gameToSave,
+        ...updatedData,
+        date: isoDate,
+        token,
+      });
+
       updateGame(id, updatedData);
     }
   };
@@ -68,7 +82,7 @@ const Schedule = () => {
           {[...games, ...formatGames].map((game) => (
             <GameSchedule
               key={game.id}
-              datetime={game.date}
+              datetime={game.datetime}
               location={game.location}
               homeTeam={game.homeTeam}
               awayTeam={game.awayTeam}
