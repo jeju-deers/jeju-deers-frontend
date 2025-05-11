@@ -16,10 +16,6 @@ const AUTHORITY_DATA: AuthorityData[] = [
     korean: "외부 회원",
     english: "guest",
   },
-  {
-    korean: "전체",
-    english: "all",
-  },
 ];
 
 export default AUTHORITY_DATA;
