@@ -14,7 +14,6 @@ interface GameScheduleProps {
   homeScore: string;
   awayTeam: string;
   awayScore: string;
-  isEditing: boolean;
 }
 
 export const postSchedule = async ({
@@ -26,7 +25,6 @@ export const postSchedule = async ({
   homeScore,
   awayTeam,
   awayScore,
-  isEditing,
 }: GameScheduleProps) => {
   const { data } = await instance.post(
     "/game-schedules",
@@ -39,7 +37,6 @@ export const postSchedule = async ({
       homeScore,
       awayTeam,
       awayScore,
-      isEditing,
     },
     {
       headers: {

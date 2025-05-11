@@ -11,7 +11,6 @@ interface Props {
   homeScore: string;
   awayTeam: string;
   awayScore: string;
-  isEditing: boolean;
 }
 
 const usePostSchedule = () => {
@@ -24,7 +23,6 @@ const usePostSchedule = () => {
       homeScore,
       awayTeam,
       awayScore,
-      isEditing,
       token,
     }: Props) =>
       postSchedule({
@@ -35,7 +33,6 @@ const usePostSchedule = () => {
         homeScore,
         awayTeam,
         awayScore,
-        isEditing,
         token,
       }),
     onSuccess: (data) => {
