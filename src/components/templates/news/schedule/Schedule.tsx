@@ -5,7 +5,7 @@ import teamlogo from "~/assets/images/homepage_logo_top.svg";
 import { GameScheduleData } from "~/api/types/schedule";
 import { useGetSchedules } from "~/hooks/schedule/query/useGetSchedules";
 import usePostSchedule from "~/hooks/schedule/mutate/usePostSchedule";
-import { parseDatetime } from "~/components/atoms/news/schedule/ParseDatetime";
+import useParseDatetime from "~/common/hooks/useParseDatetime";
 
 const Schedule = () => {
   const { data: games, isLoading, error } = useGetSchedules();
@@ -16,7 +16,7 @@ const Schedule = () => {
   const token = localStorage.getItem("token");
 
   const formatToISO = (customDateStr: string): string => {
-    const { year, month, day, hour } = parseDatetime(customDateStr);
+    const { year, month, day, hour } = useParseDatetime(customDateStr);
     return new Date(year, month - 1, day, hour).toISOString();
   };
 

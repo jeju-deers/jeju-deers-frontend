@@ -1,4 +1,4 @@
-export const parseDatetime = (datetime: string | undefined) => {
+const useParseDatetime = (datetime: string | undefined) => {
   if (typeof datetime !== "string") {
     return { year: 2023, month: 1, day: 1, hour: 9 };
   }
@@ -15,3 +15,5 @@ export const parseDatetime = (datetime: string | undefined) => {
     hour: numericHour,
   };
 };
+
+export default useParseDatetime;

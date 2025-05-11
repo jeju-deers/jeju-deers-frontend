@@ -23,7 +23,7 @@ import {
   GameDateTimeBox,
 } from "./GameScheduleStyles";
 import teamlogo from "~/assets/images/homepage_logo_top.svg";
-import { parseDatetime } from "./ParseDatetime";
+import useParseDatetime from "~/common/hooks/useParseDatetime";
 
 interface Props {
   datetime: string;
@@ -72,7 +72,7 @@ const GameSchedule = ({
   };
 
   const updateDatetime = (field: string, value: number) => {
-    const parts = parseDatetime(formData.date);
+    const parts = useParseDatetime(formData.date);
     const updated = { ...parts, [field]: value };
     const period = updated.hour >= 12 ? "PM" : "AM";
     const displayHour = updated.hour % 12 === 0 ? 12 : updated.hour % 12;
@@ -98,7 +98,7 @@ const GameSchedule = ({
     }
   };
 
-  const currentParts = parseDatetime(formData.date);
+  const currentParts = useParseDatetime(formData.date);
 
   const { year, month } = currentParts;
 
