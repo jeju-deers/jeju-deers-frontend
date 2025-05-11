@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import GameLocation from "./GameLocation";
 import {
-  GameDetailsBox,
+  GameDatelineBox,
   GameResultBox,
   GameScheduleBox,
   GameTeamDetailsBox,
@@ -12,10 +12,10 @@ import {
   OurTeamBox,
   OurTeamImage,
   OurTeamScoreSpan,
-  OurTeamSpan,
+  OurTeamTextSpan,
   ScoreBox,
   VersusSpan,
-  ButtonGroup,
+  ScheduleManageButtonGroup,
   ScheduleInfomationSelect,
   ScheduleInfomationInput,
   GameScheduleButton,
@@ -25,7 +25,7 @@ import {
 import teamlogo from "~/assets/images/homepage_logo_top.svg";
 
 interface Props {
-  date: string;
+  datetime: string;
   location: string;
   homeTeam: string;
   awayTeam: string;
@@ -33,62 +33,104 @@ interface Props {
   awayScore: string;
   awayTeamImage: string;
   isEditing: boolean;
-  onSave: (updatedData: Partial<Props>) => void;
+  onUpdate: (updatedData: Partial<Props>) => void;
   onDelete: () => void;
   onEdit: () => void;
 }
 
 const GameSchedule = ({
-  date,
+  datetime,
   location,
-  homeTeam,
   awayTeam,
   homeScore,
   awayScore,
   awayTeamImage,
   isEditing,
-  onSave,
+  onUpdate,
   onDelete,
   onEdit,
 }: Props) => {
   const [formData, setFormData] = useState({
-    date,
+    datetime,
     location,
-    homeTeam,
     awayTeam,
     homeScore: homeScore || "",
     awayScore: awayScore || "",
   });
 
   const isFormValid =
-    formData.date &&
+    formData.datetime &&
     formData.location &&
-    formData.homeTeam &&
     formData.awayTeam &&
     !isNaN(Number(formData.homeScore)) &&
     !isNaN(Number(formData.awayScore));
 
-  const handleInputChange = (field: string, value: string) => {
-    // 숫자만 허용
-    if ((field === "score1" || field === "score2") && !/^\d*$/.test(value)) return;
-
+  const handleChangeInput = (field: string, value: string) => {
+    if ((field === "homeScore" || field === "awayScore") && isNaN(Number(value))) return;
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const datetimeOptions = [
-    { value: "2024-07-25 13:00", label: "2024-07-25 - 1:00 PM" },
-    { value: "2024-07-25 15:00", label: "2024-07-25 - 3:00 PM" },
-    { value: "2024-07-26 13:00", label: "2024-07-26 - 1:00 PM" },
-    { value: "2024-07-26 15:00", label: "2024-07-26 - 3:00 PM" },
-  ];
+  const parseDatetime = (datetime: string) => {
+    const match = datetime.match(/(\d{4})\/(\d{2})\/(\d{2}) - (\d+):00 (AM|PM)/); // YYYY/MM/DD - H:00 AM/PM
+    if (!match) return { year: 2023, month: 1, day: 1, hour: 9 };
+    let [_, year, month, day, hour, period] = match;
+    let numericHour = parseInt(hour, 10);
+    if (period === "PM" && numericHour !== 12) numericHour += 12;
+    if (period === "AM" && numericHour === 12) numericHour = 0;
+    return {
+      year: parseInt(year),
+      month: parseInt(month),
+      day: parseInt(day),
+      hour: numericHour,
+    };
+  };
+
+  const updateDatetime = (field: string, value: number) => {
+    const parts = parseDatetime(formData.datetime);
+    const updated = { ...parts, [field]: value };
+    const period = updated.hour >= 12 ? "PM" : "AM";
+    const displayHour = updated.hour % 12 === 0 ? 12 : updated.hour % 12;
+    const newDatetime = `${updated.year}/${String(updated.month).padStart(2, "0")}/${String(
+      updated.day,
+    ).padStart(2, "0")} - ${displayHour}:00 ${period}`;
+    setFormData((prev) => ({ ...prev, datetime: newDatetime }));
+  };
+
+  const isLeapYear = (year: number) => (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+
+  const getDay = (year: number, month: number) => {
+    switch (month) {
+      case 2:
+        return isLeapYear(year) ? 29 : 28;
+      case 4:
+      case 6:
+      case 9:
+      case 11:
+        return 30;
+      default:
+        return 31;
+    }
+  };
+
+  const currentParts = parseDatetime(formData.datetime);
+
+  const { year, month } = currentParts;
+
+  const range = (start: number, end: number) =>
+    Array.from({ length: end - start + 1 }, (_, i) => start + i);
+
+  const years = useMemo(() => range(2023, 2032), []);
+  const months = useMemo(() => range(1, 12), []);
+  const days = useMemo(() => range(1, getDay(year, month)), [year, month]);
+  const hours = useMemo(() => range(9, 22), []);
 
   return (
     <GameScheduleBox>
-      <ButtonGroup>
+      <ScheduleManageButtonGroup>
         {isEditing ? (
           <>
             <GameScheduleButton
-              onClick={() => isFormValid && onSave(formData)}
+              onClick={() => isFormValid && onUpdate(formData)}
               disabled={!isFormValid}>
               저장
             </GameScheduleButton>
@@ -97,51 +139,80 @@ const GameSchedule = ({
         ) : (
           <GameScheduleButton onClick={onEdit}>수정</GameScheduleButton>
         )}
-      </ButtonGroup>
+      </ScheduleManageButtonGroup>
+
       <GameScheduleInformationBox>
-        <GameDetailsBox>
+        <GameDatelineBox>
           {isEditing ? (
             <>
-              <ScheduleInfomationSelect
-                value={formData.date}
-                onChange={(e) => handleInputChange("date", e.target.value)}>
-                <option value="" disabled>
-                  날짜 및 시간 선택
-                </option>
-                {datetimeOptions.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
+              <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+                <ScheduleInfomationSelect
+                  value={currentParts.year}
+                  onChange={(event) => updateDatetime("year", +event.target.value)}>
+                  <option value="" disabled>
+                    년도 선택
                   </option>
-                ))}
-              </ScheduleInfomationSelect>
+                  {years.map((year) => (
+                    <option key={year} value={year}>
+                      {year}년
+                    </option>
+                  ))}
+                </ScheduleInfomationSelect>
+
+                <ScheduleInfomationSelect
+                  value={currentParts.month}
+                  onChange={(event) => updateDatetime("month", +event.target.value)}>
+                  {months.map((month) => (
+                    <option key={month} value={month}>
+                      {month}월
+                    </option>
+                  ))}
+                </ScheduleInfomationSelect>
+
+                <ScheduleInfomationSelect
+                  value={currentParts.day}
+                  onChange={(event) => updateDatetime("day", +event.target.value)}>
+                  {days.map((day) => (
+                    <option key={day} value={day}>
+                      {day}일
+                    </option>
+                  ))}
+                </ScheduleInfomationSelect>
+
+                <ScheduleInfomationSelect
+                  value={currentParts.hour}
+                  onChange={(event) => updateDatetime("hour", +event.target.value)}>
+                  {hours.map((hour) => {
+                    const label =
+                      hour >= 12 ? `오후 ${hour === 12 ? 12 : hour - 12}시` : `오전 ${hour}시`;
+                    return (
+                      <option key={hour} value={hour}>
+                        {label}
+                      </option>
+                    );
+                  })}
+                </ScheduleInfomationSelect>
+              </div>
+
               <ScheduleInfomationInput
                 type="text"
                 placeholder="장소"
                 value={formData.location}
-                onChange={(e) => handleInputChange("location", e.target.value)}
+                onChange={(event) => handleChangeInput("location", event.target.value)}
               />
             </>
           ) : (
             <>
-              <GameDateTimeBox>{date.replace(" ", " - ")}</GameDateTimeBox>
+              <GameDateTimeBox>{formData.datetime}</GameDateTimeBox>
               <GameLocation location={location} />
             </>
           )}
-        </GameDetailsBox>
+        </GameDatelineBox>
 
         <GameTeamDetailsBox>
           <OurTeamBox>
             <OurTeamImage src={teamlogo} />
-            {isEditing ? (
-              <ScheduleInfomationInput
-                type="text"
-                placeholder="우리 팀"
-                value={formData.homeTeam}
-                onChange={(e) => handleInputChange("homeTeam", e.target.value)}
-              />
-            ) : (
-              <OurTeamSpan>{homeTeam}</OurTeamSpan>
-            )}
+            <OurTeamTextSpan>JEJU DEERS</OurTeamTextSpan>
           </OurTeamBox>
           <VersusSpan>VS</VersusSpan>
           <OpposingTeamBox>
@@ -150,7 +221,7 @@ const GameSchedule = ({
                 type="text"
                 placeholder="상대 팀"
                 value={formData.awayTeam}
-                onChange={(e) => handleInputChange("awayTeam", e.target.value)}
+                onChange={(event) => handleChangeInput("opposingTeam", event.target.value)}
               />
             ) : (
               <OpposingTeamSpan>{awayTeam}</OpposingTeamSpan>
@@ -166,7 +237,7 @@ const GameSchedule = ({
                 type="text"
                 placeholder="우리 팀 점수"
                 value={formData.homeScore}
-                onChange={(e) => handleInputChange("homeScore", e.target.value)}
+                onChange={(event) => handleChangeInput("homeScore", event.target.value)}
               />
             ) : (
               <OurTeamScoreSpan>{homeScore}</OurTeamScoreSpan>
@@ -179,7 +250,7 @@ const GameSchedule = ({
                 type="text"
                 placeholder="상대 팀 점수"
                 value={formData.awayScore}
-                onChange={(e) => handleInputChange("awayScore", e.target.value)}
+                onChange={(event) => handleChangeInput("score2", event.target.value)}
               />
             ) : (
               <OpposingTeamScoreSpan>{awayScore}</OpposingTeamScoreSpan>

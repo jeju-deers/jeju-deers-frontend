@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NOTICE_DATA } from "~/constants/noticeData";
-import WriteDropdownButton from "../atom/board/WriteDropDownButton";
+import WriteDropdownButton from "../atom/board/WriteDropdownButton";
 import CkEditor from "../atom/board/CkEditor";
 import Heading from "~/components/atoms/club/Heading";
 import helmet from "~/assets/images/helmet.svg";

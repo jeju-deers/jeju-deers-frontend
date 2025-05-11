@@ -1,22 +1,22 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import MainPage from "../pages/MainPage";
-import AboutPage from "../pages/club/AboutPage";
-import OrganizationPage from "../pages/club/OrganizationPage";
+import MainPage from "~/pages/MainPage";
+import AboutPage from "~/pages/club/AboutPage";
+import OrganizationPage from "~/pages/club/OrganizationPage";
 import PlayerPage from "~/pages/club/PlayerPage";
-import CoachesStaffPage from "../pages/club/CoachPage";
-import SponsorPage from "../pages/club/SponsorPage";
+import CoachesStaffPage from "~/pages/club/CoachPage";
+import SponsorPage from "~/pages/club/SponsorPage";
 import WorkoutSchedulesPage from "~/pages/teamroom/WorkoutSchedulesPage";
-import TeamBoardPage from "../pages/teamroom/TeamBoardPage";
-import CoachBoardPage from "../pages/teamroom/CoachBoardPage";
-import StaffBoardPage from "../pages/teamroom/StaffBoardPage";
-import PlaybookPage from "../pages/teamroom/PlaybookPage";
-import MembershipFeePage from "../pages/teamroom/MembershipFeePage";
+import TeamBoardPage from "~/pages/teamroom/TeamBoardPage";
+import CoachBoardPage from "~/pages/teamroom/CoachBoardPage";
+import StaffBoardPage from "~/pages/teamroom/StaffBoardPage";
+import PlaybookPage from "~/pages/teamroom/PlaybookPage";
+import MembershipFeePage from "~/pages/teamroom/MembershipFeePage";
 import GuestBoardPage from "~/pages/community/GuestBoardPage";
-import MediaPage from "../pages/community/MediaPage";
-import SupportPage from "../pages/community/SupportPage";
+import MediaPage from "~/pages/community/MediaPage";
+import SupportPage from "~/pages/community/SupportPage";
 import SchedulePage from "~/pages/news/SchedulePage";
-import NewsPage from "../pages/news/NewsPage";
-import Base from "../Base";
+import NewsPage from "~/pages/news/NewsPage";
+import Base from "~/Base";
 import MyPagePage from "~/pages/MyPagePage";
 import SignUpPage from "~/pages/SignUpPage";
 import BoardDetailPage from "~/pages/board/BoardDetailPage";
@@ -25,6 +25,7 @@ import AdminPage from "~/pages/admin/AdminPage";
 import BoardUpdatePage from "~/pages/common/BoardUpdatePage";
 import NotFound from "~/pages/NotFound";
 import RedirectHandler from "~/RedirectHandler";
+import AdminEditAccountPage from "~/pages/admin/AdminEditAccountPage";
 
 const Router = () => {
   return (
@@ -32,6 +33,7 @@ const Router = () => {
       <RedirectHandler />
       <Routes>
         <Route path="admin" element={<AdminPage />} />
+        <Route path="admin/edit/:id" element={<AdminEditAccountPage />} />
 
         <Route path="/" element={<Base />}>
           <Route index element={<MainPage />} />

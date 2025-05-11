@@ -1,5 +1,5 @@
 import WRITEOPTIONS from "~/constants/writeOption";
-import { WriteDropdownButtonSelect } from "./WriteDropDownButtonStyles";
+import { WriteDropdownButtonSelect } from "./WriteDropdownButtonStyles";
 
 interface Props {
   value: string;

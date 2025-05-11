@@ -1,13 +1,13 @@
 import tw from "twin.macro";
 import styled from "styled-components";
 
-export const DropDownBox = styled.div`
+export const DropdownBox = styled.div`
   ${tw`
     relative
   `}
 `;
 
-export const DropDownLabel = styled.label`
+export const DropdownLabel = styled.label`
   ${tw`
     flex
     flex-col
@@ -20,7 +20,7 @@ export const DropDownLabel = styled.label`
   `}
 `;
 
-export const DropDownButton = styled.button`
+export const DropdownButton = styled.button`
   ${tw`
     flex
     w-full
@@ -30,13 +30,13 @@ export const DropDownButton = styled.button`
   `}
 `;
 
-export const TextSpan = styled.span`
+export const SelectedOptionTextSpan = styled.span`
   ${tw`
     text-gray-1000
   `}
 `;
 
-export const DropDownOptionsUl = styled.ul`
+export const DropdownOptionsUl = styled.ul`
   ${tw`
     absolute
     z-10
@@ -48,7 +48,7 @@ export const DropDownOptionsUl = styled.ul`
   `}
 `;
 
-export const DropDownOptionLi = styled.li`
+export const DropdownOptionLi = styled.li`
   ${tw`
     p-4
     bg-white

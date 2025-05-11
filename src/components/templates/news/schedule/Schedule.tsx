@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import GameSchedule from "~/components/atoms/news/schedule/GameSchedule";
 import { ScheduleLayout, AddButton } from "./ScheduleStyles";
 import teamlogo from "~/assets/images/homepage_logo_top.svg";
@@ -50,7 +50,7 @@ const Schedule = () => {
   const saveGame = (id: string, updatedData: Partial<GameScheduleData>) => {
     const gameToSave = formatGames.find((game) => game.id === id);
     if (gameToSave && token) {
-      postSchedule({ ...gameToSave, ...updatedData, token }); // Pass token from localStorage
+      postSchedule({ ...gameToSave, ...updatedData, token });
       updateGame(id, updatedData);
     }
   };
@@ -68,7 +68,7 @@ const Schedule = () => {
           {[...games, ...formatGames].map((game) => (
             <GameSchedule
               key={game.id}
-              date={game.date}
+              datetime={game.date}
               location={game.location}
               homeTeam={game.homeTeam}
               awayTeam={game.awayTeam}
@@ -76,14 +76,13 @@ const Schedule = () => {
               awayScore={game.awayScore}
               awayTeamImage={game.awayTeamImage}
               isEditing={game.isEditing}
-              onSave={(updatedData) => saveGame(game.id, updatedData)}
+              onUpdate={(updatedData: any) => saveGame(game.id, updatedData)}
               onEdit={() => editGame(game.id)}
               onDelete={() => deleteGame(game.id)}
             />
           ))}
         </>
       )}
-
       <AddButton onClick={addGame}>추가하기</AddButton>
     </ScheduleLayout>
   );

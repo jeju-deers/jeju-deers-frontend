@@ -3,18 +3,20 @@ import styled from "styled-components";
 
 export const GameScheduleBox = styled.div`
   ${tw`
+    min-w-max
   `}
 `;
 
 export const GameScheduleInformationBox = styled.div`
   ${tw`
     border
-    border-[#D9D9D9]
+    border-gray-425
     mb-6
+    min-w-max
   `}
 `;
 
-export const GameDetailsBox = styled.div`
+export const GameDatelineBox = styled.div`
   ${tw`
     flex
     justify-between
@@ -22,7 +24,7 @@ export const GameDetailsBox = styled.div`
     py-2
     px-4
     border-b
-    border-[#D9D9D9]
+    border-gray-425
   `}
 `;
 
@@ -30,7 +32,8 @@ export const GameTeamDetailsBox = styled.div`
   ${tw`
     flex
     items-center
-    p-4
+    py-4
+    px-8
     justify-center
   `}
 `;
@@ -59,7 +62,7 @@ export const OpposingTeamBox = styled.div`
 export const GameDateTimeBox = styled.div`
   ${tw`
     font-semibold
-    text-[40px]
+    text-2.5
   `}
 `;
 
@@ -70,7 +73,7 @@ export const OurTeamImage = styled.img`
   `}
 `;
 
-export const OurTeamSpan = styled.span`
+export const OurTeamTextSpan = styled.span`
   ${tw`
     font-bold
     text-[40px]
@@ -87,15 +90,15 @@ export const OpposingTeamImage = styled.img`
 export const OpposingTeamSpan = styled.span`
   ${tw`
     font-bold
-    text-[40px]  
+    text-2.5
   `}
 `;
 
 export const VersusSpan = styled.span`
   ${tw`
     font-bold
-    text-[40px]
-    mx-[40px]
+    text-2.5
+    mx-10
   `}
 `;
 
@@ -118,18 +121,18 @@ export const ScoreBox = styled.div`
 export const OurTeamScoreSpan = styled.span`
   ${tw`
     font-bold
-    text-[40px]
+    text-2.5
   `}
 `;
 
 export const OpposingTeamScoreSpan = styled.span`
   ${tw`
     font-bold
-    text-[40px]
+    text-2.5
   `}
 `;
 
-export const ButtonGroup = styled.div`
+export const ScheduleManageButtonGroup = styled.div`
   ${tw`
     text-right
     mb-4
@@ -144,7 +147,7 @@ export const GameScheduleButton = styled.button`
     text-xl
     rounded-lg
     border
-    border-[#D9D9D9]
+    border-gray-425
     bg-white
     hover:bg-gray-300
     focus:outline-none
@@ -159,11 +162,11 @@ export const GameScheduleButton = styled.button`
 export const ScheduleInfomationSelect = styled.select`
   ${tw`
     p-2
-    text-[20px]
+    text-5
     border
     border-gray-300
     rounded-md
-    w-52
+    w-40
     h-16
   `}
 `;
@@ -171,11 +174,11 @@ export const ScheduleInfomationSelect = styled.select`
 export const ScheduleInfomationInput = styled.input`
   ${tw`
     p-2
-    text-[30px]
+    text-7.5
     border
     border-gray-300
     rounded-md
-    w-52
+    w-60
     h-16
   `}
 `;
