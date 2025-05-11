@@ -5,7 +5,7 @@ import {
   DropdownLabel,
   DropdownOptionLi,
   DropdownOptionsUl,
-  TextSpan,
+  SelectedOptionTextSpan,
 } from "./DropdownStyles";
 import dropdownDownArrowImage from "~/assets/images/dropdown_down_arrow.svg";
 import dropdownUpArrowImage from "~/assets/images/dropdown_up_arrow.svg";
@@ -18,24 +18,24 @@ interface Props {
 }
 
 const Dropdown = ({ text, options, onOptionSelected }: Props) => {
-  const [isDropdownView, setDropdownView] = useState(false);
+  const [isDropdownView, setIsDropdownView] = useState(false);
   const [selectedOption, setSelectedOption] = useState(text);
 
   const handleClickContainer = () => {
-    setDropdownView(!isDropdownView);
+    setIsDropdownView(!isDropdownView);
   };
 
   const handleSelectOption = (koreanValue: string, englishValue: string) => {
     setSelectedOption(koreanValue);
     onOptionSelected(englishValue);
-    setDropdownView(false);
+    setIsDropdownView(false);
   };
 
   return (
     <DropdownBox>
       <DropdownLabel onClick={handleClickContainer}>
         <DropdownButton>
-          <TextSpan>{selectedOption}</TextSpan>
+          <SelectedOptionTextSpan>{selectedOption}</SelectedOptionTextSpan>
           {isDropdownView ? (
             <img src={dropdownUpArrowImage} />
           ) : (

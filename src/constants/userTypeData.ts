@@ -20,6 +20,10 @@ const USER_TYPE_DATA: UserTypeData[] = [
     korean: "외부인",
     english: "external",
   },
+  {
+    korean: "전체",
+    english: "all",
+  },
 ];
 
 export default USER_TYPE_DATA;

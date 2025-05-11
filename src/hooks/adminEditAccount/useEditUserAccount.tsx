@@ -10,7 +10,9 @@ const useEditUserAccount = (userInformation: any = {}) => {
     adminEditAccountSchool: userInformation.school,
     adminEditAccountStudentId: userInformation.studentId,
     adminEditAccountPositions: userInformation.positions,
+    adminEditAccountInChange: userInformation.inChange || "",
     adminEditAccountBelong: userInformation.belong,
+    adminEditAccountRole: userInformation.role,
     adminEditAccountPermission: userInformation.permission || "",
   });
 

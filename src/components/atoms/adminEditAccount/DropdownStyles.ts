@@ -30,7 +30,7 @@ export const DropdownButton = styled.button`
   `}
 `;
 
-export const TextSpan = styled.span`
+export const SelectedOptionTextSpan = styled.span`
   ${tw`
     text-gray-1000
   `}

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { GetBoards } from "~/api/boards";
+import { getBoards } from "~/api/boards";
 
 export const useGetBoards = (type: string) => {
-  return useQuery({ queryKey: ["boardsData", type], queryFn: () => GetBoards(type) });
+  return useQuery({ queryKey: ["boardsData", type], queryFn: () => getBoards(type) });
 };
