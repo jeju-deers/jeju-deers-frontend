@@ -10,7 +10,6 @@ const useEditUserAccount = (userInformation: any = {}) => {
     adminEditAccountSchool: userInformation.school,
     adminEditAccountStudentId: userInformation.studentId,
     adminEditAccountPositions: userInformation.positions,
-    adminEditAccountInChange: userInformation.inChange || "",
     adminEditAccountBelong: userInformation.belong,
     adminEditAccountRole: userInformation.role,
     adminEditAccountPermission: userInformation.permission || "",
@@ -21,9 +20,14 @@ const useEditUserAccount = (userInformation: any = {}) => {
     setFormData((prevFormData) => ({ ...prevFormData, [id]: value }));
   };
 
+  const handleChangeSelect = (id: string, value: string) => {
+    setFormData((prevFormData) => ({ ...prevFormData, [id]: value }));
+  };
+
   return {
     formData,
     handleChangeInput,
+    handleChangeSelect,
   };
 };
 

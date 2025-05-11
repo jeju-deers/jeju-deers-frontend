@@ -9,14 +9,16 @@ import {
 } from "./DropdownStyles";
 import dropdownDownArrowImage from "~/assets/images/dropdown_down_arrow.svg";
 import dropdownUpArrowImage from "~/assets/images/dropdown_up_arrow.svg";
+import { UserTypeData } from "~/constants/userTypeData";
 
 interface Props {
+  id: string;
   text: string;
-  options: string[];
-  onOptionSelected: (value: string) => void;
+  options: UserTypeData[] | string[];
+  onChangeSelect: (id: string, value: string) => void;
 }
 
-const Dropdown = ({ text, options, onOptionSelected }: Props) => {
+const Dropdown = ({ id, text = "전체", options, onChangeSelect }: Props) => {
   const [isDropdownView, setIsDropdownView] = useState(false);
   const [selectedOption, setSelectedOption] = useState(text);
 
@@ -25,9 +27,9 @@ const Dropdown = ({ text, options, onOptionSelected }: Props) => {
     setIsDropdownView(!isDropdownView);
   };
 
-  const handleSelectOption = (option: string) => {
-    setSelectedOption(option);
-    onOptionSelected(option);
+  const handleSelectOption = (id: string, koreanValue: string, englishValue: string) => {
+    setSelectedOption(koreanValue);
+    onChangeSelect(id, englishValue);
     setIsDropdownView(false);
   };
 
@@ -45,8 +47,18 @@ const Dropdown = ({ text, options, onOptionSelected }: Props) => {
       </DropdownLabel>
       {isDropdownView && (
         <DropdownOptionsUl>
-          {options.map((option) => (
-            <DropdownOptionLi onClick={() => handleSelectOption(option)}>{option}</DropdownOptionLi>
+          {options.map((option, index) => (
+            <DropdownOptionLi
+              key={`${index}-${option}`}
+              onClick={() =>
+                handleSelectOption(
+                  id,
+                  typeof option === "string" ? option : option.korean,
+                  typeof option === "string" ? option : option.english,
+                )
+              }>
+              {typeof option === "string" ? option : option.korean}
+            </DropdownOptionLi>
           ))}
         </DropdownOptionsUl>
       )}

@@ -21,6 +21,8 @@ import BasicItemsSelectField from "~/components/organisms/adminEditAccount/Basic
 import CoachItemsInputField from "~/components/organisms/adminEditAccount/CoachItemsInputField";
 import PlayerItemsInputField from "~/components/organisms/adminEditAccount/PlayerItemsInputField";
 import useEditUserAccount from "~/hooks/adminEditAccount/useEditUserAccount";
+import usePutEditAccount from "~/hooks/admin/query/mutate/usePutEditAccount";
+import { FormEvent } from "react";
 
 interface Props {
   userInformation: any;
@@ -29,19 +31,49 @@ interface Props {
 const AdminEditAccount = ({ userInformation }: Props) => {
   const navigate = useNavigate();
 
-  const { formData, handleChangeInput } = useEditUserAccount(userInformation);
+  const { formData, handleChangeInput, handleChangeSelect } = useEditUserAccount(userInformation);
 
-  const { adminEditAccountUserType: userType } = formData;
+  const {
+    adminEditAccountUserId: userId,
+    adminEditAccountBelong: belong,
+    adminEditAccountUserType: userType,
+    adminEditAccountPermission: permission,
+    adminEditAccountName: name,
+    adminEditAccountNickname: nickname,
+    adminEditAccountEmail: email,
+    adminEditAccountSchool: school,
+    adminEditAccountStudentId: studentId,
+    adminEditAccountPositions: positions,
+  } = formData;
+
+  const { mutate: putEditUserAccount } = usePutEditAccount();
 
   const getOptionInputField = () => {
     if (userType === "player") {
       return <PlayerItemsInputField userInformation={formData} onChangeInput={handleChangeInput} />;
     }
-    if (userType === "coach") {
+    if (userType === "coach" || userType === "staff") {
       return <CoachItemsInputField userInformation={formData} onChangeInput={handleChangeInput} />;
     }
   };
-  
+
+  const handleSubmitEditAccount = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    putEditUserAccount({
+      userId,
+      belong,
+      userType,
+      permission,
+      name,
+      nickname,
+      email,
+      school,
+      studentId,
+      positions,
+    });
+  };
+
   const handleClickCancel = () => {
     navigate("/admin");
   };
@@ -58,9 +90,12 @@ const AdminEditAccount = ({ userInformation }: Props) => {
             <SubHeaderWrap>
               <SubHeader subTitle="정보수정" />
             </SubHeaderWrap>
-            <AdminEditAccountForm id="myPageSubmit">
+            <AdminEditAccountForm id="adminEditAccountSubmit" onSubmit={handleSubmitEditAccount}>
               <BasicItemsInputFieldWrap>
-                <BasicItemsSelectField userInformation={formData} />
+                <BasicItemsSelectField
+                  userInformation={formData}
+                  onChangeSelect={handleChangeSelect}
+                />
                 <BasicItemsInputField
                   userInformation={formData}
                   onChangeInput={handleChangeInput}
@@ -69,7 +104,7 @@ const AdminEditAccount = ({ userInformation }: Props) => {
               <OptionItemsInputFieldWrap>{getOptionInputField()}</OptionItemsInputFieldWrap>
               <FormActionButtonBox>
                 <CancelButton text="취소" onClick={handleClickCancel} />
-                <SubmitButton text="저장" formId="myPageSubmit" />
+                <SubmitButton text="저장" formId="adminEditAccountSubmit" />
               </FormActionButtonBox>
             </AdminEditAccountForm>
           </ContentBox>

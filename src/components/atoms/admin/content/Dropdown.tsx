@@ -9,10 +9,11 @@ import {
 } from "./DropdownStyles";
 import dropdownDownArrowImage from "~/assets/images/dropdown_down_arrow.svg";
 import dropdownUpArrowImage from "~/assets/images/dropdown_up_arrow.svg";
+import { UserTypeData } from "~/constants/userTypeData";
 
 interface Props {
   text: string;
-  options: string[];
+  options: UserTypeData[] | string[];
   onOptionSelected: (value: string) => void;
 }
 
@@ -24,9 +25,9 @@ const Dropdown = ({ text, options, onOptionSelected }: Props) => {
     setIsDropdownView(!isDropdownView);
   };
 
-  const handleSelectOption = (option: string) => {
-    setSelectedOption(option);
-    onOptionSelected(option);
+  const handleSelectOption = (koreanValue: string, englishValue: string) => {
+    setSelectedOption(koreanValue);
+    onOptionSelected(englishValue);
     setIsDropdownView(false);
   };
 
@@ -45,7 +46,15 @@ const Dropdown = ({ text, options, onOptionSelected }: Props) => {
       {isDropdownView && (
         <DropdownOptionsUl>
           {options.map((option) => (
-            <DropdownOptionLi onClick={() => handleSelectOption(option)}>{option}</DropdownOptionLi>
+            <DropdownOptionLi
+              onClick={() =>
+                handleSelectOption(
+                  typeof option === "string" ? option : option.korean,
+                  typeof option === "string" ? option : option.english,
+                )
+              }>
+              {typeof option === "string" ? option : option.korean}
+            </DropdownOptionLi>
           ))}
         </DropdownOptionsUl>
       )}
